@@ -99,6 +99,9 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="border-t border-neutral-800 py-12 text-center text-neutral-500">
+        <div className="flex justify-center mb-4">
+          <a href="mailto:contact@nexuscut.io" className="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors">Contact Us</a>
+        </div>
         <p>© 2026 NexusCut. All rights reserved.</p>
       </footer>
     </main>

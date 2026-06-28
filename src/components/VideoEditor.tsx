@@ -349,8 +349,9 @@ export default function VideoEditor() {
   const handleExport = async () => {
     if (!videoFile || !videoRef.current) return;
     
-    // Pro limitation: block export if video is longer than 60s for free users
-    if (!isPro && videoRef.current.duration > 60) {
+    // Pro limitation: block export if final video is longer than 60s for free users
+    const totalDuration = activeSegments.reduce((acc, seg) => acc + (seg.end - seg.start), 0);
+    if (!isPro && totalDuration > 60) {
       alert("Free users can only export videos up to 60 seconds long. Please upgrade to Pro!");
       return;
     }
