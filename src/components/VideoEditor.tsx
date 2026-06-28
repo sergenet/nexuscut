@@ -5,6 +5,7 @@ import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, Volum
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function VideoEditor() {
+  const [activeStep, setActiveStep] = useState(1);
   const [videoFile, setVideoFile] = useState<File | null>(null);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
