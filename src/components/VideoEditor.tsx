@@ -704,26 +704,26 @@ export default function VideoEditor() {
                 <h3 className="text-sm font-bold text-neutral-300 uppercase tracking-wider mb-3">Translate (Optional)</h3>
                 <div className="flex gap-2">
                   <select value={targetLanguage} onChange={e => setTargetLanguage(e.target.value)} className="bg-neutral-900 text-white flex-1 outline-none border border-neutral-700 rounded-lg p-2">
+                    <option value="Arabic">Arabic</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Dutch">Dutch</option>
                     <option value="English">English</option>
-                    <option value="Spanish">Spanish</option>
                     <option value="French">French</option>
                     <option value="German">German</option>
+                    <option value="Greek">Greek</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Indonesian">Indonesian</option>
                     <option value="Italian">Italian</option>
                     <option value="Japanese">Japanese</option>
+                    <option value="Korean">Korean</option>
+                    <option value="Polish">Polish</option>
                     <option value="Portuguese">Portuguese</option>
                     <option value="Russian">Russian</option>
-                    <option value="Chinese">Chinese</option>
-                    <option value="Korean">Korean</option>
-                    <option value="Arabic">Arabic</option>
-                    <option value="Hindi">Hindi</option>
-                    <option value="Dutch">Dutch</option>
-                    <option value="Turkish">Turkish</option>
-                    <option value="Polish">Polish</option>
+                    <option value="Spanish">Spanish</option>
                     <option value="Swedish">Swedish</option>
-                    <option value="Indonesian">Indonesian</option>
-                    <option value="Vietnamese">Vietnamese</option>
                     <option value="Thai">Thai</option>
-                    <option value="Greek">Greek</option>
+                    <option value="Turkish">Turkish</option>
+                    <option value="Vietnamese">Vietnamese</option>
                   </select>
                   <button onClick={translateCaptions} disabled={isProcessing || targetLanguage === 'English'} className="bg-neutral-700 hover:bg-neutral-600 disabled:opacity-50 text-white px-4 rounded-lg transition-colors font-semibold">
                     Apply
@@ -758,6 +758,41 @@ export default function VideoEditor() {
                      <div className="text-neutral-500 text-sm text-center py-8">No transcript yet. Generate captions first.</div>
                    )}
                 </div>
+              </div>
+
+              
+              <div className="bg-neutral-800 p-4 rounded-xl border border-neutral-700">
+                <h3 className="text-sm font-bold text-neutral-300 uppercase tracking-wider mb-4">Caption Styling</h3>
+                
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label className="text-xs text-neutral-400 block mb-1">Font Family</label>
+                    <select value={captionFont} onChange={(e) => setCaptionFont(e.target.value)} className="w-full bg-neutral-900 text-white text-sm rounded-lg px-3 py-2 outline-none border border-neutral-700">
+                      <option value="Roboto-Black">Roboto</option>
+                      <option value="Montserrat-Bold">Montserrat</option>
+                      <option value="BebasNeue-Regular">Bebas Neue</option>
+                      <option value="Oswald-Bold">Oswald</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-xs text-neutral-400 block mb-1">Font Size</label>
+                    <select value={captionSize} onChange={(e) => setCaptionSize(Number(e.target.value))} className="w-full bg-neutral-900 text-white text-sm rounded-lg px-3 py-2 outline-none border border-neutral-700">
+                      <option value={24}>Small (24)</option>
+                      <option value={36}>Medium (36)</option>
+                      <option value={48}>Large (48)</option>
+                      <option value={64}>X-Large (64)</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between bg-neutral-900 p-3 rounded-lg border border-neutral-700 mb-4">
+                  <span className="text-sm text-white">Text Color</span>
+                  <input type="color" value={captionColor} onChange={(e) => setCaptionColor(e.target.value)} className="w-8 h-8 rounded cursor-pointer bg-transparent border-0 p-0" />
+                </div>
+
+                <button onClick={generateEmojis} disabled={isProcessing} className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600/20 text-blue-400 hover:bg-blue-600/30 border border-blue-500/30 disabled:opacity-50 rounded-lg font-bold transition-all">
+                  <Smile className="w-4 h-4" /> Apply Auto-Emojis
+                </button>
               </div>
             </motion.div>
           )}
@@ -829,40 +864,6 @@ export default function VideoEditor() {
           {/* STEP 3: STYLE & AUDIO */}
           {activeStep === 3 && (
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="flex flex-col gap-6">
-              
-              <div className="bg-neutral-800 p-4 rounded-xl border border-neutral-700">
-                <h3 className="text-sm font-bold text-neutral-300 uppercase tracking-wider mb-4">Caption Styling</h3>
-                
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label className="text-xs text-neutral-400 block mb-1">Font Family</label>
-                    <select value={captionFont} onChange={(e) => setCaptionFont(e.target.value)} className="w-full bg-neutral-900 text-white text-sm rounded-lg px-3 py-2 outline-none border border-neutral-700">
-                      <option value="Roboto-Black">Roboto</option>
-                      <option value="Montserrat-Bold">Montserrat</option>
-                      <option value="BebasNeue-Regular">Bebas Neue</option>
-                      <option value="Oswald-Bold">Oswald</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-xs text-neutral-400 block mb-1">Font Size</label>
-                    <select value={captionSize} onChange={(e) => setCaptionSize(Number(e.target.value))} className="w-full bg-neutral-900 text-white text-sm rounded-lg px-3 py-2 outline-none border border-neutral-700">
-                      <option value={24}>Small (24)</option>
-                      <option value={36}>Medium (36)</option>
-                      <option value={48}>Large (48)</option>
-                      <option value={64}>X-Large (64)</option>
-                    </select>
-                  </div>
-                </div>
-                
-                <div className="flex items-center justify-between bg-neutral-900 p-3 rounded-lg border border-neutral-700 mb-4">
-                  <span className="text-sm text-white">Text Color</span>
-                  <input type="color" value={captionColor} onChange={(e) => setCaptionColor(e.target.value)} className="w-8 h-8 rounded cursor-pointer bg-transparent border-0 p-0" />
-                </div>
-
-                <button onClick={generateEmojis} disabled={isProcessing} className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600/20 text-blue-400 hover:bg-blue-600/30 border border-blue-500/30 disabled:opacity-50 rounded-lg font-bold transition-all">
-                  <Smile className="w-4 h-4" /> Apply Auto-Emojis
-                </button>
-              </div>
 
               <div className="bg-neutral-800 p-4 rounded-xl border border-neutral-700">
                 <h3 className="text-sm font-bold text-neutral-300 uppercase tracking-wider mb-4">Visual Effects</h3>
