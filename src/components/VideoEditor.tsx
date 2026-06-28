@@ -70,6 +70,12 @@ export default function VideoEditor() {
       const v = document.createElement('video');
       v.src = url;
       v.onloadedmetadata = () => {
+        if (!isPro && v.duration > 600) {
+          alert("Free users can only process videos up to 10 minutes long. Please upgrade to Pro to upload full podcasts and long-form videos!");
+          setVideoFile(null);
+          setVideoSrc(null);
+          return;
+        }
         setActiveSegments([{ start: 0, end: v.duration }]);
         setVideoDuration(v.duration);
       };
@@ -170,6 +176,10 @@ export default function VideoEditor() {
   };
   
   const generateMagicClip = async () => {
+    if (!isPro) {
+      alert("Magic Clip AI Curation is a Premium feature. Please Upgrade to Pro!");
+      return;
+    }
     if (captions.length === 0) return alert("Generate captions first!");
     setIsProcessing(true);
     setProgressText("AI is hunting for viral hooks...");
