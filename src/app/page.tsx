@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Play, Sparkles, Languages, Smile, Video, ArrowRight, HelpCircle } from "lucide-react";
+import { Play, Sparkles, Languages, Smile, Video, ArrowRight, HelpCircle, Scissors } from "lucide-react";
 
 export default function LandingPage() {
   const features = [
@@ -32,6 +32,12 @@ export default function LandingPage() {
       title: "Magic Clip",
       description: "Let AI find the most viral hook in your video and trim it down to the best 15 seconds.",
       helpLink: "/help#magicclip"
+    },
+    {
+      icon: <Scissors className="w-8 h-8 text-red-400" />,
+      title: "Pro Timeline Controls",
+      description: "Take manual control over your edits. Split, trim, set in/out points, and splice video clips exactly where you want.",
+      helpLink: "/help#timeline"
     }
   ];
 
