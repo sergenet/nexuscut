@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Play, Sparkles, Languages, Smile, Video, ArrowRight, HelpCircle, Scissors } from "lucide-react";
+import { Play, Sparkles, Languages, Smile, Video, ArrowRight, HelpCircle, Scissors, VolumeX } from "lucide-react";
 
 export default function LandingPage() {
   const features = [
@@ -38,6 +38,12 @@ export default function LandingPage() {
       title: "Pro Timeline Controls",
       description: "Take manual control over your edits. Split, trim, set in/out points, and splice video clips exactly where you want.",
       helpLink: "/help#timeline"
+    },
+    {
+      icon: <VolumeX className="w-8 h-8 text-teal-400" />,
+      title: "AI Voiceovers (TTS)",
+      description: "Generate ultra-realistic AI voiceovers in 6 different voices to narrate your faceless videos.",
+      helpLink: "/help#tts"
     }
   ];
 
