@@ -159,18 +159,19 @@ export default function HelpPage() {
           </p>
           <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6">
             <h3 className="font-bold text-indigo-400 mb-2">How to use manual editing:</h3>
-            <ul className="list-disc list-inside space-y-2 text-neutral-300">
-              <li>Click anywhere on the visual Timeline below the video to move the red playhead.</li>
-              <li><strong>✂️ Split:</strong> Click the Scissors icon to cut the current clip into two pieces at the playhead.</li>
-              <li><strong>⏭️ Trim Start (Set In):</strong> Trims the beginning of the clip so it starts at your playhead.</li>
-              <li><strong>⏮️ Trim End (Set Out):</strong> Trims the end of the clip so it ends at your playhead.</li>
-              <li><strong>🗑️ Delete:</strong> Click the Trash icon to completely remove the clip that your playhead is inside.</li>
-              <li><strong>➕ Restore/Add:</strong> If you deleted a section by mistake, move your playhead to the blank space and click the Plus icon to restore a clip there.</li>
+<ul className="list-disc list-inside space-y-2 text-neutral-300">
+              <li>In the Video Editor, click on <strong>Step 3: Style & Audio</strong> in the top navigation bar.</li>
+              <li>Scroll down to the <strong>Audio & TTS</strong> section at the bottom of the right panel.</li>
+              <li>Type or paste the script you want the AI to read into the text box.</li>
+              <li>Leave the <strong>Mute original video audio</strong> box checked if you want to completely replace the video's original sound with the AI voiceover.</li>
+              <li>Select your preferred voice from the dropdown menu (e.g. Alloy, Echo, Fable, Onyx, Nova, Shimmer).</li>
+              <li>Click the <strong>Add Voice</strong> button.</li>
+              <li>The AI will instantly generate the audio, preview it, and set it as your Background Music track!</li>
             </ul>
-            <div className="mt-4 p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
-              <h4 className="font-bold text-indigo-300 mb-1">Pro Tip: Editing Magic Clips</h4>
+            <div className="mt-4 p-4 bg-teal-500/10 border border-teal-500/20 rounded-lg">
+              <h4 className="font-bold text-teal-300 mb-1">Pro Tip: Volume Mixing</h4>
               <p className="text-sm text-neutral-300">
-                If the AI Magic Clip feature cuts off a word slightly too early, just click slightly further down the timeline and click <strong>Trim End</strong> to expand the clip manually!
+                You can fine-tune the mix between the AI Voiceover and the original video audio using the <strong>Audio Tracks</strong> volume sliders located right below the video timeline!
               </p>
             </div>
           </div>
@@ -189,10 +190,11 @@ export default function HelpPage() {
           </p>
           <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6">
             <h3 className="font-bold text-indigo-400 mb-2">How to use the TTS tool:</h3>
-            <ul className="list-disc list-inside space-y-2 text-neutral-300">
+<ul className="list-disc list-inside space-y-2 text-neutral-300">
               <li>In the Video Editor, click on <strong>Step 3: Style & Audio</strong> in the top navigation bar.</li>
               <li>Scroll down to the <strong>Audio & TTS</strong> section at the bottom of the right panel.</li>
               <li>Type or paste the script you want the AI to read into the text box.</li>
+              <li>Leave the <strong>Mute original video audio</strong> box checked if you want to completely replace the video's original sound with the AI voiceover.</li>
               <li>Select your preferred voice from the dropdown menu (e.g. Alloy, Echo, Fable, Onyx, Nova, Shimmer).</li>
               <li>Click the <strong>Add Voice</strong> button.</li>
               <li>The AI will instantly generate the audio, preview it, and set it as your Background Music track!</li>
@@ -200,7 +202,7 @@ export default function HelpPage() {
             <div className="mt-4 p-4 bg-teal-500/10 border border-teal-500/20 rounded-lg">
               <h4 className="font-bold text-teal-300 mb-1">Pro Tip: Volume Mixing</h4>
               <p className="text-sm text-neutral-300">
-                Once the voiceover is generated, it is added as a background audio track. You can easily balance its volume against the original video's audio by using the <strong>Audio Tracks</strong> volume sliders located right above the timeline!
+                You can fine-tune the mix between the AI Voiceover and the original video audio using the <strong>Audio Tracks</strong> volume sliders located right below the video timeline!
               </p>
             </div>
           </div>

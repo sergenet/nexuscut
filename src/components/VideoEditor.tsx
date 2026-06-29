@@ -44,6 +44,7 @@ export default function VideoEditor() {
   const [ttsText, setTtsText] = useState("");
   const [ttsVoice, setTtsVoice] = useState("alloy");
   const [ttsAudioUrl, setTtsAudioUrl] = useState<string | null>(null);
+  const [muteOriginalAudio, setMuteOriginalAudio] = useState(true);
   
   const [targetLanguage, setTargetLanguage] = useState("English");
   const [autoSfx, setAutoSfx] = useState(false);
@@ -260,6 +261,10 @@ export default function VideoEditor() {
       const file = new File([blob], "tts.mp3", { type: "audio/mp3" });
       setBgmFile(file);
       setBgmVolume(1.0);
+      
+      if (muteOriginalAudio) {
+        setMainVolume(0.0);
+      }
       
     } catch(err) {
       console.error(err);
@@ -971,6 +976,10 @@ export default function VideoEditor() {
                   value={ttsText} 
                   onChange={e => setTtsText(e.target.value)}
                 />
+                <label className="flex items-center gap-2 cursor-pointer mb-3">
+                  <input type="checkbox" checked={muteOriginalAudio} onChange={(e) => setMuteOriginalAudio(e.target.checked)} className="accent-indigo-500 w-4 h-4" />
+                  <span className="text-xs text-neutral-300">Mute original video audio</span>
+                </label>
                 <div className="flex gap-2">
                   <select className="bg-neutral-900 text-xs text-white p-2 rounded-lg border border-neutral-700 flex-1 outline-none" value={ttsVoice} onChange={e => setTtsVoice(e.target.value)}>
                     <option value="alloy">Alloy (Neutral)</option>
