@@ -115,6 +115,23 @@ export default function VideoEditor() {
     }
   };
 
+
+  // 60FPS polling for smooth captions
+  useEffect(() => {
+    let animationFrameId: number;
+    const loop = () => {
+      if (isPlaying && videoRef.current) {
+        handleTimeUpdate();
+        animationFrameId = requestAnimationFrame(loop);
+      }
+    };
+    if (isPlaying) {
+      animationFrameId = requestAnimationFrame(loop);
+    }
+    return () => cancelAnimationFrame(animationFrameId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPlaying, activeSegments]);
+
   const handleTimelineClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!videoRef.current || videoDuration === 0) return;
     const rect = e.currentTarget.getBoundingClientRect();
