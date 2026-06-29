@@ -122,9 +122,6 @@ export default function VideoEditor() {
     const newTime = percent * videoDuration;
     videoRef.current.currentTime = newTime;
     if (audioRef.current) audioRef.current.currentTime = newTime;
-    if (!isPlaying) {
-      videoRef.current.play();
-    }
   };
 
   const loadFFmpeg = async () => {
