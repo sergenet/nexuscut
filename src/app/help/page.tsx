@@ -161,11 +161,11 @@ export default function HelpPage() {
             <h3 className="font-bold text-indigo-400 mb-2">How to use manual editing:</h3>
             <ul className="list-disc list-inside space-y-2 text-neutral-300">
               <li>Click anywhere on the visual Timeline below the video to move the red playhead.</li>
-              <li><strong>?? Split:</strong> Click the Scissors icon to cut the current clip into two pieces at the playhead.</li>
-              <li><strong>?? Trim Start (Set In):</strong> Trims the beginning of the clip so it starts at your playhead.</li>
-              <li><strong>?? Trim End (Set Out):</strong> Trims the end of the clip so it ends at your playhead.</li>
-              <li><strong>??? Delete:</strong> Click the Trash icon to completely remove the clip that your playhead is inside.</li>
-              <li><strong>? Restore/Add:</strong> If you deleted a section by mistake, move your playhead to the blank space and click the Plus icon to restore a clip there.</li>
+              <li><strong>✂️ Split:</strong> Click the Scissors icon to cut the current clip into two pieces at the playhead.</li>
+              <li><strong>⏭️ Trim Start (Set In):</strong> Trims the beginning of the clip so it starts at your playhead.</li>
+              <li><strong>⏮️ Trim End (Set Out):</strong> Trims the end of the clip so it ends at your playhead.</li>
+              <li><strong>🗑️ Delete:</strong> Click the Trash icon to completely remove the clip that your playhead is inside.</li>
+              <li><strong>➕ Restore/Add:</strong> If you deleted a section by mistake, move your playhead to the blank space and click the Plus icon to restore a clip there.</li>
             </ul>
             <div className="mt-4 p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
               <h4 className="font-bold text-indigo-300 mb-1">Pro Tip: Editing Magic Clips</h4>
