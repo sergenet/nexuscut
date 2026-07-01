@@ -155,10 +155,13 @@ export default function VideoEditor() {
     return ffmpeg;
   };
 
-  const generateCaptions = async () => {
+const generateCaptions = async () => {
     if (!videoFile) return;
     setIsProcessing(true);
+    let formData = new FormData();
+    
     try {
+      // Try Client-Side Audio Extraction first (fastest for desktop)
       const { fetchFile } = await import('@ffmpeg/util');
       const ffmpeg = await loadFFmpeg();
 
@@ -169,11 +172,19 @@ export default function VideoEditor() {
       const fileData = await ffmpeg.readFile('audio.mp3');
       const audioBlob = new Blob([fileData], { type: 'audio/mp3' });
       const audioFile = new File([audioBlob], "audio.mp3", { type: "audio/mp3" });
-
-      setProgressText("Transcribing via OpenAI Whisper...");
-      const formData = new FormData();
+      
       formData.append('file', audioFile);
+    } catch (clientSideError) {
+      console.warn("Client-side FFmpeg failed. Falling back to server-side extraction.", clientSideError);
+      // Fallback: Send the whole video file to the server for processing
+      // This is crucial for mobile phones (Android/iOS) where ffmpeg.wasm crashes due to low memory!
+      setProgressText("Uploading video for server processing (this may take a moment)...");
+      formData = new FormData();
+      formData.append('file', videoFile);
+    }
 
+    try {
+      setProgressText("Transcribing via OpenAI Whisper...");
       const res = await fetch('/api/transcribe', { method: 'POST', body: formData });
       if (!res.ok) throw new Error('Transcription failed');
 
@@ -181,9 +192,9 @@ export default function VideoEditor() {
       if (data.transcription && data.transcription.words) {
         setCaptions(data.transcription.words);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert("Error generating captions.");
+      alert(`Error generating captions: ${error.message || String(error)}`);
     } finally {
       setIsProcessing(false);
       setProgressText("");
