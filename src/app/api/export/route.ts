@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { exec } from 'child_process';
 import util from 'util';
@@ -30,7 +31,7 @@ export async function POST(req: Request) {
     const brollSegments = JSON.parse(brollSegmentsStr || '[]');
 
     // Setup temp directory
-    const tempDir = path.join(process.cwd(), 'public', 'temp');
+    const tempDir = os.tmpdir();
     if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
     
     const id = Date.now().toString();

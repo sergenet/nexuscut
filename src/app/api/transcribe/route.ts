@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { exec } from 'child_process';
 import util from 'util';
@@ -32,7 +33,7 @@ export async function POST(req: Request) {
     // If the file is a video, extract audio using backend FFmpeg
     if (file.type.startsWith('video/')) {
       console.log("Video uploaded for transcription. Extracting audio on server...");
-      const tempDir = path.join(process.cwd(), 'public', 'temp');
+      const tempDir = os.tmpdir();
       if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
       
       const id = Date.now().toString();
