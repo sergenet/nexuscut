@@ -160,28 +160,11 @@ const generateCaptions = async () => {
     setIsProcessing(true);
     let formData = new FormData();
     
-    try {
-      // Try Client-Side Audio Extraction first (fastest for desktop)
-      const { fetchFile } = await import('@ffmpeg/util');
-      const ffmpeg = await loadFFmpeg();
-
-      setProgressText("Extracting audio stream...");
-      await ffmpeg.writeFile('input.mp4', await fetchFile(videoFile));
-      await ffmpeg.exec(['-i', 'input.mp4', '-vn', '-acodec', 'libmp3lame', '-q:a', '2', 'audio.mp3']);
-      
-      const fileData = await ffmpeg.readFile('audio.mp3');
-      const audioBlob = new Blob([fileData], { type: 'audio/mp3' });
-      const audioFile = new File([audioBlob], "audio.mp3", { type: "audio/mp3" });
-      
-      formData.append('file', audioFile);
-    } catch (clientSideError) {
-      console.warn("Client-side FFmpeg failed. Falling back to server-side extraction.", clientSideError);
-      // Fallback: Send the whole video file to the server for processing
-      // This works perfectly on the VPS since it has no 4.5MB limits and no RAM limits!
-      setProgressText("Uploading video for server processing (this may take a moment)...");
-      formData = new FormData();
-      formData.append('file', videoFile);
-    }
+    // Always send the raw video directly to the server on the VPS
+    // Bypassing WebAssembly FFmpeg ensures budget mobile devices never crash due to RAM limits
+    setProgressText("Uploading video for server processing (this may take a moment)...");
+    formData = new FormData();
+    formData.append('file', videoFile);
 
     try {
       setProgressText("Transcribing via OpenAI Whisper...");
