@@ -214,7 +214,10 @@ export default function VideoEditor() {
         
         setProgressText("Decoding audio (this takes a few seconds)...");
         
-        const arrayBuffer = await videoFile.arrayBuffer();
+        // Fix iOS Safari NotReadableError: fetch the Blob URL instead of reading the File object directly
+        // because iOS revokes File access if too much time passes since selection.
+        const resObj = await fetch(videoSrc);
+        const arrayBuffer = await resObj.arrayBuffer();
         
         // On iOS, suspended contexts must be resumed
         if (audioCtx.state === 'suspended') {
