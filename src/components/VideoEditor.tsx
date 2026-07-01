@@ -194,7 +194,7 @@ const generateCaptions = async () => {
       }
     } catch (error: any) {
       console.error(error);
-      alert(Error generating captions: );
+      alert(`Error generating captions: ${error.message || String(error)}`);
     } finally {
       setIsProcessing(false);
       setProgressText("");
