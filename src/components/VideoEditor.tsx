@@ -162,16 +162,44 @@ const generateCaptions = async () => {
     
     // Always send the raw video directly to the server on the VPS
     // Bypassing WebAssembly FFmpeg ensures budget mobile devices never crash due to RAM limits
-    setProgressText("Uploading video for server processing (this may take a moment)...");
+    setProgressText("Uploading video: 0%");
     formData = new FormData();
     formData.append('file', videoFile);
 
     try {
-      setProgressText("Transcribing via OpenAI Whisper...");
-      const res = await fetch('/api/transcribe', { method: 'POST', body: formData });
-      if (!res.ok) throw new Error('Transcription failed');
+      const data = await new Promise<any>((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/transcribe', true);
+        
+        xhr.upload.onprogress = (event) => {
+          if (event.lengthComputable) {
+            const percent = Math.round((event.loaded / event.total) * 100);
+            if (percent < 100) {
+              setProgressText(`Uploading video: ${percent}%`);
+            } else {
+              setProgressText("Transcribing via OpenAI Whisper (almost done)...");
+            }
+          }
+        };
 
-      const data = await res.json();
+        xhr.onload = () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            try {
+              resolve(JSON.parse(xhr.responseText));
+            } catch (e) {
+              reject(new Error("Invalid JSON response from server"));
+            }
+          } else {
+            reject(new Error(`Server returned status ${xhr.status}: ${xhr.responseText}`));
+          }
+        };
+
+        xhr.onerror = () => reject(new Error("Network error during upload"));
+        xhr.send(formData);
+      });
+
+      if (data.error) throw new Error(data.error);
+
       if (data.transcription && data.transcription.words) {
         setCaptions(data.transcription.words);
       }
