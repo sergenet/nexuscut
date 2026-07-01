@@ -216,6 +216,7 @@ export default function VideoEditor() {
         
         // Fix iOS Safari NotReadableError: fetch the Blob URL instead of reading the File object directly
         // because iOS revokes File access if too much time passes since selection.
+        if (!videoSrc) throw new Error("Video source is missing.");
         const resObj = await fetch(videoSrc);
         const arrayBuffer = await resObj.arrayBuffer();
         
