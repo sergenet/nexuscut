@@ -4,49 +4,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, VolumeX, Smile, Music, ZoomIn, Video, Save, Trash , Plus, ArrowRightToLine, ArrowLeftToLine} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-function audioBufferToWav(buffer: AudioBuffer, startSample: number, endSample: number): Blob {
-  const numChannels = 1;
-  const sampleRate = buffer.sampleRate;
-  const numSamples = endSample - startSample;
-  
-  const blockAlign = numChannels * 2;
-  const byteRate = sampleRate * blockAlign;
-  const dataSize = numSamples * blockAlign;
-  
-  const arrayBuffer = new ArrayBuffer(44 + dataSize);
-  const view = new DataView(arrayBuffer);
-  
-  const writeString = (view: DataView, offset: number, string: string) => {
-    for (let i = 0; i < string.length; i++) {
-      view.setUint8(offset + i, string.charCodeAt(i));
-    }
-  };
-  
-  writeString(view, 0, 'RIFF');
-  view.setUint32(4, 36 + dataSize, true);
-  writeString(view, 8, 'WAVE');
-  writeString(view, 12, 'fmt ');
-  view.setUint32(16, 16, true);
-  view.setUint16(20, 1, true);
-  view.setUint16(22, numChannels, true);
-  view.setUint32(24, sampleRate, true);
-  view.setUint32(28, byteRate, true);
-  view.setUint16(32, blockAlign, true);
-  view.setUint16(34, 16, true);
-  writeString(view, 36, 'data');
-  view.setUint32(40, dataSize, true);
-  
-  const channelData = buffer.getChannelData(0);
-  let offset = 44;
-  for (let i = startSample; i < endSample; i++) {
-    let sample = Math.max(-1, Math.min(1, channelData[i]));
-    view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7FFF, true);
-    offset += 2;
-  }
-  
-  return new Blob([view], { type: 'audio/wav' });
-}
-
 export default function VideoEditor() {
   const [activeStep, setActiveStep] = useState(1);
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -198,97 +155,13 @@ export default function VideoEditor() {
     return ffmpeg;
   };
 
-  const generateCaptions = async () => {
+const generateCaptions = async () => {
     if (!videoFile) return;
     setIsProcessing(true);
-    
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    if (isMobile) {
-      try {
-        console.log("Mobile device detected. Using native AudioContext chunking.");
-        
-        // IMPORTANT: Create AudioContext synchronously BEFORE any awaits to prevent iOS Safari from suspending it!
-        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
-        const audioCtx = new AudioContextClass();
-        
-        setProgressText("Decoding audio (this takes a few seconds)...");
-        
-        // Fix iOS Safari NotReadableError: fetch the Blob URL instead of reading the File object directly
-        // because iOS revokes File access if too much time passes since selection.
-        if (!videoSrc) throw new Error("Video source is missing.");
-        const resObj = await fetch(videoSrc);
-        const arrayBuffer = await resObj.arrayBuffer();
-        
-        // On iOS, suspended contexts must be resumed
-        if (audioCtx.state === 'suspended') {
-          await audioCtx.resume();
-        }
-        
-        // Add a safety timeout so it doesn't spin forever silently if decoding fails
-        const decodePromise = audioCtx.decodeAudioData(arrayBuffer);
-        const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Audio decoding timed out")), 45000));
-        const decodedData = await Promise.race([decodePromise, timeoutPromise]) as AudioBuffer;
-        
-        // Downsample to 16kHz Mono
-        const TARGET_SAMPLE_RATE = 16000;
-        const offlineCtx = new OfflineAudioContext(1, decodedData.duration * TARGET_SAMPLE_RATE, TARGET_SAMPLE_RATE);
-        const source = offlineCtx.createBufferSource();
-        source.buffer = decodedData;
-        source.connect(offlineCtx.destination);
-        source.start();
-        
-        const renderedBuffer = await offlineCtx.startRendering();
-        
-        const CHUNK_DURATION_SEC = 60; // 1 minute chunks
-        const samplesPerChunk = TARGET_SAMPLE_RATE * CHUNK_DURATION_SEC;
-        const totalSamples = renderedBuffer.length;
-        const totalChunks = Math.ceil(totalSamples / samplesPerChunk);
-        
-        let allWords: any[] = [];
-        
-        for (let i = 0; i < totalChunks; i++) {
-          setProgressText(`Transcribing chunk ${i + 1} of ${totalChunks}...`);
-          const startSample = i * samplesPerChunk;
-          const endSample = Math.min(startSample + samplesPerChunk, totalSamples);
-          
-          const wavBlob = audioBufferToWav(renderedBuffer, startSample, endSample);
-          const wavFile = new File([wavBlob], `chunk_${i}.wav`, { type: "audio/wav" });
-          
-          const formData = new FormData();
-          formData.append('file', wavFile);
-          
-          const res = await fetch('/api/transcribe', { method: 'POST', body: formData });
-          if (!res.ok) throw new Error(`Chunk ${i + 1} failed`);
-          
-          const data = await res.json();
-          if (data.transcription && data.transcription.words) {
-            const timeOffset = i * CHUNK_DURATION_SEC;
-            const shiftedWords = data.transcription.words.map((w: any) => ({
-              ...w,
-              start: w.start + timeOffset,
-              end: w.end + timeOffset
-            }));
-            allWords = allWords.concat(shiftedWords);
-          }
-        }
-        
-        setCaptions(allWords);
-        setIsProcessing(false);
-        setProgressText("");
-        return; // Done mobile path
-      } catch (err: any) {
-        console.error(err);
-        alert(`Mobile extraction failed: ${err.message}`);
-        setIsProcessing(false);
-        setProgressText("");
-        return;
-      }
-    } 
-
-    // DESKTOP PATH
     let formData = new FormData();
+    
     try {
+      // Try Client-Side Audio Extraction first (fastest for desktop)
       const { fetchFile } = await import('@ffmpeg/util');
       const ffmpeg = await loadFFmpeg();
 
@@ -302,11 +175,12 @@ export default function VideoEditor() {
       
       formData.append('file', audioFile);
     } catch (clientSideError) {
-      console.warn("Desktop FFmpeg failed.", clientSideError);
-      alert("Local extraction failed. Please try a different video.");
-      setIsProcessing(false);
-      setProgressText("");
-      return;
+      console.warn("Client-side FFmpeg failed. Falling back to server-side extraction.", clientSideError);
+      // Fallback: Send the whole video file to the server for processing
+      // This works perfectly on the VPS since it has no 4.5MB limits and no RAM limits!
+      setProgressText("Uploading video for server processing (this may take a moment)...");
+      formData = new FormData();
+      formData.append('file', videoFile);
     }
 
     try {
@@ -320,12 +194,13 @@ export default function VideoEditor() {
       }
     } catch (error: any) {
       console.error(error);
-      alert(`Error generating captions: ${error.message || String(error)}`);
+      alert(Error generating captions: );
     } finally {
       setIsProcessing(false);
       setProgressText("");
     }
   };
+
   
   const generateMagicClip = async () => {
     if (!isPro) {
