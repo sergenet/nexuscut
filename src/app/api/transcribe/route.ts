@@ -36,8 +36,8 @@ export async function POST(req: Request) {
       if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
       
       const id = Date.now().toString();
-      tempVideoPath = path.join(tempDir, 	ranscribe_in_.mp4);
-      tempAudioPath = path.join(tempDir, 	ranscribe_out_.mp3);
+      tempVideoPath = path.join(tempDir, `transcribe_in_${id}.mp4`);
+      tempAudioPath = path.join(tempDir, `transcribe_out_${id}.mp3`);
       
       const videoBuffer = Buffer.from(await file.arrayBuffer());
       fs.writeFileSync(tempVideoPath, videoBuffer);
