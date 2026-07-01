@@ -198,13 +198,93 @@ export default function VideoEditor() {
     return ffmpeg;
   };
 
-const generateCaptions = async () => {
+  const generateCaptions = async () => {
     if (!videoFile) return;
     setIsProcessing(true);
-    let formData = new FormData();
     
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      try {
+        console.log("Mobile device detected. Using native AudioContext chunking.");
+        
+        // IMPORTANT: Create AudioContext synchronously BEFORE any awaits to prevent iOS Safari from suspending it!
+        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+        const audioCtx = new AudioContextClass();
+        
+        setProgressText("Decoding audio (this takes a few seconds)...");
+        
+        const arrayBuffer = await videoFile.arrayBuffer();
+        
+        // On iOS, suspended contexts must be resumed
+        if (audioCtx.state === 'suspended') {
+          await audioCtx.resume();
+        }
+        
+        // Add a safety timeout so it doesn't spin forever silently if decoding fails
+        const decodePromise = audioCtx.decodeAudioData(arrayBuffer);
+        const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Audio decoding timed out")), 45000));
+        const decodedData = await Promise.race([decodePromise, timeoutPromise]) as AudioBuffer;
+        
+        // Downsample to 16kHz Mono
+        const TARGET_SAMPLE_RATE = 16000;
+        const offlineCtx = new OfflineAudioContext(1, decodedData.duration * TARGET_SAMPLE_RATE, TARGET_SAMPLE_RATE);
+        const source = offlineCtx.createBufferSource();
+        source.buffer = decodedData;
+        source.connect(offlineCtx.destination);
+        source.start();
+        
+        const renderedBuffer = await offlineCtx.startRendering();
+        
+        const CHUNK_DURATION_SEC = 60; // 1 minute chunks
+        const samplesPerChunk = TARGET_SAMPLE_RATE * CHUNK_DURATION_SEC;
+        const totalSamples = renderedBuffer.length;
+        const totalChunks = Math.ceil(totalSamples / samplesPerChunk);
+        
+        let allWords: any[] = [];
+        
+        for (let i = 0; i < totalChunks; i++) {
+          setProgressText(`Transcribing chunk ${i + 1} of ${totalChunks}...`);
+          const startSample = i * samplesPerChunk;
+          const endSample = Math.min(startSample + samplesPerChunk, totalSamples);
+          
+          const wavBlob = audioBufferToWav(renderedBuffer, startSample, endSample);
+          const wavFile = new File([wavBlob], `chunk_${i}.wav`, { type: "audio/wav" });
+          
+          const formData = new FormData();
+          formData.append('file', wavFile);
+          
+          const res = await fetch('/api/transcribe', { method: 'POST', body: formData });
+          if (!res.ok) throw new Error(`Chunk ${i + 1} failed`);
+          
+          const data = await res.json();
+          if (data.transcription && data.transcription.words) {
+            const timeOffset = i * CHUNK_DURATION_SEC;
+            const shiftedWords = data.transcription.words.map((w: any) => ({
+              ...w,
+              start: w.start + timeOffset,
+              end: w.end + timeOffset
+            }));
+            allWords = allWords.concat(shiftedWords);
+          }
+        }
+        
+        setCaptions(allWords);
+        setIsProcessing(false);
+        setProgressText("");
+        return; // Done mobile path
+      } catch (err: any) {
+        console.error(err);
+        alert(`Mobile extraction failed: ${err.message}`);
+        setIsProcessing(false);
+        setProgressText("");
+        return;
+      }
+    } 
+
+    // DESKTOP PATH
+    let formData = new FormData();
     try {
-      // Try Client-Side Audio Extraction first (fastest for desktop)
       const { fetchFile } = await import('@ffmpeg/util');
       const ffmpeg = await loadFFmpeg();
 
@@ -218,12 +298,11 @@ const generateCaptions = async () => {
       
       formData.append('file', audioFile);
     } catch (clientSideError) {
-      console.warn("Client-side FFmpeg failed. Falling back to server-side extraction.", clientSideError);
-      // Fallback: Send the whole video file to the server for processing
-      // This is crucial for mobile phones (Android/iOS) where ffmpeg.wasm crashes due to low memory!
-      setProgressText("Uploading video for server processing (this may take a moment)...");
-      formData = new FormData();
-      formData.append('file', videoFile);
+      console.warn("Desktop FFmpeg failed.", clientSideError);
+      alert("Local extraction failed. Please try a different video.");
+      setIsProcessing(false);
+      setProgressText("");
+      return;
     }
 
     try {
