@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       const videoBuffer = Buffer.from(await file.arrayBuffer());
       fs.writeFileSync(tempVideoPath, videoBuffer);
       
-      const ffmpegCmd = path.join(process.cwd(), 'node_modules', '@ffmpeg-installer', 'win32-x64', 'ffmpeg.exe');
+      const ffmpegCmd = require('@ffmpeg-installer/ffmpeg').path;
       // Extract audio with heavy compression to keep it under 25MB for OpenAI
       const command = `"${ffmpegCmd}" -y -i "${tempVideoPath}" -vn -acodec libmp3lame -q:a 2 "${tempAudioPath}"`;
       await execPromise(command);

@@ -93,7 +93,7 @@ export async function POST(req: Request) {
 
     // Build FFmpeg command
     // Bypass Next.js Webpack bundler issues by manually referencing the downloaded binary
-    const ffmpegCmd = path.join(process.cwd(), 'node_modules', '@ffmpeg-installer', 'win32-x64', 'ffmpeg.exe');
+    const ffmpegCmd = require('@ffmpeg-installer/ffmpeg').path;
 
     let inputs = [`-i "${inputPath}"`];
     brollPaths.forEach(b => inputs.push(`-i "${b.path}"`));
