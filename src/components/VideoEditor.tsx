@@ -652,11 +652,16 @@ const generateCaptions = async () => {
 
   let activeCaption = null;
   if (captions.length > 0) {
-    const pastCaptions = captions.filter(c => c.start <= currentTime);
-    if (pastCaptions.length > 0) {
-      const c = pastCaptions[pastCaptions.length - 1];
-      if (currentTime <= c.end + 1.0) {
+    for (let i = 0; i < captions.length; i++) {
+      const c = captions[i];
+      const next = captions[i + 1];
+      // A caption is active if currentTime is after its start
+      // and before its end (or before the next caption starts, up to 1 second)
+      const maxEnd = next ? Math.min(c.end + 1.0, next.start) : c.end + 1.0;
+      
+      if (currentTime >= c.start && currentTime < maxEnd) {
         activeCaption = c;
+        break;
       }
     }
   }
