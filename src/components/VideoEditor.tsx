@@ -87,64 +87,78 @@ export default function VideoEditor() {
     if (e.target.files?.[0]) setBgmFile(e.target.files[0]);
   };
 
+  // Use requestAnimationFrame for smooth 60fps time updates
+  // This prevents short words from being skipped during playback due to the low frequency of onTimeUpdate (250ms)
   useEffect(() => {
-    if (videoRef.current) videoRef.current.volume = mainVolume;
-  }, [mainVolume]);
+    let animationFrameId: number;
+    const updateTime = () => {
+      if (videoRef.current && isPlaying) {
+        setCurrentTime(videoRef.current.currentTime);
+      }
+      animationFrameId = requestAnimationFrame(updateTime);
+    };
+    if (isPlaying) {
+      animationFrameId = requestAnimationFrame(updateTime);
+    }
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isPlaying]);
 
+  // Handle segment-based timeline playback logic (gapless)
   useEffect(() => {
-    if (audioRef.current) audioRef.current.volume = bgmVolume;
-  }, [bgmVolume]);
-
-  const handleTimeUpdate = () => {
     if (!videoRef.current) return;
     const time = videoRef.current.currentTime;
-    setCurrentTime(time);
     
-    if (activeSegments.length > 0) {
-      const currentSegmentIndex = activeSegments.findIndex(seg => time >= seg.start && time <= seg.end);
-      if (currentSegmentIndex === -1) {
-        const nextSegment = activeSegments.find(seg => seg.start > time);
+    if (activeSegments.length > 0 && isPlaying) {
+      const currentSegment = activeSegments.find(s => time >= s.start && time <= s.end);
+      
+      if (!currentSegment) {
+        // We are in a gap. Find the next segment to jump to.
+        const nextSegment = activeSegments.find(s => s.start > time);
         if (nextSegment) {
           videoRef.current.currentTime = nextSegment.start;
-          if (audioRef.current) audioRef.current.currentTime = nextSegment.start;
-        } else if (time > activeSegments[activeSegments.length - 1].end) {
+          setCurrentTime(nextSegment.start);
+        } else {
+          // Reached the end of all active segments
           videoRef.current.pause();
-          videoRef.current.currentTime = activeSegments[activeSegments.length - 1].end;
           setIsPlaying(false);
+          const finalTime = activeSegments[activeSegments.length - 1].end;
+          videoRef.current.currentTime = finalTime;
+          setCurrentTime(finalTime);
         }
       }
     }
+  }, [currentTime, activeSegments, isPlaying]);
+
+  // Keep volume synced
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.volume = mainVolume;
+    if (audioRef.current) audioRef.current.volume = mainVolume;
+  }, [mainVolume]);
+
+  const handlePlayPause = () => {
+    if (!videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
   };
 
-
-  // 60FPS polling for smooth captions
-  useEffect(() => {
-    let animationFrameId: number;
-    const loop = () => {
-      if (isPlaying && videoRef.current) {
-        handleTimeUpdate();
-        animationFrameId = requestAnimationFrame(loop);
-      }
-    };
-    if (isPlaying) {
-      animationFrameId = requestAnimationFrame(loop);
-    }
-    return () => cancelAnimationFrame(animationFrameId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPlaying, activeSegments]);
-
-  const handleTimelineClick = (e: React.MouseEvent<HTMLDivElement> | React.PointerEvent<HTMLDivElement>) => {
+  const handleTimelineClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!videoRef.current || videoDuration === 0) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
     const newTime = percent * videoDuration;
     videoRef.current.currentTime = newTime;
+    setCurrentTime(newTime);
     if (audioRef.current) audioRef.current.currentTime = newTime;
   };
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     e.currentTarget.setPointerCapture(e.pointerId);
-    handleTimelineClick(e);
+    handleTimelineClick(e as any);
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -655,9 +669,17 @@ const generateCaptions = async () => {
     for (let i = 0; i < captions.length; i++) {
       const c = captions[i];
       const next = captions[i + 1];
+      
       // A caption is active if currentTime is after its start
       // and before its end (or before the next caption starts, up to 1 second)
-      const maxEnd = next ? Math.min(c.end + 1.0, next.start) : c.end + 1.0;
+      let maxEnd = next ? Math.min(c.end + 1.0, next.start) : c.end + 1.0;
+      
+      // CRITICAL FIX: Whisper occasionally generates overlapping or negative timestamps.
+      // If the next word starts BEFORE the current word starts, maxEnd will be less than c.start,
+      // causing the word to be completely skipped. We enforce a minimum duration of 150ms.
+      if (maxEnd <= c.start) {
+        maxEnd = c.start + 0.15;
+      }
       
       if (currentTime >= c.start && currentTime < maxEnd) {
         activeCaption = c;
@@ -762,7 +784,7 @@ const generateCaptions = async () => {
             controls
             playsInline
             className="h-full w-full object-contain"
-            onTimeUpdate={handleTimeUpdate}
+            onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
             onEnded={() => { setIsPlaying(false); audioRef.current?.pause(); if (videoRef.current) videoRef.current.currentTime = 0; if (audioRef.current) audioRef.current.currentTime = 0; }}
             onPlay={() => { setIsPlaying(true); audioRef.current?.play(); }}
             onPause={() => { setIsPlaying(false); audioRef.current?.pause(); }}
