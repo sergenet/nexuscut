@@ -106,6 +106,10 @@ export default function VideoEditor() {
   // Handle segment-based timeline playback logic (gapless)
   useEffect(() => {
     if (!videoRef.current) return;
+    
+    // Prevent executing gap logic if we just issued a seek command less than 500ms ago
+    if (Date.now() - lastSeekTime.current < 500) return;
+    
     const time = videoRef.current.currentTime;
     
     if (activeSegments.length > 0 && isPlaying) {
@@ -115,8 +119,11 @@ export default function VideoEditor() {
         // We are in a gap. Find the next segment to jump to.
         const nextSegment = activeSegments.find(s => s.start > time);
         if (nextSegment) {
+          lastSeekTime.current = Date.now();
           videoRef.current.currentTime = nextSegment.start;
           setCurrentTime(nextSegment.start);
+          // Force play to resume in case mobile browsers pause during programmatic seek
+          videoRef.current.play().catch(e => console.log("Play prevented after seek:", e));
         } else {
           // Reached the end of all active segments
           videoRef.current.pause();
@@ -151,6 +158,7 @@ export default function VideoEditor() {
     const rect = e.currentTarget.getBoundingClientRect();
     const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
     const newTime = percent * videoDuration;
+    lastSeekTime.current = Date.now();
     videoRef.current.currentTime = newTime;
     setCurrentTime(newTime);
     if (audioRef.current) audioRef.current.currentTime = newTime;
