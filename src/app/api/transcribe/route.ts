@@ -82,6 +82,9 @@ export async function POST(req: Request) {
 
     console.log("Audio extracted successfully. Sending to OpenAI Whisper API...");
     const audioBuffer = fs.readFileSync(tempAudioPath);
+    if (audioBuffer.length === 0) {
+      throw new Error("Extracted audio is empty. The video might not have an audio track.");
+    }
     const fileToTranscribe = new File([audioBuffer], 'audio.mp3', { type: 'audio/mp3' });
 
     const transcription = await openai.audio.transcriptions.create({
