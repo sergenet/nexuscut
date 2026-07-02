@@ -652,11 +652,11 @@ const generateCaptions = async () => {
 
   let activeCaption = null;
   if (captions.length > 0) {
-    for (let i = 0; i < captions.length; i++) {
-      const c = captions[i];
-      if (currentTime >= c.start && currentTime <= c.end + 0.2) {
+    const pastCaptions = captions.filter(c => c.start <= currentTime);
+    if (pastCaptions.length > 0) {
+      const c = pastCaptions[pastCaptions.length - 1];
+      if (currentTime <= c.end + 1.0) {
         activeCaption = c;
-        break;
       }
     }
   }
@@ -749,16 +749,7 @@ const generateCaptions = async () => {
         
         {/* Main Video Player (Left 2/3) */}
         <div 
-          className="lg:col-span-2 bg-black rounded-2xl border border-neutral-800 overflow-hidden relative group shadow-2xl flex items-center justify-center cursor-pointer"
-          onClick={() => {
-            if (videoRef.current) {
-              if (isPlaying) {
-                videoRef.current.pause();
-              } else {
-                videoRef.current.play();
-              }
-            }
-          }}
+          className="lg:col-span-2 bg-black rounded-2xl border border-neutral-800 overflow-hidden relative group shadow-2xl flex items-center justify-center"
         >
           <video
             ref={videoRef}
@@ -774,15 +765,6 @@ const generateCaptions = async () => {
 
           {bgmFile && (
             <audio ref={audioRef} src={URL.createObjectURL(bgmFile)} loop />
-          )}
-
-          {/* Custom Play Button Overlay */}
-          {!isPlaying && !isProcessing && (
-            <div className="absolute inset-0 z-40 flex items-center justify-center pointer-events-none bg-black/20">
-              <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl">
-                <Play className="w-10 h-10 text-white fill-white ml-1" />
-              </div>
-            </div>
           )}
 
           {/* B-Roll Overlay */}
