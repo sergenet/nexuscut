@@ -13,6 +13,7 @@ export default function VideoEditor() {
   const [progressText, setProgressText] = useState("");
   const [captions, setCaptions] = useState<any[]>([]);
   const [currentTime, setCurrentTime] = useState(0);
+  const lastSeekTime = useRef(0);
   const [projectId, setProjectId] = useState<string | null>(null);
   const [isPro, setIsPro] = useState(false);
   
