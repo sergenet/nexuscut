@@ -159,19 +159,16 @@ export default function HelpPage() {
           </p>
           <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6">
             <h3 className="font-bold text-indigo-400 mb-2">How to use manual editing:</h3>
-<ul className="list-disc list-inside space-y-2 text-neutral-300">
-              <li>In the Video Editor, click on <strong>Step 3: Style & Audio</strong> in the top navigation bar.</li>
-              <li>Scroll down to the <strong>Audio & TTS</strong> section at the bottom of the right panel.</li>
-              <li>Type or paste the script you want the AI to read into the text box.</li>
-              <li>Leave the <strong>Mute original video audio</strong> box checked if you want to completely replace the video's original sound with the AI voiceover.</li>
-              <li>Select your preferred voice from the dropdown menu (e.g. Alloy, Echo, Fable, Onyx, Nova, Shimmer).</li>
-              <li>Click the <strong>Add Voice</strong> button.</li>
-              <li>The AI will instantly generate the audio, preview it, and set it as your Background Music track!</li>
+            <ul className="list-disc list-inside space-y-2 text-neutral-300">
+              <li>Click anywhere on the green timeline bar to move the video <strong>Playhead</strong> (the white vertical line).</li>
+              <li>Once the Playhead is positioned where you want to make a cut, click the <strong>✂️ Split</strong> button in the timeline toolbar.</li>
+              <li>This will slice your video clip into two separate pieces.</li>
+              <li>To delete a mistake, split the video at the start and end of the mistake, select the middle clip, and press the <strong>Delete</strong> key (or click the trash icon).</li>
             </ul>
             <div className="mt-4 p-4 bg-teal-500/10 border border-teal-500/20 rounded-lg">
-              <h4 className="font-bold text-teal-300 mb-1">Pro Tip: Volume Mixing</h4>
+              <h4 className="font-bold text-teal-300 mb-1">Pro Tip: Ripple Delete</h4>
               <p className="text-sm text-neutral-300">
-                You can fine-tune the mix between the AI Voiceover and the original video audio using the <strong>Audio Tracks</strong> volume sliders located right below the video timeline!
+                When you delete a clip, NexusCut automatically pulls all subsequent clips to the left to close the gap, ensuring there are no black frames in your final video!
               </p>
             </div>
           </div>
