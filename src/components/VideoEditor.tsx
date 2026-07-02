@@ -88,54 +88,52 @@ export default function VideoEditor() {
     if (e.target.files?.[0]) setBgmFile(e.target.files[0]);
   };
 
-  // Use requestAnimationFrame for smooth 60fps time updates
-  // This prevents short words from being skipped during playback due to the low frequency of onTimeUpdate (250ms)
+  // High-performance loop: Checks gaps at 60fps natively, but throttles React state updates to 10fps
+  // to prevent mobile devices from freezing due to excessive DOM diffing.
   useEffect(() => {
     let animationFrameId: number;
+    let lastRenderTime = 0;
+
     const updateTime = () => {
-      if (videoRef.current && isPlaying) {
-        setCurrentTime(videoRef.current.currentTime);
+      if (!videoRef.current || !isPlaying) return;
+      
+      const time = videoRef.current.currentTime;
+      
+      // 1. GAPLESS PLAYBACK LOGIC (Runs at 60fps natively without React state overhead)
+      if (activeSegments.length > 0 && Date.now() - lastSeekTime.current >= 500) {
+        const currentSegment = activeSegments.find(s => time >= s.start && time <= s.end);
+        
+        if (!currentSegment) {
+          const nextSegment = activeSegments.find(s => s.start > time);
+          if (nextSegment) {
+            lastSeekTime.current = Date.now();
+            videoRef.current.currentTime = nextSegment.start;
+            setCurrentTime(nextSegment.start);
+            videoRef.current.play().catch(e => console.log("Play prevented after seek:", e));
+          } else {
+            videoRef.current.pause();
+            setIsPlaying(false);
+            const finalTime = activeSegments[activeSegments.length - 1].end;
+            videoRef.current.currentTime = finalTime;
+            setCurrentTime(finalTime);
+          }
+        }
       }
+
+      // 2. REACT STATE UPDATE (Throttled to 50ms / 20fps to save mobile CPU)
+      if (Date.now() - lastRenderTime > 50) {
+        setCurrentTime(time);
+        lastRenderTime = Date.now();
+      }
+      
       animationFrameId = requestAnimationFrame(updateTime);
     };
+
     if (isPlaying) {
       animationFrameId = requestAnimationFrame(updateTime);
     }
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isPlaying]);
-
-  // Handle segment-based timeline playback logic (gapless)
-  useEffect(() => {
-    if (!videoRef.current) return;
-    
-    // Prevent executing gap logic if we just issued a seek command less than 500ms ago
-    if (Date.now() - lastSeekTime.current < 500) return;
-    
-    const time = videoRef.current.currentTime;
-    
-    if (activeSegments.length > 0 && isPlaying) {
-      const currentSegment = activeSegments.find(s => time >= s.start && time <= s.end);
-      
-      if (!currentSegment) {
-        // We are in a gap. Find the next segment to jump to.
-        const nextSegment = activeSegments.find(s => s.start > time);
-        if (nextSegment) {
-          lastSeekTime.current = Date.now();
-          videoRef.current.currentTime = nextSegment.start;
-          setCurrentTime(nextSegment.start);
-          // Force play to resume in case mobile browsers pause during programmatic seek
-          videoRef.current.play().catch(e => console.log("Play prevented after seek:", e));
-        } else {
-          // Reached the end of all active segments
-          videoRef.current.pause();
-          setIsPlaying(false);
-          const finalTime = activeSegments[activeSegments.length - 1].end;
-          videoRef.current.currentTime = finalTime;
-          setCurrentTime(finalTime);
-        }
-      }
-    }
-  }, [currentTime, activeSegments, isPlaying]);
+  }, [isPlaying, activeSegments]);
 
   // Keep volume synced
   useEffect(() => {
