@@ -738,20 +738,41 @@ const generateCaptions = async () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[55vh]">
         
         {/* Main Video Player (Left 2/3) */}
-        <div className="lg:col-span-2 bg-black rounded-2xl border border-neutral-800 overflow-hidden relative group shadow-2xl flex items-center justify-center">
+        <div 
+          className="lg:col-span-2 bg-black rounded-2xl border border-neutral-800 overflow-hidden relative group shadow-2xl flex items-center justify-center cursor-pointer"
+          onClick={() => {
+            if (videoRef.current) {
+              if (isPlaying) {
+                videoRef.current.pause();
+              } else {
+                videoRef.current.play();
+              }
+            }
+          }}
+        >
           <video
             ref={videoRef}
             src={videoSrc}
             controls
+            playsInline
             className="h-full w-full object-contain"
             onTimeUpdate={handleTimeUpdate}
-            onEnded={() => { setIsPlaying(false); audioRef.current?.pause(); }}
+            onEnded={() => { setIsPlaying(false); audioRef.current?.pause(); if (videoRef.current) videoRef.current.currentTime = 0; if (audioRef.current) audioRef.current.currentTime = 0; }}
             onPlay={() => { setIsPlaying(true); audioRef.current?.play(); }}
             onPause={() => { setIsPlaying(false); audioRef.current?.pause(); }}
           />
 
           {bgmFile && (
             <audio ref={audioRef} src={URL.createObjectURL(bgmFile)} loop />
+          )}
+
+          {/* Custom Play Button Overlay */}
+          {!isPlaying && !isProcessing && (
+            <div className="absolute inset-0 z-40 flex items-center justify-center pointer-events-none bg-black/20">
+              <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl">
+                <Play className="w-10 h-10 text-white fill-white ml-1" />
+              </div>
+            </div>
           )}
 
           {/* B-Roll Overlay */}
@@ -836,9 +857,9 @@ const generateCaptions = async () => {
 
               <div>
                 <h3 className="text-sm font-bold text-neutral-300 uppercase tracking-wider mb-3">Transcript Viewer</h3>
-                <div className="bg-neutral-800 border border-neutral-700 rounded-xl p-4 max-h-[40vh] overflow-y-auto">
+                <div className="bg-black border border-neutral-700 rounded-xl p-4 max-h-[40vh] overflow-y-auto">
                    {captions.length > 0 ? (
-                     <div className="flex flex-wrap gap-1 text-base leading-loose">
+                     <div className="flex flex-wrap gap-1 text-base leading-loose font-medium">
                        {captions.map((c, i) => {
                          const isCut = !activeSegments.some(seg => c.start >= seg.start && c.end <= seg.end);
                          return (
@@ -847,8 +868,8 @@ const generateCaptions = async () => {
                              className={`cursor-pointer transition-all ${
                                isCut ? 'opacity-20 line-through text-neutral-500' :
                                currentTime >= c.start && currentTime <= c.end 
-                                 ? 'text-indigo-400 font-bold bg-indigo-500/10 px-1 rounded' 
-                                 : 'text-neutral-300 hover:text-white'
+                                 ? 'text-yellow-400 font-bold bg-yellow-500/20 px-1 rounded shadow-[0_0_10px_rgba(250,204,21,0.3)]' 
+                                 : 'text-white hover:text-yellow-200'
                              }`}
                              onClick={() => { if (videoRef.current) { videoRef.current.currentTime = c.start; videoRef.current.play(); } }}
                            >
