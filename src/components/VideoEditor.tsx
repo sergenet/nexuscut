@@ -133,13 +133,23 @@ export default function VideoEditor() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlaying, activeSegments]);
 
-  const handleTimelineClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleTimelineClick = (e: React.MouseEvent<HTMLDivElement> | React.PointerEvent<HTMLDivElement>) => {
     if (!videoRef.current || videoDuration === 0) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
     const newTime = percent * videoDuration;
     videoRef.current.currentTime = newTime;
     if (audioRef.current) audioRef.current.currentTime = newTime;
+  };
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.currentTarget.setPointerCapture(e.pointerId);
+    handleTimelineClick(e);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.buttons !== 1) return; // Only scrub if dragging
+    handleTimelineClick(e);
   };
 
   const loadFFmpeg = async () => {
@@ -1159,8 +1169,9 @@ const generateCaptions = async () => {
             </div>
 
             <div 
-              className="relative h-24 bg-neutral-800 rounded-xl overflow-hidden cursor-pointer group"
-              onClick={handleTimelineClick}
+              className="relative h-24 bg-neutral-800 rounded-xl overflow-hidden cursor-pointer group touch-none select-none"
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
             >
               {/* Active Segments */}
               {activeSegments.map((seg, i) => (
