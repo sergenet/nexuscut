@@ -594,10 +594,9 @@ const generateCaptions = async () => {
       a.click();
       document.body.removeChild(a);
       
-      // Delay revocation to ensure the browser has time to start the download
-      setTimeout(() => {
-        URL.revokeObjectURL(url);
-      }, 2000);
+      // We purposefully DO NOT call URL.revokeObjectURL(url) here.
+      // Small JSON blobs take negligible memory, and revoking them can cause
+      // Windows Defender / Chrome antivirus scans to fail and leave .crdownload files.
       
       alert("Project saved to your computer successfully!");
     } catch (err) {
