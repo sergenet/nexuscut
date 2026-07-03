@@ -579,13 +579,17 @@ const generateCaptions = async () => {
   const saveProject = () => {
     try {
       const editorState = {
+        originalVideoName: videoFile?.name || 'Unknown Video',
         captions, activeSegments, brollSegments, captionFont, captionSize, captionColor, autoZoom, silenceThreshold
       };
       const blob = new Blob([JSON.stringify(editorState, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `nexuscut-project-${Date.now()}.nxp`;
+      
+      const safeName = videoFile?.name ? videoFile.name.replace(/\.[^/.]+$/, "") : "nexuscut-project";
+      a.download = `${safeName}.nxp`;
+      
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -773,9 +777,20 @@ const generateCaptions = async () => {
           <h2 className="text-3xl font-bold text-white mb-4">
             {pendingProjectData ? "Project Loaded! 🚀" : "Start Creating"}
           </h2>
-          <p className="text-neutral-400 mb-6">
-            {pendingProjectData ? "Now, select the original video file (.mp4) associated with this project to resume editing." : "Upload a video to begin editing."}
-          </p>
+          <div className="text-neutral-400 mb-6 flex flex-col gap-2">
+            {pendingProjectData ? (
+              <>
+                <p>Now, select the original video file associated with this project to resume editing.</p>
+                {pendingProjectData.originalVideoName && (
+                  <p className="bg-neutral-800 p-3 rounded-lg text-yellow-400 font-mono text-sm border border-neutral-700">
+                    Expected file: <strong>{pendingProjectData.originalVideoName}</strong>
+                  </p>
+                )}
+              </>
+            ) : (
+              <p>Upload a video to begin editing.</p>
+            )}
+          </div>
           
           <div className="flex flex-col sm:flex-row gap-4 w-full">
             <label className="cursor-pointer flex-1 bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-semibold transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] text-center">
