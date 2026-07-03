@@ -13,6 +13,7 @@ export default function VideoEditor() {
   const [progressText, setProgressText] = useState("");
   const [captions, setCaptions] = useState<any[]>([]);
   const [originalCaptions, setOriginalCaptions] = useState<any[]>([]);
+  const [pendingProjectData, setPendingProjectData] = useState<any>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const lastSeekTime = useRef(0);
   const [projectId, setProjectId] = useState<string | null>(null);
@@ -67,9 +68,12 @@ export default function VideoEditor() {
       setVideoFile(file);
       const url = URL.createObjectURL(file);
       setVideoSrc(url);
-      setCaptions([]);
-      setMagicClips([]);
-      setBrollSegments([]);
+      if (!pendingProjectData) {
+        setCaptions([]);
+        setOriginalCaptions([]);
+        setMagicClips([]);
+        setBrollSegments([]);
+      }
       const v = document.createElement('video');
       v.src = url;
       v.onloadedmetadata = () => {
@@ -79,8 +83,13 @@ export default function VideoEditor() {
           setVideoSrc(null);
           return;
         }
-        setActiveSegments([{ start: 0, end: v.duration }]);
         setVideoDuration(v.duration);
+        if (pendingProjectData) {
+          applyProjectState(pendingProjectData);
+          setPendingProjectData(null);
+        } else {
+          setActiveSegments([{ start: 0, end: v.duration }]);
+        }
       };
     }
   };
@@ -593,6 +602,21 @@ const generateCaptions = async () => {
     }
   };
 
+  const applyProjectState = (state: any) => {
+    if (state.captions) {
+      setCaptions(state.captions);
+      setOriginalCaptions(state.captions);
+    }
+    if (state.activeSegments) setActiveSegments(state.activeSegments);
+    if (state.brollSegments) setBrollSegments(state.brollSegments);
+    if (state.captionFont) setCaptionFont(state.captionFont);
+    if (state.captionSize) setCaptionSize(state.captionSize);
+    if (state.captionColor) setCaptionColor(state.captionColor);
+    if (state.autoZoom !== undefined) setAutoZoom(state.autoZoom);
+    if (state.silenceThreshold !== undefined) setSilenceThreshold(state.silenceThreshold);
+    alert("Project loaded successfully!");
+  };
+
   const handleLoadProject = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -600,18 +624,12 @@ const generateCaptions = async () => {
     reader.onload = (e) => {
       try {
         const state = JSON.parse(e.target?.result as string);
-        if (state.captions) {
-          setCaptions(state.captions);
-          setOriginalCaptions(state.captions);
+        if (!videoFile) {
+          // If no video is loaded yet, hold this state and prompt for video
+          setPendingProjectData(state);
+        } else {
+          applyProjectState(state);
         }
-        if (state.activeSegments) setActiveSegments(state.activeSegments);
-        if (state.brollSegments) setBrollSegments(state.brollSegments);
-        if (state.captionFont) setCaptionFont(state.captionFont);
-        if (state.captionSize) setCaptionSize(state.captionSize);
-        if (state.captionColor) setCaptionColor(state.captionColor);
-        if (state.autoZoom !== undefined) setAutoZoom(state.autoZoom);
-        if (state.silenceThreshold !== undefined) setSilenceThreshold(state.silenceThreshold);
-        alert("Project loaded successfully!");
       } catch (err) {
         alert("Invalid project file.");
       }
@@ -625,6 +643,7 @@ const generateCaptions = async () => {
     setVideoSrc(null);
     setCaptions([]);
     setOriginalCaptions([]);
+    setPendingProjectData(null);
     setMagicClips([]);
     setBrollSegments([]);
     setActiveSegments([]);
@@ -751,11 +770,26 @@ const generateCaptions = async () => {
           <div className="w-20 h-20 bg-indigo-500/20 rounded-full flex items-center justify-center mb-6">
             <Upload className="w-10 h-10 text-indigo-400" />
           </div>
-          <h2 className="text-3xl font-bold text-white mb-4">Start Creating</h2>
-          <label className="cursor-pointer bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-semibold transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)]">
-            Select Video File
-            <input type="file" accept="video/*" className="hidden" onChange={handleFileUpload} />
-          </label>
+          <h2 className="text-3xl font-bold text-white mb-4">
+            {pendingProjectData ? "Project Loaded! 🚀" : "Start Creating"}
+          </h2>
+          <p className="text-neutral-400 mb-6">
+            {pendingProjectData ? "Now, select the original video file (.mp4) associated with this project to resume editing." : "Upload a video to begin editing."}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 w-full">
+            <label className="cursor-pointer flex-1 bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-semibold transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] text-center">
+              {pendingProjectData ? "Select Original Video" : "Select Video File"}
+              <input type="file" accept="video/*" className="hidden" onChange={handleFileUpload} />
+            </label>
+
+            {!pendingProjectData && (
+              <label className="cursor-pointer flex-1 flex justify-center items-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white px-8 py-4 rounded-full font-semibold transition-all border border-neutral-700 text-center">
+                <FolderOpen className="w-5 h-5" /> Load Project
+                <input type="file" accept=".nxp" className="hidden" onChange={handleLoadProject} />
+              </label>
+            )}
+          </div>
         </motion.div>
       </div>
     );
