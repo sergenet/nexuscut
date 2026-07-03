@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, VolumeX, Smile, Music, ZoomIn, Video, Save, Trash , Plus, ArrowRightToLine, ArrowLeftToLine} from "lucide-react";
+import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, VolumeX, Smile, Music, ZoomIn, Video, Save, FolderOpen, Trash, Plus, ArrowRightToLine, ArrowLeftToLine} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function VideoEditor() {
@@ -593,7 +593,10 @@ const generateCaptions = async () => {
     reader.onload = (e) => {
       try {
         const state = JSON.parse(e.target?.result as string);
-        if (state.captions) setCaptions(state.captions);
+        if (state.captions) {
+          setCaptions(state.captions);
+          setOriginalCaptions(state.captions);
+        }
         if (state.activeSegments) setActiveSegments(state.activeSegments);
         if (state.brollSegments) setBrollSegments(state.brollSegments);
         if (state.captionFont) setCaptionFont(state.captionFont);
@@ -780,6 +783,10 @@ const generateCaptions = async () => {
           ))}
         </div>
         <div className="flex gap-2">
+           <label className="flex items-center gap-2 px-4 py-2 bg-neutral-800 hover:bg-neutral-700 cursor-pointer rounded-lg text-sm font-semibold text-white transition-colors border border-neutral-700">
+             <FolderOpen className="w-4 h-4" /> Load
+             <input type="file" accept=".nxp" onChange={handleLoadProject} className="hidden" />
+           </label>
            <button onClick={saveProject} disabled={isProcessing} className="flex items-center gap-2 px-4 py-2 bg-neutral-800 hover:bg-neutral-700 disabled:opacity-50 rounded-lg text-sm font-semibold text-white transition-colors border border-neutral-700">
              <Save className="w-4 h-4" /> Save
            </button>
