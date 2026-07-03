@@ -12,6 +12,7 @@ export default function VideoEditor() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [progressText, setProgressText] = useState("");
   const [captions, setCaptions] = useState<any[]>([]);
+  const [originalCaptions, setOriginalCaptions] = useState<any[]>([]);
   const [currentTime, setCurrentTime] = useState(0);
   const lastSeekTime = useRef(0);
   const [projectId, setProjectId] = useState<string | null>(null);
@@ -233,6 +234,7 @@ const generateCaptions = async () => {
 
       if (data.transcription && data.transcription.words) {
         setCaptions(data.transcription.words);
+        setOriginalCaptions(data.transcription.words); // Save original for translation
       }
     } catch (error: any) {
       console.error(error);
@@ -538,13 +540,20 @@ const generateCaptions = async () => {
   };
 
   const translateCaptions = async () => {
-    if (captions.length === 0) return alert("Generate captions first!");
-    if (targetLanguage === 'English') return;
+    const sourceCaptions = originalCaptions.length > 0 ? originalCaptions : captions;
+    if (sourceCaptions.length === 0) return alert("Generate captions first!");
+    
+    // If returning to English, just restore the original captions instantly
+    if (targetLanguage === 'English') {
+      setCaptions(sourceCaptions);
+      return;
+    }
+    
     setIsProcessing(true);
     setProgressText(`Translating to ${targetLanguage}...`);
     try {
       const res = await fetch('/api/translate', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ captions, targetLanguage })
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ captions: sourceCaptions, targetLanguage })
       });
       if (!res.ok) throw new Error("Translation failed");
       const translated = await res.json();
@@ -605,6 +614,7 @@ const generateCaptions = async () => {
     setVideoFile(null);
     setVideoSrc(null);
     setCaptions([]);
+    setOriginalCaptions([]);
     setMagicClips([]);
     setBrollSegments([]);
     setActiveSegments([]);
