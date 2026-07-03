@@ -895,7 +895,7 @@ const generateCaptions = async () => {
                     <option value="Turkish">Turkish</option>
                     <option value="Vietnamese">Vietnamese</option>
                   </select>
-                  <button onClick={translateCaptions} disabled={isProcessing || targetLanguage === 'English'} className="bg-neutral-700 hover:bg-neutral-600 disabled:opacity-50 text-white px-4 rounded-lg transition-colors font-semibold">
+                  <button onClick={translateCaptions} disabled={isProcessing} className="bg-neutral-700 hover:bg-neutral-600 disabled:opacity-50 text-white px-4 rounded-lg transition-colors font-semibold">
                     Apply
                   </button>
                 </div>
@@ -903,7 +903,7 @@ const generateCaptions = async () => {
 
               <div>
                 <h3 className="text-sm font-bold text-neutral-300 uppercase tracking-wider mb-3">Transcript Viewer</h3>
-                <div className="bg-black border border-neutral-700 rounded-xl p-4 max-h-[40vh] overflow-y-auto">
+                <div className="bg-black border border-neutral-700 rounded-xl p-4 max-h-[40vh] overflow-y-auto" dir={targetLanguage === 'Arabic' ? 'rtl' : 'ltr'}>
                    {captions.length > 0 ? (
                      <div className="flex flex-wrap gap-1 text-base leading-loose font-medium">
                        {captions.map((c, i) => {
