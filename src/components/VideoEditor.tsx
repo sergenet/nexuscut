@@ -770,6 +770,9 @@ const generateCaptions = async () => {
           ))}
         </div>
         <div className="flex gap-2">
+           <button onClick={saveProject} disabled={isProcessing} className="flex items-center gap-2 px-4 py-2 bg-neutral-800 hover:bg-neutral-700 disabled:opacity-50 rounded-lg text-sm font-semibold text-white transition-colors border border-neutral-700">
+             <Save className="w-4 h-4" /> Save
+           </button>
            <button onClick={startOver} disabled={isProcessing} className="flex items-center gap-2 px-4 py-2 bg-red-900/30 hover:bg-red-900/50 disabled:opacity-50 rounded-lg text-sm font-semibold text-red-400 transition-colors border border-red-900/50">
              <Trash className="w-4 h-4" /> Start Over
            </button>
