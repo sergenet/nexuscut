@@ -577,8 +577,15 @@ const generateCaptions = async () => {
       const a = document.createElement('a');
       a.href = url;
       a.download = `nexuscut-project-${Date.now()}.nxp`;
+      document.body.appendChild(a);
       a.click();
-      URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+      
+      // Delay revocation to ensure the browser has time to start the download
+      setTimeout(() => {
+        URL.revokeObjectURL(url);
+      }, 2000);
+      
       alert("Project saved to your computer successfully!");
     } catch (err) {
       console.error(err);
