@@ -15,6 +15,9 @@ export default function VideoEditor() {
   const [originalCaptions, setOriginalCaptions] = useState<any[]>([]);
   const [pendingProjectData, setPendingProjectData] = useState<any>(null);
   const [currentTime, setCurrentTime] = useState(0);
+  const [isAudioMode, setIsAudioMode] = useState(false);
+  const [baseAudioFile, setBaseAudioFile] = useState<File | null>(null);
+  const [baseImageFile, setBaseImageFile] = useState<File | null>(null);
   const lastSeekTime = useRef(0);
   const [projectId, setProjectId] = useState<string | null>(null);
   const [isPro, setIsPro] = useState(false);
@@ -61,6 +64,48 @@ export default function VideoEditor() {
       ffmpegRef.current = new FFmpeg();
     }).catch(err => console.error("Error loading FFmpeg:", err));
   }, []);
+
+  const handleGenerateBaseVideo = async () => {
+    if (!baseAudioFile || !baseImageFile) return alert("Please select both an audio file and an image.");
+    
+    setIsProcessing(true);
+    setProgressText("Generating base video from your audio and image...");
+    
+    try {
+      const formData = new FormData();
+      formData.append('audio', baseAudioFile);
+      formData.append('image', baseImageFile);
+      
+      const res = await fetch('/api/create-base', {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (!res.ok) throw new Error("Base video generation failed");
+      
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      
+      setProgressText("Loading video into editor...");
+      const videoRes = await fetch(data.videoUrl);
+      const videoBlob = await videoRes.blob();
+      const generatedFile = new File([videoBlob], "base_video.mp4", { type: "video/mp4" });
+      
+      // Pass the generated file directly to handleFileUpload
+      handleFileUpload({ target: { files: [generatedFile] } } as any);
+      
+      setIsAudioMode(false);
+      setBaseAudioFile(null);
+      setBaseImageFile(null);
+      
+    } catch (err: any) {
+      console.error(err);
+      alert("Failed to create base video: " + err.message);
+    } finally {
+      setIsProcessing(false);
+      setProgressText("");
+    }
+  };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -804,6 +849,55 @@ const generateCaptions = async () => {
               </label>
             )}
           </div>
+          
+          {!pendingProjectData && !isAudioMode && (
+            <button onClick={() => setIsAudioMode(true)} className="mt-4 text-sm text-indigo-400 hover:text-indigo-300 font-medium">
+              Want to start from an Audio file instead?
+            </button>
+          )}
+
+          {isAudioMode && (
+            <div className="mt-8 bg-black/40 p-6 rounded-xl border border-neutral-700 w-full">
+              <h3 className="text-lg font-bold text-white mb-4">Create Video from Audio & Image</h3>
+              
+              <div className="flex flex-col gap-4">
+                <label className="flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
+                  <Music className="w-5 h-5 text-indigo-400" />
+                  <span className="text-sm font-medium text-white truncate">
+                    {baseAudioFile ? baseAudioFile.name : "1. Select Audio File (.mp3, .wav)"}
+                  </span>
+                  <input type="file" accept="audio/*" className="hidden" onChange={(e) => setBaseAudioFile(e.target.files?.[0] || null)} />
+                </label>
+
+                <label className="flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
+                  <Upload className="w-5 h-5 text-indigo-400" />
+                  <span className="text-sm font-medium text-white truncate">
+                    {baseImageFile ? baseImageFile.name : "2. Select Background Image (.jpg, .png)"}
+                  </span>
+                  <input type="file" accept="image/*" className="hidden" onChange={(e) => setBaseImageFile(e.target.files?.[0] || null)} />
+                </label>
+                
+                <button 
+                  onClick={handleGenerateBaseVideo}
+                  disabled={!baseAudioFile || !baseImageFile || isProcessing}
+                  className="mt-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
+                >
+                  {isProcessing ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}
+                  Generate Base Video
+                </button>
+                
+                <button onClick={() => setIsAudioMode(false)} className="text-neutral-500 hover:text-neutral-300 text-sm mt-2">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+          
+          {isProcessing && (
+            <div className="mt-4 flex items-center gap-2 text-indigo-400 font-medium">
+              <Loader2 className="w-5 h-5 animate-spin" /> {progressText}
+            </div>
+          )}
         </motion.div>
       </div>
     );
