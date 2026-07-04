@@ -31,29 +31,36 @@ export async function POST(req: Request) {
     console.log(`Processing ${slideCount} slides...`);
 
     for (let i = 0; i < slideCount; i++) {
-      const audioFile = formData.get(`audio_${i}`) as File;
+      const audioFile = formData.get(`audio_${i}`) as File | null;
       const imageFile = formData.get(`image_${i}`) as File;
+      const durationStr = formData.get(`duration_${i}`) as string;
 
-      if (!audioFile || !imageFile) continue;
+      if (!imageFile) continue;
 
-      const audioExt = path.extname(audioFile.name) || '.mp3';
       const imageExt = path.extname(imageFile.name) || '.jpg';
-      
-      const audioPath = path.join(tempDir, `slide_${id}_${i}_audio${audioExt}`);
       const imagePath = path.join(tempDir, `slide_${id}_${i}_image${imageExt}`);
       const slideVideoPath = path.join(tempDir, `slide_${id}_${i}.mp4`);
 
-      filesToCleanup.push(audioPath, imagePath, slideVideoPath);
-
-      const audioBuffer = Buffer.from(await audioFile.arrayBuffer());
-      fs.writeFileSync(audioPath, audioBuffer);
+      filesToCleanup.push(imagePath, slideVideoPath);
       
       const imageBuffer = Buffer.from(await imageFile.arrayBuffer());
       fs.writeFileSync(imagePath, imageBuffer);
 
-      // Generate the slide video
-      // Important: Must standardize fps and audio sample rate for concat demuxer
-      const command = `"${ffmpegCmd}" -y -loop 1 -i "${imagePath}" -i "${audioPath}" -vf "${scaleFilter}" -c:v libx264 -preset fast -tune stillimage -r 30 -c:a aac -b:a 192k -ar 44100 -pix_fmt yuv420p -shortest "${slideVideoPath}"`;
+      let command = "";
+      
+      if (audioFile) {
+        const audioExt = path.extname(audioFile.name) || '.mp3';
+        const audioPath = path.join(tempDir, `slide_${id}_${i}_audio${audioExt}`);
+        filesToCleanup.push(audioPath);
+
+        const audioBuffer = Buffer.from(await audioFile.arrayBuffer());
+        fs.writeFileSync(audioPath, audioBuffer);
+        
+        command = `"${ffmpegCmd}" -y -loop 1 -i "${imagePath}" -i "${audioPath}" -vf "${scaleFilter}" -c:v libx264 -preset fast -tune stillimage -r 30 -c:a aac -ac 2 -b:a 192k -ar 44100 -pix_fmt yuv420p -shortest "${slideVideoPath}"`;
+      } else {
+        const duration = parseInt(durationStr || '3', 10);
+        command = `"${ffmpegCmd}" -y -loop 1 -i "${imagePath}" -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -vf "${scaleFilter}" -c:v libx264 -preset fast -tune stillimage -r 30 -c:a aac -ac 2 -b:a 192k -ar 44100 -pix_fmt yuv420p -t ${duration} "${slideVideoPath}"`;
+      }
 
       console.log(`Generating video for slide ${i + 1}...`);
       await execPromise(command);

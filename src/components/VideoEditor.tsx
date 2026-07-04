@@ -16,7 +16,7 @@ export default function VideoEditor() {
   const [pendingProjectData, setPendingProjectData] = useState<any>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [isAudioMode, setIsAudioMode] = useState(false);
-  const [slides, setSlides] = useState<{ id: string, audio: File | null, image: File | null }[]>([{ id: '1', audio: null, image: null }]);
+  const [slides, setSlides] = useState<{ id: string, audio: File | null, image: File | null, duration: string }[]>([{ id: '1', audio: null, image: null, duration: '3' }]);
   const lastSeekTime = useRef(0);
   const [projectId, setProjectId] = useState<string | null>(null);
   const [isPro, setIsPro] = useState(false);
@@ -65,8 +65,8 @@ export default function VideoEditor() {
   }, []);
 
   const handleGenerateBaseVideo = async () => {
-    const isValid = slides.every(s => s.audio && s.image);
-    if (!isValid || slides.length === 0) return alert("Please select both an audio file and an image for every slide.");
+    const isValid = slides.every(s => s.image);
+    if (!isValid || slides.length === 0) return alert("Please select an image for every slide.");
     
     setIsProcessing(true);
     setProgressText("Stitching your audio and image slides together...");
@@ -78,6 +78,7 @@ export default function VideoEditor() {
       slides.forEach((slide, index) => {
         if (slide.audio) formData.append(`audio_${index}`, slide.audio);
         if (slide.image) formData.append(`image_${index}`, slide.image);
+        formData.append(`duration_${index}`, slide.duration);
       });
       
       const res = await fetch('/api/create-base', {
@@ -99,7 +100,7 @@ export default function VideoEditor() {
       handleFileUpload({ target: { files: [generatedFile] } } as any);
       
       setIsAudioMode(false);
-      setSlides([{ id: '1', audio: null, image: null }]);
+      setSlides([{ id: '1', audio: null, image: null, duration: '3' }]);
       
     } catch (err: any) {
       console.error(err);
@@ -879,7 +880,7 @@ const generateCaptions = async () => {
                     <label className="flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
                       <Music className="w-5 h-5 text-indigo-400" />
                       <span className="text-sm font-medium text-white truncate">
-                        {slide.audio ? slide.audio.name : "Select Audio File (.mp3, .wav)"}
+                        {slide.audio ? slide.audio.name : "Select Audio File (Optional)"}
                       </span>
                       <input type="file" accept="audio/*" className="hidden" onChange={(e) => {
                         const newSlides = [...slides];
@@ -887,6 +888,24 @@ const generateCaptions = async () => {
                         setSlides(newSlides);
                       }} />
                     </label>
+
+                    {!slide.audio && (
+                      <div className="flex items-center gap-3 bg-neutral-900 p-3 rounded-lg border border-neutral-700">
+                        <span className="text-sm text-neutral-400 flex-1">Image Duration (seconds):</span>
+                        <input 
+                          type="number" 
+                          min="1" 
+                          max="60"
+                          value={slide.duration}
+                          onChange={(e) => {
+                            const newSlides = [...slides];
+                            newSlides[index].duration = e.target.value;
+                            setSlides(newSlides);
+                          }}
+                          className="bg-black text-white w-20 px-3 py-1 rounded border border-neutral-700 text-center focus:outline-none focus:border-indigo-500"
+                        />
+                      </div>
+                    )}
 
                     <label className="flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
                       <Upload className="w-5 h-5 text-indigo-400" />
