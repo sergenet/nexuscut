@@ -922,7 +922,7 @@ const generateCaptions = async () => {
                 ))}
                 
                 <button 
-                  onClick={() => setSlides([...slides, { id: Date.now().toString(), audio: null, image: null }])}
+                  onClick={() => setSlides([...slides, { id: Date.now().toString(), audio: null, image: null, duration: '3' }])}
                   className="flex items-center justify-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium py-2 border border-dashed border-indigo-500/30 rounded-lg bg-indigo-500/5 hover:bg-indigo-500/10 transition-colors"
                 >
                   <Plus className="w-4 h-4" /> Add Another Slide
