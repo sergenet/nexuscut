@@ -939,7 +939,7 @@ const generateCaptions = async () => {
                 
                 <button onClick={() => {
                   setIsAudioMode(false);
-                  setSlides([{ id: '1', audio: null, image: null }]);
+                  setSlides([{ id: '1', audio: null, image: null, duration: '3' }]);
                 }} className="text-neutral-500 hover:text-neutral-300 text-sm mt-2">
                   Cancel
                 </button>
