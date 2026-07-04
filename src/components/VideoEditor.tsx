@@ -16,8 +16,7 @@ export default function VideoEditor() {
   const [pendingProjectData, setPendingProjectData] = useState<any>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [isAudioMode, setIsAudioMode] = useState(false);
-  const [baseAudioFile, setBaseAudioFile] = useState<File | null>(null);
-  const [baseImageFile, setBaseImageFile] = useState<File | null>(null);
+  const [slides, setSlides] = useState<{ id: string, audio: File | null, image: File | null }[]>([{ id: '1', audio: null, image: null }]);
   const lastSeekTime = useRef(0);
   const [projectId, setProjectId] = useState<string | null>(null);
   const [isPro, setIsPro] = useState(false);
@@ -66,41 +65,45 @@ export default function VideoEditor() {
   }, []);
 
   const handleGenerateBaseVideo = async () => {
-    if (!baseAudioFile || !baseImageFile) return alert("Please select both an audio file and an image.");
+    const isValid = slides.every(s => s.audio && s.image);
+    if (!isValid || slides.length === 0) return alert("Please select both an audio file and an image for every slide.");
     
     setIsProcessing(true);
-    setProgressText("Generating base video from your audio and image...");
+    setProgressText("Stitching your audio and image slides together...");
     
     try {
       const formData = new FormData();
-      formData.append('audio', baseAudioFile);
-      formData.append('image', baseImageFile);
+      formData.append('slideCount', slides.length.toString());
+      
+      slides.forEach((slide, index) => {
+        if (slide.audio) formData.append(`audio_${index}`, slide.audio);
+        if (slide.image) formData.append(`image_${index}`, slide.image);
+      });
       
       const res = await fetch('/api/create-base', {
         method: 'POST',
         body: formData
       });
       
-      if (!res.ok) throw new Error("Base video generation failed");
+      if (!res.ok) throw new Error("Sequence generation failed");
       
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       
-      setProgressText("Loading video into editor...");
+      setProgressText("Loading final sequence into editor...");
       const videoRes = await fetch(data.videoUrl);
       const videoBlob = await videoRes.blob();
-      const generatedFile = new File([videoBlob], "base_video.mp4", { type: "video/mp4" });
+      const generatedFile = new File([videoBlob], "base_sequence.mp4", { type: "video/mp4" });
       
       // Pass the generated file directly to handleFileUpload
       handleFileUpload({ target: { files: [generatedFile] } } as any);
       
       setIsAudioMode(false);
-      setBaseAudioFile(null);
-      setBaseImageFile(null);
+      setSlides([{ id: '1', audio: null, image: null }]);
       
     } catch (err: any) {
       console.error(err);
-      alert("Failed to create base video: " + err.message);
+      alert("Failed to create sequence: " + err.message);
     } finally {
       setIsProcessing(false);
       setProgressText("");
@@ -858,35 +861,67 @@ const generateCaptions = async () => {
 
           {isAudioMode && (
             <div className="mt-8 bg-black/40 p-6 rounded-xl border border-neutral-700 w-full">
-              <h3 className="text-lg font-bold text-white mb-4">Create Video from Audio & Image</h3>
+              <h3 className="text-lg font-bold text-white mb-4">Multi-Slide Sequence Generator</h3>
+              <p className="text-sm text-neutral-400 mb-4 text-left">Upload your audio and images in order. They will be stitched together sequentially into one video!</p>
               
-              <div className="flex flex-col gap-4">
-                <label className="flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
-                  <Music className="w-5 h-5 text-indigo-400" />
-                  <span className="text-sm font-medium text-white truncate">
-                    {baseAudioFile ? baseAudioFile.name : "1. Select Audio File (.mp3, .wav)"}
-                  </span>
-                  <input type="file" accept="audio/*" className="hidden" onChange={(e) => setBaseAudioFile(e.target.files?.[0] || null)} />
-                </label>
+              <div className="flex flex-col gap-6">
+                {slides.map((slide, index) => (
+                  <div key={slide.id} className="flex flex-col gap-2 p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm font-bold text-indigo-400">Slide {index + 1}</span>
+                      {slides.length > 1 && (
+                        <button onClick={() => setSlides(slides.filter(s => s.id !== slide.id))} className="text-red-400 hover:text-red-300">
+                          <Trash className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
+                    
+                    <label className="flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
+                      <Music className="w-5 h-5 text-indigo-400" />
+                      <span className="text-sm font-medium text-white truncate">
+                        {slide.audio ? slide.audio.name : "Select Audio File (.mp3, .wav)"}
+                      </span>
+                      <input type="file" accept="audio/*" className="hidden" onChange={(e) => {
+                        const newSlides = [...slides];
+                        newSlides[index].audio = e.target.files?.[0] || null;
+                        setSlides(newSlides);
+                      }} />
+                    </label>
 
-                <label className="flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
-                  <Upload className="w-5 h-5 text-indigo-400" />
-                  <span className="text-sm font-medium text-white truncate">
-                    {baseImageFile ? baseImageFile.name : "2. Select Background Image (.jpg, .png)"}
-                  </span>
-                  <input type="file" accept="image/*" className="hidden" onChange={(e) => setBaseImageFile(e.target.files?.[0] || null)} />
-                </label>
+                    <label className="flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
+                      <Upload className="w-5 h-5 text-indigo-400" />
+                      <span className="text-sm font-medium text-white truncate">
+                        {slide.image ? slide.image.name : "Select Image File (.jpg, .png)"}
+                      </span>
+                      <input type="file" accept="image/*" className="hidden" onChange={(e) => {
+                        const newSlides = [...slides];
+                        newSlides[index].image = e.target.files?.[0] || null;
+                        setSlides(newSlides);
+                      }} />
+                    </label>
+                  </div>
+                ))}
+                
+                <button 
+                  onClick={() => setSlides([...slides, { id: Date.now().toString(), audio: null, image: null }])}
+                  className="flex items-center justify-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium py-2 border border-dashed border-indigo-500/30 rounded-lg bg-indigo-500/5 hover:bg-indigo-500/10 transition-colors"
+                >
+                  <Plus className="w-4 h-4" /> Add Another Slide
+                </button>
                 
                 <button 
                   onClick={handleGenerateBaseVideo}
-                  disabled={!baseAudioFile || !baseImageFile || isProcessing}
+                  disabled={slides.some(s => !s.audio || !s.image) || isProcessing}
                   className="mt-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
                 >
                   {isProcessing ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}
-                  Generate Base Video
+                  Generate Base Sequence
                 </button>
                 
-                <button onClick={() => setIsAudioMode(false)} className="text-neutral-500 hover:text-neutral-300 text-sm mt-2">
+                <button onClick={() => {
+                  setIsAudioMode(false);
+                  setSlides([{ id: '1', audio: null, image: null }]);
+                }} className="text-neutral-500 hover:text-neutral-300 text-sm mt-2">
                   Cancel
                 </button>
               </div>
