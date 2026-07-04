@@ -111,6 +111,31 @@ export default function VideoEditor() {
     }
   };
 
+  const handleBulkUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    const files = Array.from(e.target.files);
+    
+    // Separate and sort by filename so they match up (e.g., 1.mp3 with 1.jpg)
+    const audios = files.filter(f => f.type.startsWith('audio/')).sort((a, b) => a.name.localeCompare(b.name));
+    const images = files.filter(f => f.type.startsWith('image/')).sort((a, b) => a.name.localeCompare(b.name));
+    
+    const maxCount = Math.max(audios.length, images.length, 1);
+    const newSlides = [];
+    
+    for (let i = 0; i < maxCount; i++) {
+      newSlides.push({
+        id: Date.now().toString() + i,
+        audio: audios[i] || null,
+        image: images[i] || null,
+        duration: '3'
+      });
+    }
+    
+    setSlides(newSlides);
+    // Reset input
+    e.target.value = '';
+  };
+
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -921,12 +946,19 @@ const generateCaptions = async () => {
                   </div>
                 ))}
                 
-                <button 
-                  onClick={() => setSlides([...slides, { id: Date.now().toString(), audio: null, image: null, duration: '3' }])}
-                  className="flex items-center justify-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium py-2 border border-dashed border-indigo-500/30 rounded-lg bg-indigo-500/5 hover:bg-indigo-500/10 transition-colors"
-                >
-                  <Plus className="w-4 h-4" /> Add Another Slide
-                </button>
+                <div className="flex gap-4">
+                  <button 
+                    onClick={() => setSlides([...slides, { id: Date.now().toString(), audio: null, image: null, duration: '3' }])}
+                    className="flex-1 flex items-center justify-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium py-2 border border-dashed border-indigo-500/30 rounded-lg bg-indigo-500/5 hover:bg-indigo-500/10 transition-colors"
+                  >
+                    <Plus className="w-4 h-4" /> Add Another Slide
+                  </button>
+
+                  <label className="flex-1 flex items-center justify-center gap-2 text-pink-400 hover:text-pink-300 font-medium py-2 border border-dashed border-pink-500/30 rounded-lg bg-pink-500/5 hover:bg-pink-500/10 transition-colors cursor-pointer">
+                    <Upload className="w-4 h-4" /> Bulk Upload Files
+                    <input type="file" multiple accept="audio/*,image/*" className="hidden" onChange={handleBulkUpload} />
+                  </label>
+                </div>
                 
                 <button 
                   onClick={handleGenerateBaseVideo}
