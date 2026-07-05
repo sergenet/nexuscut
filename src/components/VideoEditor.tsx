@@ -891,7 +891,7 @@ const generateCaptions = async () => {
               <h3 className="text-lg font-bold text-white mb-4">Multi-Slide Sequence Generator</h3>
               <p className="text-sm text-neutral-400 mb-4 text-left">Upload your audio and images in order. They will be stitched together sequentially into one video!</p>
               
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6 max-h-[50vh] overflow-y-auto pr-2 mb-6 custom-scrollbar">
                 {slides.map((slide, index) => (
                   <div key={slide.id} className="flex flex-col gap-2 p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
                     <div className="flex justify-between items-center mb-2">
