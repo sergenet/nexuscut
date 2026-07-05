@@ -1303,7 +1303,17 @@ const generateCaptions = async () => {
                   </label>
                 </div>
                 
-                <h4 className="text-xs font-bold text-indigo-400 mb-2 mt-4">AI VOICE (TTS)</h4>
+                <div className="flex justify-between items-center mb-2 mt-4">
+                    <h4 className="text-xs font-bold text-indigo-400">AI VOICE (TTS)</h4>
+                    {captions.length > 0 && (
+                      <button 
+                        onClick={() => setTtsText(captions.map(c => c.text).join(' '))}
+                        className="text-[10px] bg-neutral-800 hover:bg-neutral-700 text-neutral-300 px-2 py-1 rounded transition-colors border border-neutral-700"
+                      >
+                        Copy from Captions
+                      </button>
+                    )}
+                  </div>
                 <textarea 
                   className="w-full bg-neutral-900 text-sm text-white p-3 rounded-lg border border-neutral-700 outline-none resize-none mb-2 focus:border-indigo-500" 
                   rows={2} 
