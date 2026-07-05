@@ -1156,6 +1156,7 @@ const generateCaptions = async () => {
                          return (
                            <span 
                              key={i} 
+                             title="Double-click to edit this word"
                              className={`cursor-pointer transition-all ${
                                isCut ? 'opacity-20 line-through text-neutral-500' :
                                currentTime >= c.start && currentTime <= c.end 
@@ -1163,6 +1164,17 @@ const generateCaptions = async () => {
                                  : 'text-white hover:text-yellow-200'
                              }`}
                              onClick={() => { if (videoRef.current) { videoRef.current.currentTime = c.start; videoRef.current.play(); } }}
+                             onDoubleClick={() => {
+                               const newWord = window.prompt("Edit word (or clear to delete):", c.word);
+                               if (newWord !== null) {
+                                 const newCaptions = [...captions];
+                                 newCaptions[i].word = newWord.trim();
+                                 if (!newCaptions[i].word) {
+                                   newCaptions.splice(i, 1);
+                                 }
+                                 setCaptions(newCaptions);
+                               }
+                             }}
                            >
                              {c.word}{c.emoji && <span className="ml-1">{c.emoji}</span>}
                            </span>
@@ -1307,7 +1319,7 @@ const generateCaptions = async () => {
                     <h4 className="text-xs font-bold text-indigo-400">AI VOICE (TTS)</h4>
                     {captions.length > 0 && (
                       <button 
-                        onClick={() => setTtsText(captions.map(c => c.text).join(' '))}
+                        onClick={() => setTtsText(captions.map(c => c.word).join(' '))}
                         className="text-[10px] bg-neutral-800 hover:bg-neutral-700 text-neutral-300 px-2 py-1 rounded transition-colors border border-neutral-700"
                       >
                         Copy from Captions
