@@ -960,6 +960,15 @@ const generateCaptions = async () => {
                     <input type="file" multiple accept="audio/*,image/*" className="hidden" onChange={handleBulkUpload} />
                   </label>
                 </div>
+
+                {slides.length > 1 && (
+                  <button 
+                    onClick={() => setSlides([{ id: Date.now().toString(), audio: null, image: null, duration: '3' }])}
+                    className="flex items-center justify-center gap-2 text-red-400 hover:text-red-300 text-sm font-medium py-1 transition-colors mt-1"
+                  >
+                    <Trash className="w-4 h-4" /> Clear All Slides
+                  </button>
+                )}
                 
                 <button 
                   onClick={handleGenerateBaseVideo}
