@@ -49,6 +49,7 @@ export default function VideoEditor() {
   const [ttsText, setTtsText] = useState("");
   const [ttsVoice, setTtsVoice] = useState("alloy");
   const [ttsAudioUrl, setTtsAudioUrl] = useState<string | null>(null);
+  const [useTtsForExport, setUseTtsForExport] = useState(true);
   const [muteOriginalAudio, setMuteOriginalAudio] = useState(true);
   
   const [targetLanguage, setTargetLanguage] = useState("English");
@@ -595,6 +596,11 @@ const generateCaptions = async () => {
       formData.append('bgmVolume', String(bgmVolume));
       formData.append('vw', String(videoRef.current?.videoWidth || 1080));
       formData.append('vh', String(videoRef.current?.videoHeight || 1920));
+        
+        if (ttsAudioUrl && useTtsForExport) {
+          const ttsBlob = await fetch(ttsAudioUrl).then(r => r.blob());
+          formData.append('ttsFile', ttsBlob, 'tts.mp3');
+        }
 
       const res = await fetch('/api/export', {
         method: 'POST',
@@ -1267,9 +1273,20 @@ const generateCaptions = async () => {
                   <input type="range" min="-60" max="-10" step="5" value={silenceThreshold} onChange={(e) => setSilenceThreshold(Number(e.target.value))} className="w-full accent-red-500" />
                   <span className="text-xs font-mono text-neutral-300 bg-neutral-900 px-2 py-1 rounded">{silenceThreshold}dB</span>
                 </div>
-                <button onClick={removeSilence} disabled={isProcessing} className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-neutral-700 hover:bg-neutral-600 disabled:opacity-50 rounded-lg text-white font-semibold transition-all">
-                  Apply Silence Cut
-                </button>
+                <div className="flex gap-2">
+                  <button onClick={removeSilence} disabled={isProcessing} className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-neutral-700 hover:bg-neutral-600 disabled:opacity-50 rounded-lg text-white font-semibold transition-all">
+                    Apply Silence Cut
+                  </button>
+                  <button 
+                    onClick={() => {
+                      if (videoRef.current) setActiveSegments([{ start: 0, end: videoRef.current.duration }]);
+                    }} 
+                    disabled={isProcessing} 
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 disabled:opacity-50 rounded-lg text-neutral-300 font-semibold transition-all"
+                  >
+                    Revert To Original
+                  </button>
+                </div>
               </div>
 
               <div className="bg-neutral-800 p-4 rounded-xl border border-neutral-700">
@@ -1381,7 +1398,7 @@ const generateCaptions = async () => {
                   </button>
                 </div>
                 {ttsAudioUrl && (
-                  <div className="mt-3">
+                  <div className="mt-3 flex flex-col gap-2">
                     <a 
                       href={ttsAudioUrl} 
                       download="nexuscut_voiceover.mp3"
@@ -1389,6 +1406,10 @@ const generateCaptions = async () => {
                     >
                       <Download className="w-4 h-4" /> Download Voiceover (MP3)
                     </a>
+                    <label className="flex items-center gap-2 cursor-pointer mt-1 p-2 bg-neutral-900 border border-neutral-700 rounded-lg">
+                      <input type="checkbox" checked={useTtsForExport} onChange={(e) => setUseTtsForExport(e.target.checked)} className="accent-indigo-500 w-4 h-4" />
+                      <span className="text-xs text-white">Use this voiceover for Export (Replaces original audio)</span>
+                    </label>
                   </div>
                 )}
               </div>
