@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, VolumeX, Smile, Music, ZoomIn, Video, Save, FolderOpen, Trash, Plus, ArrowRightToLine, ArrowLeftToLine} from "lucide-react";
+import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, VolumeX, Smile, Music, ZoomIn, Video, Save, FolderOpen, Trash, Plus, ArrowRightToLine, ArrowLeftToLine, X} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function VideoEditor() {
@@ -903,17 +903,32 @@ const generateCaptions = async () => {
                       )}
                     </div>
                     
-                    <label className="flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
-                      <Music className="w-5 h-5 text-indigo-400" />
-                      <span className="text-sm font-medium text-white truncate">
-                        {slide.audio ? slide.audio.name : "Select Audio File (Optional)"}
-                      </span>
-                      <input type="file" accept="audio/*" className="hidden" onChange={(e) => {
-                        const newSlides = [...slides];
-                        newSlides[index].audio = e.target.files?.[0] || null;
-                        setSlides(newSlides);
-                      }} />
-                    </label>
+                    <div className="flex gap-2">
+                      <label className="flex-1 flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
+                        <Music className="w-5 h-5 text-indigo-400" />
+                        <span className="text-sm font-medium text-white truncate">
+                          {slide.audio ? slide.audio.name : "Select Audio File (Optional)"}
+                        </span>
+                        <input type="file" accept="audio/*" className="hidden" onChange={(e) => {
+                          const newSlides = [...slides];
+                          newSlides[index].audio = e.target.files?.[0] || null;
+                          setSlides(newSlides);
+                        }} />
+                      </label>
+                      {slide.audio && (
+                        <button 
+                          onClick={() => {
+                            const newSlides = [...slides];
+                            newSlides[index].audio = null;
+                            setSlides(newSlides);
+                          }}
+                          className="px-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg border border-red-500/20 transition-colors flex items-center justify-center"
+                          title="Remove Audio"
+                        >
+                          <X className="w-5 h-5" />
+                        </button>
+                      )}
+                    </div>
 
                     {!slide.audio && (
                       <div className="flex items-center gap-3 bg-neutral-900 p-3 rounded-lg border border-neutral-700">
@@ -933,17 +948,32 @@ const generateCaptions = async () => {
                       </div>
                     )}
 
-                    <label className="flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
-                      <Upload className="w-5 h-5 text-indigo-400" />
-                      <span className="text-sm font-medium text-white truncate">
-                        {slide.image ? slide.image.name : "Select Image File (.jpg, .png)"}
-                      </span>
-                      <input type="file" accept="image/*" className="hidden" onChange={(e) => {
-                        const newSlides = [...slides];
-                        newSlides[index].image = e.target.files?.[0] || null;
-                        setSlides(newSlides);
-                      }} />
-                    </label>
+                    <div className="flex gap-2">
+                      <label className="flex-1 flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
+                        <Upload className="w-5 h-5 text-indigo-400" />
+                        <span className="text-sm font-medium text-white truncate">
+                          {slide.image ? slide.image.name : "Select Image File (.jpg, .png)"}
+                        </span>
+                        <input type="file" accept="image/*" className="hidden" onChange={(e) => {
+                          const newSlides = [...slides];
+                          newSlides[index].image = e.target.files?.[0] || null;
+                          setSlides(newSlides);
+                        }} />
+                      </label>
+                      {slide.image && (
+                        <button 
+                          onClick={() => {
+                            const newSlides = [...slides];
+                            newSlides[index].image = null;
+                            setSlides(newSlides);
+                          }}
+                          className="px-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg border border-red-500/20 transition-colors flex items-center justify-center"
+                          title="Remove Image"
+                        >
+                          <X className="w-5 h-5" />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 ))}
                 
