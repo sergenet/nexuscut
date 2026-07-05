@@ -1380,6 +1380,17 @@ const generateCaptions = async () => {
                     Add Voice
                   </button>
                 </div>
+                {ttsAudioUrl && (
+                  <div className="mt-3">
+                    <a 
+                      href={ttsAudioUrl} 
+                      download="nexuscut_voiceover.mp3"
+                      className="w-full bg-green-600 hover:bg-green-500 text-white text-xs font-bold px-4 py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+                    >
+                      <Download className="w-4 h-4" /> Download Voiceover (MP3)
+                    </a>
+                  </div>
+                )}
               </div>
 
             </motion.div>
