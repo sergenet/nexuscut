@@ -115,9 +115,10 @@ export default function VideoEditor() {
     if (!e.target.files || e.target.files.length === 0) return;
     const files = Array.from(e.target.files);
     
-    // Separate and sort by filename so they match up (e.g., 1.mp3 with 1.jpg)
-    const audios = files.filter(f => f.type.startsWith('audio/')).sort((a, b) => a.name.localeCompare(b.name));
-    const images = files.filter(f => f.type.startsWith('image/')).sort((a, b) => a.name.localeCompare(b.name));
+    // Separate and sort by filename naturally so numbers match up (e.g., shot_2.png before shot_12.png)
+    const sortOpts = { numeric: true, sensitivity: 'base' as const };
+    const audios = files.filter(f => f.type.startsWith('audio/')).sort((a, b) => a.name.localeCompare(b.name, undefined, sortOpts));
+    const images = files.filter(f => f.type.startsWith('image/')).sort((a, b) => a.name.localeCompare(b.name, undefined, sortOpts));
     
     const maxCount = Math.max(audios.length, images.length, 1);
     const newSlides = [];
