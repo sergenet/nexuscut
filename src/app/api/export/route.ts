@@ -13,6 +13,7 @@ export async function POST(req: Request) {
     
     const videoFile = formData.get('videoFile') as File;
     const bgmFile = formData.get('bgmFile') as File | null;
+    const ttsFile = formData.get('ttsFile') as File | null;
     const activeSegmentsStr = formData.get('activeSegments') as string;
     const captionsStr = formData.get('captions') as string;
     const brollSegmentsStr = formData.get('brollSegments') as string;
@@ -38,6 +39,7 @@ export async function POST(req: Request) {
     const inputPath = path.join(tempDir, `input_${id}.mp4`);
     const outputPath = path.join(tempDir, `output_${id}.mp4`);
     const bgmPath = path.join(tempDir, `bgm_${id}.mp3`);
+    const ttsPath = path.join(tempDir, `tts_${id}.mp3`);
     const srtPath = path.join(tempDir, `captions_${id}.srt`);
     const fontPath = path.join(tempDir, `${captionFont}.ttf`);
 
@@ -49,6 +51,12 @@ export async function POST(req: Request) {
     if (bgmFile) {
       const bgmBuffer = Buffer.from(await bgmFile.arrayBuffer());
       fs.writeFileSync(bgmPath, bgmBuffer);
+    }
+    
+    // Write TTS
+    if (ttsFile) {
+      const ttsBuffer = Buffer.from(await ttsFile.arrayBuffer());
+      fs.writeFileSync(ttsPath, ttsBuffer);
     }
 
     // Download Font
@@ -62,7 +70,7 @@ export async function POST(req: Request) {
     fs.writeFileSync(fontPath, fontBuffer);
 
     // Download B-Roll videos
-    const brollPaths = [];
+    const brollPaths: any[] = [];
     for (let i = 0; i < brollSegments.length; i++) {
       const seg = brollSegments[i];
       if (seg.videoUrl) {
@@ -93,12 +101,35 @@ export async function POST(req: Request) {
     }
 
     // Build FFmpeg command
-    // Bypass Next.js Webpack bundler issues by manually referencing the downloaded binary
     const ffmpegCmd = require('@ffmpeg-installer/ffmpeg').path;
 
     let inputs = [`-i "${inputPath}"`];
-    brollPaths.forEach(b => inputs.push(`-i "${b.path}"`));
-    if (bgmFile) inputs.push(`-i "${bgmPath}"`);
+    
+    const brollIdxs: number[] = [];
+    brollPaths.forEach(b => {
+      inputs.push(`-i "${b.path}"`);
+      brollIdxs.push(inputs.length - 1);
+    });
+
+    let bgmIdx = -1;
+    if (bgmFile) {
+      inputs.push(`-i "${bgmPath}"`);
+      bgmIdx = inputs.length - 1;
+    }
+    
+    let ttsIdx = -1;
+    if (ttsFile) {
+      inputs.push(`-i "${ttsPath}"`);
+      ttsIdx = inputs.length - 1;
+    }
+    
+    const autoSfx = formData.get('autoSfx') === 'true';
+    let swooshIdx = -1;
+    if (autoSfx && brollPaths.length > 0) {
+      const swooshPath = path.join(process.cwd(), 'public', 'sfx', 'swoosh.mp3');
+      inputs.push(`-i "${swooshPath}"`);
+      swooshIdx = inputs.length - 1;
+    }
 
     // Build Filtergraph
     let filterGraph = [];
@@ -108,20 +139,18 @@ export async function POST(req: Request) {
     for (let i = 0; i < brollPaths.length; i++) {
       const b = brollPaths[i];
       const duration = b.end - b.start;
-      const brollIdx = i + 1;
+      const brollIdx = brollIdxs[i];
       
-      // scale and crop to match main video, then pad the beginning with black frames to sync it flawlessly with the main timeline
       const brollFilter = `[${brollIdx}:v]scale=${vw}:${vh}:force_original_aspect_ratio=increase,crop=${vw}:${vh},tpad=start_duration=${b.start}:color=black[broll${i}]`;
       filterGraph.push(brollFilter);
       
-      // eof_action=pass prevents FFmpeg from freezing or outputting black if the B-roll ends early
       const overlayFilter = `[${currentVideoLabel}][broll${i}]overlay=enable='between(t,${b.start},${b.end})':eof_action=pass[v_ovl${i}]`;
       filterGraph.push(overlayFilter);
       
       currentVideoLabel = `v_ovl${i}`;
     }
 
-    // 2. Select filter (Cutting out silence/magic clips)
+    // 2. Select filter
     let selectFilter = activeSegments.map((s:any) => `between(t,${s.start},${s.end})`).join('+');
     if (!selectFilter) selectFilter = '1';
 
@@ -134,7 +163,7 @@ export async function POST(req: Request) {
       currentVideoLabel = `v_zoom`;
     }
 
-    // 3.5 Magic Color (Enhancement)
+    // 3.5 Magic Color
     if (magicColor) {
       filterGraph.push(`[${currentVideoLabel}]eq=contrast=1.15:saturation=1.2:brightness=0.02[v_magic]`);
       currentVideoLabel = `v_magic`;
@@ -142,13 +171,11 @@ export async function POST(req: Request) {
 
     // 4. Captions
     if (captions.length > 0) {
-      // Convert hex color to ASS format
       const r = captionColor.substring(1, 3);
       const g = captionColor.substring(3, 5);
       const b = captionColor.substring(5, 7);
       const assColor = `&H00${b}${g}${r}`;
-      // Windows absolute paths with colons (C:) break FFmpeg's filter parser. 
-      // Using relative paths entirely avoids the escaping nightmare!
+      
       const escapedSrtPath = path.relative(process.cwd(), srtPath).replace(/\\/g, '/');
       const escapedFontsDir = path.relative(process.cwd(), tempDir).replace(/\\/g, '/');
       
@@ -158,26 +185,25 @@ export async function POST(req: Request) {
     }
 
     // Audio filtergraph
-    const autoSfx = formData.get('autoSfx') === 'true';
     let currentAudioLabel = `0:a`;
-    filterGraph.push(`[${currentAudioLabel}]aselect='${selectFilter}',asetpts=N/SR/TB,volume=${mainVolume}[a_sel]`);
+    if (ttsIdx !== -1) {
+      // Use TTS as primary audio
+      filterGraph.push(`[${ttsIdx}:a]volume=${mainVolume}[a_sel]`);
+    } else {
+      filterGraph.push(`[${currentAudioLabel}]aselect='${selectFilter}',asetpts=N/SR/TB,volume=${mainVolume}[a_sel]`);
+    }
     currentAudioLabel = `a_sel`;
 
     let numAudioInputs = 1;
     let audioMixInputs = `[a_sel]`;
 
-    if (bgmFile) {
-      const bgmIdx = brollPaths.length + 1;
+    if (bgmIdx !== -1) {
       filterGraph.push(`[${bgmIdx}:a]volume=${bgmVolume}[a_bgm]`);
       audioMixInputs += `[a_bgm]`;
       numAudioInputs++;
     }
 
-    if (autoSfx && brollPaths.length > 0) {
-      const swooshPath = path.join(process.cwd(), 'public', 'sfx', 'swoosh.mp3');
-      inputs.push(`-i "${swooshPath}"`);
-      const swooshIdx = brollPaths.length + (bgmFile ? 2 : 1);
-      
+    if (swooshIdx !== -1) {
       filterGraph.push(`[${swooshIdx}:a]volume=0.8,asplit=${brollPaths.length}` + brollPaths.map((_, i) => `[sw${i}]`).join(''));
       
       brollPaths.forEach((b, i) => {
