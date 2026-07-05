@@ -972,7 +972,7 @@ const generateCaptions = async () => {
                 
                 <button 
                   onClick={handleGenerateBaseVideo}
-                  disabled={slides.some(s => !s.audio || !s.image) || isProcessing}
+                  disabled={slides.some(s => !s.image) || isProcessing || slides.length === 0}
                   className="mt-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
                 >
                   {isProcessing ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}
