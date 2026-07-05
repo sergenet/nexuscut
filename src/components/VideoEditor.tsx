@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, VolumeX, Smile, Music, ZoomIn, Video, Save, FolderOpen, Trash, Plus, ArrowRightToLine, ArrowLeftToLine, X} from "lucide-react";
+import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, VolumeX, Smile, Music, ZoomIn, Video, Save, FolderOpen, Trash, Plus, ArrowRightToLine, ArrowLeftToLine, X, Mic} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function VideoEditor() {
@@ -374,6 +374,34 @@ const generateCaptions = async () => {
     } catch(err) {
       console.error(err);
       alert("Marketing tools failed.");
+    } finally {
+      setIsProcessing(false);
+      setProgressText("");
+    }
+  };
+
+  const generateSlideVoice = async (index: number) => {
+    const text = window.prompt("Enter the script for this slide:");
+    if (!text || !text.trim()) return;
+
+    setIsProcessing(true);
+    setProgressText(`Generating voiceover for Slide ${index + 1}...`);
+    try {
+      const res = await fetch('/api/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, voice: ttsVoice })
+      });
+      if (!res.ok) throw new Error("TTS generation failed");
+      const blob = await res.blob();
+      const file = new File([blob], `slide_${index+1}_voice.mp3`, { type: 'audio/mp3' });
+      
+      const newSlides = [...slides];
+      newSlides[index].audio = file;
+      setSlides(newSlides);
+    } catch (err) {
+      console.error(err);
+      alert("Voice generation failed.");
     } finally {
       setIsProcessing(false);
       setProgressText("");
@@ -921,6 +949,13 @@ const generateCaptions = async () => {
                           setSlides(newSlides);
                         }} />
                       </label>
+                      <button
+                        title="Generate AI Voice for this Slide"
+                        onClick={() => generateSlideVoice(index)}
+                        className="px-3 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 rounded-lg border border-indigo-500/20 transition-colors flex items-center justify-center"
+                      >
+                        <Mic className="w-5 h-5" />
+                      </button>
                       {slide.audio && (
                         <button 
                           onClick={() => {
