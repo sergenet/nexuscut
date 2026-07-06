@@ -52,6 +52,8 @@ export default function VideoEditor() {
   const [useTtsForExport, setUseTtsForExport] = useState(true);
   const [muteOriginalAudio, setMuteOriginalAudio] = useState(true);
   
+  const [animateSlides, setAnimateSlides] = useState(true);
+  
   const [targetLanguage, setTargetLanguage] = useState("English");
   const [autoSfx, setAutoSfx] = useState(false);
   
@@ -75,6 +77,7 @@ export default function VideoEditor() {
     try {
       const formData = new FormData();
       formData.append('slideCount', slides.length.toString());
+      formData.append('animateSlides', String(animateSlides));
       
       slides.forEach((slide, index) => {
         if (slide.audio) formData.append(`audio_${index}`, slide.audio);
@@ -1049,6 +1052,11 @@ const generateCaptions = async () => {
                   {isProcessing ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}
                   Generate Base Sequence
                 </button>
+                  
+                <label className="flex items-center justify-center gap-2 mt-3 cursor-pointer p-2 bg-neutral-900 border border-neutral-700 rounded-lg max-w-xs mx-auto">
+                  <input type="checkbox" checked={animateSlides} onChange={(e) => setAnimateSlides(e.target.checked)} className="accent-indigo-500 w-4 h-4" />
+                  <span className="text-xs text-white">Auto-Animate Slides (Cinematic Zoom)</span>
+                </label>
                 
                 <button onClick={() => {
                   setIsAudioMode(false);

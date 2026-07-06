@@ -17,13 +17,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "No slides provided" }, { status: 400 });
     }
 
+    const animateSlides = formData.get('animateSlides') === 'true';
+    
     // Setup temp directory
     const tempDir = os.tmpdir();
     if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
     
     const id = Date.now().toString();
     const ffmpegCmd = process.platform === 'win32' ? 'ffmpeg' : '/usr/bin/ffmpeg';
-    const scaleFilter = `scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920`;
 
     const generatedVideos: string[] = [];
     const filesToCleanup: string[] = [];
@@ -46,6 +47,12 @@ export async function POST(req: Request) {
       const imageBuffer = Buffer.from(await imageFile.arrayBuffer());
       fs.writeFileSync(imagePath, imageBuffer);
 
+      let filterToUse = `scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920`;
+      if (animateSlides) {
+        // Create a time-based crop that slowly zooms in up to 1.5x scale
+        filterToUse = `scale=1620:2880:force_original_aspect_ratio=increase,crop=1620:2880,crop='1620/min(1+0.03*t,1.5)':'2880/min(1+0.03*t,1.5)':'(iw-ow)/2':'(ih-oh)/2',scale=1080:1920`;
+      }
+
       let command = "";
       
       if (audioFile) {
@@ -56,10 +63,10 @@ export async function POST(req: Request) {
         const audioBuffer = Buffer.from(await audioFile.arrayBuffer());
         fs.writeFileSync(audioPath, audioBuffer);
         
-        command = `"${ffmpegCmd}" -y -loop 1 -i "${imagePath}" -i "${audioPath}" -vf "${scaleFilter}" -c:v libx264 -preset fast -tune stillimage -r 30 -c:a aac -ac 2 -b:a 192k -ar 44100 -pix_fmt yuv420p -shortest "${slideVideoPath}"`;
+        command = `"${ffmpegCmd}" -y -loop 1 -i "${imagePath}" -i "${audioPath}" -vf "${filterToUse}" -c:v libx264 -preset fast -tune stillimage -r 30 -c:a aac -ac 2 -b:a 192k -ar 44100 -pix_fmt yuv420p -shortest "${slideVideoPath}"`;
       } else {
         const duration = parseInt(durationStr || '3', 10);
-        command = `"${ffmpegCmd}" -y -loop 1 -i "${imagePath}" -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -vf "${scaleFilter}" -c:v libx264 -preset fast -tune stillimage -r 30 -c:a aac -ac 2 -b:a 192k -ar 44100 -pix_fmt yuv420p -t ${duration} "${slideVideoPath}"`;
+        command = `"${ffmpegCmd}" -y -loop 1 -i "${imagePath}" -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -vf "${filterToUse}" -c:v libx264 -preset fast -tune stillimage -r 30 -c:a aac -ac 2 -b:a 192k -ar 44100 -pix_fmt yuv420p -t ${duration} "${slideVideoPath}"`;
       }
 
       console.log(`Generating video for slide ${i + 1}...`);
