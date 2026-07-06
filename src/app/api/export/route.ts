@@ -179,7 +179,8 @@ export async function POST(req: Request) {
       const escapedSrtPath = path.relative(process.cwd(), srtPath).replace(/\\/g, '/');
       const escapedFontsDir = path.relative(process.cwd(), tempDir).replace(/\\/g, '/');
       
-      const styleString = `FontName=${captionFont},FontSize=${captionSize},PrimaryColour=${assColor},OutlineColour=&H00000000,BorderStyle=1,Outline=3,Alignment=2,MarginV=40`;
+      const scaledFontSize = Math.round(Number(captionSize) * (Number(vh) / 800));
+      const styleString = `FontName=${captionFont},FontSize=${scaledFontSize},PrimaryColour=${assColor},OutlineColour=&H00000000,BorderStyle=1,Outline=3,Alignment=2,MarginV=40`;
       filterGraph.push(`[${currentVideoLabel}]subtitles='${escapedSrtPath}':fontsdir='${escapedFontsDir}':force_style='${styleString}'[v_out]`);
       currentVideoLabel = `v_out`;
     }
@@ -215,7 +216,7 @@ export async function POST(req: Request) {
     }
 
     if (numAudioInputs > 1) {
-      filterGraph.push(`${audioMixInputs}amix=inputs=${numAudioInputs}:duration=first:dropout_transition=2[a_out]`);
+      filterGraph.push(`${audioMixInputs}amix=inputs=${numAudioInputs}:duration=first:dropout_transition=2:normalize=0[a_out]`);
       currentAudioLabel = `a_out`;
     }
 
