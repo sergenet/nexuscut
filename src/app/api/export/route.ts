@@ -179,7 +179,9 @@ export async function POST(req: Request) {
       const escapedSrtPath = path.relative(process.cwd(), srtPath).replace(/\\/g, '/');
       const escapedFontsDir = path.relative(process.cwd(), tempDir).replace(/\\/g, '/');
       
-      const scaledFontSize = Math.round(Number(captionSize) * (Number(vh) / 800));
+      // FFmpeg libass defaults PlayResY to 288 for SRTs. 
+      // We scale the frontend pixel size (based on ~800px preview) to the 288px coordinate space.
+      const scaledFontSize = Math.round(Number(captionSize) * 0.4);
       const styleString = `FontName=${captionFont},FontSize=${scaledFontSize},PrimaryColour=${assColor},OutlineColour=&H00000000,BorderStyle=1,Outline=3,Alignment=2,MarginV=40`;
       filterGraph.push(`[${currentVideoLabel}]subtitles='${escapedSrtPath}':fontsdir='${escapedFontsDir}':force_style='${styleString}'[v_out]`);
       currentVideoLabel = `v_out`;
