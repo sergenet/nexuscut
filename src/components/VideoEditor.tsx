@@ -16,7 +16,7 @@ export default function VideoEditor() {
   const [pendingProjectData, setPendingProjectData] = useState<any>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [isAudioMode, setIsAudioMode] = useState(false);
-  const [slides, setSlides] = useState<{ id: string, audio: File | null, image: File | null, duration: string }[]>([{ id: '1', audio: null, image: null, duration: '3' }]);
+  const [slides, setSlides] = useState<Slide[]>([{ id: '1', audio: null, image: null, duration: '3' }]);
   const lastSeekTime = useRef(0);
   const [projectId, setProjectId] = useState<string | null>(null);
   const [isPro, setIsPro] = useState(false);
@@ -103,8 +103,8 @@ export default function VideoEditor() {
       // Pass the generated file directly to handleFileUpload
       handleFileUpload({ target: { files: [generatedFile] } } as any);
       
+      // Switch to editor view, but DO NOT wipe the slides so the user can go back and tweak them!
       setIsAudioMode(false);
-      setSlides([{ id: '1', audio: null, image: null, duration: '3' }]);
       
     } catch (err: any) {
       console.error(err);
@@ -692,7 +692,13 @@ const generateCaptions = async () => {
     try {
       const editorState = {
         originalVideoName: videoFile?.name || 'Unknown Video',
-        captions, activeSegments, brollSegments, captionFont, captionSize, captionColor, autoZoom, silenceThreshold
+        captions, activeSegments, brollSegments, captionFont, captionSize, captionColor, autoZoom, silenceThreshold,
+        sequenceSlides: slides.map(s => ({
+          id: s.id,
+          imageName: s.image?.name || s._savedImageName || null,
+          audioName: s.audio?.name || s._savedAudioName || null,
+          duration: s.duration
+        }))
       };
       const blob = new Blob([JSON.stringify(editorState, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
@@ -738,12 +744,30 @@ const generateCaptions = async () => {
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
-        const state = JSON.parse(e.target?.result as string);
+        const data = JSON.parse(e.target?.result as string);
+        
+        if (data.autoZoom !== undefined) setAutoZoom(data.autoZoom);
+        if (data.silenceThreshold !== undefined) setSilenceThreshold(data.silenceThreshold);
+        
+        if (data.sequenceSlides && data.sequenceSlides.length > 0) {
+          const restoredSlides = data.sequenceSlides.map((s: any) => ({
+            id: s.id || Date.now().toString() + Math.random(),
+            image: null,
+            audio: null,
+            duration: s.duration || '3',
+            _savedImageName: s.imageName,
+            _savedAudioName: s.audioName
+          }));
+          setSlides(restoredSlides);
+          if (!data.captions || data.captions.length === 0) {
+            setIsAudioMode(true); // Switch to sequence generator if there is no video data
+          }
+        }
+        
         if (!videoFile) {
-          // If no video is loaded yet, hold this state and prompt for video
-          setPendingProjectData(state);
+          setPendingProjectData(data);
         } else {
-          applyProjectState(state);
+          applyProjectState(data);
         }
       } catch (err) {
         alert("Invalid project file.");
@@ -941,10 +965,9 @@ const generateCaptions = async () => {
                     </div>
                     
                     <div className="flex gap-2">
-                      <label className="flex-1 flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
-                        <Music className="w-5 h-5 text-indigo-400" />
-                        <span className="text-sm font-medium text-white truncate">
-                          {slide.audio ? slide.audio.name : "Select Audio File (Optional)"}
+                      <label className="cursor-pointer flex-1 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded-lg p-3 flex items-center justify-center transition-colors relative">
+                        <span className={`text-xs font-semibold truncate px-2 ${(!slide.audio && slide._savedAudioName) ? 'text-red-400' : 'text-neutral-300'}`}>
+                            {slide.audio ? slide.audio.name : (slide._savedAudioName ? `Missing: ${slide._savedAudioName}` : "Select Audio File (Optional)")}
                         </span>
                         <input type="file" accept="audio/*" className="hidden" onChange={(e) => {
                           const newSlides = [...slides];
@@ -993,10 +1016,9 @@ const generateCaptions = async () => {
                     )}
 
                     <div className="flex gap-2">
-                      <label className="flex-1 flex items-center gap-3 bg-neutral-800 hover:bg-neutral-700 p-3 rounded-lg cursor-pointer border border-neutral-700 transition-colors">
-                        <Upload className="w-5 h-5 text-indigo-400" />
-                        <span className="text-sm font-medium text-white truncate">
-                          {slide.image ? slide.image.name : "Select Image File (.jpg, .png)"}
+                      <label className="cursor-pointer flex-1 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded-lg p-3 flex items-center justify-center transition-colors relative">
+                        <span className={`text-xs font-semibold truncate px-2 ${(!slide.image && slide._savedImageName) ? 'text-red-400' : 'text-neutral-300'}`}>
+                          {slide.image ? slide.image.name : (slide._savedImageName ? `Missing: ${slide._savedImageName}` : "Select Image File (.jpg, .png)")}
                         </span>
                         <input type="file" accept="image/*" className="hidden" onChange={(e) => {
                           const newSlides = [...slides];
