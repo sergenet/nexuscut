@@ -89,7 +89,7 @@ export async function POST(req: Request) {
       const concatFilePath = path.join(tempDir, `concat_${id}.txt`);
       filesToCleanup.push(concatFilePath);
       
-      const concatContent = generatedVideos.map(v => `file '${v}'`).join('\n');
+      const concatContent = generatedVideos.map(v => `file '${v.replace(/\\/g, '/')}'`).join('\n');
       fs.writeFileSync(concatFilePath, concatContent);
       
       // Stitch them together

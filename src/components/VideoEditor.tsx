@@ -1628,3 +1628,4 @@ const generateCaptions = async () => {
     </div>
   );
 }
+
