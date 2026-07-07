@@ -12,15 +12,21 @@ export async function POST(req: Request) {
       );
     }
 
-    // Upsert so if they try to join again with the same email, it just updates or ignores it without throwing a unique constraint error
-    const entry = await prisma.waitlistEntry.upsert({
-      where: {
-        email: email,
-      },
-      update: {
-        product: product, // Update product if they sign up for a different one
-      },
-      create: {
+    // Check if email is already on the waitlist
+    const existingEntry = await prisma.waitlistEntry.findUnique({
+      where: { email },
+    });
+
+    if (existingEntry) {
+      return NextResponse.json(
+        { error: "This email is already on the waitlist!" },
+        { status: 409 }
+      );
+    }
+
+    // Create new entry
+    const entry = await prisma.waitlistEntry.create({
+      data: {
         email,
         product,
       },

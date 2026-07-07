@@ -31,8 +31,10 @@ export default function WaitlistModal({
         body: JSON.stringify({ email, product: productName }),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error("Failed to join waitlist");
+        throw new Error(data.error || "Failed to join waitlist");
       }
 
       setStatus("success");
@@ -41,9 +43,9 @@ export default function WaitlistModal({
         setStatus("idle");
         setEmail("");
       }, 3000);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert("Failed to join waitlist. Please try again.");
+      alert(error.message || "Failed to join waitlist. Please try again.");
       setStatus("idle");
     }
   };
