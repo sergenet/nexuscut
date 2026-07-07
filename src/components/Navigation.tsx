@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Scissors, ChevronDown, Monitor, Globe, TabletSmartphone, Smartphone, 
@@ -12,6 +13,12 @@ import {
 
 export default function Navigation() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setActiveMenu(null);
+  }, [pathname]);
+
   let timeoutId: NodeJS.Timeout;
 
   const handleMouseEnter = (menu: string) => {

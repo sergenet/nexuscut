@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,11 +16,17 @@ export default function DesktopProductPage() {
           Hardware-accelerated rendering, infinite timeline tracks, and unparalleled precision. NexusCut Desktop is the ultimate tool for professional editors.
         </p>
         <div className="flex items-center justify-center gap-4">
-          <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg shadow-indigo-500/20 hover:scale-105">
-            <Download className="w-5 h-5" /> Download for Windows
+          <button 
+            onClick={() => alert("NexusCut Desktop for Windows is currently in closed beta. Join the waitlist to get early access!")}
+            className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg shadow-indigo-500/20 hover:scale-105"
+          >
+            <Download className="w-5 h-5" /> Join Windows Beta
           </button>
-          <button className="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white font-bold px-8 py-4 rounded-full transition-all">
-            Download for Mac
+          <button 
+            onClick={() => alert("NexusCut Desktop for Mac is currently in closed beta. Join the waitlist to get early access!")}
+            className="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white font-bold px-8 py-4 rounded-full transition-all"
+          >
+            Join Mac Beta
           </button>
         </div>
       </div>

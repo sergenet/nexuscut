@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Download, PenTool, LayoutTemplate, Layers } from "lucide-react";
@@ -14,11 +15,17 @@ export default function PadProductPage() {
           NexusCut Pad brings the entire studio to your fingertips. Optimized for stylus precision and multi-touch gestures.
         </p>
         <div className="flex items-center justify-center gap-4">
-          <button className="flex items-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg shadow-fuchsia-500/20 hover:scale-105">
-            <Download className="w-5 h-5" /> Get for iPad
+          <button 
+            onClick={() => alert("NexusCut Pad is coming soon to the App Store! Join our newsletter for updates.")}
+            className="flex items-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg shadow-fuchsia-500/20 hover:scale-105"
+          >
+            <Download className="w-5 h-5" /> Join iPad Waitlist
           </button>
-          <button className="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white font-bold px-8 py-4 rounded-full transition-all">
-            Get for Android Tablet
+          <button 
+            onClick={() => alert("NexusCut Pad is coming soon to Google Play! Join our newsletter for updates.")}
+            className="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white font-bold px-8 py-4 rounded-full transition-all"
+          >
+            Join Android Waitlist
           </button>
         </div>
       </div>
