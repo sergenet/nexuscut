@@ -1,11 +1,25 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Download, PlayCircle, Smartphone, Wand2 } from "lucide-react";
+import WaitlistModal from "@/components/WaitlistModal";
 
 export default function MobileProductPage() {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  const [waitlistProduct, setWaitlistProduct] = useState("");
+
+  const openWaitlist = (product: string) => {
+    setWaitlistProduct(product);
+    setIsWaitlistOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-neutral-950 pb-24">
+      <WaitlistModal 
+        isOpen={isWaitlistOpen} 
+        onClose={() => setIsWaitlistOpen(false)} 
+        productName={waitlistProduct} 
+      />
       {/* Hero Section */}
       <div className="pt-32 pb-20 px-6 text-center max-w-5xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-black tracking-tight text-white mb-6">
@@ -16,13 +30,13 @@ export default function MobileProductPage() {
         </p>
         <div className="flex items-center justify-center gap-4">
           <button 
-            onClick={() => alert("NexusCut Mobile is coming soon to the App Store! Join our newsletter for updates.")}
+            onClick={() => openWaitlist("NexusCut Mobile for iOS")}
             className="flex items-center gap-2 bg-rose-600 hover:bg-rose-500 text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg shadow-rose-500/20 hover:scale-105"
           >
             <Smartphone className="w-5 h-5" /> Join iOS Waitlist
           </button>
           <button 
-            onClick={() => alert("NexusCut Mobile is coming soon to Google Play! Join our newsletter for updates.")}
+            onClick={() => openWaitlist("NexusCut Mobile for Android")}
             className="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white font-bold px-8 py-4 rounded-full transition-all"
           >
             Join Android Waitlist

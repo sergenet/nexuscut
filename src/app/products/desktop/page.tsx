@@ -1,12 +1,26 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Download, Zap, Layers, MonitorPlay } from "lucide-react";
+import WaitlistModal from "@/components/WaitlistModal";
 
 export default function DesktopProductPage() {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  const [waitlistProduct, setWaitlistProduct] = useState("");
+
+  const openWaitlist = (product: string) => {
+    setWaitlistProduct(product);
+    setIsWaitlistOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-neutral-950 pb-24">
+      <WaitlistModal 
+        isOpen={isWaitlistOpen} 
+        onClose={() => setIsWaitlistOpen(false)} 
+        productName={waitlistProduct} 
+      />
       {/* Hero Section */}
       <div className="pt-32 pb-20 px-6 text-center max-w-5xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-black tracking-tight text-white mb-6">
@@ -17,13 +31,13 @@ export default function DesktopProductPage() {
         </p>
         <div className="flex items-center justify-center gap-4">
           <button 
-            onClick={() => alert("NexusCut Desktop for Windows is currently in closed beta. Join the waitlist to get early access!")}
+            onClick={() => openWaitlist("NexusCut Desktop for Windows")}
             className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg shadow-indigo-500/20 hover:scale-105"
           >
             <Download className="w-5 h-5" /> Join Windows Beta
           </button>
           <button 
-            onClick={() => alert("NexusCut Desktop for Mac is currently in closed beta. Join the waitlist to get early access!")}
+            onClick={() => openWaitlist("NexusCut Desktop for Mac")}
             className="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white font-bold px-8 py-4 rounded-full transition-all"
           >
             Join Mac Beta
