@@ -98,11 +98,8 @@ export default function VideoEditor() {
         method: 'POST',
         body: formData
       });
-      
-      if (!res.ok) throw new Error("Sequence generation failed");
-      
       const data = await res.json();
-      if (data.error) throw new Error(data.error);
+      if (!res.ok) throw new Error(data.error || data.message || `Sequence generation failed: ${JSON.stringify(data)}`);
       
       setProgressText("Loading final sequence into editor...");
       const videoRes = await fetch(data.videoUrl);
