@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, VolumeX, Smile, Music, ZoomIn, Video, Save, FolderOpen, Trash, Plus, ArrowRightToLine, ArrowLeftToLine, X, Mic} from "lucide-react";
+import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, VolumeX, Smile, Music, ZoomIn, Video, Save, FolderOpen, Trash, Plus, ArrowRightToLine, ArrowLeftToLine, X, Mic, Layers } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Slide {
@@ -1134,7 +1134,25 @@ const generateCaptions = async () => {
             </div>
           ))}
         </div>
-        <div className="flex gap-2">
+        
+        <div className="flex items-center gap-3">
+          {slides.length > 0 && (
+            <button 
+              onClick={() => {
+                if (window.confirm("Going back to the Sequence Generator will discard your current transcript and timeline edits because generating a new sequence creates an entirely new video. Do you wish to continue?")) {
+                  setVideoSrc(null);
+                  setCaptions([]);
+                  setActiveSegments([]);
+                  setBrollSegments([]);
+                  setIsAudioMode(true);
+                }
+              }}
+              className="flex items-center gap-2 px-4 py-2 bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-400 rounded-lg text-sm font-semibold transition-colors border border-indigo-500/30"
+            >
+              <Layers className="w-4 h-4" /> Edit Sequence
+            </button>
+          )}
+
            <label className="flex items-center gap-2 px-4 py-2 bg-neutral-800 hover:bg-neutral-700 cursor-pointer rounded-lg text-sm font-semibold text-white transition-colors border border-neutral-700">
              <FolderOpen className="w-4 h-4" /> Load
              <input type="file" accept=".nxp" onChange={handleLoadProject} className="hidden" />
