@@ -54,10 +54,10 @@ export default function Navigation() {
                   transition={{ duration: 0.15, ease: "easeOut" }}
                   className="absolute top-[60px] left-0 w-64 bg-neutral-900 border border-neutral-700/50 rounded-2xl shadow-2xl overflow-hidden p-2"
                 >
-                  <MenuItem href="#" icon={<Monitor />} title="NexusCut Desktop" desc="Pro video editing for PC/Mac" />
-                  <MenuItem href="#" icon={<Globe />} title="NexusCut Online" desc="Edit instantly in your browser" />
-                  <MenuItem href="#" icon={<TabletSmartphone />} title="NexusCut Pad" desc="Optimized for tablets" />
-                  <MenuItem href="#" icon={<Smartphone />} title="NexusCut Mobile" desc="Create on the go" />
+                  <MenuItem href="/products/desktop" icon={<Monitor />} title="NexusCut Desktop" desc="Pro video editing for PC/Mac" />
+                  <MenuItem href="/products/online" icon={<Globe />} title="NexusCut Online" desc="Edit instantly in your browser" />
+                  <MenuItem href="/products/pad" icon={<TabletSmartphone />} title="NexusCut Pad" desc="Optimized for tablets" />
+                  <MenuItem href="/products/mobile" icon={<Smartphone />} title="NexusCut Mobile" desc="Create on the go" />
                 </motion.div>
               )}
             </AnimatePresence>

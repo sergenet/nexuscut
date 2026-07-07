@@ -14,10 +14,10 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-6 tracking-wide">Products</h4>
             <ul className="flex flex-col gap-3">
-              <FooterLink href="#">NexusCut Desktop</FooterLink>
-              <FooterLink href="#">NexusCut Online</FooterLink>
-              <FooterLink href="#">NexusCut Pad</FooterLink>
-              <FooterLink href="#">NexusCut Mobile</FooterLink>
+              <FooterLink href="/products/desktop">NexusCut Desktop</FooterLink>
+              <FooterLink href="/products/online">NexusCut Online</FooterLink>
+              <FooterLink href="/products/pad">NexusCut Pad</FooterLink>
+              <FooterLink href="/products/mobile">NexusCut Mobile</FooterLink>
             </ul>
           </div>
 
