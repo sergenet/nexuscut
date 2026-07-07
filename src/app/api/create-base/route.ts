@@ -47,11 +47,9 @@ export async function POST(req: Request) {
       const imageBuffer = Buffer.from(await imageFile.arrayBuffer());
       fs.writeFileSync(imagePath, imageBuffer);
 
-      let filterToUse = `scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920`;
-      if (animateSlides) {
-        // Create a time-based crop that slowly zooms in up to 1.5x scale
-        filterToUse = `scale=1620:2880:force_original_aspect_ratio=increase,crop=1620:2880,crop='1620/min(1+0.03*t,1.5)':'2880/min(1+0.03*t,1.5)':'(iw-ow)/2':'(ih-oh)/2',scale=1080:1920`;
-      }
+      const filterToUse = animateSlides 
+        ? `scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,zoompan=z='min(zoom+0.002,1.5)':d=1:x='iw/2-(iw/zoom)/2':y='ih/2-(ih/zoom)/2':s=1080x1920:fps=30`
+        : `scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920`;
 
       let command = "";
       const duration = parseInt(durationStr || '3', 10);
