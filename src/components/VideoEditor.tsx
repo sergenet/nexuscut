@@ -4,6 +4,15 @@ import React, { useState, useRef, useEffect } from "react";
 import { Upload, Play, Pause, Scissors, Type, Download, Loader2, Sparkles, VolumeX, Smile, Music, ZoomIn, Video, Save, FolderOpen, Trash, Plus, ArrowRightToLine, ArrowLeftToLine, X, Mic} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+interface Slide {
+  id: string;
+  image: File | null;
+  audio: File | null;
+  duration: string;
+  _savedImageName?: string;
+  _savedAudioName?: string;
+}
+
 export default function VideoEditor() {
   const [activeStep, setActiveStep] = useState(1);
   const [videoFile, setVideoFile] = useState<File | null>(null);
