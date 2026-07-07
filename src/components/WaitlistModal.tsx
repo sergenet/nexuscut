@@ -16,21 +16,36 @@ export default function WaitlistModal({
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     
     setStatus("loading");
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, product: productName }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to join waitlist");
+      }
+
       setStatus("success");
       setTimeout(() => {
         onClose();
         setStatus("idle");
         setEmail("");
       }, 3000);
-    }, 1200);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to join waitlist. Please try again.");
+      setStatus("idle");
+    }
   };
 
   return (
