@@ -54,6 +54,7 @@ export async function POST(req: Request) {
       }
 
       let command = "";
+      const duration = parseInt(durationStr || '3', 10);
       
       if (audioFile) {
         const audioExt = path.extname(audioFile.name) || '.mp3';
@@ -63,9 +64,8 @@ export async function POST(req: Request) {
         const audioBuffer = Buffer.from(await audioFile.arrayBuffer());
         fs.writeFileSync(audioPath, audioBuffer);
         
-        command = `"${ffmpegCmd}" -y -loop 1 -i "${imagePath}" -i "${audioPath}" -vf "${filterToUse}" -c:v libx264 -preset fast -tune stillimage -r 30 -c:a aac -ac 2 -b:a 192k -ar 44100 -pix_fmt yuv420p -shortest "${slideVideoPath}"`;
+        command = `"${ffmpegCmd}" -y -loop 1 -i "${imagePath}" -i "${audioPath}" -vf "${filterToUse}" -c:v libx264 -preset fast -tune stillimage -r 30 -c:a aac -ac 2 -b:a 192k -ar 44100 -pix_fmt yuv420p -t ${duration} "${slideVideoPath}"`;
       } else {
-        const duration = parseInt(durationStr || '3', 10);
         command = `"${ffmpegCmd}" -y -loop 1 -i "${imagePath}" -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -vf "${filterToUse}" -c:v libx264 -preset fast -tune stillimage -r 30 -c:a aac -ac 2 -b:a 192k -ar 44100 -pix_fmt yuv420p -t ${duration} "${slideVideoPath}"`;
       }
 
