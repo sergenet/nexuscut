@@ -333,6 +333,19 @@ export default function VideoEditor() {
                 </div>
                 <a href="/downloads" className="px-4 py-2 text-left text-sm text-neutral-300 hover:bg-neutral-800 hover:text-white transition-colors">My Downloads</a>
                 <a href="/marketplace" className="px-4 py-2 text-left text-sm text-neutral-300 hover:bg-neutral-800 hover:text-white transition-colors">Marketplace</a>
+                <button onClick={async () => {
+                  try {
+                    const res = await fetch('/api/stripe/portal', { method: 'POST' });
+                    const data = await res.json();
+                    if (data.url) {
+                      window.location.href = data.url;
+                    } else {
+                      alert(data.error || 'No active subscription found.');
+                    }
+                  } catch (e) {
+                    alert('Failed to load billing portal.');
+                  }
+                }} className="px-4 py-2 text-left text-sm text-neutral-300 hover:bg-neutral-800 hover:text-white transition-colors">Manage Subscription</button>
                 <button onClick={() => {
                   document.cookie = 'nexus_session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
                   window.location.href = '/';
