@@ -1,0 +1,62 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const projectRoot = path.dirname(fileURLToPath(import.meta.url));
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'standalone',
+  serverExternalPackages: ['ffmpeg-static'],
+  reactStrictMode: false,
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: '**' },
+      { protocol: 'http', hostname: '**' },
+    ],
+  },
+  webpack: (config) => {
+    config.resolve.alias.canvas = false;
+    config.resolve.alias.encoding = false;
+    return config;
+  },
+  // Keep nested local tools (such as Marketing Studio) out of this app's
+  // TypeScript/build graph and deployment bundle.
+  turbopack: { root: projectRoot },
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
+    memoryBasedWorkersCount: true,
+    serverActions: { bodySizeLimit: '250mb' },
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+        // Google AdSense needs its script, ad-frame and beacon hosts allowed or
+        // the loader is silently blocked. img-src/style-src/font-src already
+        // allow every https host, so only script-src, frame-src and connect-src
+        // are widened, and only to Google-owned hosts. 'unsafe-eval' is still
+        // not permitted: AdSense does not require it.
+        { key: 'Content-Security-Policy', value: "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' blob: data: https:; media-src 'self' blob: data: https:; font-src 'self' data: https:; connect-src 'self' https://api.openai.com https://api.pexels.com https://*.stripe.com https://*.google-analytics.com https://analytics.google.com https://www.facebook.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.adtrafficquality.google https://*.google.com https://www.gstatic.com; script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.googletagmanager.com https://connect.facebook.net https://*.googlesyndication.com https://*.googleadservices.com https://www.googletagservices.com https://adservice.google.com https://*.doubleclick.net https://*.adtrafficquality.google https://www.gstatic.com; style-src 'self' 'unsafe-inline' https:; frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.google.com https://*.adtrafficquality.google https://www.gstatic.com" },
+        // Recording is an intentional editor feature.  Keep these APIs unavailable
+        // to embedded third-party pages, but allow this HTTPS origin to request them.
+        { key: 'Permissions-Policy', value: 'camera=(self), microphone=(self), geolocation=(), browsing-topics=()' },
+        { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        { key: 'X-Content-Type-Options', value: 'nosniff' },
+        { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+        { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains' },
+        { key: 'Link', value: '<https://nexuscut.io/:path*>; rel="canonical"' },
+        ],
+      },
+      // A catch-all parameter is not expanded for the root route, so give the
+      // homepage its explicit canonical URL.
+      {
+        source: '/',
+        headers: [{ key: 'Link', value: '<https://nexuscut.io/>; rel="canonical"' }],
+      },
+    ];
+  },
+};
+
+export default nextConfig;
