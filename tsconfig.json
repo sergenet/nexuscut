@@ -30,5 +30,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "marketing-studio", "mobile", "mobile_backup", "mobile_backup_temp", "mobile_backup_before_tools", "temp_backup", "scratch", "temp_extract", "live_backup_temp", "src_backup_temp", "src_backup_2026_08_01", "src_backup_2026-08-02_23-42-07"]
 }

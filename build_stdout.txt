@@ -1,0 +1,113 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 15.4s
+  Running TypeScript ...
+  Finished TypeScript in 9.1s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/95) ...
+  Generating static pages using 1 worker (23/95) 
+  Generating static pages using 1 worker (47/95) 
+  Generating static pages using 1 worker (71/95) 
+✓ Generating static pages using 1 worker (95/95) in 1183ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /academy
+├ ● /academy/[slug]
+│ ├ /academy/viral-hooks
+│ ├ /academy/editing-basics
+│ ├ /academy/gaming-clips
+│ └ [+3 more paths]
+├ ○ /affiliates
+├ ƒ /affiliates/dashboard
+├ ƒ /api/affiliates/apply
+├ ƒ /api/auth/recover
+├ ƒ /api/auth/verify
+├ ƒ /api/b-roll
+├ ƒ /api/brand-kit
+├ ƒ /api/create-base
+├ ƒ /api/downloads
+├ ƒ /api/emojis
+├ ƒ /api/extract-hook
+├ ƒ /api/magic-clip
+├ ƒ /api/marketing
+├ ƒ /api/pipeline
+├ ƒ /api/projects
+├ ƒ /api/projects/[id]
+├ ƒ /api/projects/save
+├ ƒ /api/smart-tools/caption-generator
+├ ƒ /api/smart-tools/eraser
+├ ƒ /api/smart-tools/hook-generator
+├ ƒ /api/smart-tools/remove-bg
+├ ƒ /api/stripe/checkout
+├ ƒ /api/stripe/checkout-addon
+├ ƒ /api/stripe/portal
+├ ƒ /api/stripe/webhook
+├ ƒ /api/translate
+├ ƒ /api/tts
+├ ƒ /api/user/me
+├ ƒ /api/waitlist
+├ ○ /blog
+├ ● /blog/[slug]
+│ ├ /blog/auto-captions-guide
+│ ├ /blog/ai-background-removal
+│ ├ /blog/best-ai-tools-for-tiktok
+│ └ [+17 more paths]
+├ ○ /brand
+├ ○ /brand-kit
+├ ○ /compare/nexuscut-vs-nexusclips
+├ ƒ /downloads
+├ ○ /editor
+├ ○ /help
+├ ○ /instagram-reels-editor
+├ ○ /labs
+├ ○ /marketplace
+├ ○ /marketplace/success
+├ ○ /pricing
+├ ○ /privacy
+├ ○ /products/desktop
+├ ○ /products/mobile
+├ ○ /products/online
+├ ○ /products/pad
+├ ○ /refund-policy
+├ ○ /sitemap.xml
+├ ○ /templates
+├ ○ /terms
+├ ○ /tiktok-video-editor
+├ ○ /tools/ai-image-generator
+├ ○ /tools/animated-subtitles
+├ ○ /tools/audio-studio
+├ ○ /tools/auto-captions
+├ ○ /tools/nexus-animate
+├ ○ /tools/nexus-dream
+├ ○ /tools/remove-background
+├ ○ /tools/subtitle-style-generator
+├ ○ /tools/tiktok-caption-generator
+├ ○ /tools/video-effects
+├ ○ /tools/viral-hook-generator
+├ ○ /tools/youtube-shorts-maker
+├ ○ /tutorial
+└ ○ /youtube-shorts-editor
+
+Route (pages)
+┌ ƒ /api/export
+├ ƒ /api/export/download
+├ ƒ /api/export/status
+└ ƒ /api/transcribe
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

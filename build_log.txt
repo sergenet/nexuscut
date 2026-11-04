@@ -1,0 +1,38 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  ✓ memoryBasedWorkersCount
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/components/Editor/Sidebar.tsx:912:1
+Expected '}', got '<eof>'
+  [90m910 |[0m   );
+  [90m911 |[0m }
+[31m[1m>[0m [90m912 |[0m
+  [90m    |[0m [31m[1m^[0m
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/components/Editor/Sidebar.tsx [Client Component Browser]
+    ./src/components/VideoEditor.tsx [Client Component Browser]
+    ./src/app/editor/page.tsx [Client Component Browser]
+    ./src/app/editor/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/Editor/Sidebar.tsx [Client Component SSR]
+    ./src/components/VideoEditor.tsx [Client Component SSR]
+    ./src/app/editor/page.tsx [Client Component SSR]
+    ./src/app/editor/page.tsx [Server Component]
+
+
+    at <unknown> (./src/components/Editor/Sidebar.tsx:912:1)

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FFmpeg Test</title>
+</head>
+<body>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+    <script>
+        const { FFmpeg } = window.FFmpegWASM;
+        const ffmpeg = new FFmpeg();
+        ffmpeg.on('log', ({ message }) => console.log('FFMPEG:', message));
+        
+        ffmpeg.load({
+            coreURL: window.location.origin + '/ffmpeg/ffmpeg-core.js',
+            wasmURL: window.location.origin + '/ffmpeg/ffmpeg-core.wasm',
+            classWorkerURL: window.location.origin + '/ffmpeg/814.ffmpeg.js'
+        }).then(() => {
+            console.log("LOAD_SUCCESS");
+            document.body.innerHTML = "<h1>LOAD_SUCCESS</h1>";
+        }).catch(err => {
+            console.error("LOAD_ERROR:", err);
+            document.body.innerHTML = "<h1>LOAD_ERROR: " + err.message + "</h1>";
+        });
+    </script>
+</body>
+</html>

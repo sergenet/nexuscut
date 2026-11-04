@@ -1,0 +1,31 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/app/downloads/page.tsx:7:1
+Module not found: Can't resolve '@/components/Navbar'
+  [90m 5 |[0m [36mimport[0m { [33mDownload[0m, [33mPackage[0m } [36mfrom[0m [32m'lucide-react'[0m;
+  [90m 6 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m 7 |[0m [36mimport[0m [33mNavbar[0m [36mfrom[0m [32m'@/components/Navbar'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 8 |[0m
+  [90m 9 |[0m [36mexport[0m [36mdefault[0m [36masync[0m [36mfunction[0m [33mDownloadsPage[0m() {
+  [90m10 |[0m   [36mconst[0m cookieStore = [36mawait[0m cookies();
+
+Import map: aliased to relative './src/components/Navbar' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/app/downloads/page.tsx:7:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)

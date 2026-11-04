@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Scissors, MessageCircle, Globe, Share2, Mail } from "lucide-react";
+import { MessageCircle, Globe, Share2, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -13,59 +13,47 @@ export default function Footer() {
           {/* Column 1: Products */}
           <div>
             <h4 className="text-white font-bold mb-6 tracking-wide">Products</h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="space-y-3">
               <FooterLink href="/products/desktop">NexusCut Desktop</FooterLink>
-              <FooterLink href="/products/online">NexusCut Online</FooterLink>
+              <FooterLink href="/editor">NexusCut Online</FooterLink>
               <FooterLink href="/products/pad">NexusCut Pad</FooterLink>
               <FooterLink href="/products/mobile">NexusCut Mobile</FooterLink>
+              <FooterLink href="/video-repurposing-service">Video Repurposing Service</FooterLink>
             </ul>
           </div>
 
-          {/* Column 2: AI Features */}
+          {/* Column 2: Editor Features */}
           <div>
-            <h4 className="text-white font-bold mb-6 tracking-wide">AI Features</h4>
+            <h4 className="text-white font-bold mb-6 tracking-wide">Editor Features</h4>
             <ul className="flex flex-col gap-3">
-              <FooterLink href="#">AI Image Generator</FooterLink>
-              <FooterLink href="#">AI Video Generator</FooterLink>
-              <FooterLink href="#">AI Dialogue Scene</FooterLink>
-              <FooterLink href="#">AI Design Pro</FooterLink>
-              <FooterLink href="#">AI Voice Generator</FooterLink>
-              <FooterLink href="#">Auto Caption Generator</FooterLink>
-              <FooterLink href="#">AI Art Studio</FooterLink>
-              <FooterLink href="#">AI Logo Creator</FooterLink>
-              <FooterLink href="#">NexusDream 2.0</FooterLink>
-              <FooterLink href="#">NexusPro Audio Studio</FooterLink>
-              <FooterLink href="#">Gemini Omni Engine</FooterLink>
+              <FooterLink href="/editor">Video Editor</FooterLink>
+              <FooterLink href="/tools/auto-captions">Auto Caption Generator</FooterLink>
+              <FooterLink href="/tools/audio-studio">AI Voice Generator (TTS)</FooterLink>
+              <FooterLink href="/tools/remove-background">AI Background Removal</FooterLink>
+              <FooterLink href="/templates">Caption Styles</FooterLink>
             </ul>
           </div>
 
-          {/* Column 3: Image & Video */}
+          {/* Column 3: Resources */}
           <div>
-            <h4 className="text-white font-bold mb-6 tracking-wide">Image & Video</h4>
+            <h4 className="text-white font-bold mb-6 tracking-wide">Resources</h4>
             <ul className="flex flex-col gap-3">
-              <FooterLink href="#">Remove Background</FooterLink>
-              <FooterLink href="#">Transparent Background</FooterLink>
-              <FooterLink href="#">Image Upscaler</FooterLink>
-              <FooterLink href="#">Meme Maker</FooterLink>
-              <FooterLink href="#">Convert Video To MP4</FooterLink>
-              <FooterLink href="#">Transcribe Video To Text</FooterLink>
-              <FooterLink href="#">Compress Video</FooterLink>
-              <FooterLink href="#">AI Text Remover</FooterLink>
-              <FooterLink href="#">AI People Remover</FooterLink>
-              <FooterLink href="#">AI Inpainting</FooterLink>
-              <FooterLink href="#">Face Cutout</FooterLink>
+              <FooterLink href="/tutorial">Editor Tutorial</FooterLink>
+              <FooterLink href="/templates">Viral Hook Templates</FooterLink>
+              <FooterLink href="/templates">Script Templates</FooterLink>
+              <FooterLink href="/tools/viral-hook-generator">Viral Hook Generator</FooterLink>
+              <FooterLink href="/marketplace">Marketplace</FooterLink>
+              <FooterLink href="/pricing">Pricing</FooterLink>
             </ul>
           </div>
 
-          {/* Column 4: Discover */}
+          {/* Column 4: Free Tools */}
           <div>
-            <h4 className="text-white font-bold mb-6 tracking-wide">Discover</h4>
+            <h4 className="text-white font-bold mb-6 tracking-wide">Free Tools</h4>
             <ul className="flex flex-col gap-3">
-              <FooterLink href="#">NexusCut Affiliates</FooterLink>
-              <FooterLink href="#">Pioneer Program</FooterLink>
-              <FooterLink href="#">Creative Partner Program</FooterLink>
-              <FooterLink href="#">NexusCut Creative Campus</FooterLink>
-              <FooterLink href="#" className="text-emerald-400 font-semibold">Growth Hub (Free Tips)</FooterLink>
+              <FooterLink href="/tools/tiktok-caption-generator">TikTok Caption Generator</FooterLink>
+              <FooterLink href="/tools/youtube-shorts-maker">YouTube Shorts Maker</FooterLink>
+              <FooterLink href="/tools/viral-hook-generator">Viral Hook Generator</FooterLink>
             </ul>
           </div>
 
@@ -73,13 +61,12 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-6 tracking-wide">Company</h4>
             <ul className="flex flex-col gap-3">
-              <FooterLink href="#">Blog</FooterLink>
-              <FooterLink href="#">Help Center</FooterLink>
-              <FooterLink href="#">Newsroom</FooterLink>
-              <FooterLink href="#">Community</FooterLink>
-              <FooterLink href="#">Trust Center</FooterLink>
-              <FooterLink href="#">Terms of Service</FooterLink>
-              <FooterLink href="#">Privacy Policy</FooterLink>
+              <FooterLink href="/blog">Blog</FooterLink>
+              <FooterLink href="/affiliates">Affiliate Program</FooterLink>
+              <FooterLink href="/help">Help Center</FooterLink>
+              <FooterLink href="/terms">Terms of Service</FooterLink>
+              <FooterLink href="/privacy">Privacy Policy</FooterLink>
+              <FooterLink href="/refund-policy">Refund Policy</FooterLink>
             </ul>
           </div>
           
@@ -88,7 +75,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-neutral-800 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <Scissors className="w-6 h-6 text-indigo-500" />
+            <img src="/logo.jpg" alt="NexusCut Logo" className="w-10 h-10 rounded-xl object-cover shadow-lg shadow-indigo-500/20 border border-neutral-800" />
             <span className="text-xl font-black tracking-tight text-white">
               Nexus<span className="text-indigo-500">Cut</span>
             </span>
@@ -99,10 +86,10 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-4">
-            <SocialLink href="#" icon={<MessageCircle />} />
-            <SocialLink href="#" icon={<Globe />} />
-            <SocialLink href="#" icon={<Share2 />} />
-            <SocialLink href="#" icon={<Mail />} />
+            <SocialLink href="https://twitter.com/nexuscut" icon={<MessageCircle />} />
+            <SocialLink href="https://nexuscut.io" icon={<Globe />} />
+            <SocialLink href="https://linkedin.com/company/nexuscut" icon={<Share2 />} />
+            <SocialLink href="mailto:support@nexuscut.io" icon={<Mail />} />
           </div>
         </div>
         
@@ -124,7 +111,7 @@ function FooterLink({ href, children, className = "" }: { href: string, children
 function SocialLink({ href, icon }: { href: string, icon: React.ReactNode }) {
   return (
     <Link href={href} className="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center text-neutral-400 hover:bg-indigo-600 hover:text-white transition-all">
-      {React.cloneElement(icon as React.ReactElement<any>, { className: "w-4 h-4" })}
+      {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "w-4 h-4" })}
     </Link>
   );
 }

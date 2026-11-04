@@ -1,0 +1,205 @@
+[TAILING] Tailing last 100 lines for [nexuscut] process (change the value with --lines option)
+/root/.pm2/logs/nexuscut-error.log last 100 lines:
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1091:12)
+5|nexuscut |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+5|nexuscut |     at node:internal/main/run_main_module:28:49 {
+5|nexuscut |   code: 'MODULE_NOT_FOUND',
+5|nexuscut |   requireStack: []
+5|nexuscut | }
+5|nexuscut | Error: Cannot find module '/var/www/nexuscut/.next/standalone/server.js'
+5|nexuscut |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+5|nexuscut |     at Object.<anonymous> (/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js:32:23)
+5|nexuscut |     at Module._compile (node:internal/modules/cjs/loader:1521:14)
+5|nexuscut |     at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+5|nexuscut |     at Module.load (node:internal/modules/cjs/loader:1266:32)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1091:12)
+5|nexuscut |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+5|nexuscut |     at node:internal/main/run_main_module:28:49 {
+5|nexuscut |   code: 'MODULE_NOT_FOUND',
+5|nexuscut |   requireStack: []
+5|nexuscut | }
+5|nexuscut | Error: Cannot find module '/var/www/nexuscut/.next/standalone/server.js'
+5|nexuscut |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+5|nexuscut |     at Object.<anonymous> (/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js:32:23)
+5|nexuscut |     at Module._compile (node:internal/modules/cjs/loader:1521:14)
+5|nexuscut |     at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+5|nexuscut |     at Module.load (node:internal/modules/cjs/loader:1266:32)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1091:12)
+5|nexuscut |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+5|nexuscut |     at node:internal/main/run_main_module:28:49 {
+5|nexuscut |   code: 'MODULE_NOT_FOUND',
+5|nexuscut |   requireStack: []
+5|nexuscut | }
+5|nexuscut | Error: Cannot find module '/var/www/nexuscut/.next/standalone/server.js'
+5|nexuscut |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+5|nexuscut |     at Object.<anonymous> (/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js:32:23)
+5|nexuscut |     at Module._compile (node:internal/modules/cjs/loader:1521:14)
+5|nexuscut |     at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+5|nexuscut |     at Module.load (node:internal/modules/cjs/loader:1266:32)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1091:12)
+5|nexuscut |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+5|nexuscut |     at node:internal/main/run_main_module:28:49 {
+5|nexuscut |   code: 'MODULE_NOT_FOUND',
+5|nexuscut |   requireStack: []
+5|nexuscut | }
+5|nexuscut | Error: Cannot find module '/var/www/nexuscut/.next/standalone/server.js'
+5|nexuscut |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+5|nexuscut |     at Object.<anonymous> (/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js:32:23)
+5|nexuscut |     at Module._compile (node:internal/modules/cjs/loader:1521:14)
+5|nexuscut |     at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+5|nexuscut |     at Module.load (node:internal/modules/cjs/loader:1266:32)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1091:12)
+5|nexuscut |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+5|nexuscut |     at node:internal/main/run_main_module:28:49 {
+5|nexuscut |   code: 'MODULE_NOT_FOUND',
+5|nexuscut |   requireStack: []
+5|nexuscut | }
+5|nexuscut | Error: Cannot find module '/var/www/nexuscut/.next/standalone/server.js'
+5|nexuscut |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+5|nexuscut |     at Object.<anonymous> (/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js:32:23)
+5|nexuscut |     at Module._compile (node:internal/modules/cjs/loader:1521:14)
+5|nexuscut |     at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+5|nexuscut |     at Module.load (node:internal/modules/cjs/loader:1266:32)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1091:12)
+5|nexuscut |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+5|nexuscut |     at node:internal/main/run_main_module:28:49 {
+5|nexuscut |   code: 'MODULE_NOT_FOUND',
+5|nexuscut |   requireStack: []
+5|nexuscut | }
+5|nexuscut | Error: Cannot find module '/var/www/nexuscut/.next/standalone/server.js'
+5|nexuscut |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+5|nexuscut |     at Object.<anonymous> (/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js:32:23)
+5|nexuscut |     at Module._compile (node:internal/modules/cjs/loader:1521:14)
+5|nexuscut |     at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+5|nexuscut |     at Module.load (node:internal/modules/cjs/loader:1266:32)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1091:12)
+5|nexuscut |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+5|nexuscut |     at node:internal/main/run_main_module:28:49 {
+5|nexuscut |   code: 'MODULE_NOT_FOUND',
+5|nexuscut |   requireStack: []
+5|nexuscut | }
+5|nexuscut | Error: Cannot find module '/var/www/nexuscut/.next/standalone/server.js'
+5|nexuscut |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+5|nexuscut |     at Object.<anonymous> (/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js:32:23)
+5|nexuscut |     at Module._compile (node:internal/modules/cjs/loader:1521:14)
+5|nexuscut |     at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+5|nexuscut |     at Module.load (node:internal/modules/cjs/loader:1266:32)
+5|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1091:12)
+5|nexuscut |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+5|nexuscut |     at node:internal/main/run_main_module:28:49 {
+5|nexuscut |   code: 'MODULE_NOT_FOUND',
+5|nexuscut |   requireStack: []
+5|nexuscut | }
+5|nexuscut | PEXELS_API_KEY missing
+5|nexuscut | PEXELS_API_KEY missing
+5|nexuscut | PEXELS_API_KEY missing
+
+/root/.pm2/logs/nexuscut-out.log last 100 lines:
+5|nexuscut |       "type": "Cross Dissolve",
+5|nexuscut |       "duration": 3
+5|nexuscut |     },
+5|nexuscut |     "fileIndex": 0
+5|nexuscut |   },
+5|nexuscut |   {
+5|nexuscut |     "start": 1.212105839042168,
+5|nexuscut |     "end": 1.257855839042168,
+5|nexuscut |     "sourceStart": 3.91821,
+5|nexuscut |     "transitionOut": {
+5|nexuscut |       "type": "Cross Dissolve",
+5|nexuscut |       "duration": 3
+5|nexuscut |     },
+5|nexuscut |     "fileIndex": 0
+5|nexuscut |   },
+5|nexuscut |   {
+5|nexuscut |     "start": 1.257855839042168,
+5|nexuscut |     "end": 11.147685839042168,
+5|nexuscut |     "sourceStart": 4.98367,
+5|nexuscut |     "transitionOut": {
+5|nexuscut |       "type": "Cross Dissolve",
+5|nexuscut |       "duration": 3
+5|nexuscut |     },
+5|nexuscut |     "fileIndex": 0
+5|nexuscut |   },
+5|nexuscut |   {
+5|nexuscut |     "start": 11.147685839042168,
+5|nexuscut |     "end": 19.325028952301597,
+5|nexuscut |     "sourceStart": 15.797,
+5|nexuscut |     "transitionOut": {
+5|nexuscut |       "type": "Cross Dissolve",
+5|nexuscut |       "duration": 3
+5|nexuscut |     },
+5|nexuscut |     "fileIndex": 0
+5|nexuscut |   },
+5|nexuscut |   {
+5|nexuscut |     "start": 19.325028952301597,
+5|nexuscut |     "end": 78.85453889997407,
+5|nexuscut |     "sourceStart": 25.498136052327528,
+5|nexuscut |     "fileIndex": 0
+5|nexuscut |   }
+5|nexuscut | ]
+5|nexuscut | Pass 1 starting...
+5|nexuscut | Pass 1 Command: "/var/www/nexuscut/.next/standalone/node_modules/ffmpeg-static/ffmpeg" -y -threads 4 -ss 2.031724160957832 -t 1.212105839042168 -i "/tmp/input_1785332923607_0.mp4" -ss 3.91821 -t 0.04574999999999996 -i "/tmp/input_1785332923607_0.mp4" -ss 4.98367 -t 9.88983 -i "/tmp/input_1785332923607_0.mp4" -ss 15.797 -t 8.177343113259429 -i "/tmp/input_1785332923607_0.mp4" -ss 25.498136052327528 -t 59.52950994767248 -i "/tmp/input_1785332923607_0.mp4" -filter_complex "[0:v]fps=30,scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black,format=yuv420p,setsar=1/1,settb=1/90000[v_seg0]; [0:a]aformat=sample_rates=44100:channel_layouts=stereo[a_seg0]; [1:v]fps=30,scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black,format=yuv420p,setsar=1/1,settb=1/90000[v_seg1]; [1:a]aformat=sample_rates=44100:channel_layouts=stereo[a_seg1]; [2:v]fps=30,scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black,format=yuv420p,setsar=1/1,settb=1/90000[v_seg2]; [2:a]aformat=sample_rates=44100:channel_layouts=stereo[a_seg2]; [3:v]fps=30,scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black,format=yuv420p,setsar=1/1,settb=1/90000[v_seg3]; [3:a]aformat=sample_rates=44100:channel_layouts=stereo[a_seg3]; [4:v]fps=30,scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black,format=yuv420p,setsar=1/1,settb=1/90000[v_seg4]; [4:a]aformat=sample_rates=44100:channel_layouts=stereo[a_seg4]; [v_seg0][v_seg1]xfade=transition=fade:duration=0.1:offset=1.1121058390421679,settb=1/90000[v_acc1]; [a_seg0][a_seg1]acrossfade=d=0.1[a_acc1]; [v_acc1][v_seg2]xfade=transition=fade:duration=1.0578558390421677:offset=0.10000000000000009,settb=1/90000[v_acc2]; [a_acc1][a_seg2]acrossfade=d=1.0578558390421677[a_acc2]; [v_acc2][v_seg3]xfade=transition=fade:duration=3:offset=6.9898299999999995,settb=1/90000[v_acc3]; [a_acc2][a_seg3]acrossfade=d=3[a_acc3]; [v_acc3][v_seg4]xfade=transition=fade:duration=3:offset=12.167173113259429,settb=1/90000[v_acc4]; [a_acc3][a_seg4]acrossfade=d=3[a_acc4]; [v_acc4]fps=30[v_sel]; [a_acc4]volume=1.0[a_sel]" -map "[v_sel]" -map "[a_sel]" -c:v libx264 -preset ultrafast -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 192k "/tmp/pass1_1785332923607.mp4"
+5|nexuscut | Executing FFmpeg Pass 1...
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | activeSegments received: [
+5|nexuscut |   {
+5|nexuscut |     "start": 0,
+5|nexuscut |     "end": 1.212105839042168,
+5|nexuscut |     "sourceStart": 2.031724160957832,
+5|nexuscut |     "transitionOut": {
+5|nexuscut |       "type": "Cross Dissolve",
+5|nexuscut |       "duration": 3
+5|nexuscut |     },
+5|nexuscut |     "fileIndex": 0
+5|nexuscut |   },
+5|nexuscut |   {
+5|nexuscut |     "start": 1.212105839042168,
+5|nexuscut |     "end": 1.257855839042168,
+5|nexuscut |     "sourceStart": 3.91821,
+5|nexuscut |     "transitionOut": {
+5|nexuscut |       "type": "Cross Dissolve",
+5|nexuscut |       "duration": 3
+5|nexuscut |     },
+5|nexuscut |     "fileIndex": 0
+5|nexuscut |   },
+5|nexuscut |   {
+5|nexuscut |     "start": 1.257855839042168,
+5|nexuscut |     "end": 11.147685839042168,
+5|nexuscut |     "sourceStart": 4.98367,
+5|nexuscut |     "transitionOut": {
+5|nexuscut |       "type": "Cross Dissolve",
+5|nexuscut |       "duration": 3
+5|nexuscut |     },
+5|nexuscut |     "fileIndex": 0
+5|nexuscut |   },
+5|nexuscut |   {
+5|nexuscut |     "start": 11.147685839042168,
+5|nexuscut |     "end": 19.325028952301597,
+5|nexuscut |     "sourceStart": 15.797,
+5|nexuscut |     "transitionOut": {
+5|nexuscut |       "type": "Cross Dissolve",
+5|nexuscut |       "duration": 3
+5|nexuscut |     },
+5|nexuscut |     "fileIndex": 0
+5|nexuscut |   },
+5|nexuscut |   {
+5|nexuscut |     "start": 19.325028952301597,
+5|nexuscut |     "end": 78.85453889997407,
+5|nexuscut |     "sourceStart": 25.498136052327528,
+5|nexuscut |     "fileIndex": 0
+5|nexuscut |   }
+5|nexuscut | ]
+5|nexuscut | Pass 1 starting...
+5|nexuscut | Pass 1 Command: "/var/www/nexuscut/.next/standalone/node_modules/ffmpeg-static/ffmpeg" -y -threads 4 -ss 2.031724160957832 -t 1.212105839042168 -i "/tmp/input_1785342994651_0.mp4" -ss 3.91821 -t 0.04574999999999996 -i "/tmp/input_1785342994651_0.mp4" -ss 4.98367 -t 9.88983 -i "/tmp/input_1785342994651_0.mp4" -ss 15.797 -t 8.177343113259429 -i "/tmp/input_1785342994651_0.mp4" -ss 25.498136052327528 -t 59.52950994767248 -i "/tmp/input_1785342994651_0.mp4" -filter_complex "[0:v]fps=30,scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black,format=yuv420p,setsar=1/1,settb=1/90000[v_seg0]; [0:a]aformat=sample_rates=44100:channel_layouts=stereo[a_seg0]; [1:v]fps=30,scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black,format=yuv420p,setsar=1/1,settb=1/90000[v_seg1]; [1:a]aformat=sample_rates=44100:channel_layouts=stereo[a_seg1]; [2:v]fps=30,scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black,format=yuv420p,setsar=1/1,settb=1/90000[v_seg2]; [2:a]aformat=sample_rates=44100:channel_layouts=stereo[a_seg2]; [3:v]fps=30,scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black,format=yuv420p,setsar=1/1,settb=1/90000[v_seg3]; [3:a]aformat=sample_rates=44100:channel_layouts=stereo[a_seg3]; [4:v]fps=30,scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black,format=yuv420p,setsar=1/1,settb=1/90000[v_seg4]; [4:a]aformat=sample_rates=44100:channel_layouts=stereo[a_seg4]; [v_seg0][v_seg1]xfade=transition=fade:duration=0.1:offset=1.1121058390421679,settb=1/90000[v_acc1]; [a_seg0][a_seg1]acrossfade=d=0.1[a_acc1]; [v_acc1][v_seg2]xfade=transition=fade:duration=1.0578558390421677:offset=0.10000000000000009,settb=1/90000[v_acc2]; [a_acc1][a_seg2]acrossfade=d=1.0578558390421677[a_acc2]; [v_acc2][v_seg3]xfade=transition=fade:duration=3:offset=6.9898299999999995,settb=1/90000[v_acc3]; [a_acc2][a_seg3]acrossfade=d=3[a_acc3]; [v_acc3][v_seg4]xfade=transition=fade:duration=3:offset=12.167173113259429,settb=1/90000[v_acc4]; [a_acc3][a_seg4]acrossfade=d=3[a_acc4]; [v_acc4]fps=30[v_sel]; [a_acc4]volume=1.0[a_sel]" -map "[v_sel]" -map "[a_sel]" -c:v libx264 -preset ultrafast -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 192k "/tmp/pass1_1785342994651.mp4"
+5|nexuscut | Executing FFmpeg Pass 1...
+

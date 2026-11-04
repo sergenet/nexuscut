@@ -1,0 +1,105 @@
+[TAILING] Tailing last 50 lines for [nexuscut] process (change the value with --lines option)
+/root/.pm2/logs/nexuscut-out.log last 50 lines:
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | Streaming uploaded file directly to disk: /tmp/transcribe_in_1785086027207.mp4...
+5|nexuscut | Streaming uploaded file directly to disk: /tmp/transcribe_in_1785087788669.mp4...
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | Streaming uploaded file directly to disk: /tmp/transcribe_in_1785095493063.mp4...
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | Writing raw uploaded file to disk: /tmp/transcribe_in_1785098476835.mp4...
+5|nexuscut | Video fully uploaded. Extracting audio on server using FFmpeg...
+5|nexuscut | Writing raw uploaded file to disk: /tmp/transcribe_in_1785100270961.mp4...
+5|nexuscut | Video fully uploaded. Extracting audio on server using FFmpeg...
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | Writing raw uploaded file to disk using streams: /tmp/transcribe_in_1785130972990.mp4...
+5|nexuscut | Video fully uploaded. Extracting audio on server using FFmpeg...
+5|nexuscut | Writing raw uploaded file to disk using streams: /tmp/transcribe_in_1785132685953.mp4...
+5|nexuscut | Video fully uploaded. Extracting audio on server using FFmpeg...
+
+/root/.pm2/logs/nexuscut-error.log last 50 lines:
+5|nexuscut |   stderr: 'ffmpeg version N-47683-g0e8eb07980-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2018 the FFmpeg developers\n' +
+5|nexuscut |     '  built with gcc 6.3.0 (Debian 6.3.0-18+deb9u1) 20170516\n' +
+5|nexuscut |     '  configuration: --enable-gpl --enable-version3 --enable-static --disable-debug --disable-ffplay --disable-indev=sndio --disable-outdev=sndio --cc=gcc-6 --enable-fontconfig --enable-frei0r --enable-gnutls --enable-gray --enable-libaom --enable-libfribidi --enable-libass --enable-libvmaf --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-librubberband --enable-libsoxr --enable-libspeex --enable-libvorbis --enable-libopus --enable-libtheora --enable-libvidstab --enable-libvo-amrwbenc --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg\n' +
+5|nexuscut |     '  libavutil      56. 24.101 / 56. 24.101\n' +
+5|nexuscut |     '  libavcodec     58. 42.100 / 58. 42.100\n' +
+5|nexuscut |     '  libavformat    58. 24.100 / 58. 24.100\n' +
+5|nexuscut |     '  libavdevice    58.  6.101 / 58.  6.101\n' +
+5|nexuscut |     '  libavfilter     7. 46.101 /  7. 46.101\n' +
+5|nexuscut |     '  libswscale      5.  4.100 /  5.  4.100\n' +
+5|nexuscut |     '  libswresample   3.  4.100 /  3.  4.100\n' +
+5|nexuscut |     '  libpostproc    55.  4.100 / 55.  4.100\n' +
+5|nexuscut |     '[mov,mp4,m4a,3gp,3g2,mj2 @ 0x310fd940] moov atom not found\n' +
+5|nexuscut |     '/tmp/transcribe_in_1785130972990.mp4: Invalid data found when processing input\n'
+5|nexuscut | }
+5|nexuscut | Request body exceeded 10MB for /api/transcribe. Only the first 10MB will be available unless configured. See https://nextjs.org/docs/app/api-reference/config/next-config-js/middlewareClientMaxBodySize for more details.
+5|nexuscut | Transcription error: Error: Command failed: "/var/www/nexuscut/.next/standalone/node_modules/@ffmpeg-installer/linux-x64/ffmpeg" -y -i "/tmp/transcribe_in_1785132685953.mp4" -vn -acodec libmp3lame -q:a 2 "/tmp/transcribe_out_1785132685953.mp3"
+5|nexuscut | ffmpeg version N-47683-g0e8eb07980-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2018 the FFmpeg developers
+5|nexuscut |   built with gcc 6.3.0 (Debian 6.3.0-18+deb9u1) 20170516
+5|nexuscut |   configuration: --enable-gpl --enable-version3 --enable-static --disable-debug --disable-ffplay --disable-indev=sndio --disable-outdev=sndio --cc=gcc-6 --enable-fontconfig --enable-frei0r --enable-gnutls --enable-gray --enable-libaom --enable-libfribidi --enable-libass --enable-libvmaf --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-librubberband --enable-libsoxr --enable-libspeex --enable-libvorbis --enable-libopus --enable-libtheora --enable-libvidstab --enable-libvo-amrwbenc --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg
+5|nexuscut |   libavutil      56. 24.101 / 56. 24.101
+5|nexuscut |   libavcodec     58. 42.100 / 58. 42.100
+5|nexuscut |   libavformat    58. 24.100 / 58. 24.100
+5|nexuscut |   libavdevice    58.  6.101 / 58.  6.101
+5|nexuscut |   libavfilter     7. 46.101 /  7. 46.101
+5|nexuscut |   libswscale      5.  4.100 /  5.  4.100
+5|nexuscut |   libswresample   3.  4.100 /  3.  4.100
+5|nexuscut |   libpostproc    55.  4.100 / 55.  4.100
+5|nexuscut | [mov,mp4,m4a,3gp,3g2,mj2 @ 0x1b39c940] moov atom not found
+5|nexuscut | /tmp/transcribe_in_1785132685953.mp4: Invalid data found when processing input
+5|nexuscut | 
+5|nexuscut |     at ignore-listed frames {
+5|nexuscut |   code: 1,
+5|nexuscut |   killed: false,
+5|nexuscut |   signal: null,
+5|nexuscut |   cmd: '"/var/www/nexuscut/.next/standalone/node_modules/@ffmpeg-installer/linux-x64/ffmpeg" -y -i "/tmp/transcribe_in_1785132685953.mp4" -vn -acodec libmp3lame -q:a 2 "/tmp/transcribe_out_1785132685953.mp3"',
+5|nexuscut |   stdout: '',
+5|nexuscut |   stderr: 'ffmpeg version N-47683-g0e8eb07980-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2018 the FFmpeg developers\n' +
+5|nexuscut |     '  built with gcc 6.3.0 (Debian 6.3.0-18+deb9u1) 20170516\n' +
+5|nexuscut |     '  configuration: --enable-gpl --enable-version3 --enable-static --disable-debug --disable-ffplay --disable-indev=sndio --disable-outdev=sndio --cc=gcc-6 --enable-fontconfig --enable-frei0r --enable-gnutls --enable-gray --enable-libaom --enable-libfribidi --enable-libass --enable-libvmaf --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-librubberband --enable-libsoxr --enable-libspeex --enable-libvorbis --enable-libopus --enable-libtheora --enable-libvidstab --enable-libvo-amrwbenc --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg\n' +
+5|nexuscut |     '  libavutil      56. 24.101 / 56. 24.101\n' +
+5|nexuscut |     '  libavcodec     58. 42.100 / 58. 42.100\n' +
+5|nexuscut |     '  libavformat    58. 24.100 / 58. 24.100\n' +
+5|nexuscut |     '  libavdevice    58.  6.101 / 58.  6.101\n' +
+5|nexuscut |     '  libavfilter     7. 46.101 /  7. 46.101\n' +
+5|nexuscut |     '  libswscale      5.  4.100 /  5.  4.100\n' +
+5|nexuscut |     '  libswresample   3.  4.100 /  3.  4.100\n' +
+5|nexuscut |     '  libpostproc    55.  4.100 / 55.  4.100\n' +
+5|nexuscut |     '[mov,mp4,m4a,3gp,3g2,mj2 @ 0x1b39c940] moov atom not found\n' +
+5|nexuscut |     '/tmp/transcribe_in_1785132685953.mp4: Invalid data found when processing input\n'
+5|nexuscut | }
+

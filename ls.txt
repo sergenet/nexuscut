@@ -1,0 +1,16 @@
+total 72
+drwxr-xr-x  9 root root  4096 Jul 19 19:40 .
+drwxrwxrwx 10 root root  4096 Jul 19 19:40 ..
+drwxr-xr-x  3 root root  4096 Jul 19 19:40 assets
+-rw-r--r--  1 root root   710 Jul 19 19:40 .env
+-rw-r--r--  1 root root  1079 Jul 19 19:40 .env.local
+drwxr-xr-x  3 root root  4096 Jul 19 19:40 _expo
+-rw-r--r--  1 root root 14510 Jul 19 19:40 favicon.ico
+drwxr-xr-x  2 root root  4096 Jul 19 19:40 ffmpeg
+-rw-r--r--  1 root root  1211 Jul 19 19:40 index.html
+-rw-r--r--  1 root root    49 Jul 19 19:40 metadata.json
+drwxr-xr-x  3 root root  4096 Jul 19 19:40 .next
+drwxr-xr-x  4 root root  4096 Jul 19 19:40 public
+drwxr-xr-x  2 root root  4096 Jul 19 19:40 templates
+drwxr-xr-x  2 root root  4096 Jul 19 19:40 test
+-rw-r--r--  1 root root   915 Jul 19 19:40 test-ffmpeg.html

@@ -40,7 +40,7 @@ Transcript:
 
     const parsed = JSON.parse(content);
     return NextResponse.json(parsed);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Marketing API error:', error);
     return NextResponse.json({ error: 'Failed to generate marketing materials' }, { status: 500 });
   }

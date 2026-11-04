@@ -8,6 +8,8 @@ if (!process.env.OPENAI_API_KEY) {
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+interface Caption { start: number; end: number; word: string; emoji?: string }
+interface EmojiSuggestion { start: number; emoji: string }
 
 export async function POST(req: Request) {
   try {
@@ -17,7 +19,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'No captions provided' }, { status: 400 });
     }
 
-    const transcriptText = captions.map((c: any) => `[${c.start.toFixed(1)}s-${c.end.toFixed(1)}s] ${c.word}`).join(" ");
+    const transcriptText = (captions as Caption[]).map(c => `[${c.start.toFixed(1)}s-${c.end.toFixed(1)}s] ${c.word}`).join(" ");
 
     const systemPrompt = `You are an expert social media video editor.
 Your job is to analyze a transcript and add relevant emojis to make the captions visually engaging, similar to TikTok or Instagram Reels.
@@ -50,13 +52,13 @@ Return exactly this JSON structure:
     const resultString = completion.choices[0].message.content;
     if (!resultString) throw new Error("No response from OpenAI");
     
-    const resultJson = JSON.parse(resultString);
+    const resultJson = JSON.parse(resultString) as { emojis: EmojiSuggestion[] };
     
     // Merge the emojis back into the captions array
-    const updatedCaptions = captions.map((c: any) => {
+    const updatedCaptions = (captions as Caption[]).map(c => {
       // Find if this word got an emoji assigned based on the start time
       // Because of float precision, allow a tiny delta
-      const emojiMatch = resultJson.emojis.find((e: any) => Math.abs(e.start - c.start) < 0.05);
+      const emojiMatch = resultJson.emojis.find(e => Math.abs(e.start - c.start) < 0.05);
       if (emojiMatch) {
         return { ...c, emoji: emojiMatch.emoji };
       }
@@ -64,8 +66,8 @@ Return exactly this JSON structure:
     });
 
     return NextResponse.json({ captions: updatedCaptions });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Emoji error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Emoji suggestions failed' }, { status: 500 });
   }
 }

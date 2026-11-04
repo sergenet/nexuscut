@@ -12,14 +12,19 @@ export async function POST(req: Request) {
       );
     }
 
-    // Check if email is already on the waitlist
+    // Check if email is already on the waitlist for THIS specific product
     const existingEntry = await prisma.waitlistEntry.findUnique({
-      where: { email },
+      where: { 
+        email_product: {
+          email,
+          product
+        }
+      },
     });
 
     if (existingEntry) {
       return NextResponse.json(
-        { error: "This email is already on the waitlist!" },
+        { error: `You are already on the waitlist for ${product}!` },
         { status: 409 }
       );
     }

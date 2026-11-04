@@ -24,6 +24,40 @@
 .DS_Store
 *.pem
 
+# large working material, not app source (hundreds of MB of test video
+# and vendor footage that GitHub will not accept anyway)
+MP4 Stress Test Pack/
+Asset Providers/
+.idea/
+*.tsbuildinfo
+
+# nested dependencies (backend/ has its own node_modules)
+**/node_modules/
+
+# local copies of src, one-off scratch, and video/template blobs
+*_backup_*/
+*temp_backup*/
+*backup_temp*/
+scratch/
+temp_*/
+*.zip
+*.mp4
+*.mov
+*.webm
+*.tar.gz
+
+# build tarball and QA screen recordings (600MB + 500MB)
+next_build.tar.gz
+Testers/*.webm
+
+# compiled Python and plaintext credential notes
+__pycache__/
+**/__pycache__/
+*.pyc
+vps server.txt
+*credentials*.txt
+* server.txt
+
 # debug
 npm-debug.log*
 yarn-debug.log*

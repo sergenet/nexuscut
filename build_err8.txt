@@ -1,0 +1,25 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 16.6s
+  Running TypeScript ...
+Failed to type check.
+
+./src/app/api/brand-kit/route.ts:42:9
+Type error: Object literal may only specify known properties, and 'primaryColor' does not exist in type '(Without<BrandKitUpdateInput, BrandKitUncheckedUpdateInput> & BrandKitUncheckedUpdateInput) | (Without<...> & BrandKitUpdateInput)'.
+
+  [90m40 |[0m       where: { userId: user.id },
+  [90m41 |[0m       update: {
+[31m[1m>[0m [90m42 |[0m         primaryColor,
+  [90m   |[0m         [31m[1m^[0m
+  [90m43 |[0m         secondaryColor,
+  [90m44 |[0m         fontUrl,
+  [90m45 |[0m         logoUrl,
+Next.js build worker exited with code: 1 and signal: null

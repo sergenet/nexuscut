@@ -1,0 +1,138 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.3.0 (Turbopack)
+- Environments: .env.local, .env
+✓ Running next.config.mjs took 33ms
+- Experiments (use with caution):
+  · cpus: 1
+  ✓ memoryBasedWorkersCount
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 24.8s
+  Running TypeScript ...
+  Finished TypeScript in 7.2s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/116) ...
+  Generating static pages using 1 worker (29/116) 
+  Generating static pages using 1 worker (58/116) 
+  Generating static pages using 1 worker (87/116) 
+✓ Generating static pages using 1 worker (116/116) in 3.8s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /academy
+├   /academy/[slug]
+│ ├ ● /academy/viral-hooks
+│ ├ ● /academy/editing-basics
+│ ├ ● /academy/gaming-clips
+│ └ ● [+3 more paths]
+├ ƒ /account
+├ ƒ /admin
+├ ○ /affiliates
+├ ƒ /affiliates/dashboard
+├ ○ /agency
+├ ƒ /api/admin/soro/config
+├ ƒ /api/admin/soro/import
+├ ƒ /api/affiliates/apply
+├ ƒ /api/agency/brand-profiles
+├ ƒ /api/analytics/checkout-success
+├ ƒ /api/animate-image
+├ ƒ /api/auth/login
+├ ƒ /api/auth/logout
+├ ƒ /api/auth/password
+├ ƒ /api/auth/recover
+├ ƒ /api/auth/verify
+├ ƒ /api/b-roll
+├ ƒ /api/brand-kit
+├ ƒ /api/create-base
+├ ƒ /api/downloads
+├ ƒ /api/emojis
+├ ƒ /api/export/v2
+├ ƒ /api/extract-hook
+├ ƒ /api/feedback
+├ ƒ /api/growth/access
+├ ƒ /api/magic-clip
+├ ƒ /api/marketing
+├ ƒ /api/marketing/founding-testers
+├ ƒ /api/marketing/templates
+├ ƒ /api/pipeline
+├ ƒ /api/projects
+├ ƒ /api/projects/[id]
+├ ƒ /api/projects/save
+├ ƒ /api/scriptcut/analyze
+├ ƒ /api/smart-tools/caption-generator
+├ ƒ /api/smart-tools/eraser
+├ ƒ /api/smart-tools/hook-generator
+├ ƒ /api/smart-tools/remove-bg
+├ ƒ /api/smart-tools/remove-bg-image
+├ ƒ /api/stripe/checkout
+├ ƒ /api/stripe/checkout-addon
+├ ƒ /api/stripe/portal
+├ ƒ /api/stripe/webhook
+├ ƒ /api/translate
+├ ƒ /api/tts
+├ ƒ /api/user/me
+├ ƒ /api/waitlist
+├ ○ /blog
+├   /blog/[slug]
+│ ├ ● /blog/ai-powered-short-form-video-editor
+│ ├ ● /blog/auto-captions-guide
+│ ├ ● /blog/ai-background-removal
+│ └ ● [+18 more paths]
+├ ○ /brand
+├ ○ /brand-kit
+├ ○ /compare/nexuscut-vs-nexusclips
+├ ○ /creator-challenge
+├ ƒ /downloads
+├ ○ /editor
+├ ○ /help
+├ ○ /instagram-reels-editor
+├ ○ /labs
+├ ○ /marketplace
+├ ○ /marketplace/success
+├ ○ /pricing
+├ ○ /privacy
+├ ƒ /pro
+├ ƒ /pro/success
+├ ○ /products/desktop
+├ ○ /products/mobile
+├ ○ /products/pad
+├ ○ /refund-policy
+├ ○ /robots.txt
+├ ○ /sitemap.xml
+├ ○ /templates
+├ ○ /terms
+├ ○ /tiktok-video-editor
+├ ○ /tools/ai-image-generator
+├ ○ /tools/animated-subtitles
+├ ○ /tools/audio-studio
+├ ○ /tools/auto-captions
+├ ○ /tools/nexus-animate
+├ ○ /tools/nexus-dream
+├ ○ /tools/remove-background
+├ ○ /tools/subtitle-style-generator
+├ ○ /tools/tiktok-caption-generator
+├ ○ /tools/video-effects
+├ ○ /tools/viral-hook-generator
+├ ○ /tools/youtube-shorts-maker
+├ ○ /tutorial
+├ ○ /video-repurposing-service
+└ ○ /youtube-shorts-editor
+
+Route (pages)
+┌ ƒ /api/export
+├ ƒ /api/export/download
+├ ƒ /api/export/status
+└ ƒ /api/transcribe
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

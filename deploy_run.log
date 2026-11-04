@@ -1,0 +1,20 @@
+backup: /var/www/nexuscut/src.bak-1791472140
+uploaded: 179 files
+BUILD_EXIT:1
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.3.0 (Turbopack)
+- Environments: .env.local, .env
+✓ Running next.config.mjs took 28ms
+- Experiments (use with caution):
+  ✓ memoryBasedWorkersCount
+  · serverActions
+
+
+> Build error occurred
+Error: Both middleware file "./src/src/middleware.ts" and proxy file "./src/src/proxy.ts" are detected. Please use "./src/src/proxy.ts" only. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+    at ignore-listed frames
+
+BUILD FAILED - pm2 NOT restarted, old site still serving.

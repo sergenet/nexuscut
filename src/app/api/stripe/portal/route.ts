@@ -2,17 +2,18 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import Stripe from 'stripe';
 import prisma from '@/lib/prisma';
+import { hashSessionId } from '@/lib/auth';
 
 const getStripe = () => {
   if (!process.env.STRIPE_SECRET_KEY) {
     throw new Error('STRIPE_SECRET_KEY is not configured in the environment variables');
   }
   return new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-    apiVersion: '2026-06-24.dahlia' as any,
+    apiVersion: '2026-06-24.dahlia',
   });
 };
 
-export async function POST(req: Request) {
+export async function POST() {
   try {
     const cookieStore = await cookies();
     const userId = cookieStore.get('nexus_session_id')?.value;
@@ -22,7 +23,7 @@ export async function POST(req: Request) {
     }
 
     const user = await prisma.user.findUnique({
-      where: { clerkId: userId },
+      where: { clerkId: hashSessionId(userId) },
     });
 
     if (!user || !user.stripeCustomerId) {
@@ -36,8 +37,8 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ url: session.url });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Stripe portal error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Stripe portal failed' }, { status: 500 });
   }
 }

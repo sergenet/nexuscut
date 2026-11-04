@@ -1,0 +1,27 @@
+total 268
+drwxr-xr-x 10 root root  4096 Jul 29 13:10 .
+drwxr-xr-x 18 root root 12288 Jul 29 13:10 ..
+-rw-r--r--  1 root root  3271 Jul 29 13:10 app-path-routes-manifest.json
+drwxr-xr-x  3 root root  4096 Jul 29 13:10 build
+-rw-r--r--  1 root root    21 Jul 29 13:10 BUILD_ID
+-rw-r--r--  1 root root   866 Jul 29 13:10 build-manifest.json
+drwxr-xr-x  2 root root  4096 Jul 29 12:10 cache
+drwxr-xr-x  2 root root  4096 Jul 29 13:10 diagnostics
+-rw-r--r--  1 root root   111 Jul 29 13:10 export-marker.json
+-rw-r--r--  1 root root   586 Jul 29 13:10 fallback-build-manifest.json
+-rw-r--r--  1 root root  1193 Jul 29 13:10 images-manifest.json
+-rw-rw-r--  1 root root  5527 Jul 29 13:10 next-minimal-server.js.nft.json
+-rw-rw-r--  1 root root 66627 Jul 29 13:10 next-server.js.nft.json
+drwxr-xr-x  4 root root  4096 Jul 29 13:10 node_modules
+-rw-r--r--  1 root root    20 Jul 29 13:10 package.json
+-rw-r--r--  1 root root 44311 Jul 29 13:10 prerender-manifest.json
+-rw-r--r--  1 root root  9407 Jul 29 13:10 required-server-files.js
+-rw-r--r--  1 root root  9378 Jul 29 13:10 required-server-files.json
+-rw-r--r--  1 root root 12583 Jul 29 13:10 routes-manifest.json
+drwxr-xr-x  6 root root  4096 Jul 29 13:10 server
+drwxr-xr-x 13 root root  4096 Jul 29 13:10 standalone
+drwxr-xr-x  5 root root  4096 Jul 29 13:10 static
+-rw-r--r--  1 root root 28113 Jul 29 13:10 trace
+-rw-r--r--  1 root root  1372 Jul 29 13:10 trace-build
+-rw-r--r--  1 root root     0 Jul 29 13:10 turbopack
+drwxr-xr-x  2 root root  4096 Jul 29 13:10 types

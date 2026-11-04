@@ -1,0 +1,21 @@
+{
+    "name": "Aesthetic_Vlog_Style",
+    "fontFamily": "Playfair Display, serif",
+    "fontSize": 56,
+    "fontWeight": "400",
+    "fontColor": "#FFF0F5",
+    "textTransform": "lowercase",
+    "stroke": {
+        "color": "transparent",
+        "width": 0
+    },
+    "shadow": {
+        "color": "transparent",
+        "offsetX": 0,
+        "offsetY": 0,
+        "blur": 0
+    },
+    "highlightColor": "#FFB6C1",
+    "animation": "fade",
+    "description": "Soft, aesthetic and minimalistic."
+}

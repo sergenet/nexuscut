@@ -1,0 +1,105 @@
+[TAILING] Tailing last 50 lines for [nexuscut] process (change the value with --lines option)
+/root/.pm2/logs/nexuscut-out.log last 50 lines:
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+5|nexuscut | ▲ Next.js 16.2.9
+5|nexuscut | - Local:         http://localhost:3000
+5|nexuscut | - Network:       http://0.0.0.0:3000
+5|nexuscut | ✓ Ready in 0ms
+
+/root/.pm2/logs/nexuscut-error.log last 50 lines:
+5|nexuscut | Error: Failed to find Server Action "x". This request might be from an older or newer deployment.
+5|nexuscut | Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
+5|nexuscut |     at ignore-listed frames
+5|nexuscut | PEXELS_API_KEY missing
+5|nexuscut | PEXELS_API_KEY missing
+5|nexuscut | PEXELS_API_KEY missing
+5|nexuscut | PEXELS_API_KEY missing
+5|nexuscut | Error: Failed to find Server Action "x". This request might be from an older or newer deployment.
+5|nexuscut | Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
+5|nexuscut |     at ignore-listed frames
+5|nexuscut | Error: Failed to find Server Action "x". This request might be from an older or newer deployment.
+5|nexuscut | Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
+5|nexuscut |     at ignore-listed frames
+5|nexuscut | Request body exceeded 10MB for /api/export. Only the first 10MB will be available unless configured. See https://nextjs.org/docs/app/api-reference/config/next-config-js/middlewareClientMaxBodySize for more details.
+5|nexuscut | Export error: TypeError: Failed to parse body as FormData.
+5|nexuscut |     at ignore-listed frames
+5|nexuscut | PEXELS_API_KEY missing
+5|nexuscut | Request body exceeded 10MB for /api/export. Only the first 10MB will be available unless configured. See https://nextjs.org/docs/app/api-reference/config/next-config-js/middlewareClientMaxBodySize for more details.
+5|nexuscut | Error: Unexpected end of form
+5|nexuscut |     at ignore-listed frames
+5|nexuscut | Error: Unexpected end of form
+5|nexuscut |     at ignore-listed frames
+5|nexuscut | ⨯ uncaughtException:  Error: Unexpected end of form
+5|nexuscut |     at ignore-listed frames
+5|nexuscut | Export error: Error: Unexpected end of form
+5|nexuscut |     at ignore-listed frames
+5|nexuscut | PEXELS_API_KEY missing
+5|nexuscut | Export error: Error [PrismaClientKnownRequestError]: 
+5|nexuscut | Invalid `prisma.user.upsert()` invocation:
+5|nexuscut | 
+5|nexuscut | 
+5|nexuscut | The table `main.User` does not exist in the current database.
+5|nexuscut |     at async p (.next/server/chunks/[root-of-the-server]__0z97qbz._.js:1:1313)
+5|nexuscut |     at async Module.S [as handler] (.next/server/chunks/[root-of-the-server]__0z97qbz._.js:25:2544) {
+5|nexuscut |   code: 'P2021',
+5|nexuscut |   clientVersion: '5.22.0',
+5|nexuscut |   meta: { modelName: 'User', table: 'main.User' }
+5|nexuscut | }
+5|nexuscut | PEXELS_API_KEY missing
+5|nexuscut | Export error: Error [PrismaClientKnownRequestError]: 
+5|nexuscut | Invalid `prisma.user.upsert()` invocation:
+5|nexuscut | 
+5|nexuscut | 
+5|nexuscut | The column `planTier` does not exist in the current database.
+5|nexuscut |     at async p (.next/server/chunks/[root-of-the-server]__0z97qbz._.js:1:1313)
+5|nexuscut |     at async Module.S [as handler] (.next/server/chunks/[root-of-the-server]__0z97qbz._.js:25:2544) {
+5|nexuscut |   code: 'P2022',
+5|nexuscut |   clientVersion: '5.22.0',
+5|nexuscut |   meta: { modelName: 'User', column: 'planTier' }
+5|nexuscut | }
+

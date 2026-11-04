@@ -1,0 +1,29 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+
+ERRORS:
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/pages/api/export.ts:328:25
+Expected unicode escape
+  [90m326 |[0m       [36mfor[0m ([36mlet[0m i = [35m0[0m; i < activeSegments.length; i++) {
+  [90m327 |[0m         [36mconst[0m seg = activeSegments[i];
+[31m[1m>[0m [90m328 |[0m         [36mlet[0m vOut = _seg\;
+  [90m    |[0m                        [31m[1m^[0m
+  [90m329 |[0m         [36mlet[0m aOut = _seg\;
+  [90m330 |[0m         [36mconst[0m segDuration = seg.end - seg.start;
+  [90m331 |[0m
+
+Parsing ecmascript source code failed
+
+
+    at <unknown> (./src/pages/api/export.ts:328:25)

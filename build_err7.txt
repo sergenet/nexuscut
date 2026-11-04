@@ -1,0 +1,25 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 13.8s
+  Running TypeScript ...
+Failed to type check.
+
+./src/app/api/affiliates/apply/route.ts:28:16
+Type error: Object literal may only specify known properties, and 'email' does not exist in type 'AffiliateWhereUniqueInput'.
+
+  [90m26 |[0m
+  [90m27 |[0m     [36mconst[0m affiliate = [36mawait[0m prisma.affiliate.upsert({
+[31m[1m>[0m [90m28 |[0m       where: { email },
+  [90m   |[0m                [31m[1m^[0m
+  [90m29 |[0m       update: {}, [90m// Don't override if they already exist[0m
+  [90m30 |[0m       create: {
+  [90m31 |[0m         email,
+Next.js build worker exited with code: 1 and signal: null

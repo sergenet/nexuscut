@@ -1,0 +1,25 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 16.7s
+  Running TypeScript ...
+Failed to type check.
+
+./src/lib/rateLimit.ts:17:36
+Type error: Property 'guestUsage' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+  [90m15 |[0m     [90m// Check IP[0m
+  [90m16 |[0m     [36mif[0m (ip !== [32m'unknown'[0m && ip !== [32m'127.0.0.1'[0m && ip !== [32m'::1'[0m) {
+[31m[1m>[0m [90m17 |[0m       [36mconst[0m ipUsage = [36mawait[0m prisma.guestUsage.upsert({
+  [90m   |[0m                                    [31m[1m^[0m
+  [90m18 |[0m         where: { identifier: [32m`IP:[0m${ip[32m}`[0m },
+  [90m19 |[0m         update: {},
+  [90m20 |[0m         create: { identifier: [32m`IP:[0m${ip[32m}`[0m, [36mtype[0m: [32m'IP'[0m }
+Next.js build worker exited with code: 1 and signal: null

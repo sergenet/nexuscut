@@ -1,0 +1,21 @@
+{
+    "name": "Iman_Gadzhi_Style",
+    "fontFamily": "Georgia, serif",
+    "fontSize": 80,
+    "fontWeight": "600",
+    "fontColor": "#F3F4F6",
+    "textTransform": "none",
+    "stroke": {
+        "color": "#1F2937",
+        "width": 2
+    },
+    "shadow": {
+        "color": "#000000",
+        "offsetX": 4,
+        "offsetY": 4,
+        "blur": 15
+    },
+    "highlightColor": "#EAB308",
+    "animation": "cinematic-reveal",
+    "description": "Elegant, cinematic and slightly muted."
+}

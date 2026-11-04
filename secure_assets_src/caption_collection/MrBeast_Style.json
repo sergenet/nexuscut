@@ -1,0 +1,21 @@
+{
+    "name": "MrBeast_Style",
+    "fontFamily": "Impact, sans-serif",
+    "fontSize": 110,
+    "fontWeight": "900",
+    "fontColor": "#FFFFFF",
+    "textTransform": "uppercase",
+    "stroke": {
+        "color": "#000000",
+        "width": 12
+    },
+    "shadow": {
+        "color": "#000000",
+        "offsetX": 0,
+        "offsetY": 8,
+        "blur": 0
+    },
+    "highlightColor": "#3B82F6",
+    "animation": "shake",
+    "description": "Massive, screen-shaking captions for retention."
+}

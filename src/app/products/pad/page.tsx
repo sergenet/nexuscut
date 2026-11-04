@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { Download, PenTool, LayoutTemplate, Layers } from "lucide-react";
+import Link from "next/link";
+import { Download, PenTool, LayoutTemplate, Layers, Home } from "lucide-react";
 import WaitlistModal from "@/components/WaitlistModal";
 
 export default function PadProductPage() {
@@ -14,7 +15,11 @@ export default function PadProductPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 pb-24">
+    <div className="min-h-screen bg-neutral-950 pb-24 relative">
+      <Link href="/" className="absolute top-6 left-6 p-3 bg-neutral-900 hover:bg-neutral-800 rounded-full transition-colors z-10">
+        <Home className="w-6 h-6 text-white" />
+      </Link>
+      
       <WaitlistModal 
         isOpen={isWaitlistOpen} 
         onClose={() => setIsWaitlistOpen(false)} 
@@ -26,7 +31,7 @@ export default function PadProductPage() {
           Touch the <span className="text-fuchsia-500">Timeline</span>
         </h1>
         <p className="text-xl text-neutral-400 mb-10 max-w-2xl mx-auto">
-          NexusCut Pad brings the entire studio to your fingertips. Optimized for stylus precision and multi-touch gestures.
+          NexusCut Pad is a product concept in development. Stylus and multi-touch workflows are not yet available.
         </p>
         <div className="flex items-center justify-center gap-4">
           <button 
@@ -50,7 +55,7 @@ export default function PadProductPage() {
         <div className="relative rounded-2xl overflow-hidden border border-neutral-800 shadow-2xl shadow-black/50 aspect-[4/3]">
           <Image 
             src="/assets/tablet_mockup.png" 
-            alt="NexusCut Pad UI" 
+            alt="Concept mockup of the planned NexusCut Pad interface" 
             fill
             className="object-cover"
           />
@@ -61,18 +66,18 @@ export default function PadProductPage() {
       <div className="px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <FeatureCard 
           icon={<PenTool />}
-          title="Stylus Precision"
-          desc="Draw masks, create animations, and trim clips with sub-pixel precision using your Apple Pencil or stylus."
+          title="Planned stylus workflow"
+          desc="Stylus-based trimming and drawing are roadmap ideas, not released capabilities."
         />
         <FeatureCard 
           icon={<LayoutTemplate />}
-          title="Adaptive UI"
-          desc="The interface perfectly adapts to your screen size, keeping the canvas front and center."
+          title="Adaptive UI concept"
+          desc="The planned interface is being designed for tablet screens and touch input."
         />
         <FeatureCard 
           icon={<Layers />}
-          title="Pro Desktop Engine"
-          desc="Don't be fooled by the form factor. The Pad version runs the exact same rendering engine as desktop."
+          title="Rendering under evaluation"
+          desc="The tablet rendering architecture has not been finalized and is not presented as equivalent to desktop."
         />
       </div>
     </div>
@@ -83,7 +88,7 @@ function FeatureCard({ icon, title, desc }: { icon: React.ReactNode, title: stri
   return (
     <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 hover:border-fuchsia-500/50 transition-colors">
       <div className="w-14 h-14 bg-fuchsia-500/10 rounded-2xl flex items-center justify-center text-fuchsia-400 mb-6">
-        {React.cloneElement(icon as React.ReactElement<any>, { className: "w-7 h-7" })}
+        {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "w-7 h-7" })}
       </div>
       <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
       <p className="text-neutral-400 leading-relaxed">{desc}</p>

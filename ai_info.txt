@@ -1,0 +1,60 @@
+ Describing process with id 1 - name nexuscut-ai 
+┌───────────────────┬───────────────────────────────────────┐
+│ status            │ online                                │
+│ name              │ nexuscut-ai                           │
+│ namespace         │ default                               │
+│ version           │ 1.0.0                                 │
+│ restarts          │ 0                                     │
+│ uptime            │ 14D                                   │
+│ script path       │ /var/www/nexuscut/backend/server.js   │
+│ script args       │ N/A                                   │
+│ error log path    │ /root/.pm2/logs/nexuscut-ai-error.log │
+│ out log path      │ /root/.pm2/logs/nexuscut-ai-out.log   │
+│ pid path          │ /root/.pm2/pids/nexuscut-ai-1.pid     │
+│ interpreter       │ node                                  │
+│ interpreter args  │ N/A                                   │
+│ script id         │ 1                                     │
+│ exec cwd          │ /var/www/nexuscut/backend             │
+│ exec mode         │ fork_mode                             │
+│ node.js version   │ 20.20.2                               │
+│ node env          │ N/A                                   │
+│ watch & reload    │ ✘                                     │
+│ unstable restarts │ 0                                     │
+│ created at        │ 2026-07-13T06:34:18.150Z              │
+└───────────────────┴───────────────────────────────────────┘
+ Actions available 
+┌────────────────────────┐
+│ km:heapdump            │
+│ km:cpu:profiling:start │
+│ km:cpu:profiling:stop  │
+│ km:heap:sampling:start │
+│ km:heap:sampling:stop  │
+└────────────────────────┘
+ Trigger via: pm2 trigger nexuscut-ai <action_name>
+
+ Code metrics value 
+┌────────────────────────┬───────────┐
+│ Heap Size              │ 19.98 MiB │
+│ Heap Usage             │ 66.79 %   │
+│ Used Heap Size         │ 13.34 MiB │
+│ Active requests        │ 0         │
+│ Active handles         │ 4         │
+│ Event Loop Latency     │ 0.61 ms   │
+│ Event Loop Latency p95 │ 1.51 ms   │
+│ HTTP Mean Latency      │ 1 ms      │
+│ HTTP P95 Latency       │ 2 ms      │
+│ HTTP                   │ 0 req/min │
+└────────────────────────┴───────────┘
+ Divergent env variables from local env 
+┌────────────────┬─────────────────────────────────────┐
+│ PWD            │ /var/www/nexuscut/backend           │
+│ SSH_CONNECTION │ 159.26.99.115 49818 209.74.79.56 22 │
+│ SHLVL          │ 1                                   │
+│ XDG_SESSION_ID │ 2142                                │
+│ SSH_CLIENT     │ 159.26.99.115 49818 22              │
+└────────────────┴─────────────────────────────────────┘
+
+ Add your own code metrics: http://bit.ly/code-metrics
+ Use `pm2 logs nexuscut-ai [--lines 1000]` to display logs
+ Use `pm2 env 1` to display environment variables
+ Use `pm2 monit` to monitor CPU and Memory usage nexuscut-ai

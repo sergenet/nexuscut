@@ -1,0 +1,25 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 15.7s
+  Running TypeScript ...
+Failed to type check.
+
+./src/app/affiliates/dashboard/page.tsx:54:67
+Type error: Property 'payoutThreshold' does not exist on type '{ referrals: ({ referredUser: { id: string; createdAt: Date; email: string | null; updatedAt: Date; clerkId: string; isPro: boolean; planTier: string; exportCount: number; stripeCustomerId: string | null; referredByCode: string | null; }; } & { ...; })[]; } & { ...; }'.
+
+  [90m52 |[0m ...ers = affiliate.referrals.filter(r => r.status === [32m'cancelled'[0m).length;
+  [90m53 |[0m ...
+[31m[1m>[0m [90m54 |[0m ...age = [33mMath[0m.min((pendingBalance / affiliate.payoutThreshold) * [35m100[0m, [35m100[0m);
+  [90m   |[0m                                               [31m[1m^[0m
+  [90m55 |[0m ...
+  [90m56 |[0m ...
+  [90m57 |[0m ...[32m-h-screen bg-neutral-950 text-white font-sans flex flex-col"[0m>
+Next.js build worker exited with code: 1 and signal: null

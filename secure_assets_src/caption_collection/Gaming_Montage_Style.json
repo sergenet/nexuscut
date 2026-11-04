@@ -1,0 +1,21 @@
+{
+    "name": "Gaming_Montage_Style",
+    "fontFamily": "Burbank Big Condensed, sans-serif",
+    "fontSize": 100,
+    "fontWeight": "black",
+    "fontColor": "#FFFFFF",
+    "textTransform": "uppercase",
+    "stroke": {
+        "color": "#000000",
+        "width": 15
+    },
+    "shadow": {
+        "color": "#8B5CF6",
+        "offsetX": 0,
+        "offsetY": 0,
+        "blur": 30
+    },
+    "highlightColor": "#F43F5E",
+    "animation": "zoom-punch",
+    "description": "Dynamic, colorful with heavy drop shadows."
+}

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Zap, Layers, MonitorPlay } from "lucide-react";
+import { Download, Zap, Layers, MonitorPlay, Home } from "lucide-react";
 import WaitlistModal from "@/components/WaitlistModal";
 
 export default function DesktopProductPage() {
@@ -15,7 +15,11 @@ export default function DesktopProductPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 pb-24">
+    <div className="min-h-screen bg-neutral-950 pb-24 relative">
+      <Link href="/" className="absolute top-6 left-6 p-3 bg-neutral-900 hover:bg-neutral-800 rounded-full transition-colors z-10">
+        <Home className="w-6 h-6 text-white" />
+      </Link>
+      
       <WaitlistModal 
         isOpen={isWaitlistOpen} 
         onClose={() => setIsWaitlistOpen(false)} 
@@ -24,10 +28,10 @@ export default function DesktopProductPage() {
       {/* Hero Section */}
       <div className="pt-32 pb-20 px-6 text-center max-w-5xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-black tracking-tight text-white mb-6">
-          Unleash Pro Power on <span className="text-indigo-500">Desktop</span>
+          NexusCut <span className="text-indigo-500">Desktop</span> Preview
         </h1>
         <p className="text-xl text-neutral-400 mb-10 max-w-2xl mx-auto">
-          Hardware-accelerated rendering, infinite timeline tracks, and unparalleled precision. NexusCut Desktop is the ultimate tool for professional editors.
+          The native desktop application is in development. The image below is a concept mockup; current editing is available in the browser editor.
         </p>
         <div className="flex items-center justify-center gap-4">
           <button 
@@ -51,7 +55,7 @@ export default function DesktopProductPage() {
         <div className="relative rounded-2xl overflow-hidden border border-neutral-800 shadow-2xl shadow-black/50 aspect-video">
           <Image 
             src="/assets/desktop_mockup.png" 
-            alt="NexusCut Desktop UI" 
+            alt="Concept mockup of the planned NexusCut Desktop interface" 
             fill
             className="object-cover"
           />
@@ -62,18 +66,18 @@ export default function DesktopProductPage() {
       <div className="px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <FeatureCard 
           icon={<Zap />}
-          title="Hardware Acceleration"
-          desc="Utilize the full power of your GPU to render 4K and 8K footage without breaking a sweat."
+          title="Planned native rendering"
+          desc="GPU-assisted native rendering is under evaluation; 4K and 8K support are not currently promised."
         />
         <FeatureCard 
           icon={<Layers />}
-          title="Infinite Tracks"
-          desc="Layer unlimited video, audio, and adjustment tracks. Your timeline, your rules."
+          title="Planned expanded timeline"
+          desc="The desktop roadmap includes more flexible video and audio tracks than the current browser editor."
         />
         <FeatureCard 
           icon={<MonitorPlay />}
-          title="Multi-Monitor Support"
-          desc="Detach panels, expand your timeline, and preview on a dedicated screen."
+          title="Planned workspace options"
+          desc="Detachable panels and multi-monitor workflows are design goals, not released features."
         />
       </div>
     </div>
@@ -84,7 +88,7 @@ function FeatureCard({ icon, title, desc }: { icon: React.ReactNode, title: stri
   return (
     <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 hover:border-indigo-500/50 transition-colors">
       <div className="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-indigo-400 mb-6">
-        {React.cloneElement(icon as React.ReactElement<any>, { className: "w-7 h-7" })}
+        {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "w-7 h-7" })}
       </div>
       <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
       <p className="text-neutral-400 leading-relaxed">{desc}</p>

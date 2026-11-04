@@ -1,0 +1,37 @@
+ Describing process with id 5 - name nexuscut 
+┌───────────────────┬──────────────────────────────────────────────┐
+│ status            │ errored                                      │
+│ name              │ nexuscut                                     │
+│ namespace         │ default                                      │
+│ version           │ N/A                                          │
+│ restarts          │ 23                                           │
+│ uptime            │ 0                                            │
+│ script path       │ /var/www/nexuscut/.next/standalone/server.js │
+│ script args       │ N/A                                          │
+│ error log path    │ /root/.pm2/logs/nexuscut-error.log           │
+│ out log path      │ /root/.pm2/logs/nexuscut-out.log             │
+│ pid path          │ /root/.pm2/pids/nexuscut-5.pid               │
+│ interpreter       │ node                                         │
+│ interpreter args  │ N/A                                          │
+│ script id         │ 5                                            │
+│ exec cwd          │ /var/www/nexuscut                            │
+│ exec mode         │ fork_mode                                    │
+│ node.js version   │ 20.20.2                                      │
+│ node env          │ N/A                                          │
+│ watch & reload    │ ✘                                            │
+│ unstable restarts │ 0                                            │
+│ created at        │ N/A                                          │
+└───────────────────┴──────────────────────────────────────────────┘
+ Divergent env variables from local env 
+┌────────────────┬─────────────────────────────────────┐
+│ PWD            │ /var/www/nexuscut                   │
+│ SSH_CONNECTION │ 185.98.169.47 51858 209.74.79.56 22 │
+│ SHLVL          │ 1                                   │
+│ XDG_SESSION_ID │ 3381                                │
+│ SSH_CLIENT     │ 185.98.169.47 51858 22              │
+└────────────────┴─────────────────────────────────────┘
+
+ Add your own code metrics: http://bit.ly/code-metrics
+ Use `pm2 logs nexuscut [--lines 1000]` to display logs
+ Use `pm2 env 5` to display environment variables
+ Use `pm2 monit` to monitor CPU and Memory usage nexuscut

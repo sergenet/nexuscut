@@ -1,5 +1,6 @@
 "use client";
 
+import { toast } from '@/lib/toast';
 import React, { useState } from "react";
 import { X, CheckCircle, Mail, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -43,9 +44,9 @@ export default function WaitlistModal({
         setStatus("idle");
         setEmail("");
       }, 3000);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error);
-      alert(error.message || "Failed to join waitlist. Please try again.");
+      toast(error instanceof Error ? error.message : "Failed to join waitlist. Please try again.");
       setStatus("idle");
     }
   };

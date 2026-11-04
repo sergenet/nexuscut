@@ -1,0 +1,91 @@
+const express = require('express');
+const cors = require('cors');
+const multer = require('multer');
+const { OpenAI } = require('openai');
+const fs = require('fs');
+const path = require('path');
+const dotenv = require('dotenv');
+const { exec } = require('child_process');
+
+dotenv.config();
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const upload = multer({ dest: 'uploads/' });
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+app.post('/api/transcribe', upload.single('audio'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: 'No audio file provided' });
+    }
+
+    const filePath = path.join(__dirname, req.file.path);
+    // Whisper requires a recognized extension, so we rename the multer temp file
+    const newFilePath = filePath + '.webm';
+    fs.renameSync(filePath, newFilePath);
+
+    console.log('Sending to OpenAI Whisper API...');
+    
+    const transcription = await openai.audio.transcriptions.create({
+      file: fs.createReadStream(newFilePath),
+      model: 'whisper-1',
+      response_format: 'verbose_json',
+      timestamp_granularities: ['word']
+    });
+
+    // Cleanup
+    fs.unlinkSync(newFilePath);
+
+    res.json({ words: transcription.words });
+  } catch (error) {
+    console.error('Transcription error:', error);
+    res.status(500).json({ error: 'Transcription failed' });
+  }
+});
+
+// Image Background Removal
+app.post('/api/remove-bg', upload.single('image'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: 'No image file provided' });
+    }
+    
+    const inputPath = path.join(__dirname, req.file.path);
+    // Rembg requires standard image extension for input detection
+    const renamedInput = inputPath + '.jpg';
+    fs.renameSync(inputPath, renamedInput);
+    
+    const outputPath = inputPath + '_no_bg.png';
+    
+    console.log('Running rembg on VPS...');
+    
+    exec(`rembg i ${renamedInput} ${outputPath}`, (error, stdout, stderr) => {
+      if (error) {
+        console.error('rembg error:', stderr);
+        if (fs.existsSync(renamedInput)) fs.unlinkSync(renamedInput);
+        return res.status(500).json({ error: 'Background removal failed' });
+      }
+      
+      res.sendFile(outputPath, () => {
+        // Cleanup after sending
+        if (fs.existsSync(renamedInput)) fs.unlinkSync(renamedInput);
+        if (fs.existsSync(outputPath)) fs.unlinkSync(outputPath);
+      });
+    });
+
+  } catch (error) {
+    console.error('Remove BG error:', error);
+    res.status(500).json({ error: 'Background removal failed' });
+  }
+});
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`NexusCut AI Backend running on port ${PORT}`);
+});

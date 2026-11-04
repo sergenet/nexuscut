@@ -1,0 +1,56 @@
+[Thu Jul 23 21:04:23 2026] fc0 invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[Thu Jul 23 21:04:23 2026]  oom_kill_process+0x118/0x280
+[Thu Jul 23 21:04:23 2026]  ? oom_evaluate_task+0x143/0x1e0
+[Thu Jul 23 21:04:23 2026]  __alloc_pages_may_oom+0x10c/0x1d0
+[Thu Jul 23 21:04:23 2026] [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
+[Thu Jul 23 21:04:23 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-0.slice/session-8.scope,task=ffmpeg,pid=504671,uid=0
+[Thu Jul 23 21:04:23 2026] Out of memory: Killed process 504671 (ffmpeg) total-vm:3166720kB, anon-rss:1536996kB, file-rss:128kB, shmem-rss:0kB, UID:0 pgtables:4016kB oom_score_adj:0
+[Fri Jul 24 05:25:13 2026] PM2 v7.0.3: God invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[Fri Jul 24 05:25:13 2026]  oom_kill_process+0x118/0x280
+[Fri Jul 24 05:25:13 2026]  ? oom_evaluate_task+0x143/0x1e0
+[Fri Jul 24 05:25:13 2026]  __alloc_pages_may_oom+0x10c/0x1d0
+[Fri Jul 24 05:25:13 2026] [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
+[Fri Jul 24 05:25:13 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-0.slice/session-8.scope,task=ffmpeg,pid=513460,uid=0
+[Fri Jul 24 05:25:13 2026] Out of memory: Killed process 513460 (ffmpeg) total-vm:2894872kB, anon-rss:1354804kB, file-rss:0kB, shmem-rss:0kB, UID:0 pgtables:3392kB oom_score_adj:0
+[Fri Jul 24 05:47:07 2026] ffmpeg invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[Fri Jul 24 05:47:07 2026]  oom_kill_process+0x118/0x280
+[Fri Jul 24 05:47:07 2026]  ? oom_evaluate_task+0x143/0x1e0
+[Fri Jul 24 05:47:07 2026]  __alloc_pages_may_oom+0x10c/0x1d0
+[Fri Jul 24 05:47:07 2026] [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
+[Fri Jul 24 05:47:07 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-0.slice/session-8.scope,task=ffmpeg,pid=514038,uid=0
+[Fri Jul 24 05:47:07 2026] Out of memory: Killed process 514038 (ffmpeg) total-vm:2943616kB, anon-rss:1388864kB, file-rss:0kB, shmem-rss:0kB, UID:0 pgtables:3440kB oom_score_adj:0
+[Fri Jul 24 06:16:45 2026] PM2 v7.0.3: God invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[Fri Jul 24 06:16:45 2026]  oom_kill_process+0x118/0x280
+[Fri Jul 24 06:16:45 2026]  ? oom_evaluate_task+0x143/0x1e0
+[Fri Jul 24 06:16:45 2026]  __alloc_pages_may_oom+0x10c/0x1d0
+[Fri Jul 24 06:16:45 2026] [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
+[Fri Jul 24 06:16:45 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-0.slice/session-8.scope,task=ffmpeg,pid=514695,uid=0
+[Fri Jul 24 06:16:45 2026] Out of memory: Killed process 514695 (ffmpeg) total-vm:2938828kB, anon-rss:1350408kB, file-rss:0kB, shmem-rss:0kB, UID:0 pgtables:3420kB oom_score_adj:0
+[Fri Jul 24 06:20:58 2026] ffmpeg invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[Fri Jul 24 06:20:58 2026]  oom_kill_process+0x118/0x280
+[Fri Jul 24 06:20:58 2026]  ? oom_evaluate_task+0x143/0x1e0
+[Fri Jul 24 06:20:58 2026]  __alloc_pages_may_oom+0x10c/0x1d0
+[Fri Jul 24 06:20:58 2026] [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
+[Fri Jul 24 06:20:58 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-0.slice/session-8.scope,task=ffmpeg,pid=514797,uid=0
+[Fri Jul 24 06:20:58 2026] Out of memory: Killed process 514797 (ffmpeg) total-vm:2944632kB, anon-rss:1345956kB, file-rss:0kB, shmem-rss:0kB, UID:0 pgtables:3396kB oom_score_adj:0
+[Fri Jul 24 09:56:16 2026] ffmpeg invoked oom-killer: gfp_mask=0x140dca(GFP_HIGHUSER_MOVABLE|__GFP_COMP|__GFP_ZERO), order=0, oom_score_adj=0
+[Fri Jul 24 09:56:16 2026]  oom_kill_process+0x118/0x280
+[Fri Jul 24 09:56:16 2026]  ? oom_evaluate_task+0x143/0x1e0
+[Fri Jul 24 09:56:16 2026]  __alloc_pages_may_oom+0x10c/0x1d0
+[Fri Jul 24 09:56:16 2026] [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
+[Fri Jul 24 09:56:16 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-0.slice/session-8.scope,task=ffmpeg,pid=518634,uid=0
+[Fri Jul 24 09:56:16 2026] Out of memory: Killed process 518634 (ffmpeg) total-vm:1524272kB, anon-rss:1380012kB, file-rss:0kB, shmem-rss:0kB, UID:0 pgtables:2864kB oom_score_adj:0
+[Fri Jul 24 16:08:47 2026] next-server (v1 invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[Fri Jul 24 16:08:47 2026]  oom_kill_process+0x118/0x280
+[Fri Jul 24 16:08:47 2026]  ? oom_evaluate_task+0x143/0x1e0
+[Fri Jul 24 16:08:47 2026]  __alloc_pages_may_oom+0x10c/0x1d0
+[Fri Jul 24 16:08:47 2026] [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
+[Fri Jul 24 16:08:47 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-0.slice/session-8.scope,task=ffmpeg,pid=523467,uid=0
+[Fri Jul 24 16:08:47 2026] Out of memory: Killed process 523467 (ffmpeg) total-vm:2936096kB, anon-rss:1382544kB, file-rss:0kB, shmem-rss:0kB, UID:0 pgtables:3596kB oom_score_adj:0
+[Fri Jul 24 16:36:49 2026] fc0 invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[Fri Jul 24 16:36:49 2026]  oom_kill_process+0x118/0x280
+[Fri Jul 24 16:36:49 2026]  ? oom_evaluate_task+0x143/0x1e0
+[Fri Jul 24 16:36:49 2026]  __alloc_pages_may_oom+0x10c/0x1d0
+[Fri Jul 24 16:36:49 2026] [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
+[Fri Jul 24 16:36:49 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-0.slice/session-8.scope,task=ffmpeg,pid=524254,uid=0
+[Fri Jul 24 16:36:49 2026] Out of memory: Killed process 524254 (ffmpeg) total-vm:2803480kB, anon-rss:1346476kB, file-rss:128kB, shmem-rss:0kB, UID:0 pgtables:3348kB oom_score_adj:0

@@ -1,0 +1,42 @@
+REMOVED
+BUILD_EXIT:0
+├ ○ /tools/tiktok-caption-generator
+├ ○ /tools/video-effects
+├ ○ /tools/viral-hook-generator
+├ ○ /tools/youtube-shorts-maker
+├ ○ /tutorial
+├ ○ /video-repurposing-service
+└ ○ /youtube-shorts-editor
+
+Route (pages)
+┌ ƒ /api/export
+├ ƒ /api/export/download
+├ ƒ /api/export/status
+└ ƒ /api/transcribe
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+
+[PM2] Applying action restartProcessId on app [nexuscut](ids: [ 1 ])
+[PM2] [nexuscut](1) ✓
+┌────┬────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name           │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ nexuscut       │ default     │ N/A     │ fork    │ 1039080  │ 0s     │ 2    │ online    │ 0%       │ 25.1mb   │ root     │ disabled │
+│ 0  │ nexuscut-ai    │ default     │ 1.0.0   │ fork    │ 918404   │ 7D     │ 0    │ online    │ 0%       │ 27.9mb   │ root     │ disabled │
+└────┴────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+host metrics | cpu: 86.7% | ram usage: 71.5% | lo: ⇓ 0.005mb/s ⇑ 0.005mb/s | eth0: ⇓ 0.006mb/s ⇑ 0.001mb/s drop 34/min | disk: ⇓ 28.029mb/s ⇑ 17.429mb/s / 63.06% |
+┌────┬────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name           │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ nexuscut       │ default     │ N/A     │ fork    │ 1039080  │ 5s     │ 2    │ online    │ 0%       │ 58.0mb   │ root     │ disabled │
+│ 0  │ nexuscut-ai    │ default     │ 1.0.0   │ fork    │ 918404   │ 7D     │ 0    │ online    │ 0%       │ 28.1mb   │ root     │ disabled │
+└────┴────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+host metrics | cpu: 86.7% | ram usage: 71.5% | lo: ⇓ 0.005mb/s ⇑ 0.005mb/s | eth0: ⇓ 0.006mb/s ⇑ 0.001mb/s drop 34/min | disk: ⇓ 28.029mb/s ⇑ 17.429mb/s / 63.06% |
+
+local http: 200
+DEPLOY OK

@@ -8,6 +8,7 @@ if (!process.env.OPENAI_API_KEY) {
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+interface Caption { start: number; end: number; word: string }
 
 export async function POST(req: Request) {
   try {
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
     // Reconstruct the full text with approximate timestamps for the LLM
     // To save tokens and guide the LLM, we'll chunk it into sentences or phrases.
     // For simplicity, we just pass the raw words with timestamps.
-    const transcriptText = captions.map((c: any) => `[${c.start.toFixed(1)}s-${c.end.toFixed(1)}s] ${c.word}`).join(" ");
+    const transcriptText = (captions as Caption[]).map(c => `[${c.start.toFixed(1)}s-${c.end.toFixed(1)}s] ${c.word}`).join(" ");
 
     const systemPrompt = `You are an expert viral video editor and social media manager.
 You analyze video transcripts to find the most engaging, high-retention, "viral" clip (often called a hook or magic clip).
@@ -61,8 +62,8 @@ CRITICAL RULES:
     const resultJson = JSON.parse(resultString);
 
     return NextResponse.json(resultJson);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Magic Clip error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Magic Clip failed' }, { status: 500 });
   }
 }

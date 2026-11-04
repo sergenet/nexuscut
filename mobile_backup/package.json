@@ -1,0 +1,46 @@
+{
+  "name": "mobile",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "dependencies": {
+    "@expo/metro-runtime": "~57.0.3",
+    "@expo/vector-icons": "^15.0.2",
+    "@ffmpeg/core": "^0.12.10",
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "@ffmpeg/util": "^0.12.2",
+    "@react-native-async-storage/async-storage": "^3.1.1",
+    "@supabase/supabase-js": "^2.110.1",
+    "expo": "~57.0.4",
+    "expo-blur": "~57.0.0",
+    "expo-document-picker": "~57.0.0",
+    "expo-file-system": "^57.0.0",
+    "expo-image-picker": "~57.0.2",
+    "expo-linear-gradient": "~57.0.0",
+    "expo-linking": "~57.0.2",
+    "expo-media-library": "^57.0.1",
+    "expo-router": "^57.0.4",
+    "expo-status-bar": "~57.0.0",
+    "expo-video": "~57.0.0",
+    "nativewind": "^4.2.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.0",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "4.25.2",
+    "react-native-url-polyfill": "^3.0.0",
+    "react-native-web": "^0.21.2",
+    "tailwindcss": "^3.4.19",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "typescript": "~6.0.3"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "private": true
+}

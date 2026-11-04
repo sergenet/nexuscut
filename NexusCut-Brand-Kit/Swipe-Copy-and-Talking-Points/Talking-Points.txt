@@ -1,0 +1,17 @@
+NEXUSCUT TALKING POINTS
+-----------------------
+
+What is NexusCut?
+NexusCut is the next-generation AI video editor designed exclusively for vertical short-form content (TikTok, YouTube Shorts, Instagram Reels).
+
+Key Features to Mention:
+1. Growth Mode: 1-click AI feature that detects the most engaging parts of your video and automatically applies viral hooks and high-retention subtitles.
+2. Auto-Captions: 99% accurate AI captions that can be styled like Alex Hormozi or Ali Abdaal with just one click.
+3. AI Voice Studio: Hyper-realistic text-to-speech for faceless channels.
+4. Auto-Reframe: Automatically crops landscape (16:9) video into vertical (9:16) while keeping the speaker in the center of the frame.
+
+The Pitch for Creators:
+Stop spending 4 hours editing a single 60-second Short. NexusCut automates the tedious parts of editing (captioning, zooming, b-roll) so you can focus on recording and growing your audience.
+
+Pricing:
+Starts free. Premium features unlock at $19.99/mo.

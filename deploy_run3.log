@@ -1,0 +1,28 @@
+uploaded src/pages/api/transcribe.ts
+uploaded src/app/tools/auto-captions/layout.tsx
+BUILD_EXIT:0
+Route (pages)
+┌ ƒ /api/export
+├ ƒ /api/export/download
+├ ƒ /api/export/status
+└ ƒ /api/transcribe
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+
+[PM2] Applying action restartProcessId on app [nexuscut](ids: [ 1 ])
+[PM2] [nexuscut](1) ✓
+┌────┬────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name           │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ nexuscut       │ default     │ N/A     │ fork    │ 1039634  │ 0s     │ 3    │ online    │ 0%       │ 18.1mb   │ root     │ disabled │
+│ 0  │ nexuscut-ai    │ default     │ 1.0.0   │ fork    │ 918404   │ 7D     │ 0    │ online    │ 0%       │ 27.6mb   │ root     │ disabled │
+└────┴────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+host metrics | cpu: 16.3% | ram usage: 74.4% | lo: ⇓ 0.005mb/s ⇑ 0.005mb/s | eth0: ⇓ 0.007mb/s ⇑ 0.001mb/s drop 34/min | disk: ⇓ 13.56mb/s ⇑ 0.126mb/s / 62.98% |
+local http: 200
+
+DEPLOY OK

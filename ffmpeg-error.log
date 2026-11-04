@@ -1,0 +1,61 @@
+COMMAND:
+"C:\NexusCut\node_modules\ffmpeg-static\ffmpeg.exe" -y -i "C:\Users\Serge\AppData\Local\Temp\input_1784724464611_0.mp4" -i "C:\Users\Serge\AppData\Local\Temp\input_1784724464611_1.mp4" -i "C:\NexusCut\public\sounds\ding.wav" -i "C:\NexusCut\public\sounds\whoosh.wav" -filter_complex "[0:v]trim=start=0:end=14.323654256961094,setpts=PTS-STARTPTS,fps=30,format=yuv420p,settb=AVTB[v_seg0]; [0:a]atrim=start=0:end=14.323654256961094,asetpts=PTS-STARTPTS[a_seg0]; [0:v]trim=start=16.05062036294611:end=85.027646,setpts=PTS-STARTPTS,fps=30,format=yuv420p,settb=AVTB[v_seg1]; [0:a]atrim=start=16.05062036294611:end=85.027646,asetpts=PTS-STARTPTS[a_seg1]; [1:v]trim=start=0:end=25.867007,setpts=PTS-STARTPTS,fps=30,format=yuv420p,settb=AVTB[v_seg2]; [1:a]atrim=start=0:end=25.867007,asetpts=PTS-STARTPTS[a_seg2]; [v_seg0][v_seg1]xfade=transition=fade:duration=3:offset=11.323654256961094[v_acc1]; [a_seg0][a_seg1]acrossfade=d=3[a_acc1]; [v_acc1][v_seg2]xfade=transition=fade:duration=3:offset=77.30067989401499[v_acc2]; [a_acc1][a_seg2]acrossfade=d=3[a_acc2]; [v_acc2]fps=30[v_sel]; [a_acc2]volume=1.0[a_sel]; [v_sel]subtitles='../Users/Serge/AppData/Local/Temp/captions_1784724464611.srt':fontsdir='../Users/Serge/AppData/Local/Temp':force_style='FontName=Roboto-Black,FontSize=10,PrimaryColour=&H00ff9100,OutlineColour=&H00000000,BorderStyle=1,Outline=3,Alignment=2,MarginV=40'[v_out]; [2:a]volume=1,adelay=11987|11987[cust_sfx0]; [3:a]volume=1.7,adelay=78374|78374[cust_sfx1]; [a_sel][cust_sfx0][cust_sfx1]amix=inputs=3:duration=first:dropout_transition=2,volume=3[a_out]" -map "[v_out]" -map "[a_out]" -c:v libx264 -preset fast -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 192k "C:\Users\Serge\AppData\Local\Temp\output_1784724464611.mp4"
+
+ERROR:
+0] Error opening memory font 'NotifyIconGeneratedAumid_12928561085616135153.png'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'NotifyIconGeneratedAumid_3522922252169537396.png'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'NotifyIconGeneratedAumid_6259144139267576924.png'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'npp.8.9.6.4.Installer.x64.exe'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'ollama_temp_icon_a31919c34aab32214e9350fa576d084f'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'OptaneIconOverlay.ico'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'output_1784698923300.mp4'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'REV59F5.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'Roboto-Black.ttf'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'SERGE-LAPTOP-20260714-1117.log'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'Setup Log 2026-07-19 #001.txt'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'StructuredQuery.log'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'unleash-repo-schema-v1-codeium-language-server.json'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'VSUSetup.exe'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct1025.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct1050.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct1313.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct1709.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct1BCF.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct1C06.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct1C14.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct20F0.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct263A.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct3EBC.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct3F0E.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct5405.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct5542.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct73DB.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct759.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct76E4.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct8200.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct8453.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct847A.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct8B0C.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct8D6E.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct9BD0.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct9D77.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wct9D82.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wctA06C.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wctA58B.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wctAFF.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wctBDE3.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wctC406.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wctCFDB.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wctE02C.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Error opening memory font 'wctF7F4.tmp'
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] Using font provider directwrite (with GDI)
+[Parsed_subtitles_27 @ 0000019ca5c86ac0] libass wasn't built with ASS_FEATURE_WRAP_UNICODE support
+[swscaler @ 0000019cb17cfb80] deprecated pixel format used, make sure you did set range correctly
+[swscaler @ 0000019cac4b4040] deprecated pixel format used, make sure you did set range correctly
+[Parsed_xfade_23 @ 0000019ca5c859c0] First input link main parameters (size 1280x720) do not match the corresponding second input link xfade parameters (size 2160x3840)
+[Parsed_xfade_23 @ 0000019ca5c859c0] Failed to configure output pad on Parsed_xfade_23
+[fc#0 @ 0000019c9b1b9540] Error reinitializing filters!
+Failed to inject frame into filter network: Invalid argument
+[out#0/mp4 @ 0000019c9d9d7080] Nothing was written into output file, because at least one of its streams received no packets.
+frame=    0 fps=0.0 q=0.0 Lsize=       0kB time=N/A bitrate=N/A speed=N/A    
+Conversion failed!

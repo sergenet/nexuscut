@@ -1,0 +1,27 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  · serverActions
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 18.3s
+  Running TypeScript ...
+Failed to type check.
+
+./src/components/Editor/Canvas.tsx:299:15
+Type error: Type '{ key: string; audioSeg: TrackSegment; onRef: (el: any) => void; }' is not assignable to type 'IntrinsicAttributes & FC<TrackAudioProps>'.
+  Property 'audioSeg' does not exist on type 'IntrinsicAttributes & FC<TrackAudioProps>'.
+
+  [90m297 |[0m             <[33mTrackAudio[0m 
+  [90m298 |[0m               key={audioSeg.id}
+[31m[1m>[0m [90m299 |[0m               audioSeg={audioSeg}
+  [90m    |[0m               [31m[1m^[0m
+  [90m300 |[0m               onRef={(el) => { audioRefs.current[audioSeg.id] = el; }}
+  [90m301 |[0m             />
+  [90m302 |[0m         )), [allAudioSegments])}
+Next.js build worker exited with code: 1 and signal: null

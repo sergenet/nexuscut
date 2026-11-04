@@ -1,0 +1,21 @@
+{
+    "name": "Y2K_Retro_Style",
+    "fontFamily": "Comic Sans MS, cursive",
+    "fontSize": 60,
+    "fontWeight": "bold",
+    "fontColor": "#FF00FF",
+    "textTransform": "none",
+    "stroke": {
+        "color": "#FFFFFF",
+        "width": 4
+    },
+    "shadow": {
+        "color": "#00FFFF",
+        "offsetX": 4,
+        "offsetY": 4,
+        "blur": 0
+    },
+    "highlightColor": "#FFFF00",
+    "animation": "wobble",
+    "description": "Fun, colorful, retro 2000s internet aesthetic."
+}

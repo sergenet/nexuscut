@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexusCut — AI Video Editor for TikTok &amp; Shorts Creators</title>
+  <meta name="description" content="Edit TikTok and YouTube Shorts videos with timeline editing, auto-captions, background removal, and vertical export tools." />
+  <meta property="og:title" content="NexusCut — Go Viral on TikTok" />
+  <meta property="og:description" content="Video editor for creators with auto-captions, background removal, timeline editing, and vertical exports." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080B14; --bg2: #0D1120; --surface: #131929;
+      --border: rgba(255,255,255,0.08);
+      --violet: #7C3AED; --pink: #EC4899; --cyan: #06B6D4;
+      --text: #F1F5F9; --muted: #94A3B8;
+      --grad: linear-gradient(135deg, #7C3AED, #EC4899);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background: rgba(8,11,20,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    .nav-cta { background: var(--grad); color: #fff; font-weight: 600; font-size: 0.9rem; padding: 0.55rem 1.4rem; border-radius: 100px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 7rem 1.5rem 5rem; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,0.25) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 20% 80%, rgba(236,72,153,0.15) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 80% 70%, rgba(6,182,212,0.1) 0%, transparent 60%); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.4); color: #A78BFA; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase; position: relative; z-index: 1; }
+    .hero h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; max-width: 15ch; margin: 0 auto 1.5rem; position: relative; z-index: 1; }
+    .grad-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--muted); max-width: 52ch; margin: 0 auto 2.5rem; position: relative; z-index: 1; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem; position: relative; z-index: 1; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--grad); color: #fff; font-weight: 700; font-size: 1.05rem; padding: 0.9rem 2.2rem; border-radius: 100px; text-decoration: none; transition: all 0.25s; box-shadow: 0 0 40px rgba(124,58,237,0.4); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(124,58,237,0.6); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--text); font-weight: 600; font-size: 1.05rem; padding: 0.9rem 2.2rem; border-radius: 100px; text-decoration: none; border: 1px solid var(--border); transition: all 0.25s; }
+    .btn-secondary:hover { background: var(--surface); border-color: rgba(255,255,255,0.2); }
+    .hero-img-wrap { position: relative; z-index: 1; max-width: 900px; width: 100%; }
+    .hero-img-wrap img { width: 100%; border-radius: 24px; box-shadow: 0 0 80px rgba(124,58,237,0.3), 0 40px 80px rgba(0,0,0,0.6); border: 1px solid var(--border); }
+    .floating-tag { position: absolute; display: flex; align-items: center; gap: 0.5rem; background: rgba(13,17,32,0.92); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 12px; padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 600; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+    .tag-1 { top: 12%; left: -2%; animation: float 3s ease-in-out infinite; }
+    .tag-2 { top: 40%; right: -2%; animation: float 3s ease-in-out 1s infinite; }
+    .tag-3 { bottom: 18%; left: -1%; animation: float 3s ease-in-out 0.5s infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .tag-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot-g { background: #22C55E; box-shadow: 0 0 8px #22C55E; }
+    .dot-v { background: var(--violet); box-shadow: 0 0 8px var(--violet); }
+    .dot-p { background: var(--pink); box-shadow: 0 0 8px var(--pink); }
+
+    /* LOGOS */
+    .logos { padding: 2.5rem 1.5rem; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .logos p { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+    .logos-row { display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+    .plat { display: flex; align-items: center; gap: 0.5rem; color: var(--muted); font-weight: 600; font-size: 0.95rem; }
+    .plat svg { width: 22px; height: 22px; }
+
+    /* SECTIONS */
+    section { padding: 6rem 1.5rem; }
+    .label { text-align: center; color: var(--violet); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem; }
+    .stitle { text-align: center; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 22ch; margin-left: auto; margin-right: auto; }
+    .ssub { text-align: center; color: var(--muted); font-size: 1.05rem; max-width: 50ch; margin: 0 auto 4rem; }
+
+    /* STEPS */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+    .step { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: transform 0.25s, border-color 0.25s; }
+    .step:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.4); }
+    .step-num { width: 48px; height: 48px; border-radius: 12px; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; margin-bottom: 1.25rem; }
+    .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .step p { color: var(--muted); font-size: 0.95rem; }
+
+    /* FEATURES */
+    .fgrid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 1100px; margin: 0 auto; }
+    .fcard { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: transform 0.25s, border-color 0.25s; }
+    .fcard:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.4); }
+    .fcard.wide { grid-column: span 2; }
+    @media(max-width:700px){ .fcard.wide { grid-column: span 1; } }
+    .fcard img { width: 100%; display: block; }
+    .fbody { padding: 1.5rem; }
+    .ftag { display: inline-block; background: rgba(124,58,237,0.15); color: #A78BFA; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 0.7rem; border-radius: 100px; margin-bottom: 0.75rem; }
+    .fbody h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .fbody p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+
+    /* CAPTION ANIM */
+    .cap-demo { background: #111827; border-radius: 0; padding: 2rem; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; position: relative; overflow: hidden; }
+    .cap-bg { position: absolute; inset: 0; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+    .cap-person { position: absolute; bottom: 35%; left: 50%; transform: translateX(-50%); font-size: 3.5rem; }
+    .cap-bar { position: relative; z-index: 2; display: flex; gap: 0.35rem; flex-wrap: wrap; justify-content: center; background: rgba(0,0,0,0.6); border-radius: 10px; padding: 0.6rem 1rem; max-width: 90%; margin-bottom: 1rem; min-height: 2.5rem; }
+    .cword { font-size: 1.2rem; font-weight: 800; color: #fff; padding: 0.1rem 0.25rem; border-radius: 4px; opacity: 0; animation: wPop 0.25s ease forwards; }
+    .cword.hi { background: #7C3AED; }
+    @keyframes wPop { from{opacity:0;transform:scale(0.8)} to{opacity:1;transform:scale(1)} }
+
+    /* SLIDER UI DEMO */
+    .slider-ui { background: #0D1120; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .slider-row { background: #131929; border-radius: 12px; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); }
+    .slider-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85rem; color: #94A3B8; }
+    .slider-header span:last-child { color: #A78BFA; font-weight: 700; }
+    .slider-track { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; position: relative; }
+    .slider-fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 2px; }
+    .slider-thumb { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 14px; height: 14px; background: white; border-radius: 50%; }
+
+    /* TIMELINE DEMO */
+    .tl-demo { background: #0D1120; padding: 1.5rem; }
+    .tl-player { background: #131929; border-radius: 10px; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 0.75rem; }
+    .tl-controls { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .tl-play { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #7C3AED, #EC4899); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+    .tl-progress { flex: 1; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; position: relative; }
+    .tl-prog-fill { position: absolute; left: 0; top: 0; height: 100%; width: 35%; background: linear-gradient(90deg, #7C3AED, #EC4899); border-radius: 2px; }
+    .tl-time { font-size: 0.75rem; color: #94A3B8; white-space: nowrap; }
+    .tl-tracks { display: flex; gap: 4px; height: 40px; align-items: center; }
+    .tl-track { height: 32px; border-radius: 6px; border: 1px solid; }
+    .tl-label { text-align: center; font-size: 0.75rem; color: #475569; margin-top: 0.25rem; }
+
+    /* STATS */
+    .stats-sec { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 800px; margin: 0 auto; text-align: center; }
+    .stat-n { font-size: 3rem; font-weight: 900; letter-spacing: -0.03em; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-l { color: var(--muted); font-size: 0.95rem; margin-top: 0.25rem; }
+
+    /* CTA */
+    .cta-sec { text-align: center; position: relative; overflow: hidden; }
+    .cta-sec::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(124,58,237,0.2) 0%, transparent 70%); }
+    .cta-sec h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 1rem; position: relative; }
+    .cta-sec p { color: var(--muted); font-size: 1.1rem; margin-bottom: 2.5rem; position: relative; max-width: 44ch; margin-left: auto; margin-right: auto; }
+    .cta-sec .btn-primary { font-size: 1.15rem; padding: 1rem 2.6rem; position: relative; }
+
+    footer { padding: 2rem 1.5rem; text-align: center; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 0.5rem; }
+    footer a:hover { color: var(--text); }
+
+    @media(max-width:640px){ nav{padding:.875rem 1.25rem} .hero{padding:6rem 1rem 3rem} .floating-tag{display:none} section{padding:4rem 1rem} }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">NexusCut</a>
+  <a href="/editor" class="nav-cta">Start Editing Free →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-badge">✦ AI-Powered Video Editor</div>
+  <h1>Go viral on <span class="grad-text">TikTok &amp; Shorts</span>.<br/>No skills needed.</h1>
+  <p>Auto-captions, AI background removal, and clip editing built for creators who want results — not complexity. Free to start, no credit card.</p>
+  <div class="hero-btns">
+    <a href="/editor" class="btn-primary">🚀 Start Editing Free</a>
+    <a href="#features" class="btn-secondary">See Features ↓</a>
+  </div>
+  <div class="hero-img-wrap">
+    <img src="/assets/hero_phone_mockup.png" alt="NexusCut AI video editor showing TikTok clip with auto-captions" />
+    <div class="floating-tag tag-1"><div class="tag-dot dot-g"></div><span>Auto-Captions Active</span></div>
+    <div class="floating-tag tag-2"><div class="tag-dot dot-v"></div><span>🤖 AI Background Removed</span></div>
+    <div class="floating-tag tag-3"><div class="tag-dot dot-p"></div><span>📱 9:16 Export Ready</span></div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<div class="logos">
+  <p>Export perfectly for every platform</p>
+  <div class="logos-row">
+    <div class="plat">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.8 1.54V6.79a4.85 4.85 0 01-1.03-.1z"/></svg>
+      TikTok
+    </div>
+    <div class="plat">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.56 3.5 12 3.5 12 3.5s-7.56 0-9.38.55A3.02 3.02 0 00.5 6.19C0 8.02 0 12 0 12s0 3.98.5 5.81a3.02 3.02 0 002.12 2.14C4.44 20.5 12 20.5 12 20.5s7.56 0 9.38-.55a3.02 3.02 0 002.12-2.14C24 15.98 24 12 24 12s0-3.98-.5-5.81zM9.75 15.52V8.48L15.82 12l-6.07 3.52z"/></svg>
+      YouTube Shorts
+    </div>
+    <div class="plat">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram Reels
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" style="background: var(--bg2);">
+  <div class="label">Simple Process</div>
+  <h2 class="stitle">From raw footage to viral clip in 3 steps</h2>
+  <p class="ssub">No complex timelines. No steep learning curve. Just results.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Upload Your Video</h3>
+      <p>Drop in any video — long-form, raw footage, screen recording. We handle any format.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>AI Does the Heavy Lifting</h3>
+      <p>Auto-captions generate in seconds. Remove your background. Trim, scale, and position clips perfectly for 9:16.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Export &amp; Go Viral</h3>
+      <p>Export in perfect vertical format ready for TikTok, Shorts, or Reels. Post and watch the views come in.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="label">Features</div>
+  <h2 class="stitle">Everything a TikTok creator needs</h2>
+  <p class="ssub">Built specifically for short-form video — speed, quality, and results without the complexity.</p>
+  <div class="fgrid">
+
+    <!-- Auto Captions wide -->
+    <div class="fcard wide">
+      <img src="/assets/captions_demo.png" alt="Auto captions on TikTok videos" style="aspect-ratio:16/8;object-fit:cover;" />
+      <div class="fbody">
+        <span class="ftag">🎤 AI Captions</span>
+        <h3>Auto-captions that drive engagement</h3>
+        <p>Captions increase watch time by up to 40%. Our AI transcribes your audio and generates perfectly timed, animated subtitles — no manual work needed.</p>
+      </div>
+    </div>
+
+    <!-- BG Removal -->
+    <div class="fcard">
+      <img src="/assets/bg_removal_demo.png" alt="AI background removal before and after" style="aspect-ratio:4/3;object-fit:cover;" />
+      <div class="fbody">
+        <span class="ftag">🎭 AI Tools</span>
+        <h3>Remove your background instantly</h3>
+        <p>No green screen required. Place yourself anywhere with AI background removal that works in real time.</p>
+      </div>
+    </div>
+
+    <!-- Animated captions demo -->
+    <div class="fcard">
+      <div class="cap-demo" style="aspect-ratio:4/3;">
+        <div class="cap-bg"></div>
+        <div class="cap-person">🎙️</div>
+        <div class="cap-bar" id="capBar"></div>
+      </div>
+      <div class="fbody">
+        <span class="ftag">✨ Animated</span>
+        <h3>Word-by-word caption animation</h3>
+        <p>Each word lights up as it's spoken — the same high-engagement style used by top creators with millions of views.</p>
+      </div>
+    </div>
+
+    <!-- Precision controls -->
+    <div class="fcard">
+      <div class="slider-ui">
+        <div class="slider-row">
+          <div class="slider-header"><span>Scale</span><span>85%</span></div>
+          <div class="slider-track"><div class="slider-fill" style="width:85%;background:linear-gradient(90deg,#7C3AED,#EC4899)"></div><div class="slider-thumb" style="left:85%;box-shadow:0 0 8px rgba(124,58,237,0.8)"></div></div>
+        </div>
+        <div class="slider-row">
+          <div class="slider-header"><span>X Position</span><span>62</span></div>
+          <div class="slider-track"><div class="slider-fill" style="width:62%;background:linear-gradient(90deg,#06B6D4,#7C3AED)"></div><div class="slider-thumb" style="left:62%;box-shadow:0 0 8px rgba(6,182,212,0.8)"></div></div>
+        </div>
+        <div class="slider-row">
+          <div class="slider-header"><span>Y Position</span><span>48</span></div>
+          <div class="slider-track"><div class="slider-fill" style="width:48%;background:linear-gradient(90deg,#EC4899,#7C3AED)"></div><div class="slider-thumb" style="left:48%;box-shadow:0 0 8px rgba(236,72,153,0.8)"></div></div>
+        </div>
+        <div style="text-align:center;font-size:0.75rem;color:#475569;">Precision controls · Scale 10% – 300%</div>
+      </div>
+      <div class="fbody">
+        <span class="ftag">🎛️ Controls</span>
+        <h3>Precision clip controls</h3>
+        <p>Scale, position, and compose every clip exactly how you want it. Pixel-perfect results without complexity.</p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="fcard">
+      <div class="tl-demo">
+        <div class="tl-player">
+          <div class="tl-controls">
+            <div class="tl-play">▶</div>
+            <div class="tl-progress"><div class="tl-prog-fill"></div></div>
+            <div class="tl-time">0:07 / 0:20</div>
+          </div>
+          <div class="tl-tracks">
+            <div class="tl-track" style="flex:3;background:rgba(124,58,237,0.3);border-color:rgba(124,58,237,0.6)"></div>
+            <div class="tl-track" style="flex:2;background:rgba(6,182,212,0.3);border-color:rgba(6,182,212,0.6)"></div>
+            <div class="tl-track" style="flex:4;background:rgba(236,72,153,0.3);border-color:rgba(236,72,153,0.6)"></div>
+          </div>
+        </div>
+        <div class="tl-label">Multi-track timeline editor</div>
+      </div>
+      <div class="fbody">
+        <span class="ftag">🎬 Timeline</span>
+        <h3>Multi-track editing timeline</h3>
+        <p>Layer video, audio, and effects tracks. Trim clips, rearrange scenes, and nail your timing.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-sec">
+  <div class="label">Why NexusCut</div>
+  <h2 class="stitle">Built for the creator economy</h2>
+  <p class="ssub" style="margin-bottom:3rem">Everything you need to grow on short-form video</p>
+  <div class="stats-grid">
+    <div><div class="stat-n">10x</div><div class="stat-l">Faster than traditional editors</div></div>
+    <div><div class="stat-n">9:16</div><div class="stat-l">Perfect vertical format every time</div></div>
+    <div><div class="stat-n">0</div><div class="stat-l">Experience required to start</div></div>
+    <div><div class="stat-n">Free</div><div class="stat-l">No credit card needed</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <h2>Ready to <span class="grad-text">go viral?</span></h2>
+  <p>Start making TikTok and Shorts content that gets views. Free to start — no account needed.</p>
+  <a href="/editor" class="btn-primary">🚀 Start Editing Free</a>
+</section>
+
+<footer>
+  <p style="margin-bottom:0.5rem"><a href="/editor">Editor</a><a href="#how-it-works">Tutorials</a><a href="#features">FAQ</a></p>
+  <p>&copy; 2026 NexusCut. All rights reserved.</p>
+</footer>
+
+<script>
+  // Animated captions
+  const words = ["This","is","how","viral","captions","look","on","TikTok","right","now"];
+  const bar = document.getElementById('capBar');
+  let idx = 0;
+  function nextWord() {
+    if (!bar) return;
+    if (idx === 0) bar.innerHTML = '';
+    const prev = bar.querySelector('.hi');
+    if (prev) prev.classList.remove('hi');
+    const span = document.createElement('span');
+    span.className = 'cword hi';
+    span.textContent = words[idx];
+    bar.appendChild(span);
+    idx++;
+    if (idx < words.length) setTimeout(nextWord, 400);
+    else setTimeout(() => { idx = 0; nextWord(); }, 2200);
+  }
+  const obs = new IntersectionObserver(e => { e.forEach(x => { if(x.isIntersecting) nextWord(); }); }, {threshold:0.5});
+  if (bar) obs.observe(bar);
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'}); });
+  });
+</script>
+</body>
+</html>

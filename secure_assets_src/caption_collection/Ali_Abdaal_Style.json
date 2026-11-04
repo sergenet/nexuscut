@@ -1,0 +1,21 @@
+{
+    "name": "Ali_Abdaal_Style",
+    "fontFamily": "Inter, sans-serif",
+    "fontSize": 72,
+    "fontWeight": "700",
+    "fontColor": "#FFFFFF",
+    "textTransform": "none",
+    "stroke": {
+        "color": "#000000",
+        "width": 4
+    },
+    "shadow": {
+        "color": "#000000",
+        "offsetX": 2,
+        "offsetY": 2,
+        "blur": 10
+    },
+    "highlightColor": "#4ADE80",
+    "animation": "fade-up",
+    "description": "Clean, professional, and slightly animated."
+}

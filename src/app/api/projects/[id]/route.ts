@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { getVerifiedUser } from '@/lib/auth';
 
 export async function GET(
   request: Request,
@@ -7,12 +8,8 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    const userId = "local-user";
-
-    const user = await prisma.user.findUnique({ where: { clerkId: userId } });
-    if (!user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
-    }
+    const user = await getVerifiedUser();
+    if (!user) return NextResponse.json({ error: 'Sign in required' }, { status: 401 });
 
     const project = await prisma.project.findUnique({
       where: { id: id },
@@ -23,7 +20,7 @@ export async function GET(
     }
 
     return NextResponse.json({ project });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Get project error:", error);
     return NextResponse.json({ error: 'Failed to load project' }, { status: 500 });
   }

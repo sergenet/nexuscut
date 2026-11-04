@@ -1,0 +1,26 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  ✓ memoryBasedWorkersCount
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 14.6s
+  Running TypeScript ...
+Failed to type check.
+
+./src/components/Editor/Sidebar.tsx:73:9
+Type error: Object literal may only specify known properties, and 'thumbnail' does not exist in type 'MediaItem'.
+
+  [90m71 |[0m         url,
+  [90m72 |[0m         duration: dur,
+[31m[1m>[0m [90m73 |[0m         thumbnail: thumbUrl || ([36mtype[0m === [32m'audio'[0m ? [36mundefined[0m : [36mundefined[0m)
+  [90m   |[0m         [31m[1m^[0m
+  [90m74 |[0m       };
+  [90m75 |[0m       
+  [90m76 |[0m       addMediaItem(newItem);
+Next.js build worker exited with code: 1 and signal: null

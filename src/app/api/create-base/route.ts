@@ -98,13 +98,13 @@ export async function POST(req: Request) {
 
     // Cleanup intermediates
     for (const f of filesToCleanup) {
-      try { fs.unlinkSync(f); } catch (e) { }
+      try { fs.unlinkSync(f); } catch { }
     }
 
     return NextResponse.json({ videoUrl: `/temp/base_${id}.mp4` });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Create Base error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Base creation failed' }, { status: 500 });
   }
 }

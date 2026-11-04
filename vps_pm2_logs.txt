@@ -1,0 +1,105 @@
+[TAILING] Tailing last 50 lines for [nexuscut] process (change the value with --lines option)
+/root/.pm2/logs/nexuscut-out.log last 50 lines:
+6|nexuscut | - Network:       http://209.74.79.56:3000
+6|nexuscut | ✓ Ready in 123ms
+6|nexuscut | 
+6|nexuscut | > nexuscut@0.1.0 start
+6|nexuscut | > next start
+6|nexuscut | 
+6|nexuscut | ▲ Next.js 16.2.9
+6|nexuscut | - Local:         http://localhost:3000
+6|nexuscut | - Network:       http://209.74.79.56:3000
+6|nexuscut | ✓ Ready in 127ms
+6|nexuscut | 
+6|nexuscut | > nexuscut@0.1.0 start
+6|nexuscut | > next start
+6|nexuscut | 
+6|nexuscut | ▲ Next.js 16.2.9
+6|nexuscut | - Local:         http://localhost:3000
+6|nexuscut | - Network:       http://209.74.79.56:3000
+6|nexuscut | ✓ Ready in 121ms
+6|nexuscut | 
+6|nexuscut | > nexuscut@0.1.0 start
+6|nexuscut | > next start
+6|nexuscut | 
+6|nexuscut | ▲ Next.js 16.2.9
+6|nexuscut | - Local:         http://localhost:3000
+6|nexuscut | - Network:       http://209.74.79.56:3000
+6|nexuscut | ✓ Ready in 115ms
+6|nexuscut | 
+6|nexuscut | > nexuscut@0.1.0 start
+6|nexuscut | > next start
+6|nexuscut | 
+6|nexuscut | ▲ Next.js 16.2.9
+6|nexuscut | - Local:         http://localhost:3000
+6|nexuscut | - Network:       http://209.74.79.56:3000
+6|nexuscut | ✓ Ready in 124ms
+6|nexuscut | 
+6|nexuscut | > nexuscut@0.1.0 start
+6|nexuscut | > next start
+6|nexuscut | 
+6|nexuscut | ▲ Next.js 16.2.9
+6|nexuscut | - Local:         http://localhost:3000
+6|nexuscut | - Network:       http://209.74.79.56:3000
+6|nexuscut | ✓ Ready in 125ms
+6|nexuscut | 
+6|nexuscut | > nexuscut@0.1.0 start
+6|nexuscut | > next start
+6|nexuscut | 
+6|nexuscut | ▲ Next.js 16.2.9
+6|nexuscut | - Local:         http://localhost:3000
+6|nexuscut | - Network:       http://209.74.79.56:3000
+6|nexuscut | ✓ Ready in 114ms
+
+/root/.pm2/logs/nexuscut-error.log last 50 lines:
+6|nexuscut |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+6|nexuscut |     at node:internal/main/run_main_module:28:49 {
+6|nexuscut |   code: 'MODULE_NOT_FOUND',
+6|nexuscut |   requireStack: []
+6|nexuscut | }
+6|nexuscut | Error: Cannot find module '/var/www/nexuscut/.next/standalone/server.js'
+6|nexuscut |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+6|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+6|nexuscut |     at Object.<anonymous> (/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js:32:23)
+6|nexuscut |     at Module._compile (node:internal/modules/cjs/loader:1521:14)
+6|nexuscut |     at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+6|nexuscut |     at Module.load (node:internal/modules/cjs/loader:1266:32)
+6|nexuscut |     at Module._load (node:internal/modules/cjs/loader:1091:12)
+6|nexuscut |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+6|nexuscut |     at node:internal/main/run_main_module:28:49 {
+6|nexuscut |   code: 'MODULE_NOT_FOUND',
+6|nexuscut |   requireStack: []
+6|nexuscut | }
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+6|nexuscut | Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+6|nexuscut |     at ignore-listed frames
+

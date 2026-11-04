@@ -1,0 +1,894 @@
+Archive:  deploy_full.zip
+  inflating: .env                    
+  inflating: .env.local              
+  inflating: .gitignore              
+  inflating: add_fonts.py            
+  inflating: add_help_section.py     
+  inflating: add_overlay.py          
+  inflating: add_overlay2.py         
+  inflating: add_swap.py             
+  inflating: add_tts_help.py         
+  inflating: add_tts_mute.py         
+  inflating: AGENTS.md               
+  inflating: ai_info.txt             
+  inflating: append.ps1              
+  inflating: append_schema.py        
+  inflating: apply_auto_relink.py    
+  inflating: apply_fix.py            
+  inflating: apply_target.py         
+  inflating: apply_vps_fix.py        
+  inflating: backend_server.txt      
+  inflating: backup.py               
+  inflating: backup_server.py        
+  inflating: build_err.txt           
+  inflating: build_err2.txt          
+  inflating: build_err3.txt          
+  inflating: build_err4.txt          
+  inflating: build_err5.txt          
+  inflating: build_err6.txt          
+  inflating: build_err7.txt          
+  inflating: build_err8.txt          
+  inflating: build_err9.txt          
+  inflating: build_error_logs.txt    
+  inflating: build_log.txt           
+  inflating: build_log3.txt          
+  inflating: build_output.log        
+  inflating: build_output.txt        
+  inflating: build_output_async.txt  
+  inflating: build_stderr.txt        
+  inflating: build_stdout.txt        
+  inflating: build_vps_assets.py     
+  inflating: build_vps_async.py      
+  inflating: build_vps_log.py        
+  inflating: Canvas_original.tsx     
+  inflating: catch_errors.js         
+  inflating: check_ai.py             
+  inflating: check_all_env.py        
+  inflating: check_api.py            
+  inflating: check_api_logs.py       
+  inflating: check_backend.py        
+  inflating: check_backend2.py       
+  inflating: check_build.py          
+  inflating: check_build10.py        
+  inflating: check_build11.py        
+  inflating: check_build2.py         
+  inflating: check_build3.py         
+  inflating: check_build4.py         
+  inflating: check_build5.py         
+  inflating: check_build6.py         
+  inflating: check_build7.py         
+  inflating: check_build8.py         
+  inflating: check_build9.py         
+  inflating: check_build_failure.py  
+  inflating: check_build_log.py      
+  inflating: check_conflict.txt      
+  inflating: check_css.py            
+  inflating: check_css_content.py    
+  inflating: check_css_size.py       
+  inflating: check_curl.py           
+  inflating: check_db.js             
+  inflating: check_db.py             
+  inflating: check_db2.py            
+  inflating: check_db3.py            
+  inflating: check_db4.py            
+  inflating: check_db_content.py     
+  inflating: check_db_location.py    
+  inflating: check_disk.py           
+  inflating: check_editor.py         
+  inflating: check_env.py            
+  inflating: check_env2.py           
+  inflating: check_env3.py           
+  inflating: check_env4.py           
+  inflating: check_env_local.py      
+  inflating: check_ffmpeg.py         
+  inflating: check_ffmpeg_logs.py    
+  inflating: check_file.py           
+  inflating: check_git.py            
+  inflating: check_grep.py           
+  inflating: check_html.py           
+  inflating: check_html_cache.py     
+  inflating: check_http.py           
+  inflating: check_indices.py        
+  inflating: check_local_curl.py     
+  inflating: check_local_curl2.py    
+  inflating: check_local_curl3.py    
+  inflating: check_local_curl4.py    
+  inflating: check_logs.py           
+  inflating: check_logs2.py          
+  inflating: check_logs_clean.py     
+  inflating: check_logs_file.py      
+  inflating: check_next.py           
+  inflating: check_next_config.py    
+  inflating: check_next_dir.py       
+  inflating: check_next_dir_2.py     
+  inflating: check_nginx.py          
+  inflating: check_nginx2.py         
+  inflating: check_nginx3.py         
+  inflating: check_nginx_access.py   
+  inflating: check_nginx_conf.py     
+  inflating: check_nginx_errors.py   
+  inflating: check_nginx_get.py      
+  inflating: check_nginx_post.py     
+  inflating: check_nginx_status.py   
+  inflating: check_node.py           
+  inflating: check_oom.py            
+  inflating: check_pass.py           
+  inflating: check_pm2.py            
+  inflating: check_pm2_2.py          
+  inflating: check_pm2_3.py          
+  inflating: check_pm2_4.py          
+  inflating: check_pm2_config.py     
+  inflating: check_pm2_crash.py      
+  inflating: check_pm2_cwd.py        
+  inflating: check_pm2_details.py    
+  inflating: check_pm2_env.py        
+  inflating: check_pm2_env2.py       
+  inflating: check_pm2_error.py      
+  inflating: check_pm2_error2.py     
+  inflating: check_pm2_fail.py       
+  inflating: check_pm2_logs.py       
+  inflating: check_pm2_real_logs.py  
+  inflating: check_pm2_real_logs2.py  
+  inflating: check_pm2_start.py      
+  inflating: check_pm2_status.py     
+  inflating: check_port.py           
+  inflating: check_port2.py          
+  inflating: check_python.py         
+  inflating: check_python_success.py  
+  inflating: check_real_logs.py      
+  inflating: check_recovery_again.py  
+  inflating: check_recovery_cpanel.py  
+  inflating: check_recovery_cpanel2.py  
+  inflating: check_recovery_cpanel3.py  
+  inflating: check_recovery_error.py  
+  inflating: check_running.py        
+  inflating: check_schema_again.py   
+  inflating: check_server.py         
+  inflating: check_sqlite.py         
+  inflating: check_standalone.py     
+  inflating: check_standalone.txt    
+  inflating: check_standalone_static.py  
+  inflating: check_static.py         
+  inflating: check_static6.py        
+  inflating: check_top.py            
+  inflating: check_tree.py           
+  inflating: check_venv.py           
+  inflating: check_vps.py            
+  inflating: check_vps_build.py      
+  inflating: check_vps_code.py       
+  inflating: check_vps_css.py        
+  inflating: check_vps_file.py       
+  inflating: check_vps_middleware.py  
+  inflating: check_vps_progress.py   
+  inflating: check_vps_progress2.py  
+  inflating: check_vps_status.py     
+  inflating: check_webhook_clean.py  
+  inflating: check_webhook_error.py  
+  inflating: check_website.py        
+  inflating: check_website_down.py   
+  inflating: CLAUDE.md               
+  inflating: clean_build.py          
+  inflating: clean_modal.py          
+  inflating: clean_vps_install.py    
+  inflating: concat_test.txt         
+  inflating: copy_static.py          
+  inflating: database.sqlite         
+  inflating: debug_python.py         
+  inflating: debug_route.py          
+  inflating: debug_vps.py            
+  inflating: demote_user.py          
+  inflating: deploy.py               
+  inflating: deploy_audio_fix.py     
+  inflating: deploy_auth.py          
+  inflating: deploy_bg_removal.py    
+  inflating: deploy_bg_removal_api.py  
+  inflating: deploy_bingsiteauth.py  
+  inflating: deploy_build.py         
+  inflating: deploy_camera.py        
+  inflating: deploy_camera2.py       
+  inflating: deploy_camera3.py       
+  inflating: deploy_camera4.py       
+  inflating: deploy_canvas.py        
+  inflating: deploy_check.py         
+  inflating: deploy_clean.py         
+  inflating: deploy_config.py        
+  inflating: deploy_cron.py          
+  inflating: deploy_editor.py        
+  inflating: deploy_err.txt          
+  inflating: deploy_error_handling.py  
+  inflating: deploy_export.py        
+  inflating: deploy_fast.py          
+  inflating: deploy_files.py         
+  inflating: deploy_fixes.py         
+  inflating: deploy_full.py          
+  inflating: deploy_hotfix.py        
+  inflating: deploy_landing.py       
+  inflating: deploy_leads.py         
+  inflating: deploy_logs.py          
+  inflating: deploy_logs2.py         
+  inflating: deploy_logs3.py         
+  inflating: deploy_metadata.py      
+  inflating: deploy_metadata2.py     
+  inflating: deploy_middleware.py    
+  inflating: deploy_mobile.py        
+  inflating: deploy_nav.py           
+  inflating: deploy_nav_badge.py     
+  inflating: deploy_newsletter.py    
+  inflating: deploy_out.txt          
+  inflating: deploy_patch.py         
+  inflating: deploy_pricing.py       
+  inflating: deploy_proxy.py         
+  inflating: deploy_purchases.py     
+  inflating: deploy_purchases10.py   
+  inflating: deploy_purchases2.py    
+  inflating: deploy_purchases3.py    
+  inflating: deploy_purchases5.py    
+  inflating: deploy_purchases6.py    
+  inflating: deploy_purchases7.py    
+  inflating: deploy_purchases8.py    
+  inflating: deploy_purchases9.py    
+  inflating: deploy_sidebar.py       
+  inflating: deploy_stripe_fix.py    
+  inflating: deploy_templates.py     
+  inflating: deploy_thumbnail.py     
+  inflating: deploy_thumbnail2.py    
+  inflating: deploy_thumbnail3.py    
+  inflating: deploy_thumbnail4.py    
+  inflating: deploy_thumbnail5.py    
+  inflating: deploy_timeline.py      
+  inflating: deploy_tutorial.py      
+  inflating: deploy_ui_fix.py        
+  inflating: deploy_upload.py        
+  inflating: deploy_v4.py            
+  inflating: deploy_vps.sh           
+  inflating: deploy_zip.py           
+  inflating: docx_texts.txt          
+  inflating: download_sources.py     
+  inflating: dump_html.py            
+  inflating: editor.png              
+  inflating: editor_recovered.tsx    
+  inflating: enable_threads.py       
+  inflating: err.txt                 
+  inflating: eslint.config.mjs       
+  inflating: extract_15285.py        
+  inflating: extract_15323.py        
+  inflating: extract_editor.py       
+  inflating: extract_editor2.py      
+  inflating: fast_deploy.py          
+  inflating: fast_deploy_css.py      
+  inflating: fast_deploy_css_v3.py   
+  inflating: fetch_build_log.py      
+  inflating: ffmpeg-error.log        
+  inflating: ffmpeg-success.log      
+  inflating: find_css.py             
+  inflating: fix_and_restart.py      
+  inflating: fix_audiocontext.py     
+  inflating: fix_audio_studio.py     
+  inflating: fix_auto_captions.py    
+  inflating: fix_build.py            
+  inflating: fix_clean_build.py      
+  inflating: fix_db_url.py           
+  inflating: fix_editor.py           
+  inflating: fix_env.py              
+  inflating: fix_env_final.py        
+  inflating: fix_env_newline.py      
+  inflating: fix_generate_captions.py  
+  inflating: fix_jsx.py              
+  inflating: fix_landing.py          
+  inflating: fix_library_items.py    
+  inflating: fix_load.py             
+  inflating: fix_ml_deps.py          
+  inflating: fix_mobile_and_paths.py  
+  inflating: fix_next_config.py      
+  inflating: fix_nginx.py            
+  inflating: fix_nginx2.py           
+  inflating: fix_nginx_body.py       
+  inflating: fix_nginx_static.py     
+  inflating: fix_numpy.py            
+  inflating: fix_numpy2.py           
+  inflating: fix_pm2.py              
+  inflating: fix_pm2_env.py          
+  inflating: fix_pull.py             
+  inflating: fix_raf.py              
+  inflating: fix_relink.py           
+  inflating: fix_rembg.py            
+  inflating: fix_schema.py           
+  inflating: fix_segment_click.py    
+  inflating: fix_server.py           
+  inflating: fix_server_timeout.py   
+  inflating: fix_server_timeout2.py  
+  inflating: fix_server_timeout3.py  
+  inflating: fix_sidebar_final.py    
+  inflating: fix_smtp_cert.py        
+  inflating: fix_smtp_host.py        
+  inflating: fix_smtp_host2.py       
+  inflating: fix_split_brain.py      
+  inflating: fix_standalone.py       
+  inflating: fix_standalone_copy.py  
+  inflating: fix_static.py           
+  inflating: fix_static2.py          
+  inflating: fix_static3.py          
+  inflating: fix_static4.py          
+  inflating: fix_static5.py          
+  inflating: fix_static7.py          
+  inflating: fix_syntax.py           
+  inflating: fix_syntax2.py          
+  inflating: fix_tailwind_v3.py      
+  inflating: fix_text_layout.py      
+  inflating: fix_text_save.py        
+  inflating: fix_tmp.py              
+  inflating: fix_transcribe_api.py   
+  inflating: fix_ui.py               
+  inflating: fix_ui_3.py             
+  inflating: fix_vps.py              
+  inflating: fix_vps_zip.py          
+  inflating: fix_wrapper.py          
+  inflating: fix_xfade.py            
+  inflating: frame120.jpg            
+  inflating: frontend_zip.txt        
+  inflating: generate-sounds.js      
+  inflating: generate_assets.py      
+  inflating: generate_blogs.js       
+  inflating: generate_kits.py        
+  inflating: get_logs.py             
+  inflating: get_logs2.py            
+  inflating: get_logs_latest.py      
+  inflating: get_vps_env.py          
+  inflating: implement_ai.py         
+  inflating: implement_chunking.py   
+  inflating: implement_timeline_controls.py  
+  inflating: init_mediapipe.py       
+  inflating: inject_modal.py         
+  inflating: install_rembg.py        
+  inflating: kill_ffmpeg.py          
+  inflating: kill_node_force.php     
+  inflating: logs.txt                
+  inflating: ls.txt                  
+  inflating: makePro.js              
+  inflating: marketing nexuscut.txt  
+  inflating: merge_env.py            
+  inflating: migrate_export.py       
+  inflating: mod.js                  
+  inflating: modify_right_pane.py    
+  inflating: monitor_build.py        
+  inflating: next-env.d.ts           
+  inflating: next.config.ts          
+  inflating: next_dir_2.txt          
+  inflating: nginx_config.txt        
+  inflating: package-lock.json       
+  inflating: package.json            
+  inflating: pm2.txt                 
+  inflating: pm2_crash_logs.txt      
+  inflating: pm2_latest.txt          
+  inflating: pm2_logs.txt            
+  inflating: pm2_logs2.txt           
+  inflating: pm2_logs_after_pages.txt  
+  inflating: pm2_logs_latest.txt     
+  inflating: pm2_restart_logs.txt    
+  inflating: pm2_status.txt          
+  inflating: postcss.config.mjs      
+  inflating: puppeteer-test.js       
+  inflating: push_async_export.py    
+  inflating: push_db.py              
+  inflating: push_export.py          
+  inflating: push_export2.py         
+  inflating: push_export3.py         
+  inflating: push_vps_db.py          
+  inflating: README.md               
+  inflating: read_env.py             
+  inflating: read_env2.py            
+  inflating: read_env_local.py       
+  inflating: read_nginx.py           
+  inflating: rebuild.py              
+  inflating: rebuild2.py             
+  inflating: rebuild3.py             
+  inflating: rebuild_vps.py          
+  inflating: reconstruct.py          
+  inflating: recovered_schema.txt    
+  inflating: recover_landing.py      
+  inflating: recover_schema.py       
+  inflating: refactor_text.py        
+  inflating: restart_pm2_vps.py      
+  inflating: restore_layout.py       
+  inflating: revert_chunking.py      
+  inflating: rewrite_export.py       
+  inflating: rewrite_ui.py           
+  inflating: rewrite_ui2.py          
+  inflating: run_deploy.py           
+  inflating: run_deploy_v2.py        
+  inflating: run_deploy_v3.py        
+  inflating: run_finish.py           
+  inflating: run_fix_static.py       
+  inflating: run_manual.py           
+  inflating: run_my_deploy.py        
+  inflating: run_nginx_debug.py      
+  inflating: run_nginx_fix.py        
+  inflating: run_nginx_test.py       
+  inflating: run_safe.py             
+  inflating: run_safe2.py            
+  inflating: run_test_smtp.py        
+  inflating: run_test_smtp2.py       
+  inflating: run_test_smtp_py.py     
+  inflating: run_update.py           
+  inflating: scrape.js               
+  inflating: scrape2.js              
+  inflating: Screenshot_20260708_135036.png  
+  inflating: search_archive.py       
+  inflating: search_pm2.py           
+  inflating: search_vps.py           
+  inflating: send_outreach.py        
+  inflating: send_outreach_tls.py    
+  inflating: src.tar.gz              
+  inflating: standalone_fix.py       
+  inflating: stripe test cc.docx     
+  inflating: supabase_setup.sql      
+  inflating: tailwind.config.ts      
+  inflating: temp_output.html        
+  inflating: test.html               
+  inflating: test.js                 
+  inflating: test_anim.mp4           
+  inflating: test_anim_audio.mp4     
+  inflating: test_api.py             
+  inflating: test_api2.py            
+  inflating: test_comp.html          
+  inflating: test_concat.js          
+  inflating: test_concat.mp4         
+  inflating: test_css.py             
+  inflating: test_css_again.py       
+  inflating: test_desktop.png        
+  inflating: test_editor.js          
+  inflating: test_editor_screenshot.png  
+  inflating: test_error.js           
+  inflating: test_error2.js          
+  inflating: test_esm.js             
+  inflating: test_exec.js            
+  inflating: test_exec_audio.js      
+  inflating: test_export.py          
+  inflating: test_in.mp4             
+  inflating: test_out.mp4            
+  inflating: test_site.py            
+  inflating: test_smtp.js            
+  inflating: test_smtp_mail.py       
+  inflating: test_smtp_py.py         
+  inflating: test_status.py          
+  inflating: test_stripe.ps1         
+  inflating: test_transition.mp4     
+  inflating: test_tts.py             
+  inflating: test_upload.py          
+  inflating: test_worker.js          
+  inflating: test_xfade.mp4          
+  inflating: test_xfade.py           
+  inflating: test_xfade_bug.js       
+  inflating: test_zoompan2.js        
+  inflating: tiny screen.png         
+  inflating: tsconfig.json           
+  inflating: tsconfig.tsbuildinfo    
+  inflating: update_env.py           
+  inflating: update_nginx_transcribe.py  
+  inflating: update_vps_prisma.py    
+  inflating: upgrade_backend.py      
+  inflating: upload_assets.py        
+  inflating: upload_backend.py       
+  inflating: upload_deploy.py        
+  inflating: upload_dist.py          
+  inflating: upload_frontend.py      
+  inflating: upload_kits.py          
+  inflating: vercel.json             
+  inflating: vps server.txt          
+  inflating: vps_down_logs.txt       
+  inflating: vps_error_html.txt      
+  inflating: vps_fail_logs.txt       
+  inflating: vps_logs.txt            
+  inflating: vps_logs_latest.txt     
+  inflating: wait_build.py           
+  inflating: wait_build_camera.py    
+  inflating: wait_for_build.py       
+  inflating: wait_for_build2.py      
+  inflating: wiki_videos.py          
+  inflating: ~$netization Pitch.docx  
+  inflating: ~$xuscut growth plan.docx  
+  inflating: ЁЯУ▒ NexusCut Mobile.docx  
+  inflating: ЁЯУ▒ NexusCut Mobile.pdf  
+  inflating: .idea/.gitignore        
+  inflating: .idea/misc.xml          
+  inflating: .idea/modules.xml       
+  inflating: .idea/NexusCut.iml      
+  inflating: .idea/vcs.xml           
+  inflating: .idea/workspace.xml     
+  inflating: .idea/caches/deviceStreaming.xml  
+  inflating: backend/.env            
+  inflating: backend/package-lock.json  
+  inflating: backend/package.json    
+  inflating: backend/server.js       
+  inflating: Logos/nexuscut-logo-dark.svg  
+  inflating: Logos/nexuscut-logo-light.svg  
+  inflating: NexusCut-Brand-Kit/NexusCut-Brand-Guidelines.pdf  
+  inflating: NexusCut-Brand-Kit/Logos/logo-dark.png  
+  inflating: NexusCut-Brand-Kit/Logos/nexuscut-logo-dark.svg  
+  inflating: NexusCut-Brand-Kit/Logos/nexuscut-logo-light.svg  
+  inflating: NexusCut-Brand-Kit/Swipe-Copy-and-Talking-Points/Email-Swipe-Copy.txt  
+  inflating: NexusCut-Brand-Kit/Swipe-Copy-and-Talking-Points/Talking-Points.txt  
+  inflating: NexusCut-Brand-Kit/UI-Mockups/desktop_mockup_1784784614209.png  
+  inflating: NexusCut-Brand-Kit/UI-Mockups/mobile_mockup_1784784630238.png  
+  inflating: NexusCut-Brand-Kit/UI-Mockups/tablet_mockup_1784784645704.png  
+  inflating: prisma/schema.prisma    
+  inflating: projects/nexuscut-project-1.nxp  
+  inflating: public/BingSiteAuth.xml  
+  inflating: public/brand-kit.pdf    
+  inflating: public/favicon.ico      
+  inflating: public/index.html       
+  inflating: public/logo.jpg         
+  inflating: public/metadata.json    
+  inflating: public/assets/desktop_mockup.png  
+  inflating: public/assets/mobile_mockup.png  
+  inflating: public/assets/tablet_mockup.png  
+  inflating: public/brand-kit-temp/NexusCut-Brand-Guidelines.pdf  
+  inflating: public/brand-kit-temp/Logos/logo-dark.png  
+  inflating: public/brand-kit-temp/Logos/nexuscut-logo-dark.svg  
+  inflating: public/brand-kit-temp/Logos/nexuscut-logo-light.svg  
+  inflating: public/brand-kit-temp/Logos/nexuscut-logo.jpg  
+  inflating: public/brand-kit-temp/Swipe-Copy-and-Talking-Points/Email-Swipe-Copy.txt  
+  inflating: public/brand-kit-temp/Swipe-Copy-and-Talking-Points/Talking-Points.txt  
+  inflating: public/brand-kit-temp/UI-Mockups/desktop_mockup_1784784614209.png  
+  inflating: public/brand-kit-temp/UI-Mockups/mobile_mockup_1784784630238.png  
+  inflating: public/brand-kit-temp/UI-Mockups/tablet_mockup_1784784645704.png  
+  inflating: public/marketplace/abdaal.jpg  
+  inflating: public/marketplace/asmr.jpg  
+  inflating: public/marketplace/growth.jpg  
+  inflating: public/marketplace/gta.jpg  
+  inflating: public/marketplace/hormozi.jpg  
+  inflating: public/sounds/boom.wav  
+  inflating: public/sounds/ding.wav  
+  inflating: public/sounds/pop.wav   
+  inflating: public/sounds/whoosh.wav  
+  inflating: public/templates/captions-pack.txt  
+  inflating: public/templates/Hormozi_Style.json  
+  inflating: public/templates/script-pack.txt  
+  inflating: public/templates/Script_Templates.md  
+  inflating: public/templates/viral-hooks.txt  
+  inflating: public/templates/Viral_Hooks_Master_List.md  
+  inflating: public/templates/captions/Aesthetic_Vlog_Style.json  
+  inflating: public/templates/captions/Ali_Abdaal_Style.json  
+  inflating: public/templates/captions/Corporate_Clean_Style.json  
+  inflating: public/templates/captions/Devin_Jatho_Style.json  
+  inflating: public/templates/captions/Gaming_Montage_Style.json  
+  inflating: public/templates/captions/GaryVee_Style.json  
+  inflating: public/templates/captions/Hormozi_Style.json  
+  inflating: public/templates/captions/Iman_Gadzhi_Style.json  
+  inflating: public/templates/captions/MrBeast_Style.json  
+  inflating: public/templates/captions/Y2K_Retro_Style.json  
+  inflating: public/templates/hooks/10_Viral_Hooks.md  
+  inflating: public/templates/scripts/Script_Templates.md  
+  inflating: public/_expo/static/js/web/entry-2268f4766346c577b401079f2226c7d2.js  
+  inflating: scratch/docx_contents.txt  
+  inflating: scratch/docx_output.txt  
+  inflating: scratch/extract_docx.py  
+  inflating: scratch/generate_other_packs.py  
+  inflating: scratch/generate_styles.py  
+  inflating: scratch/gen_brand_kit.py  
+  inflating: scratch/gen_pdf.py      
+  inflating: scratch/gen_rich_pdf.py  
+  inflating: scratch/gen_seo.py      
+  inflating: scratch/test_mediapipe.py  
+  inflating: screenshots/current screen.png  
+  inflating: screenshots/error.png   
+  inflating: screenshots/main screen.png  
+  inflating: screenshots/main screen2.png  
+  inflating: screenshots/supabase.png  
+  inflating: screenshots/supabaseAPI.png  
+  inflating: screenshots/text boxes.png  
+  inflating: src/middleware.ts       
+  inflating: src/ai/eraser.py        
+  inflating: src/ai/remove_bg.py     
+  inflating: src/ai/remove_bg_image.py  
+  inflating: src/app/favicon.ico     
+  inflating: src/app/globals.css     
+  inflating: src/app/layout.tsx      
+  inflating: src/app/page.tsx        
+  inflating: src/app/sitemap.ts      
+  inflating: src/app/academy/page.tsx  
+  inflating: src/app/academy/[slug]/page.tsx  
+  inflating: src/app/affiliates/page.tsx  
+  inflating: src/app/affiliates/dashboard/page.tsx  
+  inflating: src/app/api/affiliates/apply/route.ts  
+  inflating: src/app/api/auth/recover/route.ts  
+  inflating: src/app/api/auth/verify/route.ts  
+  inflating: src/app/api/b-roll/route.ts  
+  inflating: src/app/api/brand-kit/route.ts  
+  inflating: src/app/api/create-base/route.ts  
+  inflating: src/app/api/downloads/route.ts  
+  inflating: src/app/api/emojis/route.ts  
+  inflating: src/app/api/export/v2/route.ts  
+  inflating: src/app/api/extract-hook/route.ts  
+  inflating: src/app/api/magic-clip/route.ts  
+  inflating: src/app/api/marketing/route.ts  
+  inflating: src/app/api/marketing/templates/route.ts  
+  inflating: src/app/api/pipeline/route.ts  
+  inflating: src/app/api/projects/route.ts  
+  inflating: src/app/api/projects/save/route.ts  
+  inflating: src/app/api/projects/[id]/route.ts  
+  inflating: src/app/api/smart-tools/caption-generator/route.ts  
+  inflating: src/app/api/smart-tools/eraser/route.ts  
+  inflating: src/app/api/smart-tools/hook-generator/route.ts  
+  inflating: src/app/api/smart-tools/remove-bg/route.ts  
+  inflating: src/app/api/smart-tools/remove-bg-image/route.ts  
+  inflating: src/app/api/stripe/checkout/route.ts  
+  inflating: src/app/api/stripe/checkout-addon/route.ts  
+  inflating: src/app/api/stripe/portal/route.ts  
+  inflating: src/app/api/stripe/webhook/route.ts  
+  inflating: src/app/api/translate/route.ts  
+  inflating: src/app/api/tts/route.ts  
+  inflating: src/app/api/user/me/route.ts  
+  inflating: src/app/api/waitlist/route.ts  
+  inflating: src/app/blog/page.tsx   
+  inflating: src/app/blog/[slug]/page.tsx  
+  inflating: src/app/brand/page.tsx  
+  inflating: src/app/brand-kit/page.tsx  
+  inflating: src/app/compare/nexuscut-vs-nexusclips/layout.tsx  
+  inflating: src/app/compare/nexuscut-vs-nexusclips/page.tsx  
+  inflating: src/app/downloads/page.tsx  
+  inflating: src/app/editor/page.tsx  
+  inflating: src/app/help/page.tsx   
+  inflating: src/app/instagram-reels-editor/layout.tsx  
+  inflating: src/app/instagram-reels-editor/page.tsx  
+  inflating: src/app/labs/page.tsx   
+  inflating: src/app/marketplace/page.tsx  
+  inflating: src/app/marketplace/success/page.tsx  
+  inflating: src/app/pricing/page.tsx  
+  inflating: src/app/privacy/page.tsx  
+  inflating: src/app/products/desktop/page.tsx  
+  inflating: src/app/products/pad/page.tsx  
+  inflating: src/app/refund-policy/page.tsx  
+  inflating: src/app/templates/page.tsx  
+  inflating: src/app/terms/page.tsx  
+  inflating: src/app/tiktok-video-editor/layout.tsx  
+  inflating: src/app/tiktok-video-editor/page.tsx  
+  inflating: src/app/tools/ai-image-generator/layout.tsx  
+  inflating: src/app/tools/ai-image-generator/page.tsx  
+  inflating: src/app/tools/animated-subtitles/layout.tsx  
+  inflating: src/app/tools/animated-subtitles/page.tsx  
+  inflating: src/app/tools/audio-studio/layout.tsx  
+  inflating: src/app/tools/audio-studio/page.tsx  
+  inflating: src/app/tools/auto-captions/layout.tsx  
+  inflating: src/app/tools/auto-captions/page.tsx  
+  inflating: src/app/tools/nexus-animate/layout.tsx  
+  inflating: src/app/tools/nexus-animate/page.tsx  
+  inflating: src/app/tools/nexus-dream/layout.tsx  
+  inflating: src/app/tools/nexus-dream/page.tsx  
+  inflating: src/app/tools/remove-background/layout.tsx  
+  inflating: src/app/tools/remove-background/page.tsx  
+  inflating: src/app/tools/subtitle-style-generator/layout.tsx  
+  inflating: src/app/tools/subtitle-style-generator/page.tsx  
+  inflating: src/app/tools/tiktok-caption-generator/layout.tsx  
+  inflating: src/app/tools/tiktok-caption-generator/page.tsx  
+  inflating: src/app/tools/video-effects/layout.tsx  
+  inflating: src/app/tools/video-effects/page.tsx  
+  inflating: src/app/tools/viral-hook-generator/layout.tsx  
+  inflating: src/app/tools/viral-hook-generator/page.tsx  
+  inflating: src/app/tools/youtube-shorts-maker/layout.tsx  
+  inflating: src/app/tools/youtube-shorts-maker/page.tsx  
+  inflating: src/app/tutorial/page.tsx  
+  inflating: src/app/youtube-shorts-editor/layout.tsx  
+  inflating: src/app/youtube-shorts-editor/page.tsx  
+  inflating: src/components/AffiliateTracker.tsx  
+  inflating: src/components/Footer.tsx  
+  inflating: src/components/Navigation.tsx  
+  inflating: src/components/RecoverPurchases.tsx  
+  inflating: src/components/VideoEditor.old.tsx  
+  inflating: src/components/VideoEditor.tsx  
+  inflating: src/components/WaitlistModal.tsx  
+  inflating: src/components/Editor/CameraRecorderModal.tsx  
+  inflating: src/components/Editor/Canvas.tsx  
+  inflating: src/components/Editor/CaptionEditorModal.tsx  
+  inflating: src/components/Editor/GrowthModeWizard.tsx  
+  inflating: src/components/Editor/MobileActionBar.tsx  
+  inflating: src/components/Editor/MobileBottomSheet.tsx  
+  inflating: src/components/Editor/PropertiesPanel.tsx  
+  inflating: src/components/Editor/Sidebar.tsx  
+  inflating: src/components/Editor/TrackMedia.tsx  
+  inflating: src/components/Editor/TransitionModal.tsx  
+  inflating: src/components/Editor/Timeline/PlayheadController.tsx  
+  inflating: src/components/Editor/Timeline/SegmentItem.tsx  
+  inflating: src/components/Editor/Timeline/Timeline.tsx  
+  inflating: src/components/Editor/Timeline/TrackRow.tsx  
+  inflating: src/components/Editor/Timeline/VideoThumbnails.tsx  
+  inflating: src/components/Marketplace/AssetCard.tsx  
+  inflating: src/generated/prisma/browser.ts  
+  inflating: src/generated/prisma/client.ts  
+  inflating: src/generated/prisma/commonInputTypes.ts  
+  inflating: src/generated/prisma/enums.ts  
+  inflating: src/generated/prisma/models.ts  
+  inflating: src/generated/prisma/internal/class.ts  
+  inflating: src/generated/prisma/internal/prismaNamespace.ts  
+  inflating: src/generated/prisma/internal/prismaNamespaceBrowser.ts  
+  inflating: src/generated/prisma/models/Project.ts  
+  inflating: src/generated/prisma/models/User.ts  
+  inflating: src/lib/academyData.ts  
+  inflating: src/lib/blogData.ts     
+  inflating: src/lib/marketplaceData.ts  
+  inflating: src/lib/prisma.ts       
+  inflating: src/lib/rateLimit.ts    
+  inflating: src/pages/api/export.ts  
+  inflating: src/pages/api/transcribe.ts  
+  inflating: src/pages/api/export/download.ts  
+  inflating: src/pages/api/export/status.ts  
+  inflating: src/store/useEditorStore.ts  
+  inflating: Strategic Implementation/Implementation_Status_Report.md  
+  inflating: Strategic Implementation/Monetization Pitch.docx  
+  inflating: Strategic Implementation/Monetization Plan.docx  
+  inflating: Strategic Implementation/nexuscut growth plan.docx  
+  inflating: Strategic Implementation/NEXUSCUT SEO PLAN.docx  
+  inflating: Strategic Implementation/ЁЯЪА ADVANCED TRAFFIC STRATEGY FOR NEXUSCUT.docx  
+  inflating: Swipe-Copy-and-Talking-Points/Email-Swipe-Copy.txt  
+  inflating: Swipe-Copy-and-Talking-Points/Talking-Points.txt  
+  inflating: temp_assets/abdaal_blueprint.pdf  
+  inflating: temp_assets/asmr_sand.mp4  
+  inflating: temp_assets/gta_gameplay.mp4  
+  inflating: temp_assets/hormozi_blueprint.pdf  
+  inflating: temp_assets/README_TEMPLATE.txt  
+  inflating: temp_scripts/Script_Templates.md  
+  inflating: UI-Mockups/desktop_mockup_1784784614209.png  
+  inflating: UI-Mockups/mobile_mockup_1784784630238.png  
+  inflating: UI-Mockups/tablet_mockup_1784784645704.png  
+
+> nexuscut@0.1.0 postinstall
+> prisma generate && prisma db push
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v5.22.0) to ./node_modules/@prisma/client in 201ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Curious about the SQL queries Prisma ORM generates? Optimize helps you enhance your visibility: https://pris.ly/tip-2-optimize
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "dev.db" at "file:./dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v5.22.0) to ./node_modules/@prisma/client in 190ms
+
+
+up to date, audited 573 packages in 6s
+
+237 packages are looking for funding
+  run `npm fund` for details
+
+5 high severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues, run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 13.8s
+  Running TypeScript ...
+  Finished TypeScript in 10.0s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/97) ...
+  Generating static pages using 1 worker (24/97) 
+  Generating static pages using 1 worker (48/97) 
+  Generating static pages using 1 worker (72/97) 
+✓ Generating static pages using 1 worker (97/97) in 1267ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /academy
+├ ● /academy/[slug]
+│ ├ /academy/viral-hooks
+│ ├ /academy/editing-basics
+│ ├ /academy/gaming-clips
+│ └ [+3 more paths]
+├ ○ /affiliates
+├ ƒ /affiliates/dashboard
+├ ƒ /api/affiliates/apply
+├ ƒ /api/auth/recover
+├ ƒ /api/auth/verify
+├ ƒ /api/b-roll
+├ ƒ /api/brand-kit
+├ ƒ /api/create-base
+├ ƒ /api/downloads
+├ ƒ /api/emojis
+├ ƒ /api/export/v2
+├ ƒ /api/extract-hook
+├ ƒ /api/magic-clip
+├ ƒ /api/marketing
+├ ƒ /api/marketing/templates
+├ ƒ /api/pipeline
+├ ƒ /api/projects
+├ ƒ /api/projects/[id]
+├ ƒ /api/projects/save
+├ ƒ /api/smart-tools/caption-generator
+├ ƒ /api/smart-tools/eraser
+├ ƒ /api/smart-tools/hook-generator
+├ ƒ /api/smart-tools/remove-bg
+├ ƒ /api/smart-tools/remove-bg-image
+├ ƒ /api/stripe/checkout
+├ ƒ /api/stripe/checkout-addon
+├ ƒ /api/stripe/portal
+├ ƒ /api/stripe/webhook
+├ ƒ /api/translate
+├ ƒ /api/tts
+├ ƒ /api/user/me
+├ ƒ /api/waitlist
+├ ○ /blog
+├ ● /blog/[slug]
+│ ├ /blog/auto-captions-guide
+│ ├ /blog/ai-background-removal
+│ ├ /blog/best-ai-tools-for-tiktok
+│ └ [+17 more paths]
+├ ○ /brand
+├ ○ /brand-kit
+├ ○ /compare/nexuscut-vs-nexusclips
+├ ƒ /downloads
+├ ○ /editor
+├ ○ /help
+├ ○ /instagram-reels-editor
+├ ○ /labs
+├ ○ /marketplace
+├ ○ /marketplace/success
+├ ○ /pricing
+├ ○ /privacy
+├ ○ /products/desktop
+├ ○ /products/mobile
+├ ○ /products/pad
+├ ○ /refund-policy
+├ ○ /sitemap.xml
+├ ○ /templates
+├ ○ /terms
+├ ○ /tiktok-video-editor
+├ ○ /tools/ai-image-generator
+├ ○ /tools/animated-subtitles
+├ ○ /tools/audio-studio
+├ ○ /tools/auto-captions
+├ ○ /tools/nexus-animate
+├ ○ /tools/nexus-dream
+├ ○ /tools/remove-background
+├ ○ /tools/subtitle-style-generator
+├ ○ /tools/tiktok-caption-generator
+├ ○ /tools/video-effects
+├ ○ /tools/viral-hook-generator
+├ ○ /tools/youtube-shorts-maker
+├ ○ /tutorial
+└ ○ /youtube-shorts-editor
+
+Route (pages)
+┌ ƒ /api/export
+├ ƒ /api/export/download
+├ ƒ /api/export/status
+└ ƒ /api/transcribe
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+[PM2] Applying action restartProcessId on app [nexuscut](ids: [ 5 ])
+[PM2] [nexuscut](5) ✓
+┌────┬────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name           │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 5  │ nexuscut       │ default     │ 0.1.0   │ fork    │ 819339   │ 0s     │ 677  │ online    │ 0%       │ 25.0mb   │ root     │ disabled │
+│ 1  │ nexuscut-ai    │ default     │ 1.0.0   │ fork    │ 720109   │ 4D     │ 3    │ online    │ 0%       │ 30.2mb   │ root     │ disabled │
+└────┴────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+host metrics | cpu: 84.7% | ram usage: 51.6% | lo: ⇓ 0.005mb/s ⇑ 0.005mb/s | eth0: ⇓ 0.01mb/s ⇑ 0.002mb/s drop 34/min | disk: ⇓ 12.432mb/s ⇑ 9.127mb/s |

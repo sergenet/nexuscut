@@ -1,0 +1,24 @@
+
+> nexuscut@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local, .env
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 14.4s
+  Running TypeScript ...
+
+Failed to type check.
+
+./src/components/AffiliateTracker.tsx:10:17
+Type error: 'searchParams' is possibly 'null'.
+
+  [90m 8 |[0m
+  [90m 9 |[0m   useEffect(() => {
+[31m[1m>[0m [90m10 |[0m     [36mconst[0m ref = searchParams.get([32m'ref'[0m);
+  [90m   |[0m                 [31m[1m^[0m
+  [90m11 |[0m     [36mif[0m (ref) {
+  [90m12 |[0m       [90m// Store in a cookie that lasts for 30 days[0m
+  [90m13 |[0m       [36mconst[0m d = [36mnew[0m [33mDate[0m();
+Next.js build worker exited with code: 1 and signal: null

@@ -1,0 +1,6 @@
+
+C:\Projects\NexusCut-Website\NexusCut\src\app\api\marketing\founding-testers\route.ts
+  1:8  warning  'crypto' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+

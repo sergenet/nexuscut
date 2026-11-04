@@ -6,13 +6,15 @@ if (!process.env.PEXELS_API_KEY) console.warn("PEXELS_API_KEY missing");
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const PEXELS_KEY = process.env.PEXELS_API_KEY;
+interface Caption { start: number; end: number; word: string }
+interface PexelsVideoFile { width: number; file_type: string; link: string }
 
 export async function POST(req: Request) {
   try {
     const { captions } = await req.json();
     if (!captions || captions.length === 0) return NextResponse.json({ error: 'No captions provided' }, { status: 400 });
 
-    const transcriptText = captions.map((c: any) => `[${c.start.toFixed(1)}s-${c.end.toFixed(1)}s] ${c.word}`).join(" ");
+    const transcriptText = (captions as Caption[]).map(c => `[${c.start.toFixed(1)}s-${c.end.toFixed(1)}s] ${c.word}`).join(" ");
 
     const systemPrompt = `You are an expert social media video editor.
 Analyze the transcript and find exactly 1 or 2 high-impact moments that would benefit from B-Roll stock footage.
@@ -62,8 +64,8 @@ Return exactly this JSON structure:
         
         if (pexelsData.videos && pexelsData.videos.length > 0) {
           // Find the best quality mp4
-          const files = pexelsData.videos[0].video_files;
-          const bestFile = files.sort((a: any, b: any) => b.width - a.width).find((f: any) => f.file_type === 'video/mp4');
+          const files = pexelsData.videos[0].video_files as PexelsVideoFile[];
+          const bestFile = files.sort((a, b) => b.width - a.width).find(f => f.file_type === 'video/mp4');
           
           if (bestFile) {
             segments.push({
@@ -81,8 +83,8 @@ Return exactly this JSON structure:
 
     return NextResponse.json({ segments });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('B-Roll error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'B-roll generation failed' }, { status: 500 });
   }
 }

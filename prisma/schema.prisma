@@ -1,10 +1,8 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "rhel-openssl-1.0.x", "rhel-openssl-1.1.x", "rhel-openssl-3.0.x", "debian-openssl-1.1.x", "debian-openssl-3.0.x", "debian-openssl-1.0.x"]
 }
 
@@ -13,33 +11,209 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Records one-off production data migrations. Keep this mapped model in the
+// Prisma schema so db push never treats the operational history as disposable.
+model NexusCutMigration {
+  name      String   @id
+  appliedAt DateTime @default(now())
+}
+
 model User {
-  id        String   @id @default(uuid())
-  clerkId   String   @unique
-  email     String?  @unique
-  isPro     Boolean  @default(false)
-  stripeCustomerId String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  projects  Project[]
+  id                   String               @id @default(uuid())
+  clerkId              String               @unique
+  email                String?              @unique
+  passwordHash         String?
+  isPro                Boolean              @default(false)
+  planTier             String               @default("free")
+  exportCount          Int                  @default(0)
+  exportPeriodStart    DateTime?
+  stripeCustomerId     String?
+  referredByCode       String?
+  attributionSource    String?
+  attributionMedium    String?
+  attributionCampaign  String?
+  attributionContent   String?
+  attributionTerm      String?
+  attributionVisitorId String?
+  trialStartedAt       DateTime?
+  firstPaidAt          DateTime?
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+  projects             Project[]
+  brandKit             BrandKit?
+  referrals            Referral[]
+  purchases            Purchase[]
+  conversionEvents     ConversionEvent[]
+  agencyBrandProfiles  AgencyBrandProfile[]
+}
+
+model AgencyBrandProfile {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name           String
+  primaryColor   String?
+  secondaryColor String?
+  fontUrl        String?
+  logoUrl        String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([userId, name])
+}
+
+model ConversionEvent {
+  id              String   @id @default(uuid())
+  externalEventId String   @unique
+  eventName       String
+  userId          String?
+  user            User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  visitorId       String?
+  source          String?
+  medium          String?
+  campaign        String?
+  content         String?
+  value           Float?
+  currency        String   @default("USD")
+  createdAt       DateTime @default(now())
 }
 
 model Project {
-  id             String   @id @default(uuid())
-  name           String   @default("Untitled Project")
-  userId         String
-  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+  id     String @id @default(uuid())
+  name   String @default("Untitled Project")
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   // SQLite doesn't support Json type in Prisma, so we use String to store stringified JSON
-  editorState    String?  
-  
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  editorState String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model WaitlistEntry {
   id        String   @id @default(uuid())
-  email     String   @unique
+  email     String
   product   String
   createdAt DateTime @default(now())
+
+  @@unique([email, product])
+}
+
+model AffiliateApplication {
+  id         String   @id @default(uuid())
+  email      String
+  channelUrl String
+  status     String   @default("pending")
+  createdAt  DateTime @default(now())
+}
+
+model Affiliate {
+  id              String     @id @default(uuid())
+  affiliateCode   String     @unique
+  commissionRate  Float      @default(0.30)
+  payoutEmail     String     @unique
+  payoutThreshold Float      @default(50.00)
+  createdAt       DateTime   @default(now())
+  referrals       Referral[]
+}
+
+model Referral {
+  id             String    @id @default(uuid())
+  affiliateId    String
+  affiliate      Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Cascade)
+  referredUserId String    @unique
+  referredUser   User      @relation(fields: [referredUserId], references: [id], onDelete: Cascade)
+  amount         Float
+  status         String    @default("pending") // pending, paid, cancelled
+  createdAt      DateTime  @default(now())
+  paidAt         DateTime?
+  cancelledAt    DateTime?
+}
+
+model BrandKit {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  primaryColor   String?
+  secondaryColor String?
+  fontUrl        String?
+  logoUrl        String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Purchase {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itemId    String
+  amount    Float
+  createdAt DateTime @default(now())
+
+  @@unique([userId, itemId])
+}
+
+model GuestUsage {
+  id         String   @id @default(uuid())
+  identifier String   @unique // Could be IP address or device fingerprint
+  type       String // 'IP' or 'FINGERPRINT'
+  usageCount Int      @default(0)
+  createdAt  DateTime @default(now())
+  lastUsedAt DateTime @default(now())
+}
+
+model MagicLink {
+  id        String   @id @default(uuid())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Lead {
+  id        String   @id @default(uuid())
+  email     String
+  source    String
+  createdAt DateTime @default(now())
+
+  @@unique([email, source])
+}
+
+model FoundingTesterApplication {
+  id          String   @id @default(uuid())
+  name        String
+  email       String   @unique
+  creatorType String
+  status      String   @default("pending")
+  visitorId   String?
+  source      String?
+  medium      String?
+  campaign    String?
+  content     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// The Soro feed is intentionally stored separately from published blog pages.
+// Importing a feed item creates only a private owner draft; it can never make
+// an article public by itself.
+model SoroFeedConfig {
+  id        String   @id @default("primary")
+  feedUrl   String
+  updatedAt DateTime @updatedAt
+}
+
+model SoroDraft {
+  id          String    @id @default(uuid())
+  sourceGuid  String    @unique
+  title       String
+  slug        String?
+  sourceUrl   String?
+  excerpt     String?
+  contentHtml String
+  publishedAt DateTime?
+  importedAt  DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  status      String    @default("draft")
 }

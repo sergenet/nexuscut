@@ -1,0 +1,16 @@
+total 116
+drwxr-xr-x  9 root root  4096 Aug  4 23:54 .
+drwxr-xr-x 25 root root 20480 Aug  4 23:54 ..
+drwxr-xr-x  3 root root  4096 Aug  4 23:54 build
+-rw-r--r--  1 root root   866 Aug  4 23:54 build-manifest.json
+drwxr-xr-x  2 root root  4096 Aug  4 23:54 cache
+drwxr-xr-x  2 root root  4096 Aug  4 23:54 diagnostics
+-rw-r--r--  1 root root   586 Aug  4 23:54 fallback-build-manifest.json
+-rw-rw-r--  1 root root  5527 Aug  4 23:54 next-minimal-server.js.nft.json
+-rw-rw-r--  1 root root 42068 Aug  4 23:54 next-server.js.nft.json
+drwxr-xr-x  4 root root  4096 Aug  4 23:54 node_modules
+-rw-r--r--  1 root root    20 Aug  4 23:54 package.json
+drwxr-xr-x  7 root root  4096 Aug  4 23:54 server
+drwxr-xr-x  5 root root  4096 Aug  4 23:54 static
+-rw-r--r--  1 root root     0 Aug  4 23:54 turbopack
+drwxr-xr-x  2 root root  4096 Aug  4 23:54 types

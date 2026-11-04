@@ -1,0 +1,21 @@
+{
+    "name": "Devin_Jatho_Style",
+    "fontFamily": "Courier New, monospace",
+    "fontSize": 64,
+    "fontWeight": "bold",
+    "fontColor": "#00FF00",
+    "textTransform": "none",
+    "stroke": {
+        "color": "#000000",
+        "width": 3
+    },
+    "shadow": {
+        "color": "#00FF00",
+        "offsetX": 0,
+        "offsetY": 0,
+        "blur": 20
+    },
+    "highlightColor": "#FFFFFF",
+    "animation": "typewriter",
+    "description": "Hacker/coding style typewriter captions."
+}

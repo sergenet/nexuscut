@@ -36,7 +36,7 @@ ${JSON.stringify(captions)}`;
     const translatedArray = parsed.captions || parsed;
 
     return NextResponse.json(translatedArray);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Translation API error:', error);
     return NextResponse.json({ error: 'Failed to translate captions' }, { status: 500 });
   }
