@@ -4,6 +4,7 @@ import {
   sanitizeHtml,
   type SoroBlogPost,
 } from '@/lib/soroBlog';
+import { guidePosts } from '@/lib/blogGuides2026';
 
 export interface BlogPostLike {
   slug: string;
@@ -111,9 +112,12 @@ export function getStaticBlogPost(slug: string): BlogPostLike | undefined {
 }
 
 export const blogPosts: BlogPostLike[] = [
+  // Five long-form guides added 2026-11-06; newest first, matching the order
+  // this array has always used.
+  ...guidePosts,
   {
     slug: 'ai-powered-short-form-video-editor',
-    title: 'AI Powered Short Form Video Editor That Stays Editable',
+    title: 'AI Short-Form Video Editor That Stays Editable',
     description: 'Use AI to move faster on captions and silence cuts—while keeping full control of every cut, caption, and layer.',
     date: '2026-08-16',
     category: 'Workflow',

@@ -36,6 +36,17 @@ export async function generateMetadata({
   };
 }
 
+/**
+ * The page already renders the post title as the page's only H1, and every
+ * static post also opens its markdown with `# <the same title>`. That shipped
+ * two H1 elements on all 27 posts. Drop the markdown one rather than editing
+ * every post, so new posts cannot reintroduce it.
+ */
+function stripLeadingHeading(markdown: string): string {
+  const match = markdown.match(/^\s*#\s+[^\n]*\n?/);
+  return match ? markdown.slice(match[0].length) : markdown;
+}
+
 export const revalidate = 60;
 
 export default async function BlogPostPage({
@@ -118,7 +129,7 @@ export default async function BlogPostPage({
             // Soro drafts are HTML, sanitized once in blogData before rendering.
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           ) : (
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <ReactMarkdown>{stripLeadingHeading(post.content)}</ReactMarkdown>
           )}
         </div>
 
