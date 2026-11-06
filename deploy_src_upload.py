@@ -12,6 +12,11 @@ LOCAL_SRC = r"C:\Projects\NexusCut-Website\NexusCut\src"
 REMOTE_ROOT = "/var/www/nexuscut"
 EXCLUDE_DIRS = {"generated", "node_modules", ".next"}
 NODE_PATH = "export PATH=$PATH:/root/.nvm/versions/node/v20.20.2/bin && "
+# The box has 2 GB of RAM, so V8 picks a ~1 GB old-space ceiling by default and
+# `next build` dies with "Reached heap limit" during the type-check phase once
+# the project grows past it. 3 GB is safe here because the host has 4 GB of swap
+# behind it; leave room for the OS and the running web process.
+BUILD_MEMORY = "export NODE_OPTIONS=--max-old-space-size=3072 && "
 
 
 def run(ssh, cmd, timeout=300):
@@ -57,7 +62,7 @@ def main():
         # 3. Build on the VPS. The running site keeps serving the old build
         #    until we explicitly restart pm2, so a failed build is safe.
         build_cmd = (
-            f"cd {REMOTE_ROOT} && {NODE_PATH}npm run build > /root/deploy_build.log 2>&1; "
+            f"cd {REMOTE_ROOT} && {NODE_PATH}{BUILD_MEMORY}npm run build > /root/deploy_build.log 2>&1; "
             "echo BUILD_EXIT:$?"
         )
         code, out, err = run(ssh, build_cmd, timeout=1200)

@@ -1,12 +1,19 @@
 import type { BlogPostLike } from '@/lib/blogData';
 
 /**
- * Five long-form guides added 2026-11-06 to give the blog real depth.
+ * Ten long-form guides added 2026-11-06 in two rounds, to give the blog real
+ * depth.
  *
  * The site was rejected by AdSense for "low value content" while its median
  * post ran about 450 words. These are written as standalone answers — a reader
  * who never opens the editor should still get the whole method — because that
  * is what the rejection is actually about.
+ *
+ * Round one covers making one clip: podcast repurposing, safe zones, caption
+ * readability, Shorts length, audio repair. Round two covers the work around
+ * it: batching, export settings, file organisation, rights, publishing. The
+ * two rounds deliberately do not overlap in subject, so they compete for
+ * different searches rather than each other.
  *
  * Kept in their own module so blogData.ts stays readable. The array is spread
  * into `blogPosts`, so the blog index, the sitemap and generateStaticParams all
@@ -512,6 +519,483 @@ Those four changes do more than any processing chain.
 Mix on a phone speaker, not on headphones, because that is the device most viewers will use. If the voice is clear and the music does not muddy it on a phone speaker, the mix works. Headphones hide exactly the problems that a phone speaker exposes.
 
 Then check once more with the volume at about a third. If you can still follow every word, the clip is done.
+`,
+  },
+
+  /* ---------------------------------------------------------------------
+   * Round two, same day. A different cluster from round one: not how to cut
+   * a single clip, but how to run the work around it - batching, export,
+   * file organisation, rights, publishing. Deliberately kept away from
+   * captions, hooks and per-niche editing so the two rounds do not compete
+   * for the same queries.
+   * ------------------------------------------------------------------- */
+  {
+    slug: 'batch-produce-shorts',
+    title: 'How to Batch Produce a Week of Shorts in One Session',
+    description:
+      'A two-session weekly system for producing several shorts at once: one capture pass, one edit pass, and a review the next day.',
+    date: '2026-11-06',
+    category: 'Workflow',
+    content: `
+# How to Batch Produce a Week of Shorts in One Session
+
+Most creators do not quit because they run out of ideas. They quit because producing one clip a day means opening the editor, loading footage, remembering where they left off, and closing it again five times a week. The editing itself might take twenty minutes; the context switching around it takes an hour.
+
+Batching is the fix, but not in the way it is usually described. You do not want one enormous session where you record everything and edit everything. You want two shorter sessions that each do one kind of work: one where you capture raw material, and one where you cut it. A third, very short session the next day catches the mistakes the first two could not see.
+
+This is the system, and it assumes you are one person with limited hours.
+
+## Why switching costs more than editing
+
+The expensive part of a five-clip week is not five times the cutting. It is five times the setup: finding the file, remembering the take you liked, re-establishing where the caption style lives, re-deciding the export settings.
+
+Every one of those decisions is a small tax, and the tax is paid per session rather than per clip. Collapse five sessions into two and you pay it twice instead of five times. The clips do not get shorter to edit; the overhead around them mostly disappears.
+
+There is a second benefit that matters more over months. Decisions made once and reused produce a consistent look. Decisions made fresh each day produce five clips that look like five different channels.
+
+## Before you record, pick one constraint per batch
+
+A batch needs to be narrow enough that the clips share a shape. Choose one constraint from each row and hold it for the whole batch:
+
+- **One subject area.** Five clips about the same topic can share research, b-roll and captions. Five unrelated clips share nothing.
+- **One format.** All talking head, all screen recording, all text-on-background. Mixing formats inside a batch reintroduces setup cost.
+- **One target length.** Pick a window, such as 30 to 45 seconds, and stay inside it. Length variation is a per-clip decision that batching is meant to remove.
+- **One opening device.** A question, a claim, a number, a mistake. Same device five times reads as a series rather than a scatter.
+
+Write the five openings down as sentences before you record anything. Not outlines, sentences. The opening line is the hardest part of a short, and writing it while the camera is running is how you end up with five clips that all begin with "okay so".
+
+## Session one: capture raw material
+
+The capture session produces footage, not finished clips. Its only job is to get usable takes on disk with the names intact.
+
+1. **Set up once.** Camera or screen, microphone, light, backdrop — set and leave. Do not adjust between takes.
+2. **Record each opening twice.** One straight take, one with a different energy. Two takes per clip is enough; more takes is procrastination with a red light on.
+3. **Do not stop for mistakes.** Restart the sentence, keep rolling, fix it in the edit. Stopping to perfect a take is how a one-hour session becomes three.
+4. **Slate each take out loud.** Say the clip number and the take before you start. It saves the entire matching step later.
+5. **Stop while you still have energy.** A batch recorded tired produces clips that sound tired, and no edit fixes that.
+
+If you are working from an existing long recording — a podcast, a webinar, a livestream — this session becomes a selection session instead. Read the transcript and mark candidate moments rather than recording anything new. The method for that is in our guide to [turning one podcast into ten shorts](/blog/podcast-into-shorts).
+
+## Session two: edit in passes, not per clip
+
+This is the part most people get wrong. The instinct is to finish clip one completely, then start clip two. That means re-deciding caption style, font size, safe-zone position and export settings five separate times, and it means five separate chances to be inconsistent.
+
+Instead, work in passes across the whole batch:
+
+- **Pass one — selection.** For every clip, pick the take and trim the start and end. Nothing else. Rough is fine.
+- **Pass two — structure.** Cut the dead air and any sentence that does not earn its place. This is where a batch gets faster, because after three clips you can hear the same filler pattern in all of them.
+- **Pass three — captions.** Transcribe and style every clip in one sitting, using one style. Changing caption treatment between clips in a batch is the single most visible inconsistency.
+- **Pass four — sound.** Levels, music bed if any, and the check described in [fixing bad audio](/blog/fix-bad-audio-shorts). Do this for all clips back to back and your ears calibrate to the batch rather than to one clip.
+- **Pass five — export.** Every clip, one settings preset, one destination folder. This is the pass where a saved preset earns its keep.
+
+Five passes over five clips is roughly the same editing work as five finished clips, done in a third of the elapsed time, because each pass uses one kind of attention.
+
+## One project per clip, one folder per batch
+
+It is tempting to keep a whole batch in a single project timeline, stacked end to end. Do not. A single timeline makes it impossible to export one clip again after a fix without re-deriving where it starts and ends, and it hides length problems.
+
+Save one project file per clip, all inside one batch folder, named so the order is obvious when sorted alphabetically. A naming scheme that survives a year is covered in [how to organize video projects](/blog/organize-video-projects).
+
+## The next-day review is not optional
+
+Come back the following morning and watch the batch on a phone, in order, before publishing anything. Roughly the mistakes that survive an editing session are:
+
+- An opening line that only makes sense if you already know the topic.
+- A caption sitting under the platform interface, which is a framing problem you cannot see while editing on a desktop monitor.
+- A clip that is fine but redundant with another clip in the same batch.
+- Audio that is loud enough on headphones and too quiet on a phone speaker.
+
+The next-day pass typically catches one real problem per batch. That is worth ten minutes.
+
+## Killing a clip is part of batching
+
+Batches produce some clips that should not ship. A clip that needs a paragraph of setup to make sense, or that duplicates a point already made better in the batch, is not worth rescue editing.
+
+The economics are the argument: if four strong clips go out and one weak clip is deleted, the week is fine. If five clips go out and one is weak, the weak one spends attention that the strong ones needed. Deleting is cheaper than fixing, and much cheaper than the habit of publishing everything you make.
+
+## Where batching stops working
+
+This system suits talking-head commentary, explainers, screen recordings, tutorials and anything built from a script. It is a poor fit for footage where the clip is found rather than made: sports, event coverage, reaction content, anything where you are selecting from hours of someone else doing something.
+
+For that material, the search is the work and it cannot be predicted in advance. Batch the parts around it — captions, export, thumbnails — but accept that the selection pass will be per clip.
+
+## A realistic weekly shape
+
+Two sessions and a review. Session one captures raw material for the batch. Session two cuts it in passes. The review happens the next morning and takes ten minutes. Publishing is scheduled in one go rather than daily, which is the subject of [publishing and scheduling shorts](/blog/publish-and-schedule-shorts).
+
+None of that requires a bigger team or a better camera. It requires deciding that the week has two editing sessions instead of five, and then protecting that decision when an idea arrives on a Wednesday and feels urgent. The idea goes into the next batch. That is what makes the next batch easy to record.
+`,
+  },
+  {
+    slug: 'export-settings-vertical-video',
+    title: 'Export Settings for Vertical Video That Survive Upload',
+    description:
+      'Resolution, frame rate, bitrate, codec and audio settings for vertical video, plus the export mistakes that cause soft or silent uploads.',
+    date: '2026-11-06',
+    category: 'Tutorial',
+    content: `
+# Export Settings for Vertical Video That Survive Upload
+
+Every platform re-encodes what you upload. That single fact explains most of the "why does my video look worse after posting" complaints. You are not choosing a final file; you are choosing how much quality is left for their encoder to work with.
+
+Get the basics right and a phone-shot clip looks crisp after upload. Get them wrong and even good footage goes soft, stutters, or arrives silent.
+
+## Resolution: 1080 by 1920 is the floor, not the target
+
+Vertical video is 9:16. The safe export is 1080 by 1920. It is what every platform accepts, it plays everywhere, and it is small enough to upload quickly.
+
+Exporting larger has one real benefit: if the platform decides to re-encode at a higher resolution, it has detail to work with. Exporting at 1440 by 2560 or 2160 by 3840 from a source that genuinely has that detail can look slightly cleaner after upload. It also multiplies file size and upload time, and it does nothing at all if the original footage was 1080 by 1920 to begin with.
+
+The rule that matters: never upscale. Exporting a 720p source at 4K produces a large file full of interpolated mush, and the platform's encoder will spend bitrate preserving the mush.
+
+If your footage is horizontal and you are cropping to vertical, check the crop before you check the settings. A crop that cuts off the top of someone's head is not fixable in the export dialog.
+
+## Frame rate: match the source, do not convert
+
+Export at the frame rate you shot. 30 frames per second for most talking-head and tutorial content, 60 for gameplay, sports and anything with fast motion.
+
+Converting frame rates is where stutter comes from. 24 to 30 requires inventing frames or repeating them, and 30 to 24 means dropping them. Both produce judder that is subtle on a desktop monitor and obvious on a phone.
+
+The other trap is variable frame rate. Many phone cameras and nearly all screen recorders write files whose frame timing varies instead of staying constant. Editors dislike this, and the mismatch can produce audio drift that grows over the length of the clip. If you record screen content, check whether the recorder can output constant frame rate, and set the export to the same rate.
+
+## Bitrate: the setting that actually decides sharpness
+
+Bitrate is how many bits per second are spent describing the picture. Too low and motion turns into blocks; too high and you have a big file with no visible gain, because the platform will compress it anyway.
+
+As a starting point for 1080 by 1920:
+
+- **30 fps:** roughly 10 to 16 Mbps is a sensible window for most content.
+- **60 fps:** roughly 16 to 24 Mbps, because there are twice as many frames to describe.
+- **Talking head with a static background:** the low end is fine. Compression loves stillness.
+- **Fast motion, confetti, water, camera movement:** go to the high end. These are the patterns that break first.
+
+If a platform offers a quality slider instead of a number, choose the high setting for anything with movement and the middle setting for static content. Do not choose the maximum out of superstition; it costs upload time and returns little.
+
+## Codec: H.264 unless you have a reason
+
+H.264 is understood by every platform, every browser and every phone. It is the safe default and the one to use when you do not want to think about this section.
+
+H.265, also called HEVC, produces a smaller file at the same quality, which matters if your upload connection is slow. The cost is compatibility: some platforms re-encode it poorly, some browsers will not preview it, and older devices may refuse it. If you use HEVC, keep the H.264 version as the one you actually upload and treat the smaller file as a backup.
+
+ProRes, DNxHD and similar editing codecs are for intermediate work, not for publishing. They are enormous and platforms will compress them heavily. Export them only as a master copy you keep for later re-edits.
+
+## Audio: the settings nobody checks until it is silent
+
+Audio problems are the most common reason a finished export gets pulled minutes after posting. Set these deliberately:
+
+- **Sample rate:** 48 kHz. Music and platform pipelines assume it, and resampling a 44.1 kHz export adds a step you do not need.
+- **Channels:** stereo, even for a single voice. Mono tracks sometimes play on one side only depending on how the platform handles them.
+- **Bitrate:** 320 kbps AAC, or 256 if the option is not offered. Audio bitrate is cheap; do not economise here.
+- **Loudness:** many platforms normalise toward roughly minus 14 LUFS. Mixing far below that gets turned up, which raises the noise floor; mixing far above gets turned down, which flattens impact. Aim near it and check the meter rather than trusting your ears on one device.
+
+Then listen to the exported file on a phone speaker at low volume. If the voice is still intelligible, the mix works.
+
+## The five export mistakes that show up most
+
+1. **Double compression.** Exporting from an already-published download, then uploading again. Each pass costs quality. Always export from the original source.
+2. **Wrong aspect ratio.** A 16:9 export with black bars top and bottom is technically vertical and looks like a mistake. Crop or reframe instead.
+3. **Cropping after styling.** Captions and graphics placed for a full frame get cut when the frame is cropped at export. Style for the final canvas.
+4. **Exporting before checking the last frame.** Exporters occasionally drop the final frame or freeze it. Watch the end, not just the beginning.
+5. **Trusting the preview.** Editor previews are frequently scaled down, so softness and caption placement errors are invisible there. Judge the exported file.
+
+## A checklist to run once per batch
+
+- Canvas 1080 by 1920, no letterboxing.
+- Frame rate matches the source and is constant.
+- Bitrate at the high end for motion, the low end for static.
+- H.264 unless there is a specific reason otherwise.
+- 48 kHz stereo audio, around minus 14 LUFS.
+- File plays start to finish outside the editor.
+- Audio audible on a phone speaker at a third of the volume.
+- Captions clear of the platform interface.
+
+Save that as a preset and the export pass in a batch becomes near-mechanical, which is exactly what you want it to be. The batching method itself is in [how to batch produce a week of shorts](/blog/batch-produce-shorts).
+`,
+  },
+  {
+    slug: 'organize-video-projects',
+    title: 'How to Organize Video Projects You Can Find Again',
+    description:
+      'A folder-and-filename system for video work that still makes sense six months later, including versioning, backups and safe deletion.',
+    date: '2026-11-06',
+    category: 'Workflow',
+    content: `
+# How to Organize Video Projects You Can Find Again
+
+The failure is rarely dramatic. It is three months later, a clip performed well, and you want to make a follow-up from the same footage — and you cannot find the take. The export is somewhere, the original is nowhere, and the project file has a name like final2new.
+
+Video work generates a lot of files that look similar: many takes, several exports, screenshots, audio recordings, versions. Without a system the folder becomes a pile, and a pile is only searchable by memory.
+
+This is a small system that survives time, and it costs about ten seconds per project.
+
+## Decide the naming rule once
+
+The rule should be boring and sortable. Date first, then subject, then version:
+
+**2026-11-06-sourdough-timelapse-v02**
+
+Why each part earns its place:
+
+- **Date first in year-month-day order** sorts correctly in every file browser without any special tool. Day-first or month-first formats do not.
+- **Lowercase with hyphens** avoids the space-versus-underscore argument and travels safely between Windows, macOS, Linux servers and web uploads.
+- **A subject a stranger could understand.** Not "clip", not "test", not "edit".
+- **A version number with two digits**, so v10 does not sort before v2.
+
+Apply it to projects, exports and batch folders. Apply it to nothing else; the value comes from it being universal.
+
+## One folder per project, three subfolders
+
+Every project gets a folder named with that convention, containing exactly three subfolders:
+
+- **raw** — camera originals, screen recordings, imported audio. Never edited, never deleted until the project is archived.
+- **work** — the project file, plus anything generated during editing: proxies, transcripts, graphics, music.
+- **export** — finished files, and only finished files.
+
+The discipline that makes this work is that **raw is read-only**. The moment you trim, rename or move a file inside raw, you have lost the ability to tell the original from the derivative.
+
+If your editor imports by reference rather than copying, this structure matters more, because moving raw breaks the project. Keep the folder in one place and do not reorganise it mid-project.
+
+## Version up, never sideways
+
+Replacements are where projects get lost. The habit to build: never edit over a version you might want back, and never use the word final.
+
+Use v01, v02, v03 — and when a reviewer asks for changes, v04 is a copy, not an overwrite. Two rules make this cheap:
+
+- Only version when something external has seen the previous one. Internal saves do not need versions.
+- Write one line in a notes file saying what changed in each version. Six weeks later, v07 is meaningless without it.
+
+"final" is the word that ends up on four different files. If you must use a word, use the version number and let the highest one be the current one.
+
+## The project file is the artifact
+
+An export is a dead end. The project file is what lets you re-cut, re-caption or re-time the same material for a different platform. Treat it as the thing you are protecting.
+
+Two consequences:
+
+- **Save the project somewhere you will still have it.** If you edit in the browser, download and keep the project file alongside the export, in the same project folder.
+- **Keep the material the project depends on.** A project file that references a clip you deleted is a file that no longer opens properly.
+
+## Backups: the honest minimum
+
+A single copy on a single drive is not a backup, and video files are large enough that people skip this step entirely until they lose something.
+
+The minimum worth doing: keep the working project on your main drive, keep a copy of the **export** folder on a second drive or cloud location, and keep the **raw** folder until the project is at least a month old. Exports are small and valuable; raw is large and only sometimes needed again.
+
+If you want the formal version of this, the widely used phrasing is three copies, two kinds of media, one off-site. For a solo creator the practical version is a working drive, an external drive, and one cloud copy of the exports.
+
+## Deleting without regret
+
+Space runs out, and the order in which to give it up is fairly consistent:
+
+1. **Intermediate renders and proxies.** Regenerable, and often the largest files in the folder.
+2. **Duplicated exports.** Keep the highest quality one; the version sent to a client three revisions ago is rarely needed.
+3. **Raw footage for projects that shipped and are older than a month.** Delete only after the export is backed up and the project file is saved.
+
+What not to delete: the project files, the exported masters, and anything you do not have a second copy of.
+
+## Handing files to someone else
+
+When a collaborator or client needs the material, send a folder that follows the same convention, and include the notes file. The naming rule is the whole handoff: they can tell which file is newest without opening any of them.
+
+If you are sending an export for review, say which version it is in the filename and in the message. Two people reviewing different versions is the most common way a good edit gets undone.
+
+## Search is only as good as the names
+
+Every operating system can search filenames instantly. That only helps if the names contain words you would search for. "clip7" is unfindable; "2026-11-06-sourdough-timelapse-v02" is findable by date, by subject or by version.
+
+The same logic applies inside an editor's project list. A batch of clips named by number is a batch you have to open one at a time. A batch named by subject is a batch you can work through in order.
+
+## Start with the next project, not the archive
+
+Reorganising years of old files is a project that never gets finished and produces no videos. Apply the system to the next thing you make. After five projects the habit is set, and the old pile becomes progressively less relevant because everything current is findable.
+
+When the batch workflow in [how to batch produce a week of shorts](/blog/batch-produce-shorts) starts producing several projects per week, this structure is what keeps them from turning into a pile.
+`,
+  },
+  {
+    slug: 'music-and-clip-licensing',
+    title: 'Music and Clip Licensing for Short-Form Video',
+    description:
+      'What you can and cannot legally use in a short: platform music libraries, royalty-free tracks, other people’s footage, and how to ask for permission.',
+    date: '2026-11-06',
+    category: 'Strategy',
+    content: `
+# Music and Clip Licensing for Short-Form Video
+
+Two questions get confused constantly, and the confusion is expensive. The first is "can I use this song?" The second is "can I use this recording of this song?" They have different answers, because a piece of recorded music carries at least two separate rights.
+
+This guide is a practical map, not legal advice. Rights law varies by country and by platform, and the specific terms of any library you use govern your situation. What follows is how to reason about it so you do not have to guess.
+
+## The two rights in every song
+
+A released track contains:
+
+- **The composition** — the melody, lyrics and arrangement as written. Owned by the songwriter or publisher.
+- **The recording** — the specific performance captured on tape. Owned by the label or the artist.
+
+Using a song in a video normally requires permission for both. That is why "I bought the track on iTunes" does not help: buying a copy gives you the right to listen to that recording, not to synchronise it with your video.
+
+The permission to put music under picture is called a sync licence. It is negotiated, not listed on a price sheet, and for well-known music it is usually out of reach for an individual creator.
+
+## The platform libraries are the easy path, with a catch
+
+The music available inside TikTok, Instagram, YouTube and similar apps is licensed for use **on that platform**. That is the catch, and it has three consequences worth knowing before you build a workflow around it:
+
+1. **In-app is in-app.** A track saved from one app's library and uploaded to another platform is not covered by that licence.
+2. **The catalogue changes.** Tracks are removed when agreements lapse. A video that used a removed track can be muted or flagged later, sometimes years after posting.
+3. **Business accounts differ.** Commercial libraries are often narrower than the personal ones, and some tracks are unavailable to accounts that post promotional content.
+
+The practical rule: use the platform's own library for content that lives only on that platform, and check the current terms inside the app rather than trusting a blog post — including this one.
+
+## Royalty-free does not mean rights-free
+
+"Royalty-free" means you pay once and do not owe per-play royalties. It does not mean no conditions. Typical licences from stock music libraries restrict or require:
+
+- Attribution in the description.
+- A paid tier for commercial or monetised use.
+- A separate licence for broadcast or paid advertising.
+- No redistribution of the track as a standalone audio file.
+
+Read the licence for the specific track, save a copy of it, and note the date. If a claim ever arrives, the licence file is your defence, and a library's terms can change after you downloaded.
+
+## Using other people's video
+
+This is where most takedowns originate, more often than music. The instinct is to assume that brief use, credit, or "no copyright infringement intended" makes it fine. None of those do anything legally.
+
+The only reliable permissions are:
+
+- **A licence that covers your use.** Creative Commons, for example, but check which variant: some forbid commercial use, some require share-alike, some require attribution in a specific form.
+- **Written permission from the rights holder.** An email saying yes, with the scope stated, is enough for most purposes. A DM that says "sure" is weaker but better than nothing.
+- **Your own footage.** The safest material you will ever have.
+
+Fair use — or fair dealing in some countries — is a defence you can raise after being accused, decided on factors like purpose, amount used and effect on the market. It is not a permission you can obtain in advance, and it is not a shortcut. Commentary, criticism, parody and education are the categories most likely to qualify; using a clip because it is entertaining is the category least likely to.
+
+## How to ask for permission
+
+A short, specific message gets a yes far more often than a vague one. It needs five things:
+
+1. Who you are and where the video will appear.
+2. Exactly which material you want, with a link and a time range.
+3. What you will do with it — commentary, excerpt, background.
+4. Whether the video is monetised or promotional.
+5. How long it stays up, and whether it can be removed on request.
+
+Keep the reply. If the rights holder later changes their mind, the record of the exchange is what protects you.
+
+## Things you own that still cause trouble
+
+Footage you shot yourself can still contain someone else's rights:
+
+- **A performance.** Filming a concert you attended does not give you the rights to the performance.
+- **A logo or artwork in frame.** Usually tolerable as incidental background, not as the subject of the shot.
+- **A private individual who did not consent.** Especially in a commercial context.
+- **Someone else's screen.** Recording a video call, a game or a streaming service captures content you do not own.
+
+## A decision path that takes thirty seconds
+
+- **Did I shoot it?** Then check for performances, logos and bystanders, and proceed.
+- **Is it in the app's own library, and will this video stay on that app?** Proceed.
+- **Is it from a stock library with a licence that covers my use?** Proceed, and save the licence.
+- **Is it someone else's clip, used to comment on it?** Keep the excerpt short, make the commentary the point, and get permission if it is easy to get.
+- **Is it a popular song I want as a soundtrack?** Use a licensed alternative. This is the case where creators get flagged most and win least.
+
+## Keep a rights folder
+
+One folder per project, containing the licences, the permission emails and a note of which track or clip is used where. It takes two minutes and answers the only question that matters when a claim arrives: can you show you were allowed?
+
+That folder belongs inside the project structure described in [how to organize video projects](/blog/organize-video-projects) — a licence you cannot find is a licence you do not have.
+`,
+  },
+  {
+    slug: 'publish-and-schedule-shorts',
+    title: 'How to Publish and Schedule Shorts Without Burning Out',
+    description:
+      'A sane publishing routine: choosing a cadence you can hold, scheduling a batch in one sitting, cross-posting without watermarks, and reading the results.',
+    date: '2026-11-06',
+    category: 'Strategy',
+    content: `
+# How to Publish and Schedule Shorts Without Burning Out
+
+Publishing is the part of short-form video that looks free and is not. Uploading one clip to three platforms, writing three captions, choosing three sets of tags and remembering to do it again tomorrow is twenty minutes a day that produces no video.
+
+The fix is the same shape as batching the editing: do the publishing for a whole batch in one sitting, then let it run.
+
+## Pick a cadence you can hold for three months
+
+Advice about posting daily is usually written by people whose job is posting. For a solo creator with a business to run, the cadence that works is the highest one that does not consume the time needed to make the next batch good.
+
+A useful test: imagine the week you are about to have, including the bad one — the week with a deadline, a cold, or travel. If the cadence survives that week without you skipping, it is your cadence. If it only works in a good week, it is not a cadence, it is a burst.
+
+Three posts a week sustained beats seven a week for a fortnight and then nothing for a month, both for the audience and for your own skill, because the second version never gets far enough into the feedback loop to learn anything.
+
+## Schedule a whole batch in one sitting
+
+Uploading is mostly waiting, so it is the ideal thing to do while doing something else. The pattern:
+
+1. **Have the final files ready and verified.** Exported per [the export settings guide](/blog/export-settings-vertical-video) and reviewed the next day.
+2. **Write all the captions first**, in one document, before opening any upload form. Writing five captions in a row takes a fraction of the time of writing one, uploading, writing another.
+3. **Upload to one platform at a time**, not one video at a time across platforms. Platform by platform keeps the interface and the field layout constant.
+4. **Schedule, do not publish, when the platform allows it** — with one exception, covered below.
+5. **Record what you scheduled**, with dates, so the review later has something to check against.
+
+## The first-upload exception
+
+Some creators find that a freshly published video gets more initial distribution than a scheduled one. Whether that is true varies by platform and changes over time; the honest position is that nobody outside the platform knows, and the effect, if it exists, is smaller than the difference between a good clip and a mediocre one.
+
+What is reliably true is that scheduling removes the 11pm upload, the forgotten post and the typo in the caption. Do not trade a dependable routine for a rumour about the algorithm. If you want to test it, test it deliberately: publish five manually and schedule five, and compare after a month rather than after one video.
+
+## Cross-posting without looking lazy
+
+Posting the same file everywhere is fine. Posting the same file with another platform's watermark is the fastest way to look automated, and some platforms suppress or downrank content carrying a competitor's mark.
+
+So:
+
+- **Export clean.** Turn off platform watermarks, or export before adding any.
+- **Upload the clean file to each platform separately.** Re-uploading a download from platform A to platform B re-compresses it and can carry the mark.
+- **Rewrite the caption per platform**, at least partly. The same sentence on three platforms reads as syndication. A different first line does not.
+- **Match the format.** Where a platform offers a dedicated short format, use it rather than a generic video post, because the two are surfaced differently.
+
+## Metadata: three fields, not thirty
+
+The temptation is to spend an hour on hashtags. For a small account the returns are marginal compared to the title and the first line of the caption, which are what a viewer actually reads and what the platform uses most heavily.
+
+- **Title or first caption line:** say what the video is about in plain words. This is what shows in a feed and what search matches.
+- **Description:** one or two sentences of context, plus any required attribution for music or footage.
+- **Tags:** a handful of genuinely relevant terms. Padding with unrelated popular tags does not help and signals low quality.
+
+On-platform search is a real traffic source for short-form, and it rewards the same thing web search does: clear language about a specific subject. Our [TikTok SEO guide](/blog/tiktok-seo-guide) covers the details.
+
+## What to do with a video that flops
+
+Most videos do not perform, and the useful response is diagnosis rather than deletion. Two numbers separate the cases, and both are in the platform's own analytics:
+
+- **Low reach, decent retention.** The opening was not compelling enough to earn distribution, or the topic has no audience on this platform. Fix the first three seconds, or change the subject.
+- **Good reach, poor retention.** The opening worked and the content did not hold. This is the more fixable case and the more painful one, because the effort was already spent.
+- **Both low.** Usually a topic problem, not an editing problem. Repeating it with better captions will not help.
+
+Deciding which case you are in takes two minutes. Guessing takes longer and teaches nothing.
+
+## The fifteen-minute weekly review
+
+Once a week, with the batch already scheduled, look at last week's posts and answer three questions:
+
+1. Which clip held attention longest, and what did its opening do differently?
+2. Which performed worst, and which of the two failure cases was it?
+3. What one thing goes into the next batch because of the answer to question one?
+
+That is the entire review. Expanding it into a spreadsheet of every metric is a common way to stop doing it by week three.
+
+## Make the treadmill unnecessary
+
+A cadence you can hold still needs material, and material runs short if every clip must be new. Three sources that keep a schedule alive:
+
+- **A series.** The same format on a repeating subject, which is easier to produce and easier to follow.
+- **Evergreen re-cuts.** A clip that worked six months ago can be re-edited with a better opening rather than remade. The source is already on disk if you followed [the project organisation guide](/blog/organize-video-projects).
+- **One long recording, many clips.** A single podcast, webinar or livestream is a batch by itself; the method is in [turning one podcast into ten shorts](/blog/podcast-into-shorts).
+
+## The routine, in one paragraph
+
+Batch the recording and editing into two sessions. Export with one preset. Schedule the whole batch in a single sitting, platform by platform, with clean files and rewritten first lines. Spend fifteen minutes a week reading what happened, and change exactly one thing in the next batch. Then repeat, at a cadence that survives a bad week.
 `,
   },
 ];
