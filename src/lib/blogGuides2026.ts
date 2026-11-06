@@ -1,7 +1,7 @@
 import type { BlogPostLike } from '@/lib/blogData';
 
 /**
- * Fifteen long-form guides added 2026-11-06 in three rounds, to give the blog
+ * Twenty long-form guides added 2026-11-06 in four rounds, to give the blog
  * real depth.
  *
  * The site was rejected by AdSense for "low value content" while its median
@@ -13,7 +13,9 @@ import type { BlogPostLike } from '@/lib/blogData';
  * readability, Shorts length, audio repair. Round two covers the work around
  * it: batching, export settings, file organisation, rights, publishing. Round
  * three covers capture, which is where most weak shorts are actually decided:
- * lighting, on-camera delivery, self-filming, screen capture, scripting.
+ * lighting, on-camera delivery, self-filming, screen capture, scripting. Round
+ * four covers the commercial side: pricing, media kits, outreach, contract
+ * terms and affiliate links.
  *
  * The rounds deliberately do not overlap in subject, so they compete for
  * different searches rather than each other.
@@ -1535,6 +1537,511 @@ Look for, in order:
 - Structure fixed, transitions loose.
 
 A script written this way is mostly invisible in the finished clip, which is the point. The viewer should hear someone talking, not someone reciting — and the delivery habits in [how to sound natural on camera](/blog/sound-natural-on-camera) are what finish the job.
+`,
+  },
+
+  /* ---------------------------------------------------------------------
+   * Round four. The commercial side: pricing, media kits, outreach, contract
+   * terms and affiliate links. Nothing in the previous 37 posts covers money,
+   * and it is the part creators most often get wrong in ways that cannot be
+   * fixed later - a bad usage clause outlives the video it was signed for.
+   * ------------------------------------------------------------------- */
+  {
+    slug: 'price-sponsored-shorts',
+    title: 'How to Price a Sponsored Short',
+    description:
+      'A pricing method built from production time, audience access and usage rights, plus the extras that are usually given away by accident.',
+    date: '2026-11-06',
+    category: 'Strategy',
+    content: `
+# How to Price a Sponsored Short
+
+Most creators price a sponsored video by guessing a number and hoping it is not too high. That produces two failure modes: charging far less than the work is worth, and charging a number the brand cannot justify internally and never hearing back.
+
+A price is defensible when you can explain it. That is what this method does — it breaks the fee into the parts a brand is actually buying, so the conversation becomes a negotiation about scope rather than a stare at a single figure.
+
+## Separate the deliverable from the rights
+
+A sponsored short is not one thing. It is at least three:
+
+1. **The production.** Your time to script, shoot, edit and deliver a video that meets their brief.
+2. **The audience access.** Whatever reach your account has, on the platform and in the format they asked for.
+3. **The rights.** What they are allowed to do with the video after you post it — and for how long.
+
+New creators usually charge for the first and give away the other two. Those two are frequently worth more than the production.
+
+## Start from your floor, not from a fantasy number
+
+Work out the minimum you would accept, honestly and in writing:
+
+- Hours for the whole job: brief, research, script, shoot, edit, revisions, delivery. Include the parts you always underestimate — the back-and-forth before you shoot, and the revision round after.
+- Multiply by the hourly rate you would charge for the same hours doing anything else.
+- Add your hard costs: props, product purchase, music licence, any paid tool.
+- Add a margin, because a sponsored video is not the only thing you could have done with that time.
+
+That number is your floor. It is not your price, but knowing it stops you accepting a deal you will resent by the second revision.
+
+## Then price the access
+
+Audience access has no universal rate — it depends on platform, niche, geography and how engaged the audience actually is. Anyone quoting you a fixed cost per thousand views for short-form is guessing, and you should not build a quote on their guess either.
+
+What you can do instead, cheaply:
+
+- **Ask two or three creators in your niche** what they charge for a similar deliverable. Most will tell you a range. This is the single most useful thing you can do, and almost nobody does it.
+- **Track your own offers.** The first brand that approaches you has effectively told you your price is at least what they offered. Keep a record of every offer and every accepted rate; after a handful of deals you have real data rather than nerves.
+- **Quote a range to new enquiries** and settle on a number once the scope is clear. A range invites a conversation; a single figure invites a comparison.
+
+## Charge separately for the things that are not the video
+
+The fee for one video with organic usage should not be the fee for one video the brand will run as a paid ad for six months. These are the extras worth line items:
+
+- **Paid amplification or whitelisting.** The brand runs your video as an ad, often from your handle. This uses your name and your credibility, and it is the most commonly undervalued item on the list.
+- **Exclusivity.** If they do not want you working with a competitor for a period, that period has a price, because it costs you other work.
+- **Category exclusivity.** Narrower than full exclusivity, and much cheaper — they only block rival brands in their own category.
+- **Extra videos or cutdowns.** A second version for a different platform is another deliverable, not a favour.
+- **Raw footage.** Some brands want the source files. Charge for them, and say what they may not do with them.
+- **Revisions beyond the agreed rounds.** Two rounds is normal. A third is scope.
+- **Rush delivery.** A deadline inside your normal turnaround is a premium, not a default.
+
+## Write the quote so it explains itself
+
+A quote that a marketing manager can forward to their finance team without editing is worth more than a cheaper one they have to justify. Keep it to a page:
+
+- What you will deliver, in concrete terms: number of videos, length range, platforms, posting dates.
+- What the fee includes, and explicitly what it does not.
+- Usage rights, stated as duration, territory and media, with anything beyond organic posting priced separately.
+- Payment terms, including the deposit and the date the balance is due.
+- Who approves what, and how many revision rounds are included.
+
+The word "organic" should appear in your quote. It is the difference between a video and a campaign.
+
+## Payment terms worth insisting on
+
+- **A deposit before you shoot.** Half up front is common for a first deal with a new brand, and it is the norm in most creative work outside social media. If it is refused outright, that is information.
+- **State net terms in days and name the date.** "Net 30" with an invoice date is clearer than "payment on completion" with no date attached.
+- **Say what happens when it is late.** A stated late fee is rarely charged; it is there to make the payment date real.
+- **Invoice properly.** A numbered invoice, your business details, the deliverable, the amount and the terms. Brands that pay slowly are frequently brands that were never given a clean invoice.
+
+The guides in [how to batch produce a week of shorts](/blog/batch-produce-shorts) matter here too: a sponsored video that takes three sessions to make is a sponsored video you priced wrong.
+
+## Red flags in the offer
+
+- **"Exposure instead of payment."** Occasionally a genuine trade is worth it — a product you would have bought anyway, from a brand whose audience overlaps yours. Rarely anything else.
+- **Perpetual, worldwide, all-media rights** in exchange for one post. That is buying your work outright, and it should cost like it.
+- **Unlimited revisions.** You will be revising until someone gets bored.
+- **No written brief.** Verbal scope always expands.
+- **Payment on their timeline only**, with no date and no process for chasing it.
+
+## Raising your rate
+
+Raise it on new enquiries first, never retroactively on an agreed quote. A workable pattern: hold your rate for a set number of deals or months, then raise it for new clients and keep existing repeat clients at the old rate for one cycle as a courtesy. If every enquiry says yes immediately, your price is below the market and you should test higher on the next one.
+
+And keep the record. Two numbers — what you quoted and what you were paid — turn pricing from guesswork into a trend line within a few months.
+`,
+  },
+  {
+    slug: 'short-form-media-kit',
+    title: 'What Brands Want in a Creator Media Kit',
+    description:
+      'The one page that answers a brand’s questions before they ask: audience, formats, proof and terms, without a wall of vanity metrics.',
+    date: '2026-11-06',
+    category: 'Strategy',
+    content: `
+# What Brands Want in a Creator Media Kit
+
+A media kit exists to answer one question a brand is asking silently: can this person deliver the audience we need, reliably, without creating work for us?
+
+Most kits answer a different question — how many followers do I have — and that is why they get ignored. Follower count is the least interesting number in a short-form kit, because it says nothing about whether anyone watches.
+
+## One page, one document, always current
+
+A PDF of one or two pages, plus the same information as a page on your site. Both, because some brand contacts want an attachment for their records and others want a link they can forward.
+
+The date of last update should be visible. A kit that says "updated two years ago" reads as an account that may no longer be active.
+
+## The numbers that actually persuade
+
+Include these, in this order:
+
+- **Platform and handle**, for each platform you are pitching. Separate kits per platform are better than one combined one, because reach on one does not transfer to another.
+- **Audience size**, stated plainly. Do not round up; the first thing a brand does is check.
+- **Average views and the typical range**, not your best video. A best-ever video tells them what happened once.
+- **Completion or retention where the platform shows it.** This is the number that separates an engaged audience from a large passive one, and it is the number most creators leave out.
+- **Saves and shares**, if you have them. Both signal intent, and brands increasingly care about them more than likes.
+- **Audience location and age breakdown**, from the platform's own analytics, if it is available and flattering. If it is not, say what you do know rather than leaving a gap.
+
+Leave out screenshots of follower counts, emoji-filled growth charts, and anything measured in percentages without a base. "Engagement up 400%" from a small base invites exactly the question you do not want.
+
+## Two case studies beat ten bullet points
+
+A case study is three lines: what the brand wanted, what you made, what happened. If you have never worked with a brand, use your own product or a video that performed — the structure is what matters, not the client name.
+
+- **The brief.** One sentence. "Launch a new product to an audience that had never heard of it."
+- **What you made.** One sentence plus a still or a link.
+- **What happened.** The number they care about: views, click-throughs, code redemptions, whatever the brand's goal was.
+
+Three of those will do more than any amount of copy about being authentic and passionate.
+
+## Say what you actually offer
+
+Brands arrive with a vague idea and leave with a deliverable. Make the menu explicit:
+
+- **Formats.** Talking head, demo, unboxing, tutorial, series integration. Say which you are good at, not which you will attempt.
+- **What one video includes.** Length range, captions, a hook in the first two seconds, one revision round, posting date.
+- **What costs extra.** Paid amplification, exclusivity, raw footage, extra cutdowns, rush delivery.
+- **Typical lead time.** How far ahead you need the brief.
+
+Ambiguity here is what turns a straightforward booking into three weeks of email.
+
+## Linking proof, not claiming it
+
+Every claim in the kit should have somewhere to click. A retention figure links to the platform's analytics screenshot; a case study links to the video; the format examples link to real posts.
+
+This matters more than the writing. A brand contact forwarding your kit internally is asked "is this real?", and links answer that faster than adjectives.
+
+## Rates: state them or say they are on request
+
+Both are defensible. What is not defensible is a kit with no indication at all, which produces enquiries that go nowhere once a number finally appears.
+
+- **Stating a starting price** filters out most mismatched enquiries and signals you are a business.
+- **"Rates on request"** is fine if you are negotiating per campaign, but then answer quickly — a slow first reply loses more deals than a high price.
+
+If you state a price, state what it buys. A number with no scope invites an argument about scope later.
+
+## The one-page layout, in order
+
+If you are building the kit from scratch, this order works because it follows the questions a brand asks:
+
+1. **Who you are, in one line.** Handle, platform, subject. Not a biography.
+2. **Four numbers**, in a row: audience size, average views, completion or retention, saves and shares. Each with the period it covers.
+3. **Two case studies.** Brief, video, result. Links included.
+4. **What you offer.** Formats, what one video includes, what costs extra, lead time.
+5. **Rate or rate on request.** With the scope it buys.
+6. **Contact.** Email, time zone, response expectation.
+
+That is a single page with room to breathe, and it can be read in ninety seconds — which is roughly how long a brand contact gives it before deciding whether to reply.
+
+## When to build one
+
+Before you have anything to put in it, a kit is a template with nothing to say. Build it the moment you have one video that performed and one number you are willing to defend. That is enough: two case studies can be the same video described two ways, or one real one and one made for your own product.
+
+Waiting for a sponsorship before writing a kit is backwards. The kit is what makes the first pitch possible.
+
+## Contact, and the smallest possible friction
+
+One email address, checked, that goes to a human. Not a contact form with six fields. Include a response-time expectation if you can hold it, and your time zone, because a brand coordinating three creators needs to know when you will reply.
+
+## The mistakes that get a kit ignored
+
+1. **It is about you.** Three paragraphs of biography before a single number.
+2. **Stale numbers.** A kit from last year with a handle you no longer use.
+3. **Only follower count.** No views, no retention, no saves.
+4. **Designed heavily, informative barely.** A beautiful template with no case study.
+5. **No formats.** The brand has to ask what they can buy, which is work for them.
+6. **No link to the actual work.** The fastest way to lose a serious enquiry.
+
+## Keep it alive
+
+Refresh the numbers every quarter, and immediately after any video that changes them materially. The single most common reason a good kit fails is that it described an account from a year ago.
+
+A kit is also the natural home for the pricing method in [how to price a sponsored short](/blog/price-sponsored-shorts) — the two documents should not contradict each other, because brands read both.
+`,
+  },
+  {
+    slug: 'brand-outreach-without-a-following',
+    title: 'How to Pitch a Brand Without a Following',
+    description:
+      'A pitch that sells a specific idea instead of asking for a chance, including who to contact, what to send, and what to do with a no.',
+    date: '2026-11-06',
+    category: 'Strategy',
+    content: `
+# How to Pitch a Brand Without a Following
+
+Small accounts get sponsored work. What they do not get is sponsored work by asking for it generically. "I have 800 followers and I love your products, would you sponsor me?" asks a brand to do all the thinking — to imagine the video, judge the fit and invent a budget — for someone they have never heard of.
+
+The pitch that works does that thinking for them, and it leads with the idea rather than the follower count.
+
+## The reframe: you are solving a marketing problem
+
+A brand does not buy videos. It buys a specific outcome: a launch seen by the right people, a product demonstrated properly, a category explained to an audience that does not understand it yet.
+
+So before writing anything, answer three questions about the brand:
+
+1. **What are they currently posting?** Look at their last twenty posts. What format are they using, and what are they clearly not doing?
+2. **Who are they already working with?** Big polished creators, or small niche ones? That tells you the budget shape and the door to knock on.
+3. **What is missing?** A product nobody has demonstrated, a feature nobody has explained, an audience they have not reached. That gap is your pitch.
+
+If you cannot answer the third question, you do not have a pitch yet — you have an introduction, and introductions go in the bin.
+
+## Make one video before you ask
+
+A single spec video — the ad you think they should run, made on your own initiative — converts far better than any amount of description. It has three properties that a pitch email cannot have:
+
+- It proves you can make the thing, at the quality you claim.
+- It shows the idea rather than describing it.
+- It costs them nothing to judge.
+
+One video, for one brand, about one product. Not five. The specificity is the whole point: a spec video for a brand you clearly studied is a compliment; the same video sent to fifteen companies is spam.
+
+If you cannot get the product, make the video about the problem the product solves, using what you have. The demonstration of understanding matters more than the product being in shot.
+
+## The pitch itself
+
+Short, specific, and structured so it can be answered in one line.
+
+- **Subject line** naming the specific idea, not "Collaboration opportunity".
+- **Two sentences of context:** who you are, in terms of audience and subject, not follower count.
+- **The idea:** one paragraph describing the video, with a link to the spec video if you made one.
+- **Why you:** one sentence on why your audience is the right one, with a number if you have one.
+- **What you need:** product, budget range, timeline. Ask for one clear next step.
+
+Under two hundred words. Every additional paragraph reduces the chance of a reply.
+
+## Who to contact
+
+Not the general enquiries inbox, where pitches go to be read by nobody. Look for the person who owns social or influencer marketing: their name is often on the brand's LinkedIn, in a press page, or on the account of whoever runs their socials.
+
+If you genuinely cannot find a name, the general inbox is fine — but address it to the marketing team and make the subject line do the work, because a shared inbox is a queue.
+
+## Follow up once, then stop
+
+One follow-up, seven to ten days later, adding something rather than repeating the ask: a new idea, a relevant video that performed, a note that the spec video is now live.
+
+After that, stop. A second follow-up rarely works and costs you the option of pitching them again next quarter, which is a real thing that happens — timing is the most common reason a good pitch is ignored.
+
+## Small brands first, and why
+
+A brand with one marketing person can make a decision in a day, and often wants the kind of specific demonstration a bigger brand's process cannot accommodate. That is where an unknown account gets its first deals.
+
+The sequence that works: two or three small brands at a rate you would accept, used to build the case studies, then the same pitch with proof attached to mid-size brands. The proof is what changes the reply rate, and it can only come from the first group.
+
+## Choosing the first five brands
+
+Do not start with the brands everyone wants. Start with a list you can research in an afternoon:
+
+- **Brands whose product you already use.** You can demonstrate it without a script, and the enthusiasm is real.
+- **Brands advertising to your exact audience** but visibly not reaching them. Look at who they sponsor: if everyone on their roster has a million followers, they are buying reach and you are not the answer — yet.
+- **Brands small enough to reply.** A company with one marketing person answers email. A company with a department does not.
+- **Brands whose existing content is weak.** If their product has never been demonstrated well on video, that gap is your pitch, and it is the easiest one to write.
+
+Five is enough for a first round. More than that and the research stops being real and the pitches become identical, which is the failure mode this whole approach exists to avoid.
+
+## Pricing in the first conversation
+
+Have a number ready even if you are nervous about it. "What is your budget?" is a reasonable question, but answering it with a question of your own reads as unprepared, and some brands will simply name a low figure to see whether you accept it.
+
+Say the number, then say what it includes. The method is in [how to price a sponsored short](/blog/price-sponsored-shorts); the media kit that supports it is in [what brands want in a media kit](/blog/short-form-media-kit).
+
+## What to do with a no
+
+- **"No budget right now."** Ask to be kept on file, and pitch again when they launch something. This one often turns into a yes.
+- **"We only work with bigger accounts."** Accept it and move on. Arguing this point has never worked.
+- **No reply at all.** The most common outcome, and usually about timing and inbox volume rather than your pitch.
+- **A no after a spec video.** You still have a video you can post on your own account, which is the reason to make one you would be happy to publish anyway.
+
+## Track it
+
+A simple list: brand, contact, date sent, idea, outcome, follow-up date. Ten rows will teach you more about what works than any advice, because your niche has its own patterns and yours will differ from everyone else's.
+
+Outreach is a volume game with a quality floor. Ten well-researched pitches beat a hundred identical emails, and the tenth one is where the first yes usually comes from.
+`,
+  },
+  {
+    slug: 'brand-deal-terms',
+    title: 'Brand Deal Terms Worth Reading Twice',
+    description:
+      'The clauses that decide what a sponsored video really costs you: usage rights, exclusivity, approvals, payment timing and who owns the footage.',
+    date: '2026-11-06',
+    category: 'Strategy',
+    content: `
+# Brand Deal Terms Worth Reading Twice
+
+A brand deal is usually two pages and one of them decides your next twelve months. The fee is the easiest part to negotiate and the least consequential; the clauses around it determine whether you can work with a competitor, how long your face appears in someone else's advertising, and when you get paid.
+
+This is not legal advice, and a contract worth real money should be read by someone qualified. But most creator deals are small enough that nobody hires a lawyer, so it is worth knowing which clauses to slow down on.
+
+## Usage rights are the clause that matters
+
+Usage rights say what the brand may do with your video. They are described with four dimensions, and a vague sentence hides all four:
+
+- **Duration.** Thirty days is normal for a social campaign. Perpetual means forever, and should be priced like buying the work.
+- **Territory.** Your country, or worldwide. Worldwide is broader and worth more.
+- **Media.** Organic social only, or also paid ads, their website, email, retail screens, television. Each expansion costs something.
+- **Whitelisting or paid amplification.** Running the ad from your handle, using your name and credibility. This is the most valuable permission you can grant short of full ownership, and it is the one most often buried in a sentence like "brand may boost the content".
+
+Read the sentence that says what happens after you post. If it does not name a duration, ask.
+
+## Exclusivity: the hidden cost
+
+Exclusivity stops you working with competitors. Two things to check:
+
+- **Scope.** Full category exclusivity blocks every rival. Narrower, product-specific exclusivity blocks less and costs less.
+- **Duration.** Thirty days is a campaign. Twelve months is a year of income you have agreed not to earn.
+
+If a brand asks for a long exclusivity window, either price it explicitly or propose a shorter one. Most will accept thirty days, because their campaign is thirty days.
+
+## Approvals and revisions
+
+A brand that can reject indefinitely can hold your video hostage to an internal process you cannot see. The clause should say:
+
+- **How many approval rounds** are included. Two is standard: first cut, then final.
+- **How long they have to respond.** A stated window — say five business days — is what stops a video sitting in someone's inbox for a month.
+- **What happens if they do not respond** in that window. Silence should count as approval, and a well-drafted clause says so.
+
+Without a response window, your posting date is controlled by someone who has no reason to hurry.
+
+## Payment terms
+
+Check five things in the payment clause:
+
+1. **The amount, with any tax treatment stated.**
+2. **The schedule.** On delivery, on posting, or on invoice — these are different dates.
+3. **The number of days**, counted from a named event, not "upon completion".
+4. **Whether a deposit applies.** For a first deal with a new brand, a deposit before shooting is reasonable.
+5. **What happens on cancellation.** A kill fee for work already started is normal in creative industries and worth asking for.
+
+If late payment has no consequence, it will happen, and chasing it costs you more in attention than the fee was worth.
+
+## Who owns the footage
+
+You shot it, so you own it — unless the contract says otherwise. Two things to protect:
+
+- **The raw files.** Sending them is a deliverable, not a formality, and it should be named and priced.
+- **Your right to reuse it.** A portfolio clause lets you show the work and post it on your own account. Without one, some brands can ask you to take it down.
+
+A simple sentence — "creator retains ownership; brand receives a licence for the uses listed above" — is the whole protection.
+
+## Disclosure is your obligation, not theirs
+
+Paid partnerships must be disclosed clearly, in the video or caption, in language an ordinary viewer understands. In the United States the FTC's endorsement guidance covers this; the UK, EU, Australia and Canada have equivalents, and platforms add their own paid-partnership tools on top.
+
+The contract often says the brand will handle disclosure, or says nothing. Neither transfers the obligation: the disclosure is the creator's responsibility, and an unclear "#collab" buried under thirty hashtags is not disclosure.
+
+So state in the contract that you will disclose, and disclose in plain words — "paid partnership with" is unambiguous.
+
+## Clauses worth pushing back on
+
+- **Perpetual, worldwide, all-media rights** for a single post.
+- **Unlimited revisions.**
+- **Approval of your other content**, which is a control clause wearing a quality argument.
+- **Indemnity covering the brand's own claims**, so you absorb liability for statements they wrote.
+- **Exclusivity longer than the campaign.**
+- **"Brand may use creator's likeness"** with no scope or end date.
+
+Pick the two that matter most and negotiate those. Trying to renegotiate every clause on a small deal signals that the deal is not worth their time.
+
+## When they send their own contract
+
+Most mid-size and larger brands will send their standard agreement rather than accept yours. That is normal, and it does not mean the terms are fixed.
+
+What to do, in order:
+
+1. **Find the usage and exclusivity clauses first.** Those are the two that cost money later, and they are usually in different sections.
+2. **Send back a short list of specific amendments**, numbered, in writing. "Clause 4: reduce the licence term from perpetual to 90 days" is a request a legal team can process. "I am not happy with the rights section" is not.
+3. **Offer a trade rather than a refusal.** A shorter licence term in exchange for a slightly lower fee is often accepted, because the brand's real need is usually the campaign window.
+4. **Ask for the amendment in the contract, not in an email beside it.** A side email saying "we will only use it for 30 days" does not override a perpetual clause.
+
+If the deal is small and the contract is long, a two-line confirmation email is a better instrument than signing a ten-page document you have not read. If it is not small, and the terms matter, that is the point at which paying someone qualified to read it is cheaper than the clause you would otherwise sign.
+
+## Get it in writing, even when it is small
+
+A short email confirming the deliverable, the fee, the posting date, the usage rights and the payment date is a contract for practical purposes. Many small deals run on exactly that, and the ones that go wrong are the ones conducted entirely in DMs.
+
+Keep the emails with the project files, as described in [how to organize video projects](/blog/organize-video-projects). The day a brand asks you to take a video down, the terms you agreed are the only thing that settles it.
+`,
+  },
+  {
+    slug: 'affiliate-links-in-shorts',
+    title: 'How to Use Affiliate Links in Short Videos',
+    description:
+      'Where a link can actually live in short-form, how to disclose it, what converts, and why most affiliate links earn nothing.',
+    date: '2026-11-06',
+    category: 'Tutorial',
+    content: `
+# How to Use Affiliate Links in Short Videos
+
+Affiliate links are the most accessible way to earn from short-form video and the most commonly wasted. The mechanical reason is simple: there is no clickable link inside a short. Everything depends on a viewer deciding, after watching, to open your profile and follow a link — and most never do.
+
+Understanding that constraint changes how the videos are made, not just how the links are placed.
+
+## Where a link can actually live
+
+- **The bio or profile link.** One link, and every platform treats it differently. A single link page listing a few products is the usual solution, and it works best when the number of options is small.
+- **A pinned comment.** Some platforms allow it and some suppress links. Where it works, it is the closest thing to an in-video link.
+- **The platform's own shopping features.** Where they exist, they keep the viewer inside the app and remove the friction entirely. Availability varies by country and account type, so check what your account actually has rather than what a guide says.
+- **A link in a longer description**, on platforms that show one.
+
+If you are relying on the bio link, say so in the video: "the link is in my bio" spoken once, near the end, is worth more than a caption nobody scrolls to.
+
+## Disclosure comes first, literally
+
+The rule in most markets is that a paid or incentivised recommendation must be disclosed clearly, and the disclosure must come before the link rather than in small print after it.
+
+- Say it in the video if the recommendation is spoken: "this is an affiliate link, I earn from it".
+- Label it in text where the link is: "affiliate" next to the product name.
+- Use the platform's paid-partnership toggle where it exists, and still say it in words.
+
+Vague wording — "collab", "sp", a single asterisk with no explanation — is the thing regulators have repeatedly said does not count. Plain language does.
+
+The specifics vary by country: the FTC's endorsement guidance in the United States, the ASA's rules in the UK, and equivalents elsewhere. Check the rules that apply to you and to your audience, because both can matter.
+
+## Choose products you would recommend unpaid
+
+Affiliate marketing fails when the recommendation is not believable, and viewers detect it faster than any algorithm.
+
+The version that works: one product per video, demonstrated doing the specific thing you claim it does. Not a list, not a haul, not five products mentioned in thirty seconds. A single demonstration is also easier to make well, which matters because the video has to work as a video before it works as an advertisement.
+
+If you would not recommend it to a friend, the commission is not worth the trust it costs. Audiences forgive a lot; they do not forgive being sold something bad.
+
+## Make the link trackable
+
+- **One short link per platform**, so you can tell where clicks came from.
+- **Tag campaigns** if the affiliate programme supports it, so a video and a bio link are distinguishable in the reports.
+- **Check the link works** before publishing, and again a month later. Expired links are the quiet killer of affiliate income: the video keeps getting views and earns nothing.
+
+That last point is maintenance, not marketing. A quarterly pass over every video with a link in it, checking each destination still resolves to the right product, is the highest-return hour in the whole process.
+
+## What actually converts
+
+- **A specific problem solved on camera.** "This is how I got the audio clean" beats "here are my filming essentials".
+- **The product visible doing the job**, not held up next to a face.
+- **One call to action, once.** Repeated asks read as desperation and reduce completion, which is the metric the platform uses to decide who sees the video.
+- **A price-appropriate product.** A recommendation that costs more than the viewer expected has to justify itself twice.
+
+Expect low click-through. Short-form is a discovery format, not a shopping format: the viewer came for the idea, not the product. A small number of clicks from a lot of views is normal, and it is why affiliate income from shorts tends to be a supplement rather than a salary.
+
+## Where affiliate works, and where it does not
+
+It works when the product is the subject: tools, gear, software, kitchen equipment, anything demonstrable. It works poorly when the product is incidental to the content, because the viewer has no reason to want it.
+
+It also depends on the programme's terms — commission rate, cookie window and whether the merchant honours the tracking. Those vary enormously between programmes, and a high commission from a merchant that never confirms a sale is worth less than a low one that does.
+
+## Common mistakes
+
+1. **A link page with twenty products.** The viewer wanted one.
+2. **No disclosure**, or disclosure after the link.
+3. **Dead links** left in old videos.
+4. **Products never used on camera.**
+5. **Affiliate links to something you have never bought**, which the audience can usually tell.
+6. **Treating it as passive income.** The videos still have to be good, and the links still have to be maintained.
+
+## Choosing a programme
+
+Three questions decide whether a programme is worth your time, and none of them is the headline commission rate:
+
+- **Does it confirm sales?** A programme that reports clicks but never conversions gives you no way to know whether the video earned anything, and no way to improve it.
+- **How long does the tracking last?** The window between a click and a purchase decides how many of those purchases you are credited for. A short window suits impulse buys; a long one suits considered purchases.
+- **Does the merchant honour it?** This is the one you cannot read on a signup page and must learn from other creators or from your own first payout.
+
+Apply to the programmes for products you already recommend, not the ones with the biggest advertised rate. A five percent commission that pays is worth more than thirty percent that never confirms.
+
+Many creators end up in two places: one large marketplace that carries many merchants, and one or two direct brand programmes for the products they use most. That combination covers most recommendations without requiring a dozen dashboards.
+
+## Keep the records
+
+For each video with a link: the product, the programme, the link, the date published, and the disclosure used. When a merchant disputes a conversion or a platform asks about a partnership, that record is the answer.
+
+If the recommendation is a real one, the video is the same video you would have made without the commission — and that is the test worth applying before publishing. The commercial side of a creator business, from pricing to contracts, is covered across [how to price a sponsored short](/blog/price-sponsored-shorts) and [brand deal terms worth reading twice](/blog/brand-deal-terms).
 `,
   },
 ];
