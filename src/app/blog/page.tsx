@@ -11,7 +11,7 @@ export const revalidate = 60;
 export const metadata = {
   openGraph: socialFor('/blog'),
   alternates: { canonical: '/blog' },
-  title: 'Blog — NexusCut',
+  title: 'Short-Form Video Editing Blog & Tutorials | NexusCut',
   description:
     'Practical guides, retention tactics, and editing workflows for short-form creators.',
 };

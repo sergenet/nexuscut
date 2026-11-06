@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { MessageCircle, Globe, Share2, Mail } from "lucide-react";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 
 export default function Footer() {
   return (
@@ -66,6 +67,7 @@ export default function Footer() {
               <FooterLink href="/help">Help Center</FooterLink>
               <FooterLink href="/terms">Terms of Service</FooterLink>
               <FooterLink href="/privacy">Privacy Policy</FooterLink>
+              <CookieSettingsButton />
               <FooterLink href="/refund-policy">Refund Policy</FooterLink>
             </ul>
           </div>

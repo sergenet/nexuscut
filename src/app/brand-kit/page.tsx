@@ -64,14 +64,6 @@ export default function BrandKitPage() {
     setSaving(false);
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-indigo-500" />
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-gray-950 text-white flex flex-col font-sans">
       <Navigation />
@@ -82,12 +74,37 @@ export default function BrandKitPage() {
             <Briefcase className="w-6 h-6 text-amber-500" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">B2B Brand Kit</h1>
-            <p className="text-gray-400">Manage your company's visual identity across all projects.</p>
+            <h1 className="text-3xl font-bold tracking-tight">Brand Kit</h1>
+            <p className="text-gray-400">Save your colors, type and logo once, then reuse them on every project.</p>
           </div>
         </div>
 
-        {!isPro ? (
+        <section className="mb-10 rounded-2xl border border-gray-800 bg-gray-900/60 p-6">
+          <h2 className="text-lg font-bold">Why a Brand Kit instead of restyling every video</h2>
+          <p className="mt-3 text-sm leading-6 text-gray-400">
+            Caption styling is the part of short-form editing people repeat most: the same font,
+            the same two colors, the same logo corner on every clip. A Brand Kit stores those
+            choices against your account, so a new project starts on-brand instead of starting
+            blank. It covers:
+          </p>
+          <ul className="mt-4 grid gap-2 text-sm text-gray-400 sm:grid-cols-2">
+            <li>Primary color, applied to caption text.</li>
+            <li>Secondary color, used to highlight Retention Focus words.</li>
+            <li>A font file URL, applied to captions in place of the presets.</li>
+            <li>A logo URL, available in Export settings as an optional watermark.</li>
+          </ul>
+          <p className="mt-4 text-sm leading-6 text-gray-500">
+            The logo stays off by default. When you enable it at export time you pick its position,
+            size and opacity, so one Brand Kit covers both a full-frame clip and a tight vertical
+            crop.
+          </p>
+        </section>
+
+        {loading ? (
+          <div className="flex items-center justify-center rounded-2xl border border-gray-800 bg-gray-900 p-16">
+            <Loader2 className="w-8 h-8 animate-spin text-indigo-500" />
+          </div>
+        ) : !isPro ? (
           <div className="bg-gray-900 border border-gray-800 rounded-3xl p-12 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent pointer-events-none" />
             <Lock className="w-16 h-16 text-amber-500 mx-auto mb-6 opacity-80" />

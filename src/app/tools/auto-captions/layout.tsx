@@ -7,7 +7,7 @@ import { socialFor } from '@/lib/social';
 export const metadata: Metadata = {
   openGraph: socialFor('/tools/auto-captions'),
   alternates: { canonical: '/tools/auto-captions' },
-  title: 'Free AI Auto Captions for Videos — Word-Timed Subtitles | NexusCut',
+  title: 'Free Word-Timed Auto Captions for Video | NexusCut',
   description:
     'Turn speech into word-timed captions free. Upload a video, get editable auto-captions in seconds, download an SRT, or burn animated word-by-word captions into your short with the NexusCut editor.',
 };

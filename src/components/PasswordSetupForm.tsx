@@ -35,7 +35,7 @@ export default function PasswordSetupForm({ required }: { required: boolean }) {
 
   return (
     <div className="border-b border-neutral-800 bg-indigo-500/5 p-7">
-      <h2 className="text-xl font-bold">{required ? 'Create your password' : __import__('os').environ.get('VPS_PASSWORD','')}</h2>
+      <h2 className="text-xl font-bold">{required ? 'Create your password' : 'Change your password'}</h2>
       <p className="mt-2 text-sm text-neutral-400">Use 10–128 characters. NexusCut stores only a secure password hash.</p>
       <form onSubmit={submit} className="mt-5 grid max-w-md gap-3">
         <input type="password" autoComplete="new-password" minLength={10} maxLength={128} required placeholder="New password" value={password} onChange={event => setPassword(event.target.value)} className="rounded-xl border border-neutral-700 bg-black px-4 py-3 outline-none focus:border-indigo-500" />

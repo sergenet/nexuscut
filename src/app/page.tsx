@@ -7,7 +7,9 @@ import { socialFor } from '@/lib/social';
 
 export const metadata = {
   openGraph: socialFor('/'),
-  title: 'AI Word-by-Word Captions for TikTok, Reels & Shorts | NexusCut',
+  // 52 characters. Google truncates the snippet around 60, and the old title
+  // spent 62 on the brand tail that every other page already carries.
+  title: 'Word-by-Word Captions for Reels, TikTok & Shorts | NexusCut',
   description:
     'Auto-generate animated word-by-word captions for TikTok, Reels and YouTube Shorts right in your browser. Free exports with no watermark, plus a real timeline when you want full control.',
   alternates: { canonical: 'https://nexuscut.io' },

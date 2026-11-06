@@ -72,6 +72,7 @@ import AffiliateTracker from '@/components/AffiliateTracker';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import CampaignAttribution from '@/components/CampaignAttribution';
 import MetaPixel from '@/components/MetaPixel';
+import CookieConsent from '@/components/CookieConsent';
 
 export default function RootLayout({
   children,
@@ -107,6 +108,7 @@ export default function RootLayout({
           <AffiliateTracker />
         </Suspense>
         <ToastViewport />
+        <CookieConsent />
         <main className="flex-1">
           {children}
         </main>

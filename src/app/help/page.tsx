@@ -19,11 +19,18 @@ export default function HelpPage() {
         </Link>
         <div className="flex items-center gap-2">
           <Play className="w-5 h-5 text-indigo-500" />
-          <span className="text-xl font-bold">NexusCut Help Center</span>
+          <h1 className="text-xl font-bold">NexusCut Help Center</h1>
         </div>
       </header>
 
       <div className="max-w-4xl mx-auto space-y-16">
+        <p className="text-neutral-400 leading-relaxed">
+          Short, tested answers for the things that actually go wrong in the editor: media that
+          will not relink, captions that land on the wrong word, an export that stalls, or a
+          subscription you need to change. Each answer below describes the current build, not a
+          planned feature. If your question is not here, the tutorial walks through the whole
+          workflow in order, and support@nexuscut.io reaches a human.
+        </p>
         <section id="faq" className="scroll-mt-24">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 bg-indigo-500/10 rounded-xl flex items-center justify-center border border-indigo-500/20"><span className="text-xl">?</span></div>
