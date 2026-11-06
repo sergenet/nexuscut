@@ -28,6 +28,23 @@ const nextConfig = {
     memoryBasedWorkersCount: true,
     serverActions: { bodySizeLimit: '250mb' },
   },
+  // Two thin legacy posts (97 and 90 words) were retired when long-form guides
+  // replaced them on the same subjects. Both URLs have been in the sitemap since
+  // June, so they are redirected permanently rather than left to 404 — either
+  // way the inbound link equity lands on the replacement.
+  async redirects() {
+    return [
+      { source: '/blog/watch-time-optimization', destination: '/blog/vanity-metrics-vs-real-signals', permanent: true },
+      { source: '/blog/retention-tricks', destination: '/blog/read-a-retention-graph', permanent: true },
+      // Four short posts duplicated the caption and vertical-video guides.
+      // Google reads near-duplicate thin pages as low-value content, so they
+      // 301 into the full guide that now covers the same ground.
+      { source: '/blog/make-viral-tiktok-subtitles', destination: '/blog/caption-readability-guide', permanent: true },
+      { source: '/blog/animated-captions-watch-time', destination: '/blog/caption-readability-guide', permanent: true },
+      { source: '/blog/word-by-word-captions', destination: '/blog/caption-readability-guide', permanent: true },
+      { source: '/blog/create-engaging-reels-ai', destination: '/blog/edit-vertical-videos-reels', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

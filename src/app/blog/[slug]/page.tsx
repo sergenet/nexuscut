@@ -12,6 +12,12 @@ import {
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { socialFor } from '@/lib/social';
+import AdUnit from '@/components/AdUnit';
+
+// Ad unit ids are created in AdSense and passed in at build time. When they are
+// absent the units render nothing, so a build without them is still correct.
+const ARTICLE_AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_SLOT_ARTICLE;
+const FOOTER_AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_SLOT_FOOTER;
 
 export async function generateStaticParams() {
   const slugs = await getAllBlogSlugs();
@@ -133,6 +139,10 @@ export default async function BlogPostPage({
           )}
         </div>
 
+        {/* In-article unit: after the last paragraph, where a reader who has
+            finished the post is most likely to be looking. */}
+        <AdUnit slot={ARTICLE_AD_SLOT} className="my-10" label="Advertisement" />
+
         <div className="mt-16 bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-2xl p-8 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-fuchsia-500/10 blur-3xl rounded-full" />
           <Sparkles className="w-10 h-10 text-fuchsia-500 mx-auto mb-4 relative z-10" />
@@ -150,6 +160,8 @@ export default async function BlogPostPage({
             Start Editing Free
           </Link>
         </div>
+
+        <AdUnit slot={FOOTER_AD_SLOT} className="mt-10" label="Advertisement" />
       </main>
 
       <Footer />

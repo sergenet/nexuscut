@@ -73,6 +73,7 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 import CampaignAttribution from '@/components/CampaignAttribution';
 import MetaPixel from '@/components/MetaPixel';
 import CookieConsent from '@/components/CookieConsent';
+import AdSense from '@/components/AdSense';
 
 export default function RootLayout({
   children,
@@ -103,6 +104,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-neutral-950 text-white" suppressHydrationWarning>
         <GoogleAnalytics />
         <MetaPixel />
+        <AdSense />
         <CampaignAttribution />
         <Suspense fallback={null}>
           <AffiliateTracker />

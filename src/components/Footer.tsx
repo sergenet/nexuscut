@@ -65,6 +65,7 @@ export default function Footer() {
               <FooterLink href="/blog">Blog</FooterLink>
               <FooterLink href="/affiliates">Affiliate Program</FooterLink>
               <FooterLink href="/help">Help Center</FooterLink>
+              <FooterLink href="/contact">Contact</FooterLink>
               <FooterLink href="/terms">Terms of Service</FooterLink>
               <FooterLink href="/privacy">Privacy Policy</FooterLink>
               <CookieSettingsButton />

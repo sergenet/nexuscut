@@ -1,7 +1,7 @@
 import type { BlogPostLike } from '@/lib/blogData';
 
 /**
- * Twenty long-form guides added 2026-11-06 in four rounds, to give the blog
+ * Thirty long-form guides added 2026-11-06 in six rounds, to give the blog
  * real depth.
  *
  * The site was rejected by AdSense for "low value content" while its median
@@ -15,7 +15,14 @@ import type { BlogPostLike } from '@/lib/blogData';
  * three covers capture, which is where most weak shorts are actually decided:
  * lighting, on-camera delivery, self-filming, screen capture, scripting. Round
  * four covers the commercial side: pricing, media kits, outreach, contract
- * terms and affiliate links.
+ * terms and affiliate links. Round five covers measurement: the retention
+ * graph, vanity metrics, traffic sources, hook testing at small scale, and a
+ * monthly review. Round six covers client work: briefs, revision scope,
+ * approvals, delivery and retainers.
+ *
+ * Round five deliberately replaced two legacy posts (watch-time-optimization
+ * and retention-tricks, 97 and 90 words) instead of being added beside them;
+ * both are now 301-redirected to the new guides.
  *
  * The rounds deliberately do not overlap in subject, so they compete for
  * different searches rather than each other.
@@ -2042,6 +2049,1002 @@ Many creators end up in two places: one large marketplace that carries many merc
 For each video with a link: the product, the programme, the link, the date published, and the disclosure used. When a merchant disputes a conversion or a platform asks about a partnership, that record is the answer.
 
 If the recommendation is a real one, the video is the same video you would have made without the commission — and that is the test worth applying before publishing. The commercial side of a creator business, from pricing to contracts, is covered across [how to price a sponsored short](/blog/price-sponsored-shorts) and [brand deal terms worth reading twice](/blog/brand-deal-terms).
+`,
+  },
+
+  // ---------------------------------------------------------------------
+  // Round five: measurement. Replaces the retired watch-time-optimization
+  // and retention-tricks posts rather than competing with them.
+  // ---------------------------------------------------------------------
+  {
+    slug: 'read-a-retention-graph',
+    title: 'How to Read a Retention Graph Without Fooling Yourself',
+    description:
+      'What the four common retention shapes mean, how to tell a rewatch from a confusion, and the three timestamps worth recording for every short you publish.',
+    date: '2026-11-06',
+    category: 'Analytics',
+    content: `
+# How to Read a Retention Graph Without Fooling Yourself
+
+A retention graph is the closest thing short-form video has to a diagnostic. It shows, second by second, how many people were still watching. Read carelessly, it flatters you: the line starts high and the average looks respectable. Read properly, it tells you where you lost people and roughly why, which is the only information that changes the next edit.
+
+The trap is that most creators read one number, the average, and then guess a cause. The average is a summary of a shape, and the shape is where the decision lives.
+
+## Start with the two numbers, not the curve
+
+Before you look at the line, write down two figures: average view duration in seconds, and the percentage of the video that represents. Then note the split between people who kept watching and people who swiped away almost immediately. YouTube reports this directly for Shorts as viewed versus swiped away, and the other platforms expose an equivalent once a video has enough views.
+
+Those numbers disagree constantly, and the disagreement is the useful part. A sixty-second video with a forty-second average is failing, because a third of its runtime is a place people leave. A twenty-second video with a fourteen-second average is doing better than it looks, because there was less room to hold anyone. Compare percentage viewed only against videos of similar length, never against the whole catalogue, where a three-minute explainer will always look generous.
+
+## The four shapes you will actually see
+
+Almost every short resolves into one of four curves, and each implies a different fix.
+
+**The cliff.** A near-vertical drop in the first two or three seconds, then a relatively flat line. The people who stayed were already committed; the people who left never entered. This is a hook problem, not a middle problem, and editing the middle of a cliff-shaped video is wasted work.
+
+**The slow bleed.** A steady, gentle decline across the whole runtime. Nothing is broken and nothing is holding. This usually means the video delivers information at a constant rate with no peaks: no turn, no surprise, no specific reason to stay for the next ten seconds.
+
+**The mid-dip.** A window where the line falls faster than the trend on either side, then recovers. Something concrete happened there. Find the timestamp before theorising about it.
+
+**The rewatch bump.** A rise, sometimes a distinct second hump near the end, which means people went back. Very short clips under about fifteen seconds produce this almost automatically, so a bump there is not proof of brilliance. On a longer clip it is a real signal, and it is worth knowing which three seconds people replay.
+
+## A spike means rewatch, and rewatch is not always good
+
+A rise in the curve means viewers returned, so the same seconds were watched more than once. That is usually read as a compliment. Sometimes it is a complaint: people replay because they did not understand a sentence, because a caption went by too fast, or because a number appeared on screen that needed reading twice.
+
+The way to tell the difference is to watch the three seconds that produced the bump with the sound off, then again at normal speed, and ask what a stranger would be confused by. If the answer is nothing, you have a moment worth repeating. If the answer is that the text was unreadable, you have a comprehension problem wearing an engagement costume, and the fix is typography, not structure. [Caption readability](/blog/caption-readability-guide) covers that fix in detail.
+
+## A dip repeated across videos is a habit, not an accident
+
+One dip is an accident. The same dip at the same relative position in three videos is a habit, and habits are cheap to fix because you only have to diagnose them once.
+
+Note where each of your last five videos loses the most, expressed as a fraction of its length. If every loss clusters around twenty percent of the runtime, look at what you habitually put there. Common answers: the title card, the first "so anyway", the transition where the music resets, or the point where you stop talking and start explaining.
+
+The most common single cause at small scale is a cold open that hands off into a second introduction. The first five seconds earn attention; the next five spend it on setup the viewer already agreed to by staying. Cut the handoff and the curve usually improves without any other change.
+
+## Compare shapes, not averages
+
+Two videos can share an average and have opposite problems. One holds everyone until a hard drop at the end; the other loses half the audience immediately and then holds the rest. Both average out somewhere in the middle.
+
+So when you compare two videos, overlay the curves and compare them at matched positions: first three seconds against first three seconds, halfway against halfway. If you have no tooling for that, a rough method works. Screenshot each curve, note the percentage at zero, ten, twenty-five, fifty and seventy-five percent of runtime, and put those five numbers in a row. Patterns jump out of a row of numbers faster than out of a single average.
+
+## What the graph cannot tell you
+
+The graph tells you where attention was lost. It cannot tell you why, and it never will. Asking the graph for a cause produces confident nonsense: "they left because the pacing dropped", when in fact the audio was clipping, or a caption sat under the platform interface and was never visible.
+
+Two checks do most of the work of explaining a dip. First, watch the video on the platform it was published to, on a phone, with the interface visible, and see whether anything you put on screen is covered by it. That is so common that [vertical safe zones](/blog/vertical-video-safe-zones) exists to prevent it. Second, read the comments on that specific video for confusion, and read the transcript at the dip for a sentence that assumes knowledge the audience does not have. Only after those two checks is a structural theory worth forming.
+
+## The three timestamps worth writing down every time
+
+Keep a log with one line per video and three timestamps: the point of first drop, the point of biggest drop, and the point people rewatched. Five minutes per video. After ten or fifteen videos you have a diagnosis of your own habits rather than a folder of curves nobody opens again.
+
+The log also stops you from repeating an experiment you already ran. Most creators test the same hook variation four times without noticing, because the evidence of the first test lived in a screenshot they never looked at twice.
+
+## Turning one reading into one edit
+
+The rule that keeps this useful: one reading produces one change. If a video lost people at second two and again at second eighteen, fix the hook in the next video and leave the middle alone, so the next curve is readable. Change both and you will not know which one worked, which is the same discipline that makes [hook testing](/blog/test-hooks-with-small-audiences) worth doing at all.
+
+Retention is one of only a few numbers worth taking seriously. Which of the others earn their place, and which are decoration, is covered in [which metrics are vanity and which are signal](/blog/vanity-metrics-vs-real-signals).
+`,
+  },
+  {
+    slug: 'vanity-metrics-vs-real-signals',
+    title: 'Which Short-Form Metrics Are Vanity and Which Are Signal',
+    description:
+      'A simple test for any number on your analytics screen, the four metrics that actually predict your next video, and why total watch time flatters long clips.',
+    date: '2026-11-06',
+    category: 'Analytics',
+    content: `
+# Which Short-Form Metrics Are Vanity and Which Are Signal
+
+Every analytics screen offers dozens of numbers. Most are decoration: they move, they feel like progress, and they change nothing about what you make next week. A small set earns its place, because each one tells you something you could not have guessed and points at a specific change.
+
+The test is easy to apply and slightly brutal. For any metric, ask what you would do differently next video if it doubled. If the honest answer is "nothing", it is vanity. Keep watching it if it motivates you, but do not let it steer.
+
+## Views measure distribution, not quality
+
+A view is a delivery event. It says the platform put the video in front of someone, nothing more. The same video can get nine hundred views or ninety thousand depending on the hour it went out, the account's recent history, and whether one early viewer shared it.
+
+Because views are decided largely by the feed, they are a poor per-video judgement and a decent per-month trend. Watch the monthly shape with a stable format and ignore the single outlier in either direction. A lucky video is not evidence of a method, and an unlucky one is not evidence against it.
+
+## Likes are the cheapest thing a viewer can give
+
+A like costs one tap and commits the viewer to nothing. It is a weak measure of interest and a reasonable measure of agreement. Over many videos, likes per thousand views can show whether a format is landing emotionally. As a per-video signal it will send you in circles, because people like videos they abandoned at second four.
+
+## Followers are a historical record, not an audience
+
+The public count essentially only goes up, so it hides churn. It also mixes audiences: a thousand followers gained from one off-topic video are not a thousand people who want your usual work, and their indifference will drag down the early performance of everything you publish afterwards.
+
+What matters is conversion. Follows per thousand views tells you whether a video made people want more of you. Returning viewers tells you whether they came back. Both survive a lucky week; neither can be bought with a single viral post.
+
+## The four metrics that predict the next video
+
+Four numbers are enough to run a short-form channel on:
+
+- **Percentage viewed, matched by length.** The only fair measure of whether a video held attention.
+- **Shares per thousand views.** A share puts the video in a private conversation, which costs the viewer something.
+- **Saves per thousand views.** A save says the viewer expects to need this again.
+- **Follows, profile visits or link clicks per thousand views**, depending on what the account is for.
+
+Shares and saves are the ones worth protecting, because they are the only engagement that costs the viewer social capital. Someone can like a video out of politeness; nobody sends it to a friend to be polite.
+
+## Ratios beat totals
+
+Totals scale with distribution, so they reward luck. Ratios describe the video.
+
+Take a video with a hundred thousand views and twenty shares. Now take one with four thousand views and forty shares. The second is the better video by a wide margin, and the first is the one that will feel like the success. If you only look at totals, you will spend the next month trying to repeat the accident instead of the method.
+
+## Total watch time flatters long videos
+
+Watch time is duration multiplied by retention. A three-minute video watched to thirty percent produces more watch time than a twenty-five-second video watched to seventy percent, so if watch time is the target you will be pulled toward longer and looser, which is the opposite of what short-form rewards.
+
+Percentage viewed keeps comparisons honest across lengths. Keep both figures if you like, but read the percentage.
+
+## A four-number weekly screen
+
+One line per week, four numbers, no more:
+
+1. Views, as a weekly total.
+2. Percentage viewed, averaged across the week's videos of similar length.
+3. Shares per thousand views.
+4. Follows per thousand views.
+
+Four numbers on one line fits on a screen and can be compared to last week at a glance. Twenty numbers cannot be compared to anything, which is why dashboards with twenty numbers change no decisions.
+
+## When a rising number is bad news
+
+Progress is not always up. Three cases worth recognising:
+
+**Watch time rises while percentage viewed falls.** You made longer videos that held people less. The headline improved and the product got worse.
+
+**Followers rise fast from a topic you do not make.** The new audience arrived for something else. Every subsequent video is now judged by people who did not ask for it, which suppresses the distribution of your real work.
+
+**Views rise on a format you dread making.** A format you dislike is a format you will abandon in six weeks, taking its numbers with it. Treat the temptation as a warning.
+
+## Low volume makes ratios noisy
+
+Honesty about the limits: at a few hundred views, one share is a large swing in shares per thousand. Below a few thousand views per video you are reading tea leaves on percentages, and the fix is not a better dashboard but more posts and a longer window. Aggregate weekly, and treat any difference under about twenty percent as unproven until it repeats.
+
+## A worked comparison
+
+Two videos from the same month, same length, same topic.
+
+Video A: 120,000 views, 190 new followers, 14 shares, 22 saves, 38 percent viewed. Video B: 9,000 views, 210 new followers, 96 shares, 140 saves, 61 percent viewed.
+
+Totals say A won by an order of magnitude. Ratios say B is the better video: it held nearly two thirds of its audience, and it produced more follows from a thirteenth of the views. A managed roughly one and a half follows per thousand views; B managed twenty-three.
+
+The decision that follows is not "make another A". It is "find out what B did and do it again", because B is the video that would compound if it had A's distribution. A was a delivery event. B was a product.
+
+## Reporting numbers to a sponsor without misleading them
+
+When a brand asks for your analytics, they will usually ask for averages. Give them medians and a range instead, and say so plainly.
+
+An average views figure on a small account is dominated by one outlier, so it is both true and useless: it describes a month that will not repeat. "Median 4,200 views, range 900 to 120,000, with the high figure driven by one video the feed picked up" survives scrutiny and starts a better conversation than a number that quietly over-promises.
+
+The same applies to completion. Report percentage viewed for videos of comparable length, not a single figure across fifteen-second and three-minute videos, because the second will always look worse and the client will conclude the audience is bored.
+
+Being the person who explains the limitation is also a commercial advantage. It is the opposite of what brands expect, and it moves the next conversation from metrics to the work.
+
+That is also why [hook testing at small scale](/blog/test-hooks-with-small-audiences) is designed around sequential tests rather than clean A/B splits, and why the [monthly review](/blog/monthly-creator-review) is a better unit than the week.
+`,
+  },
+  {
+    slug: 'short-form-traffic-sources',
+    title: 'Where Short-Form Views Actually Come From',
+    description:
+      'Recommendation feed, search, profile, shares, suggested and external: what each source means for editing, and which one is the only source that compounds.',
+    date: '2026-11-06',
+    category: 'Analytics',
+    content: `
+# Where Short-Form Views Actually Come From
+
+Views do not arrive from one place. The mix differs by platform and, more importantly, by video. Knowing which source produced a video changes what you should fix: a clip that lives on search and one that lives in a recommendation feed are edited differently, titled differently, and judged by different numbers.
+
+Most platforms give you a traffic source breakdown somewhere in the analytics, though the labels differ and some categories get lumped together. The categories below are the ones worth separating mentally even when the dashboard merges them.
+
+## The six sources worth separating
+
+**The recommendation feed.** TikTok's For You, the YouTube Shorts feed, the Reels feed and Explore. This is where most views on most accounts come from.
+
+**Search.** Somebody typed something and your video answered it.
+
+**Profile and home tabs.** People who already know you, opening the app and checking.
+
+**Shares and direct messages.** The video arriving inside a private conversation.
+
+**Suggested and related.** Your video placed beside a larger one because the topics are close.
+
+**External.** Links from websites, newsletters, messaging apps and anywhere else off-platform.
+
+## Recommendation feeds judge the opening seconds
+
+Feed distribution is decided by early signal. The platform shows a video to a small group, watches what they do in the first moments, and either widens the audience or stops. Nothing later in the video can rescue a weak opening, because most of the audience that would have seen it never will.
+
+That makes the feed the source where the [hook is the whole game](/blog/test-hooks-with-small-audiences), and where a good middle matters only for the audience you already earned. It also makes feed traffic volatile: a video can get a large push on a Tuesday and nothing on Thursday for reasons that were never visible to you.
+
+## Search is the only source that compounds
+
+A search-driven video keeps earning after publication. It does not need to win an auction every time it is shown; it needs to be the best answer to a phrase people keep typing.
+
+This is the source most small accounts ignore, and the one that pays back slowest and longest. A single well-targeted video can out-earn twenty feed hits over a year, because the feed hits stop the day the platform loses interest.
+
+## Profile visits are a decision point
+
+When someone lands on your profile they are deciding one thing: whether the next video is worth their time. They will look at the first three posts they see and decide in a few seconds.
+
+So treat the profile as a page, not a filing cabinet. Pin the three videos that best represent what you actually make. Make the bio say what the account is for in one line. If the pinned three are all the same off-topic video that went viral, the profile is actively misleading the people most likely to follow.
+
+## Shares are distribution you did not pay for
+
+A share moves the video into a conversation between two people, which is a stronger endorsement than a like and reaches viewers with no ad-style resistance. It is also the one source where the growth is genuinely yours: the platform did not decide to show it, a person did.
+
+Ask what makes somebody send a short to a friend. In practice it is one of two things: recognition ("this is you") or usefulness ("you need this"). Neither happens by accident. A video built around a specific, nameable situation gets sent; a video about "content strategy" gets watched and forgotten.
+
+## Suggested and related borrow another audience
+
+The platform places your video next to a popular one when the topics are close enough. That is a reason to cover subjects that already have large videos beside them, and to use the vocabulary of those videos so the connection is obvious. A video about fixing audio in a specific app will be suggested beside other videos about that app; a video about "better sound" will not be connected to anything.
+
+## Reading your breakdown honestly
+
+Two cautions. First, percentages on small accounts are noisy, and a single share can register as a large slice. Second, distinguish between a video that got eighty percent of its views from search, which will keep earning, and one that got eighty percent from the feed in a single push, which mostly will not.
+
+The useful question is not "where did these views come from" but "which of these sources will still work next month without me doing anything".
+
+## Making one short findable in search
+
+A checklist that takes two minutes:
+
+- Say the phrase a person would type, out loud, in the first sentence.
+- Put the same phrase on screen as text for the first few seconds.
+- Use it in the title and in the first line of the description.
+- Keep captions on. Auto-generated captions help both the viewer and the platform understand the audio.
+- Use two to four specific hashtags as topic labels, not a wall of generic ones.
+- Stay on one topic long enough for the platform to understand what the account is about.
+
+That last point does more work than the first five. Accounts that publish everything from fishing to finance give the platform no reliable signal, so their videos get classified loosely and surfaced rarely.
+
+## When external traffic is worth the effort
+
+Sending two hundred visitors to a short from a newsletter or a website feels productive and does not make the feed pick it up at all. External traffic is worth chasing when the destination is something you control, such as a page, a list or a product, and not when you are trying to inflate a video's count.
+
+## The first day is a distribution audition
+
+Almost all feed traffic arrives in the first day or two, and what happens then decides whether more arrives. So the first day is not for celebrating or panicking. It is for reading three things: the swipe-away rate, the share count, and whether the video is reaching people outside your existing audience.
+
+If the swipe-away rate in the first three seconds is high, the video is finished regardless of its quality, and reposting it will produce the same result. If shares are meaningful while views are modest, the video has the quality signal but not yet the distribution — and a follow-up on the same subject is worth making, because the platform has learned something about who wants it.
+
+## Diagnosing a video that died
+
+The source breakdown separates three failures that otherwise look identical.
+
+A video with a thousand views and almost no shares is a hook problem. A video with a thousand views, a decent share count and no search traffic is a topic problem: a good video with no demand behind it. A video with search traffic and low retention is answering the query badly — right subject, wrong answer.
+
+Each points at a different edit, and without the breakdown every underperformer looks like the same failure. That is precisely how people conclude that short-form is random.
+
+## What a healthy mix looks like
+
+On an account that has published consistently for months, a typical month is mostly feed traffic, with a persistent trickle from search, a small steady flow from profile visits, and enough sharing to produce the occasional spike.
+
+The proportions matter less than the presence of all four. Feed-only months feel exciting and evaporate. The accounts that grow steadily always have a search and profile floor underneath the spikes.
+
+The exception is a video that is genuinely a reference: an explainer people will link to from a forum or a client email. Those earn search and referral traffic together, which is the combination worth building toward.
+`,
+  },
+  {
+    slug: 'test-hooks-with-small-audiences',
+    title: 'Testing Hooks When You Do Not Have an Audience',
+    description:
+      'Sequential hook tests you can actually run with a few hundred views, how to separate never-entered from left-immediately, and when the data is too thin to decide.',
+    date: '2026-11-06',
+    category: 'Analytics',
+    content: `
+# Testing Hooks When You Do Not Have an Audience
+
+The advice to "A/B test your hooks" assumes an audience large enough to split. At a few hundred views a video, a clean split test is not available: the platforms do not let you publish the same video twice to the same people, the audience changes by the hour, and a sample of three hundred is mostly noise.
+
+That does not mean testing is impossible. It means the test has to be sequential rather than simultaneous, and the conclusions have to be stated more carefully.
+
+## Why a clean A/B test is out of reach
+
+Four obstacles, all of them practical:
+
+- The platform will not show two versions of one video to a comparable audience.
+- Publishing the second version later means a different day, a different feed mood, and often a different audience.
+- The feed decides distribution, so the second version may get a smaller push for reasons unrelated to its hook.
+- Small samples make percentage differences meaningless: one extra viewer changes the number.
+
+Anyone who tells you they ran a rigorous hook A/B test at five hundred views is describing a guess with a spreadsheet attached.
+
+## What you can still test
+
+Sequential tests on similar videos. Pick one element, change only that element across three videos that are otherwise alike, and compare where they lost people. It is not an experiment in the scientific sense. It is a way of not deceiving yourself, which is most of the value.
+
+## One variable, three posts
+
+Choose one thing per round:
+
+- **The first sentence**: a question, a claim, or a number.
+- **The first frame**: a face, an object, or text only.
+- **The first sound**: a voice, music, or silence.
+- **The first four words on screen**, if the hook is text-led.
+
+Then publish three videos that differ in that element and nothing else that matters. Same topic area, similar length, similar delivery style. Three is the minimum that lets you see whether one result was an accident.
+
+## Judge the first three seconds separately
+
+A hook has one job: survive the scroll. That is a different job from being liked, and it is measured in a different window.
+
+Take two figures from each video: the drop during the first three seconds, and the drop from second three to second ten. They fail differently:
+
+- **Never entered.** A steep drop in the first three seconds means the opening frame, first words or first sound did not stop anyone. The rest of the video was never judged.
+- **Entered, then left.** A gentle first three seconds followed by a collapse at second five or six means the hook worked and the delivery did not. The fix is in the second sentence, not the first.
+
+Confusing those two is the most common analytic mistake in short-form, and it sends people rewriting hooks that were already working. [Reading a retention graph](/blog/read-a-retention-graph) covers the shapes in more detail.
+
+## When the sample is too small to decide
+
+Set the bar before you look. A workable rule: treat any difference smaller than a few percentage points on a few hundred views as unproven, and require the same pattern in at least two of the three videos before changing your default.
+
+When the data really is too thin, fall back to a qualitative check that is surprisingly reliable: watch the first three seconds with the sound off, as a stranger would, and ask whether anything on screen gives a reason to keep watching. Most hooks that fail the numbers also fail that test, and the test costs ten seconds instead of a week.
+
+## Keep a hook log
+
+A simple table, one row per video: date, topic, first sentence, first frame, percentage still watching at three seconds, overall percentage viewed, and a one-word verdict.
+
+Ten rows is usually enough to see your own pattern. Most creators discover they have been opening with the same construction for months, which is why their numbers have been flat for months.
+
+## What to do with a winner
+
+Repeat the shape, not the wording. If questions held attention better than claims, use questions about different subjects. Copying the exact sentence produces diminishing returns quickly, because the audience that already saw it recognises the repeat.
+
+## Retest the loser before retiring it
+
+A hook can lose because of the topic rather than the hook. If a question hook on a niche subject underperformed a claim hook on a broad one, you have learned something about the subject, not the construction. Run the same comparison once more on topics of similar appeal before rewriting your defaults.
+
+## Designing the three so the comparison is fair
+
+Most hook tests are ruined by confounds that were avoidable. Five things to hold constant:
+
+- **Length**, within a few seconds, because percentage viewed depends on it.
+- **Topic appeal**, roughly comparable, or the test is measuring the subject.
+- **Posting window**, ideally the same day of the week and hour.
+- **Account state**: do not start a test immediately after an unusually successful video, when the feed is showing you to far more people than usual.
+- **Delivery style**: if two videos are talking-head and one is voiceover, the hook is no longer the only difference.
+
+Write those five down before publishing. It takes two minutes and turns a vague feeling into a comparison somebody else could check.
+
+## A worked example
+
+A question-hook against a claim-hook test, three videos each, on comparable subjects.
+
+The question openings held slightly more people at three seconds in two of three cases. The claim openings produced more shares and held longer overall. The honest conclusion is not "questions win". It is that questions survive the scroll and claims earn the send — which points at using a question for the opening frame and a claim inside the first ten seconds, rather than choosing between them.
+
+Most hook tests end in a combination rather than a winner. The combination is usually more useful than either result alone.
+
+## When the result contradicts your instinct
+
+It will, regularly, and the temptation is to explain it away with a reason that preserves the instinct: the topic was weak, the cover frame was bad, the feed was strange that day.
+
+Resist that for one round. Note the contradiction in the log and run the same test next month on different subjects. If it repeats, your instinct was the thing that was wrong, which is exactly what the exercise is for. If it does not repeat, you have learned the test was noisy — also worth knowing before you rebuild your approach around it.
+
+Decisions made this way belong in a monthly rhythm rather than a daily one; the [monthly review](/blog/monthly-creator-review) is the right place to act on them.
+`,
+  },
+  {
+    slug: 'monthly-creator-review',
+    title: 'The Monthly Review That Actually Changes What You Make',
+    description:
+      'A forty-five minute routine for reviewing a month of shorts, the five questions worth answering, and how to decide what to stop making without guessing.',
+    date: '2026-11-06',
+    category: 'Strategy',
+    content: `
+# The Monthly Review That Actually Changes What You Make
+
+A week of short-form data is mostly noise. One video gets a push and the week looks excellent; the next gets nothing and the week looks like a failure. Reviewing weekly therefore turns into mood management, and mood management produces decisions like "post more" and "make better hooks", which change nothing.
+
+A month is long enough for the noise to average out and short enough that the lessons are still useful. This is a routine that fits in about forty-five minutes once a month.
+
+## Record before you look
+
+Before opening any analytics screen, write down what you published last month: how many videos, which formats, which topics, which lengths, what hooks you used, and roughly how long each one took.
+
+Doing this first matters because the alternative is explaining the numbers with whatever you remember, and memory is not neutral. It favours the videos you enjoyed making and quietly deletes the ones you rushed. The record is the only honest witness.
+
+## The five questions
+
+**Which three videos held attention best, as a percentage, among videos of similar length?** Percentage, not views, and matched by length, for the reasons in [which metrics matter](/blog/vanity-metrics-vs-real-signals).
+
+**Which produced the most shares and saves per thousand views, and what did they have in common?** Shares are the only engagement that costs the viewer something, so this question usually finds the videos that were genuinely useful or genuinely recognisable.
+
+**Which topics did I keep making that never held attention?** Look for anything you published twice or more that never cleared your median. That is a topic you find interesting and your audience does not.
+
+**What did I spend the most time on, and did it show?** Sometimes the answer is no, and that is one of the most valuable findings available. Effort spent where nobody can perceive it is effort you can reclaim.
+
+**What did I avoid making because it felt risky?** Usually one or two ideas per month get shelved for being unlike the rest. They are also the only place a new format can come from.
+
+## Deciding what to stop
+
+Retirement needs a rule, or you will keep making things out of habit. A workable one: retire a format after two months of data where it never clears the median for its length, regardless of how much you like it.
+
+Two months, not two videos. A single weak video is noise. Two months of consistently below-median output is a verdict.
+
+Retiring is not deleting. Take the format off the schedule and keep the files; formats come back when the audience changes.
+
+## Deciding what to repeat
+
+Repeat the shape of the top performers, not the exact subject. If the winners share a structure (a question, a single claim, a demonstration), make two videos next month in that structure on different subjects.
+
+Two, not ten. A format that gets overused looks tired within weeks, and the audience that liked it first is the one that notices.
+
+## Choosing one experiment
+
+Every month gets exactly one experiment, stated in one sentence before the month starts, with the measure and the threshold included:
+
+> Next month, three videos open with a number instead of a question. If two of the three hold more than the month's median at three seconds, numbers become a default hook.
+
+Written in advance, that sentence cannot be renegotiated afterwards. Unwritten experiments always turn out to have worked, because the goalposts move while you are looking at the graph.
+
+## The trap of chasing last month's winner
+
+A format can be exhausted without failing. If you have made the same kind of video eight times and the numbers are gently declining, the format is not broken; the audience has simply seen it. The fix is variation inside the format, not more of the same, and certainly not a retreat to the last thing that worked two months ago.
+
+## Keep the record honest
+
+The whole routine rests on one file with one line per month: posts published, median percentage viewed, shares per thousand, follows per thousand, the experiment, and whether it was confirmed.
+
+Keep the failures in it. A record that only contains wins is a record that will convince you, twelve months from now, that you have always known what you were doing. The value of the file is that it survives your optimism.
+
+## Comparing months with different volumes
+
+Months rarely have the same output. Ten videos one month and three the next will move every total, so compare ratios and the median rather than the sum, and say which number you are comparing before you start.
+
+The exception worth tracking as a total is search traffic, because it accumulates: a month with fewer posts can still beat the previous one on search, and that is a genuine improvement rather than a volume artefact.
+
+Seasonality also makes adjacent months incomparable. If your audience is tied to a season, a holiday or a school term, compare against the same month last year as well as against last month, and keep that comparison in the record so you are not surprised by it annually.
+
+## The numbers to write down, and the ones to leave out
+
+A monthly line should be short enough that you will still fill it in during a busy month: views, median percentage viewed for the month's videos of similar length, shares per thousand, follows per thousand, and the count published.
+
+Leave out anything you cannot act on — total impressions, profile views without a follow conversion beside them, watch time across mixed lengths, and any platform-specific score whose definition you would struggle to explain.
+
+The test from the metrics guide applies here too. If doubling the number would not change next month's plan, it does not belong on the line.
+
+## A month when nothing worked
+
+Some months produce nothing. Every video underperformed, the experiment failed, and the honest line in the record says so.
+
+That is still a result, and it belongs in the same format. A record of nine good months and one bad one is more useful than a record that skips the bad one, because the bad month is the only evidence of what your floor looks like. It also stops the next bad month from feeling like the end of something.
+
+Two questions are worth asking in a month like that, and neither is "what should I post more of". Did something change outside my control — a platform update, a seasonal dip, a week off? And did I actually execute the plan, or did the month go to reactive posting? Those have different answers, and only the second one is fixed by working harder.
+
+## The quarterly pass
+
+A month cannot see slow decay or slow compounding. Once a quarter, read the monthly lines as a series and ask a different set of questions: is median percentage viewed drifting down, is search traffic accumulating, is follow conversion improving, and how many formats were retired versus introduced.
+
+That is where the shape of the account becomes visible. Monthly reviews choose what to make. The quarterly pass decides whether the account is going where you meant it to.
+
+If the month produced one retired format, one repeated structure and one honest experiment, the review worked, whatever the view count did.
+`,
+  },
+
+  // ---------------------------------------------------------------------
+  // Round six: client work. The natural follow-on to the commercial round.
+  // ---------------------------------------------------------------------
+  {
+    slug: 'write-a-video-brief',
+    title: 'How to Write a Video Brief a Client Will Actually Read',
+    description:
+      'The seven things every short-form brief needs, why adjectives are useless and examples are not, and the brief you send back for signature before editing.',
+    date: '2026-11-06',
+    category: 'Workflow',
+    content: `
+# How to Write a Video Brief a Client Will Actually Read
+
+Most client work goes wrong before a single clip is cut, in a brief that says what the brand sounds like instead of what the video has to do. A brief full of adjectives — energetic, authentic, premium — is not a brief, it is a mood. The editor reads it, guesses, delivers something defensible, and spends the revision rounds discovering what the client actually meant.
+
+A brief that prevents that is short and boring. It fits on one page and answers seven questions.
+
+## Why briefs fail
+
+The failure is almost never laziness. It is that a client describing a video they have not seen yet reaches for adjectives, because they have no other vocabulary for what they want. "Make it pop" is a perfectly honest attempt to describe a feeling.
+
+So the job of the brief is translation: turn feelings into examples and constraints. You are not writing a document to impress the client; you are writing one that makes the first delivery close to the final one.
+
+## 1. The goal in one sentence
+
+One sentence, with a verb and an outcome, that describes what the video has to achieve:
+
+> Get people who saw the product in a feed to open the product page.
+
+That sentence decides everything downstream. It tells you whether a twenty-second teaser or a sixty-second demonstration is right, whether the opening frame should be the product or the person, and whether a call to action belongs on screen at all.
+
+If the client cannot produce that sentence, write two candidates and ask them to choose. Choosing between two sentences is easy; writing one from nothing is not, and the conversation that follows usually reveals the real goal.
+
+## 2. Audience and placement
+
+Who is it for, and where will it be seen? Those two facts change the edit more than any style note.
+
+A video for an existing audience can assume context and skip explanation. A video for cold viewers has about a second to justify itself. A video placed in a feed competes with everything else in that feed; a video embedded on a product page has already earned the click and can afford to be slower and more detailed.
+
+Get the placement in writing, including the aspect ratio. Clients routinely ask for "a social video" and then place it somewhere that crops the top and bottom off. The safe zone rules in [vertical safe zones](/blog/vertical-video-safe-zones) apply to every delivery, and mentioning them in the brief prevents the argument later.
+
+## 3. Examples, not adjectives
+
+Three links, each with one sentence explaining what it is about the example that matters:
+
+> Like this one — the opening shot is the product in use, no talking until second four.
+
+Adjectives describe taste. Examples describe decisions. A client who sends three links has told you more about their taste than a page of brand guidelines, and the accompanying sentence is what stops you copying the wrong thing about the reference.
+
+Ask for examples of what they do not want too. One link to a style they hate is worth three they like, because it removes a whole direction in a single line.
+
+## 4. Deliverables and specifications
+
+A numbered list, with counts and specs:
+
+- Two videos, nine by sixteen, fifteen to twenty seconds.
+- One square version of the first, for a different placement.
+- Captions burned in, plus an SRT file for the second.
+- Delivered as MP4, H.264, at the platform's recommended bitrate.
+
+Every ambiguity here becomes a revision. "A few versions" means the client expects four and you planned one. Write the count.
+
+Export settings that survive platform recompression are covered in [vertical export settings](/blog/export-settings-vertical-video); the brief only needs to name the format, not re-explain it.
+
+## 5. What is out of scope
+
+This is the section clients skip and editors wish they had not. State what the price does not include:
+
+- Extra aspect ratios beyond the list above.
+- Script writing, if the client is supplying the message.
+- Voiceover recording or on-camera talent.
+- Music licensing beyond the platform's own library.
+- Changes to the product footage itself.
+
+Naming exclusions is not hostile. It is the reason you can say yes to the third request without renegotiating the whole job.
+
+## 6. Approvals and dates
+
+Who approves? One person, named, with a backup for when they are away. "The team will review" means nobody will, until the day before publication.
+
+Then the dates: footage in hand, first cut, feedback due, final delivery. Feedback due is the load-bearing one, because an unlimited feedback window is the same as no schedule.
+
+## 7. The brief you send back for signature
+
+After the kickoff call, send back a one-page summary of what you understood and ask the client to confirm it. Not a contract — a confirmation.
+
+This does three things. It catches misunderstandings while they cost nothing. It creates a shared record that ends "that is not what we asked for" arguments. And it makes the client read the scope, because they are signing it rather than skimming it.
+
+## A short example
+
+A one-page brief for a small product client, compressed to what actually matters:
+
+Goal: get cold viewers to the product page. Audience: people who have seen the product in a feed but never clicked. Placement: two feed placements, nine by sixteen, captions burned in. Examples: three links, each annotated with the one decision worth copying. Deliverables: two videos at fifteen to twenty seconds, plus a clean version and an SRT each. Out of scope: extra ratios, scriptwriting, voiceover, paid music. Dates: footage Monday, first cut Wednesday, notes Thursday, final Friday. Approver: one named person, plus a named backup, notes consolidated in one pass.
+
+That is the whole document. It reads as terse because every line removes a question somebody would otherwise ask on Thursday.
+
+## When the client sends their own brief
+
+Agency briefs and procurement documents are usually longer and contain less. Read them for four things: deliverable count, placement, approval chain, deadline. Everything else is context.
+
+Then send back the one-page summary above, framed as confirmation: "Here is what I have taken from your brief." If their document contradicts itself — a duration that cannot carry the message, a ratio that does not match the placement, a deadline that precedes the footage — the summary is where to surface it, calmly, before the work starts.
+
+Their brief also frequently omits exclusions entirely, which means everything is implicitly included. One question resolves that before it becomes an argument: "to confirm, the price covers the two videos and one revision round each?" Clients rarely mind the question. They mind discovering the boundary at delivery.
+
+A single paragraph is enough: goal, audience, placement, deliverables, exclusions, dates, approver. If the client changes something later, the change is visible as a change, which is exactly what [revision rounds](/blog/revision-rounds-and-scope) depend on.
+`,
+  },
+  {
+    slug: 'revision-rounds-and-scope',
+    title: 'Revision Rounds Without Scope Creep',
+    description:
+      'How to define a revision round in advance, tell a revision from a new direction, and charge for extra rounds without losing the client.',
+    date: '2026-11-06',
+    category: 'Strategy',
+    content: `
+# Revision Rounds Without Scope Creep
+
+The fastest way to lose money on client video work is to accept feedback without limit. One client asks for a small change, then another, then asks to "try something completely different", and a two-day job becomes a two-week job at a two-day price.
+
+The fix is not to be stricter. It is to define what a round is before the first edit, so the boundary exists when you need it rather than being invented in an awkward conversation.
+
+## What a revision round actually is
+
+A round is one pass of consolidated feedback, delivered once, and answered in one new version.
+
+Three properties matter and all three are usually missing:
+
+- **Consolidated.** All the feedback arrives together, not in a trickle across four days.
+- **Bounded.** It addresses the existing cut, not a different video.
+- **One version out.** You deliver one new cut, not a menu of options.
+
+If feedback arrives as a stream, you are doing a round per message, and you will do five of them.
+
+## Write the policy before the first edit
+
+The number belongs in the brief or the quote, in plain language, with no hedging:
+
+> Two rounds of revisions are included. Additional rounds are billed at the hourly rate.
+
+Two is a sensible default for short-form: one round to correct what you got wrong, one to refine taste. Three is generous but workable. Unlimited is a business model that only works if you charge for it up front.
+
+The sentence also has to say what a round covers — the current cut, with consolidated notes — or the definition above becomes an argument later.
+
+## The difference between a revision and a new direction
+
+A revision improves the video that exists: trim this pause, change that caption, swap the music, keep the opening but cut the third beat.
+
+A new direction replaces the premise: use a different hook, lead with a different product, tell the story from the customer instead, cut it to eight seconds.
+
+Both are legitimate requests. Only the first is a revision. The second is new work, and pricing it as a revision is how editors end up subsidising a client's second idea.
+
+In practice the tell is simple: if the feedback cannot be expressed as a change to something in the current timeline, it is a new direction.
+
+## Handling "can we try something else"
+
+The response that keeps the relationship and the boundary is to agree, then scope it:
+
+> Yes, that is a different approach rather than a tweak. I can cut that version as a new piece of work at X, or we can use the second revision round on it and drop the caption changes. Which suits you?
+
+Offering a choice converts a demand into a decision the client makes. It also makes the cost visible without accusing anyone of anything, which is usually all that was needed.
+
+## The polite no that keeps the client
+
+Most scope creep is not malice; it is a client who does not know where the line is because nobody drew one. So the no has to be about the work, not the person:
+
+> That is outside what we scoped, so I would want to quote it separately rather than rush it into this delivery.
+
+Note that it is not a refusal. It is a reclassification, with the implication that quality matters more than speed. Clients accept that framing far more often than they accept a flat no.
+
+## Charging for the third round without a fight
+
+When you reach the third round, quote it before doing it — a short message with the estimated time and the rate, and a request to confirm.
+
+Two things make this land. First, the policy was already stated at the start, so this is not new information. Second, you quote the time, not a round number: "about an hour" is verifiable, and a client who has already asked for fourteen small changes will recognise that an hour is generous.
+
+Keep the rate reasonable for the relationship. The point of charging is not the money, it is that the client starts consolidating their feedback, which is the actual goal.
+
+## Document every round
+
+Keep one file per project listing each round, the date it arrived, what was in it, and what you changed. Two reasons: when a client says "I asked for that three times", you can point at what was in round one; and when you price the next project, you know how many rounds it actually took rather than how many you assumed.
+
+That record is also the evidence base for [turning the client into a retainer](/blog/turn-one-client-into-a-retainer), where you are proposing a fixed monthly number and need to know the real shape of a month.
+
+## When to walk away
+
+The pattern worth ending a relationship over is not pickiness. It is feedback that reverses itself: a change requested in round one undone in round two, repeatedly. That does not converge, no matter how many rounds you allow, and every hour after the second reversal is unpaid.
+
+## How to consolidate a round
+
+If feedback arrives as a stream, ask once, early, for it to be collected: "Send everything in one pass by Thursday and I will cut it all together." That sentence is the difference between one round and five.
+
+The request works better with the reason attached, because consolidated notes produce a better cut than sequential ones — changes interact. Fixing a caption in isolation and then discovering the music was also meant to change produces two mediocre versions instead of one good one.
+
+## The revision log
+
+One table, one row per note: the timecode, what was asked, what changed, and any note that was declined, with the reason. Five columns.
+
+It answers three questions that would otherwise become arguments: what was in this round, what happened to each note, and whether a request was new or a repeat. It also makes the next quote accurate, because you can count rounds instead of recalling them.
+
+## Fixed fee or hourly
+
+A fixed fee is easier to sell and makes every extra round a direct loss, which is why scope discipline matters most on fixed-fee work. An hourly rate makes extra rounds painless to accept and easy to bill, and suits clients whose needs genuinely fluctuate.
+
+The hybrid that works for most short-form work is a fixed fee for a defined scope with two rounds, plus an hourly rate beyond it. The client gets a number they can approve, and the third round has a price that nobody has to invent in the moment.
+
+Whichever you choose, put the round count and the extra rate in the same document. Separating them is how editors end up explaining their own policy after the fact, which always sounds like a penalty rather than an agreement.
+
+Finish the current delivery, then decline the next project without drama. The client can stay a client of somebody else, and the time goes to work that finishes.
+`,
+  },
+  {
+    slug: 'client-approval-workflow',
+    title: 'A Client Approval Workflow That Ends the Email Thread',
+    description:
+      'One link, one version, one approver: how to collect timestamped feedback, get sign-off in writing, and stop approvals from drifting past the deadline.',
+    date: '2026-11-06',
+    category: 'Workflow',
+    content: `
+# A Client Approval Workflow That Ends the Email Thread
+
+The slowest part of client video work is rarely the editing. It is the three days where a cut sits in somebody's inbox while four people reply to each other about whether the logo is too big.
+
+Approval is a process, and processes can be designed. This one keeps it to a link, a version number and one signature.
+
+## One link, one version, one approver
+
+Three commitments, each of which removes a specific failure.
+
+**One link** means the review lives in one place instead of across email, a messaging app, and somebody's notes from a call. A single URL that always shows the current version.
+
+**One version** means everybody reviewing is looking at the same cut. The most common source of contradictory feedback is that one person is reviewing an old file that arrived as an attachment three days ago.
+
+**One approver** means a named person whose yes is final. "The team will review" distributes the decision until nobody owns it, and feedback from four people arrives as four separate priorities that cannot all be satisfied.
+
+Name the approver in the brief, and name a backup for when they are on leave. This costs one line and saves a week.
+
+## Timestamped comments beat paragraphs
+
+A message that says "the middle feels slow" is a puzzle. A comment attached to second eleven saying "this pause is too long, and the caption is cut off on the right" is a task.
+
+Any review tool that supports comments tied to a timecode is worth using; a shared video with comments, or even a document with the video embedded and a timecode in each line, works. What matters is that every note has a location.
+
+The second benefit is consolidation. When feedback is anchored to timestamps, it naturally lands in one pass instead of trickling in over days, which is what keeps a revision within [a single round](/blog/revision-rounds-and-scope).
+
+## Version numbering that survives
+
+The scheme matters less than the rule that every delivery has a distinct, increasing number, and that the number appears in the file name and the message:
+
+- draft-01, draft-02, draft-03 for review cycles.
+- final-01 only when it has been approved.
+
+Never send a file called final without a number. The second final arrives within a week, and then there are two finals and no way to tell which is which in a folder. [Organising video projects](/blog/organize-video-projects) covers the folder side of the same discipline.
+
+## Getting sign-off in writing
+
+"Looks good, thanks" in a chat message is not approval, but it is close enough that people treat it as one until something goes wrong.
+
+So ask for a specific form, briefly:
+
+> Happy to proceed? If yes, reply "approved for publication" and I will schedule it.
+
+That single sentence converts a vague compliment into a record. It also gives the approver a moment to notice they have not actually checked the captions.
+
+## What approval should cover
+
+An approval that only covers "the video" leaves several things unapproved, and those become the objections after publication. Ask for confirmation of four things together:
+
+- The cut itself.
+- The captions, including spelling of names and product terms.
+- Any on-screen claims, prices or dates.
+- The thumbnail or cover frame, if there is one.
+
+Product names and prices are the highest-risk item and the cheapest to check. Put them in a list in the approval message rather than relying on the client to spot them in the video.
+
+## Handling late feedback
+
+Feedback that arrives after the agreed date is a scheduling problem, and the honest response names the consequence rather than the fault:
+
+> I can fold this in, which moves delivery to Thursday. The original date still holds if we go with the current cut.
+
+That is not a penalty. It is the schedule doing its job. Most clients accept the trade-off immediately, because the cost of the delay was invisible until someone said it out loud.
+
+## The final check before delivery
+
+Before the file goes out, run the same four checks every time: plays on a phone, captions readable with the interface visible, audio levels consistent between sections, and every claim still matching what was approved.
+
+The first two catch most embarrassments. The last one catches the expensive kind, where a price changed after the video was approved and nobody re-read the caption.
+
+## Changes after approval
+
+Approval is a point in time, and requests that arrive after it are new work, not a continuation. The message that keeps this simple is one line: "That is a change to an approved cut, so it would be a new revision — I can do it by Friday."
+
+Note what it does not do. It does not refuse, and it does not argue about whether the change matters. It prices the change in time and lets the client decide. In practice most post-approval requests either get dropped or become a paid variant, and both outcomes are better than silently absorbing them.
+
+If the change is trivial — a typo in a caption — fix it and say you did. The goodwill from that is worth more than the two minutes, and it protects the line for the changes that are not trivial.
+
+## Tools, including the free option
+
+Any tool that supports timecoded comments will do, and the free tier of most of them is enough for single-editor work. If the client will not learn a new tool, the fallback is a shared folder with the video plus a document of timestamped notes: both sides write in the same document, every note carries a timecode, and nothing lives in a chat thread.
+
+What must not be the primary channel is a messaging app. Notes scroll away, get answered out of order, and cannot be reviewed as a set.
+
+## Multi-stakeholder clients
+
+When four people need to give notes, the approver collects them. Not you.
+
+Say it at kickoff: "I will take notes from you, consolidated, and treat them as the team's position." That single rule prevents the most common client-side failure, which is contradictory notes from people who have not spoken to each other, arriving separately, each presented as final.
+
+If the client insists that everybody gives notes directly, consolidate them yourself and send back the resolved list for confirmation, marking the contradictions explicitly. It costs twenty minutes and saves a round.
+
+## When approval never comes
+
+The deadline passes, the approver is silent, and the video sits. The wrong response is to keep waiting quietly and then deliver late.
+
+The right one is a short, dated message with a default: "If I do not hear back by Thursday I will publish the current cut as approved, since it meets the brief." A default in writing converts silence into a decision, and most clients accept the framing because it protects their deadline too.
+
+Do not publish without saying it first. The point is not to force a decision, but to make the consequence of not deciding visible while there is still time to change it.
+
+Delivery itself has its own conventions — file names, formats, and what to keep — covered in [delivering video files to clients](/blog/deliver-video-files-to-clients).
+`,
+  },
+  {
+    slug: 'deliver-video-files-to-clients',
+    title: 'How to Deliver Video Files a Client Can Actually Use',
+    description:
+      'File naming that survives a year, the export set worth sending, where to put the files, and what to keep after the project is paid.',
+    date: '2026-11-06',
+    category: 'Workflow',
+    content: `
+# How to Deliver Video Files a Client Can Actually Use
+
+Delivery is the last ten minutes of a project and the origin of a surprising number of complaints. The cut was approved, the client is happy, and then the video is unusable because it arrived as a link that expires, or the file name is final-final-2.mp4, or the only version is the one with burned-in captions when the platform needs a clean master.
+
+None of that is difficult to prevent. It just has to be decided before the last day.
+
+## What done means
+
+Done is not "the video plays". Done is the client can publish it, in every placement they paid for, without asking you a question.
+
+That standard implies a short list, stated in the delivery message: which file goes where, which one is the master, and which ones are derivatives. A client should be able to hand your delivery to a social media manager who has never spoken to you and have it work.
+
+## File naming that survives a year
+
+The test is whether someone can identify a file in twelve months, in a folder full of other files, with no context. A name that passes:
+
+> brandname_productname_9x16_15s_captions_v03.mp4
+
+Four components do the work: client, subject, format and length, version. Note what is not in the name: "final", "new", "latest", dates written in ambiguous formats, and the editor's own initials.
+
+Agree the pattern once with a regular client and reuse it for every job. It becomes an inventory rather than a pile.
+
+## The export set
+
+Most short-form client work needs four files, not one:
+
+- **The master.** Highest quality, full length, captions burned in if the brief asked for it.
+- **A clean version.** Same cut, no captions, for platforms that render their own or for future re-editing.
+- **The caption file.** SRT or VTT, because a client who later wants to translate or restyle captions will need it and cannot extract it from a burned-in video.
+- **A still frame** suitable as a cover or thumbnail, at the placement's aspect ratio.
+
+Exporting all four takes a couple of minutes once the settings are right, and the clean version is the one clients ask for three months later when they need a variant. Burning captions into the only delivered file is the single most common way to make a paid delivery unusable.
+
+Technical settings that survive platform recompression are covered in [vertical export settings](/blog/export-settings-vertical-video).
+
+## Where to put the files
+
+Three rules:
+
+- **Nothing in a chat app as the only copy.** Compression, expiry and disappearing media all apply.
+- **Nothing behind a link that expires in a week** without also sending a permanent copy or saying clearly when it expires.
+- **A folder per project**, shared with the named approver, containing the delivery and the approval message saved as text.
+
+If a client insists on receiving attachments, send them and also put the set in the folder. The folder is what survives the thread.
+
+## The delivery note
+
+Keep it to six lines: what is included, what each file is for, what was approved, when the folder expires if it does, what is not included (the exclusions from the brief), and one line on how to reach you for changes.
+
+That note is the difference between a client who publishes confidently and a client who sends four questions the following morning. It is also the record you point at when someone asks in month three for a version that was never in scope.
+
+## Captions and text files
+
+Deliver captions as a file even when they are burned in. Also send the plain text of the spoken words, because clients reuse it for descriptions, blog posts and emails, and asking for it is the most common follow-up request after delivery.
+
+Spell every product name and person's name correctly in that file, and check it against what was approved. Misspelled names are the one error that reliably survives to publication, because nobody re-reads a text file they did not commission.
+
+## What to keep, and for how long
+
+Keep the project file, the exported master, the clean version and the caption files for as long as the relationship continues, and at least through the period where the client might ask for a variation.
+
+Delete the intermediate renders and temporary audio. They are the bulk of the disk usage and none of them are recoverable work. [Organising video projects](/blog/organize-video-projects) covers the archive structure that makes this a habit rather than a decision.
+
+## Handing over the project file
+
+If the brief includes the project file, hand it over with a short note: which version of the editor it needs, where the source media is expected, and which fonts or assets are not embedded. A project file without its media is a puzzle, and a client who cannot open it will assume the file is broken rather than incomplete.
+
+## Sizes and bitrates in plain terms
+
+Deliver the highest quality master your tools allow, then let the platform recompress once. Sending a heavily compressed master means the platform's compression is applied on top of visible artefacts, and the result looks soft on a phone.
+
+Practically: export at the platform's recommended resolution for the ratio, at a bitrate high enough that the file is large but not absurd, with audio at a standard sample rate rather than resampled. Exact figures change as platforms update their guidance; what does not change is exporting once at high quality instead of exporting small and hoping.
+
+If the client has a hard size limit — common for email or a content portal — produce a second smaller encode rather than degrading the master. Two clearly named files prevent the situation where the only copy in existence is the compressed one.
+
+## Audio the client will ask for later
+
+Send the mixed audio as a separate file when music is licensed, because the client may need to prove the licence or replace the track for another market. It costs nothing at delivery and is expensive to reconstruct in month four, after the project has been archived.
+
+If the audio includes a licensed track, note the licence and its term in the delivery message. Nothing invites a takedown faster than a client reusing a track whose licence quietly expired.
+
+## The delivery log
+
+One line per delivery: project, client, date, files sent, destination, and the approval message that preceded it.
+
+This is the least exciting document in the business and the only one that answers what arrives months later — was the clean version sent, which cut was approved, was the licence included. Five minutes at delivery, versus reconstructing events from memory while a client waits.
+
+If the brief does not include it, say so once, calmly, in the delivery note. Reticence on the day is a dispute; clarity in advance is a line item.
+`,
+  },
+  {
+    slug: 'turn-one-client-into-a-retainer',
+    title: 'Turning One Good Client Into a Retainer',
+    description:
+      'The retainer shapes that work for short-form, when to propose one, how to price it, and how to turn repeat work into a case study that wins the next client.',
+    date: '2026-11-06',
+    category: 'Strategy',
+    content: `
+# Turning One Good Client Into a Retainer
+
+Project work has a structural problem: every month starts at zero. You finish a video, invoice, and then spend the following week looking for the next job, which means the unpaid part of the business grows exactly as fast as the paid part.
+
+One retainer fixes most of that. Not six clients on retainers, which is a different business with different problems, but one or two, enough to cover the fixed costs so that project work becomes profit instead of survival.
+
+## Why one-off projects are the expensive way to work
+
+Each new client costs the same things: the call, the brief, the estimate, the setup, the trust-building, the first-delivery nerves. None of it is billable and all of it repeats.
+
+A retainer amortises that cost across months. The brief is written once, the export presets are saved, the client's names and terms are known, and the second month's work takes less time than the first for the same money.
+
+That is also why a retainer should be priced above the equivalent project hours. You are selling predictability, and predictability is worth paying for.
+
+## The retainer shapes that work for short-form
+
+**A fixed count.** Four videos a month, defined in the same terms as the brief: length, ratio, captions, rounds. Simple, easy to compare, easy to sell.
+
+**A fixed day rate block.** Eight days a month, allocated by the client, with anything unused expiring or rolling over by agreement. Flexible, and it suits clients who do not know their calendar in advance. It is also the shape most likely to be under-used by a disorganised client, so state the expiry rule.
+
+**A monthly deliverable plus a standing task.** Two videos and the ongoing caption work, or one video and the repurposing of it into three placements. This is often the most valuable shape for the client, because it removes a coordination problem rather than just filling a quota.
+
+Avoid a pure hourly retainer with no floor. It is a project contract with extra paperwork.
+
+## When to propose it
+
+The right moment is after a delivery the client is pleased with and before the next project is quoted — typically the second or third completed job.
+
+At that point you have evidence, you know the real time per video, and the client has noticed that commissioning each video separately is tedious. Proposing then feels like a solution rather than a pitch.
+
+Do not propose it during a revision dispute, and do not propose it on the first project. On the first project you do not yet know what a video costs you in that client's workflow, which is the one number a retainer price depends on.
+
+## Pricing a retainer
+
+Start from measured time, not from a round number that feels fair. Take the last two projects, count the hours including admin, and divide by the number of videos delivered. That is your real cost per video.
+
+Then price the block at that number plus a margin, rounded to something clean. If four videos took eleven hours on average, a four-video retainer is ten or eleven hours of work, and it should be priced as such — with a premium, because the client is now buying your calendar rather than a delivery.
+
+Include a cap. A retainer with no cap is a project with unlimited revisions and no end date, and the whole point of the arrangement was predictability.
+
+## What to include and exclude
+
+The contract should name, in the same language as the brief: videos per month, maximum length, aspect ratios, rounds included, feedback deadline, and the turnaround window.
+
+And exclude, explicitly: additional translations, extra aspect ratios beyond the list, reshoots, ad variants, and work on products not mentioned. Those are the requests that turn a four-video month into six videos and a bad mood.
+
+A one-page agreement is enough. If the client has a legal team, expect a redline on the payment terms and very little else.
+
+## The monthly cadence
+
+A retainer without a rhythm drifts into a monthly argument about what was delivered. Fix the rhythm instead:
+
+- A short planning note at the start of the month with the agreed topics.
+- Drafts on the same day each month.
+- One consolidated feedback window.
+- A one-paragraph summary at the end: what shipped, what performed, what is next.
+
+That last paragraph is worth more than it looks. It is the reason the client renews, because it turns your invoice into a report.
+
+## Turning the results into a case study
+
+After two or three months, ask the client for permission to describe the work with real numbers. Not screenshots of their analytics dashboard, which they will refuse, but a sentence: we made N videos, they were used in these placements, and this is what changed.
+
+One case study with a real number beats a portfolio of twelve videos with no context, and it is the asset that wins the next retainer. Ask for it while the work is fresh and the results are good, not at renewal.
+
+## When not to offer one
+
+Skip the retainer if the client's needs are genuinely one-off, if they change approvers every month, or if the relationship has already needed two scope renegotiations. A retainer locks in a cadence, and a bad cadence repeated twelve times is worse than a bad project that ends.
+
+## The proposal, briefly
+
+Send it as a short message, not a deck:
+
+"Over the last three months we have made seven videos, and the last two took about eleven hours each including calls and notes. I would like to propose a four-video month at a fixed price, with two rounds each and a standing planning call. That works out at less per video than the last invoice, and it removes the quoting step for both of us."
+
+Three things make that land: it is built on measured work rather than a feeling, it names a benefit for the client, and it proposes a specific shape instead of asking them to design the arrangement.
+
+## "Can we pause it?"
+
+Clients pause retainers for budget reasons, and the answer should exist before it happens: a notice period, and a rule about restarting.
+
+Two weeks of notice, with a restart at the current rate rather than the original one, is fair to both sides. Without the rule, a paused retainer returns at last year's price with this year's scope, and the awkward conversation happens exactly when you can least afford it.
+
+## When the retainer outgrows you
+
+A retainer that fills most of the month is a job, and a job with one client is a single point of failure. Once a retainer passes roughly half your available hours, either raise the price at renewal or bring in a second editor for the overflow, with the client's knowledge.
+
+The second option is how small studios form, and it only works if the client agreed in writing that the work may be produced by your team. Adding that line at signing is trivial. Adding it at month eight, once the client expects your name on every cut, is not.
+
+The rest of the business side — pricing a single sponsored video, [media kits](/blog/short-form-media-kit) and [contract terms](/blog/brand-deal-terms) — is covered in the commercial guides, and the delivery discipline that makes a retainer profitable is in [delivering files a client can use](/blog/deliver-video-files-to-clients).
 `,
   },
 ];
