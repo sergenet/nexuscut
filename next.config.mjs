@@ -46,16 +46,24 @@ const nextConfig = {
     ];
   },
   async headers() {
+    // React's development build reconstructs callstacks with eval, so `next dev`
+    // throws "eval() is not supported" against the production policy. Add it for
+    // the dev server only: production builds are compiled with this branch
+    // false, so the shipped CSP still forbids eval.
+    const devEval = process.env.NODE_ENV === 'production' ? '' : " 'unsafe-eval'";
     return [
       {
         source: '/:path*',
         headers: [
         // Google AdSense needs its script, ad-frame and beacon hosts allowed or
-        // the loader is silently blocked. img-src/style-src/font-src already
+        // the loader is silently blocked. facebook.com is in frame-src and
+        // form-action because the Meta pixel sends its /tr/ beacon as a form
+        // POST and opens a hidden frame; without both, every event was dropped.
+        // img-src/style-src/font-src already
         // allow every https host, so only script-src, frame-src and connect-src
         // are widened, and only to Google-owned hosts. 'unsafe-eval' is still
         // not permitted: AdSense does not require it.
-        { key: 'Content-Security-Policy', value: "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' blob: data: https:; media-src 'self' blob: data: https:; font-src 'self' data: https:; connect-src 'self' https://api.openai.com https://api.pexels.com https://*.stripe.com https://*.google-analytics.com https://analytics.google.com https://www.facebook.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.adtrafficquality.google https://*.google.com https://www.gstatic.com; script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.googletagmanager.com https://connect.facebook.net https://*.googlesyndication.com https://*.googleadservices.com https://www.googletagservices.com https://adservice.google.com https://*.doubleclick.net https://*.adtrafficquality.google https://www.gstatic.com; style-src 'self' 'unsafe-inline' https:; frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.google.com https://*.adtrafficquality.google https://www.gstatic.com" },
+        { key: 'Content-Security-Policy', value: `default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://www.facebook.com; img-src 'self' blob: data: https:; media-src 'self' blob: data: https:; font-src 'self' data: https:; connect-src 'self' https://api.openai.com https://api.pexels.com https://*.stripe.com https://*.google-analytics.com https://analytics.google.com https://www.facebook.com https://fundingchoicesmessages.google.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.adtrafficquality.google https://*.google.com https://www.gstatic.com; script-src 'self' 'unsafe-inline'${devEval} https://js.stripe.com https://www.googletagmanager.com https://connect.facebook.net https://fundingchoicesmessages.google.com https://*.googlesyndication.com https://*.googleadservices.com https://www.googletagservices.com https://adservice.google.com https://*.doubleclick.net https://*.adtrafficquality.google https://www.gstatic.com; style-src 'self' 'unsafe-inline' https:; frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://fundingchoicesmessages.google.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.google.com https://*.adtrafficquality.google https://www.gstatic.com https://www.facebook.com` },
         // Recording is an intentional editor feature.  Keep these APIs unavailable
         // to embedded third-party pages, but allow this HTTPS origin to request them.
         { key: 'Permissions-Policy', value: 'camera=(self), microphone=(self), geolocation=(), browsing-topics=()' },

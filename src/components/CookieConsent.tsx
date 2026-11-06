@@ -9,6 +9,16 @@ import {
   subscribeToConsent,
   writeConsent,
 } from '@/lib/consent';
+import { visitorNeedsConsentMessage } from '@/lib/region';
+import { watchGdprApplies } from '@/lib/googleCmp';
+
+/**
+ * How long to wait for Google's message before assuming it is not published and
+ * falling back to this banner. Long enough for the CMP to boot on a slow
+ * connection, short enough that a European visitor without a message is not
+ * left on a page with no way to choose.
+ */
+const CMP_DETECTION_TIMEOUT_MS = 2500;
 
 /**
  * Cookie banner. Rendered on every route, but only after the store reports no
@@ -30,6 +40,29 @@ export default function CookieConsent() {
     () => 'server' as const,
   );
   const [reopened, setReopened] = useState(false);
+  // "pending" only ever begins in a region Google's message covers: until the
+  // CMP answers, this banner stays hidden so a European visitor is not asked
+  // twice. A missing CMP (message not published) resolves to "absent" and the
+  // banner takes over.
+  const [cmpState, setCmpState] = useState<'pending' | 'applies' | 'absent'>(() =>
+    typeof window !== 'undefined' && visitorNeedsConsentMessage() ? 'pending' : 'absent',
+  );
+
+  // Subscribed once and kept for the life of the page, not torn down when the
+  // timeout resolves: Google's message can arrive after our fallback banner is
+  // already up on a slow connection, and when it does it must still be able to
+  // take the banner down rather than leaving two prompts on screen.
+  useEffect(() => {
+    const stop = watchGdprApplies((applies) => setCmpState(applies ? 'applies' : 'absent'));
+    const timer = window.setTimeout(
+      () => setCmpState((current) => (current === 'pending' ? 'absent' : current)),
+      CMP_DETECTION_TIMEOUT_MS,
+    );
+    return () => {
+      stop();
+      window.clearTimeout(timer);
+    };
+  }, []);
 
   useEffect(() => {
     const open = () => setReopened(true);
@@ -42,6 +75,10 @@ export default function CookieConsent() {
       window.removeEventListener(CONSENT_EVENT, close);
     };
   }, []);
+
+  // Google's message owns the decision in the EEA, UK and Switzerland, so this
+  // banner never competes with it.
+  if (cmpState === 'applies') return null;
 
   const visible = reopened || choice === null;
   if (!visible) return null;
@@ -64,9 +101,10 @@ export default function CookieConsent() {
           Cookies and analytics
         </h2>
         <p id="cookie-consent-body" className="mt-2 text-sm leading-6 text-neutral-300">
-          NexusCut uses analytics — Google Analytics and a Meta advertising pixel — to understand
-          which pages people actually use. Neither loads until you accept. Declining leaves the
-          editor fully working; only the measurement is switched off. See the{' '}
+          NexusCut uses analytics — Google Analytics and a Meta advertising pixel — and shows ads
+          through Google AdSense. None of them loads until you accept. Declining leaves the editor
+          fully working; only the measurement and the ads are switched off. In Europe, the UK and
+          Switzerland, Google&apos;s own consent message asks about advertising instead. See the{' '}
           <Link href="/privacy" className="text-indigo-400 underline hover:text-indigo-300">
             privacy policy
           </Link>{' '}

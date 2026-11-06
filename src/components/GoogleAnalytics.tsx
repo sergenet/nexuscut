@@ -3,6 +3,8 @@
 import { useEffect } from 'react';
 import { createGoogleTag, type GoogleTag } from '@/lib/trackingQueues';
 import { whenConsentGranted } from '@/lib/consent';
+import { visitorNeedsConsentMessage } from '@/lib/region';
+import { analyticsAllowed, watchConsentMode } from '@/lib/googleCmp';
 
 const measurementId = 'G-1BZZ7X8ZH8';
 
@@ -58,8 +60,21 @@ export default function GoogleAnalytics() {
 
     const stopWaiting = whenConsentGranted(start);
 
+    // In the EEA, UK and Switzerland the visitor's answer comes from Google's
+    // certified consent message, not from our banner. Analytics starts only
+    // when that message reports analytics consent (or that the purpose does
+    // not apply); "not configured" is treated as a refusal, because a consent
+    // that was never asked for cannot be relied on. Both listeners are kept so
+    // that the site's own banner still works if no message is published yet.
+    const stopCmp = visitorNeedsConsentMessage()
+      ? watchConsentMode((values) => {
+          if (analyticsAllowed(values)) start();
+        })
+      : () => {};
+
     return () => {
       stopWaiting();
+      stopCmp();
       removeClickTracking?.();
     };
   }, []);
