@@ -1,8 +1,8 @@
 import type { BlogPostLike } from '@/lib/blogData';
 
 /**
- * Ten long-form guides added 2026-11-06 in two rounds, to give the blog real
- * depth.
+ * Fifteen long-form guides added 2026-11-06 in three rounds, to give the blog
+ * real depth.
  *
  * The site was rejected by AdSense for "low value content" while its median
  * post ran about 450 words. These are written as standalone answers — a reader
@@ -11,8 +11,11 @@ import type { BlogPostLike } from '@/lib/blogData';
  *
  * Round one covers making one clip: podcast repurposing, safe zones, caption
  * readability, Shorts length, audio repair. Round two covers the work around
- * it: batching, export settings, file organisation, rights, publishing. The
- * two rounds deliberately do not overlap in subject, so they compete for
+ * it: batching, export settings, file organisation, rights, publishing. Round
+ * three covers capture, which is where most weak shorts are actually decided:
+ * lighting, on-camera delivery, self-filming, screen capture, scripting.
+ *
+ * The rounds deliberately do not overlap in subject, so they compete for
  * different searches rather than each other.
  *
  * Kept in their own module so blogData.ts stays readable. The array is spread
@@ -996,6 +999,542 @@ A cadence you can hold still needs material, and material runs short if every cl
 ## The routine, in one paragraph
 
 Batch the recording and editing into two sessions. Export with one preset. Schedule the whole batch in a single sitting, platform by platform, with clean files and rewritten first lines. Spend fifteen minutes a week reading what happened, and change exactly one thing in the next batch. Then repeat, at a cadence that survives a bad week.
+`,
+  },
+
+  /* ---------------------------------------------------------------------
+   * Round three. Everything up to here assumed the footage already existed
+   * and was worth cutting. These five are about getting that footage: light,
+   * delivery, self-filming, screen capture and scripting. Capture is where
+   * most weak shorts are actually decided, and none of it was covered.
+   * ------------------------------------------------------------------- */
+  {
+    slug: 'light-yourself-vertical-video',
+    title: 'How to Light Yourself for Vertical Video',
+    description:
+      'One light, placed properly, beats a room full of gear. Direction, distance, fill and the mistakes that make faces look flat or blown out.',
+    date: '2026-11-06',
+    category: 'Tutorial',
+    content: `
+# How to Light Yourself for Vertical Video
+
+Lighting is the difference between a clip that looks like it was shot by a professional and one that looks like it was shot in a hallway. It is also the cheapest thing on the list to fix: a window and a white wall will do most of the work, and the mistakes that ruin footage are mostly about where the light is rather than how much of it there is.
+
+The goal is simple to state. One side of the face is lit, the other side is not in darkness, the eyes have a small catch of light, and the background is darker than the face so the face separates from it. Get those four things and nothing else matters much.
+
+## Start with the window, not with gear
+
+If you have a window, you have a key light, and it is a large soft one — which is exactly what most cheap lighting kits are trying to imitate. Stand facing it, three-quarters on, so the light falls across one cheek and leaves a gentle shadow on the other side.
+
+Three rules for using a window:
+
+- **Never sit with the window behind you.** This is the single most common failure. The camera exposes for the bright window, the face goes dark, and no amount of editing recovers it.
+- **Back away from the glass.** Close to a window, the light is intense and the falloff is steep. A metre or two back gives a softer, more even result.
+- **Diffuse it if it is direct sun.** A sheer curtain is a diffuser. Direct sun on a face produces hard shadows that read as harsh on camera.
+
+If the only window is behind you, turn the whole setup around and shoot the other way, even if the background is worse. A well-lit face against a plain wall beats a nicely decorated background with a silhouette in front of it.
+
+## If you need a light, buy one and place it properly
+
+A single LED panel with a diffuser is enough. Do not buy three.
+
+- **Position it 45 degrees to one side of your face**, and slightly above eye level. Higher than that and the eye sockets go dark; level with the face and the lighting reads as flat and clinical.
+- **Bring it close and turn it down** rather than putting it far away and turning it up. A large source close to the face is soft; a small source far away is harsh, even at the same brightness on the subject.
+- **Do not point it at the ceiling and hope.** Bounced light is beautifully soft but loses most of its strength; useful in a small white room, useless in a dark one.
+
+That placement — one source, 45 degrees, slightly high — is the whole of "professional lighting" for a talking head in a vertical frame.
+
+## Fill is what stops the dark half looking broken
+
+A single light leaves one side of the face in shadow. That is good; a completely flat face looks like a passport photo. What you do not want is a hard black edge where the shadow falls off completely.
+
+The cheapest fill in existence is a white wall, a white sheet of foam board, or a sheet of paper on a stand, placed on the unlit side and angled toward the face. It bounces a little light back into the shadow. It costs nothing and it is the difference between "lit" and "sculpted".
+
+A second light works too, but set it noticeably dimmer than the key. Two equal lights from opposite sides cancel the shape out and produce the flat look people associate with bad studio setups.
+
+## Separate the face from the background
+
+In a vertical frame the background fills most of the picture, so a background the same brightness as the face flattens the whole image. Two options, in order of preference:
+
+1. **Make the background darker than the face.** Turn off the room lights behind you, close the curtains, point nothing at the back wall.
+2. **Add a small light on the background**, if the room is unavoidably bright, so the separation comes from colour rather than brightness.
+
+Distance helps as well: standing a couple of metres in front of the wall rather than against it means the wall falls darker and softer, and the shadow you cast lands out of frame instead of behind your head.
+
+## Do not mix colour temperatures
+
+Daylight from a window is blue-ish. Most room bulbs are orange-ish. Put both on a face and one side goes warm while the other goes cold, which the eye forgives and the camera does not.
+
+Either shut the room lights off and use only the window, or close the curtain and use only the artificial light. If you must mix, put a corrective gel on the artificial source so it matches the window — or set the phone's white balance manually to whichever source is dominant and accept a slight cast on the other side.
+
+## Lock exposure before you record
+
+Phone cameras re-meter constantly. Wave a hand, lean forward, and the exposure shifts mid-sentence, which is visible as a pulse in the finished clip and impossible to remove afterwards.
+
+So, with the face lit and framed:
+
+- Tap and hold on the face until the focus/exposure lock engages.
+- Drag the exposure slider down slightly until the brightest part of the face is not clipping. Skin that has gone pure white has no detail left to recover.
+- If your camera app shows a highlight warning or zebras, use it: anything flashing is information you have lost.
+
+Locking exposure is worth more than any lighting upgrade, because it also fixes the pulsing.
+
+## The four mistakes that account for most bad footage
+
+1. **Window behind the subject.** Covered above, and still the most common.
+2. **Overhead light only.** Ceiling lights put the eyes in shadow and the forehead in highlight — the raccoon look.
+3. **A ring light straight on the face.** Even, shadowless, and identifiable at a glance as a webcam setup. Move it off-axis.
+4. **The brightest thing in frame is not the face.** A lamp, a monitor, a white shirt. The viewer's eye goes to the brightest area, so make that the face.
+
+## Rooms that fight you
+
+- **A dark room with one warm bulb.** Add the brightest window you can find, or a single LED panel at 45 degrees, and turn the bulb off.
+- **A room with fluorescent strips.** These flicker at mains frequency and can produce rolling bands on video. Change the shutter speed if your app allows it, or use daylight instead.
+- **A room with no window and no lamp.** A phone screen is a light source: prop a second phone with a white screen facing you as a fill. It is not good, but it is better than nothing.
+
+## Quick checklist before every take
+
+- Light comes from one side, slightly above eye level.
+- Nothing bright is behind the subject.
+- The shadow side is soft, not black.
+- Background is darker than the face.
+- One colour temperature only.
+- Exposure and focus locked on the face.
+
+That is a two-minute setup once you have done it a few times, and it is the part of the picture that viewers judge before they judge the edit. Once the footage looks right, the caption and framing decisions in our guide to [vertical safe zones](/blog/vertical-video-safe-zones) are what keep it readable on a phone.
+`,
+  },
+  {
+    slug: 'sound-natural-on-camera',
+    title: 'How to Sound Natural on Camera',
+    description:
+      'Why reading a script sounds like reading, how to use a teleprompter without sounding like one, and how to pick takes by energy instead of accuracy.',
+    date: '2026-11-06',
+    category: 'Tutorial',
+    content: `
+# How to Sound Natural on Camera
+
+Almost everyone sounds worse on camera the first time than they do in conversation, and the gap is not talent. It is that speaking to a lens removes the two things that make conversation easy: a listener reacting, and the freedom to say it badly first and fix it later.
+
+What replaces them is a set of habits, and they are learnable in an afternoon.
+
+## Why scripted delivery sounds scripted
+
+Written English and spoken English are different rhythms. Written sentences carry more clauses, more subordinate clauses, more comma-paced pauses. Read aloud, that structure produces a cadence that nobody uses when talking, and listeners hear it instantly as reading.
+
+The fix is not to abandon the script. It is to write in spoken units:
+
+- **One idea per sentence.** If a sentence contains "which means that", split it.
+- **Contractions everywhere.** "Do not" becomes "don't". Read a script with no contractions aloud and it sounds like a news bulletin.
+- **Short first sentence, then the next one.** Vary length, but keep most sentences short enough to say in one breath.
+- **No written punctuation tricks.** Em dashes and semicolons are invisible in speech and turn into awkward pauses.
+
+A useful test: read the line aloud. If you stumble, the line is wrong, not your delivery. Rewrite it until it falls out of your mouth.
+
+## The teleprompter, used correctly
+
+A teleprompter is the tool most likely to make you sound like you are reading, because it encourages you to read. Used badly it produces the flat, eyes-scanning cadence everyone recognises.
+
+Used properly it is a memory aid, not a script:
+
+- **Put bullet phrases on it, not sentences.** Three or four words per bullet. Your brain fills in the grammar, which is what makes it sound spoken.
+- **Place it as close to the lens as possible.** Eyes tracking text across a wide screen are visibly reading; eyes near the lens are not.
+- **Scroll slower than feels right.** If you are waiting for text, you are reading. If the text is waiting for you, you can look away and come back.
+- **Break the rhythm deliberately.** Pause, look off-camera for a beat, come back. Reading never does that; talking does.
+
+If you cannot place the prompter near the lens, bullet points on a sticky note beside the camera work nearly as well and cost nothing.
+
+## Say it twice, then keep the second
+
+When you have the choice, record the same idea twice. The first take is where you work out what you are saying. The second is where you say it.
+
+This is why the second take so often sounds better even when the first is technically more accurate: accuracy is not what the viewer is judging. Energy is.
+
+So pick takes by these, in order:
+
+1. **Energy and pace.** A slightly wrong word delivered with conviction beats a perfect sentence delivered flatly.
+2. **Clarity.** No mumbling, no trailing off at the end of sentences.
+3. **Accuracy.** Last. You can fix a small factual slip with a caption or a cutaway; you cannot fix a monotone.
+
+## The wind-up you have to cut
+
+Most people begin a take with a verbal run-up: "okay so basically what I wanted to say about this is". It is a nervous habit, and every second of it is a second where a viewer can leave.
+
+Write the first sentence so it can be the first thing heard. If the take you recorded starts with a run-up, cut it — the cut is invisible if it lands on a word boundary and the next word is said with energy.
+
+## Hands, eyes and the rest of the body
+
+Delivery is not only voice. On a phone screen the face fills the frame, so small habits read large:
+
+- **Look at the lens, not at yourself.** Watching your own preview is what makes eyes drift.
+- **Use your hands, but keep them in frame.** Gestures that leave the frame look like twitches. Gestures visible in the lower third look natural.
+- **Move on transitions.** A slight lean forward when you change point gives the edit natural cut points and keeps the frame alive.
+- **Do not sway.** Rocking side to side is the most distracting habit in vertical video because the frame is narrow.
+
+## Nerves, practically
+
+Not the deep-breathing advice — the mechanical things that actually help:
+
+- **Record a throwaway first.** Ten seconds about nothing. The first take is always the worst, and using it as a warm-up means it does not have to be good.
+- **Say the first line five times before recording.** The opening line carries the most pressure; rehearsing only that line removes most of it.
+- **Stand up.** Standing gives you more breath support and makes gestures natural. Sitting produces a smaller, flatter voice.
+- **Accept the mess.** You are recording many takes in one session; the pressure is off any single one.
+
+## Warm up the voice, not the nerves
+
+Ten minutes of humming and reading aloud before the first take is the difference between the first three takes being throwaways and the first three being usable. The voice needs a few minutes of use before it settles into its normal range, and a session recorded cold sounds thin at the start.
+
+What helps, in order of effect:
+
+- **Hum for a minute**, sliding up and down through your range. It warms the resonances that make a voice sound full.
+- **Read a paragraph aloud** in your normal speaking voice — not a script, a news article is fine. This is the part that switches your mouth from reading mode to talking mode.
+- **Say the opening line three times** at a normal volume, then once louder than feels natural. The take you record will sit somewhere in the middle of that range.
+
+What does not help: silent deep breathing, which calms you without waking the voice, and rehearsing the whole script repeatedly, which makes the delivery stale before the camera is on.
+
+## Practise by recording audio only
+
+Once a day, for sixty seconds, record yourself talking about something you know, with no camera and no script. Listen back. You are listening for three things: filler words, sentences that ran out of breath, and whether the ending trailed off.
+
+This is the fastest improvement available because it removes the camera from the equation. You are not practising being on camera; you are practising speaking in complete thoughts, which is the skill that was missing.
+
+## What to fix in the edit, and what to re-record
+
+Editable:
+
+- Run-ups, false starts, repeated words.
+- Long pauses and breaths between sentences.
+- One flubbed word, if a cut or a caption covers it.
+
+Not editable:
+
+- A flat, tired delivery across the whole take.
+- Mumbling, or a voice that drops away at the end of every sentence.
+- Reading that is visible in the eyes.
+
+Those three are worth another take. Everything else is a cut.
+
+Once the delivery is right, the audio chain in [fixing bad audio](/blog/fix-bad-audio-shorts) is what carries it, and the batching method in [producing a week of shorts](/blog/batch-produce-shorts) is what stops you recording five separate warm-ups.
+`,
+  },
+  {
+    slug: 'film-yourself-without-a-crew',
+    title: 'How to Film Yourself Without a Crew',
+    description:
+      'Phone placement, focus and exposure lock, audio checks and framing for a one-person shoot that does not look like a webcam call.',
+    date: '2026-11-06',
+    category: 'Tutorial',
+    content: `
+# How to Film Yourself Without a Crew
+
+A one-person shoot has one advantage over a crew: nothing has to be coordinated. It has one disadvantage: nobody is watching the frame while you are in it, so every error is discovered after the take rather than during it.
+
+The method below is designed around that. Most of it is about removing the things that can go wrong silently — focus hunting, expired storage, unmonitored audio — before you start talking.
+
+## Height is the first decision
+
+Put the lens at eye level. Not below the chin, which makes nostrils the subject, and not above the forehead, which makes the body look short and the room look like a security camera.
+
+In practice, for a phone that means a tripod, a clamp on a shelf, or a stack of books that will not shift. A phone propped against a mug is the most common cause of a take that slowly slides out of frame.
+
+Eye level also decides how much of the room is in shot. Slightly above eye level and angled down gives a clean background with no ceiling; exactly at eye level keeps the horizon flat and reads as neutral.
+
+## Distance and framing
+
+For talking head footage, arm's length to about a metre is the useful range.
+
+- **Too close:** the face distorts, the nose grows, and there is no room for captions.
+- **Too far:** the room becomes the subject and the audio from a phone mic gets thin.
+
+Framing rules that suit a vertical frame:
+
+- **Eyes in the upper third.** Not the middle; the upper third leaves room to breathe below.
+- **Small headroom.** A hand's width above the hair, no more. Large headroom is the classic sign of a frame composed for horizontal.
+- **Chin clear of the caption zone.** Leave the bottom quarter for captions and the platform interface. That zone is exactly what [vertical safe zones](/blog/vertical-video-safe-zones) is about.
+- **Shoulders inside the frame.** Cropped shoulders look like a mistake; a full upper body reads as intentional.
+
+## Lock focus and exposure, every take
+
+Phones re-focus and re-meter constantly. The result is a clip where the face drifts soft and the brightness pulses, both of which are unfixable later.
+
+- Tap and hold on your face until the lock indicator appears.
+- Check the exposure is not clipping the brightest part of the face.
+- If you move between takes, re-lock. Moving changes the distance and the lock may release.
+
+On a camera with manual controls, do it manually and write down the settings so a later re-shoot matches.
+
+## Silence the phone
+
+A notification sound mid-take is a wasted take. Before recording:
+
+- Airplane mode, or at minimum do not disturb with calls allowed from nobody.
+- Disable the ringer switch vibration if the phone is mounted on the same surface as the microphone.
+- Close other apps that might interrupt the camera.
+- Turn off automatic screen brightness if the screen is visible in a mirror or reflection.
+
+## Storage, battery and heat
+
+The three failures that end a session:
+
+- **Storage.** Vertical 1080p footage is roughly a few hundred megabytes per minute, depending on the phone. An hour of takes can fill a phone. Clear space before you start, not during.
+- **Battery.** Recording drains fast and heat accelerates the drain. Start above half and keep it plugged in if the cable is out of frame.
+- **Heat.** Long recording sessions in a warm room cause phones to dim the screen or stop recording. Take breaks; do not record in direct sun.
+
+## Monitor the audio, always
+
+This is the step everyone skips and the one that ruins whole sessions: a dead microphone, a cable in the wrong socket, or a phone case blocking the mic.
+
+So record ten seconds, stop, and listen on headphones before the first real take. If you have a lavalier or a USB mic, that test is the difference between a usable session and an unusable one.
+
+If you are using the phone's own microphone, note that it is directional and small. It picks up the room, the fan and the road outside. Our guide to [fixing bad audio](/blog/fix-bad-audio-shorts) covers what can be rescued and what cannot, but the ten-second test is what stops you needing it.
+
+## Slate each take
+
+With no crew, you are also the person who has to find the good take later. Say the clip number and the take before you start recording. It takes a second and it removes the entire matching step in the edit.
+
+## One angle is enough
+
+A second camera angle makes a talking head more interesting but doubles the setup and the storage, and in a vertical frame it often just looks like a jump cut. If you want visual variety, get it from a second framing of the same subject — a closer shot for a key sentence — recorded as a separate take rather than a second camera.
+
+What genuinely helps variety more than a second angle is b-roll: a few seconds of the thing you are talking about, shot on the same phone in the same light. Cheap, and it covers cuts.
+
+## When the subject is an object, not your face
+
+A fair amount of one-person footage is a demonstration: hands on a keyboard, a product on a table, a page being turned. The same rules apply with two adjustments.
+
+- **Frame the object, not the room.** Fill the frame with the thing being demonstrated. A product shot from a metre away is a photo of a table.
+- **Get the light above and slightly in front of the object**, so the shadow falls behind it rather than across it. A phone torch held off to one side works if it is diffused with a sheet of paper.
+
+Record these as separate takes, not as one long take that includes your face and the object. Separate takes give you b-roll you can cut to when you need to cover an edit, which is the cheapest way to make a talking-head clip feel produced.
+
+## The pre-record checklist
+
+- Lens at eye level, phone secured so it cannot move.
+- Eyes in the upper third, small headroom, bottom quarter clear.
+- Focus and exposure locked on the face.
+- Airplane mode on, notifications off.
+- Storage cleared, battery above half.
+- Ten-second audio test listened to on headphones.
+- Light coming from one side, slightly above.
+
+Run it once and it becomes a habit that takes ninety seconds. Combined with the lighting setup in [how to light yourself](/blog/light-yourself-vertical-video), it is the difference between footage that needs rescuing and footage that needs editing.
+`,
+  },
+  {
+    slug: 'record-clean-screen-footage',
+    title: 'How to Record Clean Screen Footage',
+    description:
+      'Settings, cursor habits and cleanup that stop screen recordings looking soft, jittery or unreadable once they are scaled into a vertical frame.',
+    date: '2026-11-06',
+    category: 'Tutorial',
+    content: `
+# How to Record Clean Screen Footage
+
+Screen recordings fail in a specific way. They look fine on the monitor where you made them and then arrive in a vertical video as unreadable grey mush, because a 1920-wide window squeezed into a 1080-wide phone screen has thrown away most of the detail that made the text legible.
+
+Almost every problem is decided before you press record: how much is on screen, how large the text is, and whether the capture is scaled or cropped.
+
+## Record at the size you will publish
+
+If the finished video is 1080 by 1920, then a screen recording of a full desktop is the wrong input — it is horizontal, and cropping it to vertical keeps a narrow slice.
+
+The better approach for tutorial and demo content is one of these:
+
+- **Record a window, not the desktop.** One app, sized to a portrait-friendly shape, with the content you actually need. It fills the vertical frame instead of floating in it.
+- **Record at 2x and crop in.** Capture a large region at high resolution, then crop the part you use. You keep detail because the source has more pixels than the destination.
+- **Design for the crop.** Put the thing you are demonstrating in the middle of the screen and the empty space at the edges, so a vertical crop does not cut the content.
+
+Whichever you choose, decide before you record. Re-framing a screen capture afterwards means re-recording it.
+
+## Make the text genuinely large
+
+Text in a phone video must be readable at arm's length on a small screen while someone is scrolling. That is a far higher bar than readable on a laptop.
+
+- Increase the app's zoom or font size before recording. Browsers and most code editors can zoom to 125 or 150 percent.
+- Reduce what is on screen: close the sidebar, hide the file tree, collapse panels.
+- If you are demonstrating a menu, open it and leave it open long enough to read — roughly two seconds longer than feels natural.
+- One idea per screen. Scrolling to show three things means none of them is readable.
+
+## Frame rate and cursor behaviour
+
+30 frames per second is fine for most screen content and produces smaller files. 60 is worth it when the motion matters: dragging, scrolling, animation, cursor-driven interaction.
+
+What matters more than the frame rate is whether it is constant. Screen recorders frequently write variable frame rate files, which some editors handle badly and which can cause audio to drift away from the video over a long recording. Set constant frame rate if the tool offers it, and export at the same rate.
+
+Cursor habits, in order of how much they help:
+
+1. **Move slowly and deliberately.** Real cursor speed looks like panic on a compressed video.
+2. **Enlarge the cursor** in the capture tool if the option exists.
+3. **Do not wiggle to find it.** If you lose the cursor, stop and find it, then move.
+4. **Hide the cursor entirely** when you are not clicking. Many recorders offer this.
+5. **Click once, deliberately.** Double-clicking by accident opens something you did not want on screen.
+
+## Clean the desktop before you start
+
+Everything visible is content. A messy desktop, a personal photo in a dock, an email notification with a name in it — all of it ends up in the video.
+
+- Turn on do not disturb so notifications do not appear mid-take.
+- Hide the dock or taskbar if it is not needed.
+- Close every window that is not part of the demonstration.
+- Empty the desktop, or switch to a plain wallpaper.
+- Check bookmarks and tab titles, which often contain client names.
+
+This is also a privacy step, not just a polish one. A notification banner with a message preview is the most common accidental disclosure in screen-recorded tutorials.
+
+## Audio for screen footage
+
+Laptop microphones pick up the fan, the keyboard and the room. Two rules:
+
+- **Use a separate microphone** if you have one, even a cheap USB one, and put it close to your mouth rather than to the laptop.
+- **Narrate after recording, not during**, when the demonstration needs clicking. Clicking while talking produces a soundtrack of clicks under every sentence, and recording the voice separately lets you describe smoothly while the video shows the action.
+
+If you must narrate live, keep the microphone off the same surface as the laptop and speak slightly away from it.
+
+## Choose the tool by what it must do
+
+The built-in recorders on Windows and macOS are adequate for a single window and no editing of the capture. They are poor at selecting a region precisely, at constant frame rate, and at recording system audio.
+
+Dedicated capture tools give you region selection, frame rate control, cursor options and separate audio tracks. If you are producing screen content regularly, that control is the reason to use one. If you record a screen twice a year, the built-in tool is fine.
+
+Either way, do a ten-second test recording and play it back before the real take. It is the fastest way to catch a muted microphone or a capture that recorded the wrong monitor.
+
+## The mistakes that show up most
+
+1. **Recording the full desktop for a vertical video.** The content ends up as a small strip in the middle.
+2. **Text at normal size.** Unreadable on a phone, and no amount of sharpening fixes legibility.
+3. **Recording 4K and shrinking to 1080 without checking.** Usually fine, occasionally soft if the scaling is done twice.
+4. **Notification banners.** They appear at the exact moment you are demonstrating something.
+5. **Cursor jitter.** The mouse movement reads as nervous system rather than demonstration.
+6. **Recording system audio when you only needed the voice**, so music from another tab plays underneath.
+
+## Recording a phone app
+
+Demonstrating a mobile app adds one problem: the phone screen is already the right shape, so recording it horizontally wastes most of the frame. Use the device's own screen recording, which captures at the device resolution, and present it inside the vertical video at full height with the rest of the frame filled by a background or your face in a corner.
+
+Two details worth handling before you record: turn off the device's notification banners, and slow the taps down. A real interaction speed looks like a blur on video, and a tutorial that moves at real speed is a tutorial nobody can follow.
+
+## A short checklist
+
+- Window sized and zoomed for the final vertical frame.
+- Text large enough to read on a phone.
+- Notifications off, desktop clean, nothing personal visible.
+- Constant frame rate, 30 for static content, 60 for motion.
+- Cursor enlarged, or hidden when idle.
+- Separate microphone, or narration recorded afterwards.
+- Ten-second test played back before the real take.
+
+Once the capture is clean, the settings in [export settings for vertical video](/blog/export-settings-vertical-video) are what stop the platform's re-encode from undoing it.
+`,
+  },
+  {
+    slug: 'script-shorts-that-sound-spoken',
+    title: 'How to Script a Short That Does Not Sound Scripted',
+    description:
+      'A word budget, three structures that fit 30 seconds, and the editing pass that removes everything written for the page instead of the ear.',
+    date: '2026-11-06',
+    category: 'Strategy',
+    content: `
+# How to Script a Short That Does Not Sound Scripted
+
+A script is not a transcript and it is not an essay. It is a set of instructions to your future self about what to say, in what order, in how many words.
+
+The most common scripting failure is writing prose and then reading it. The second most common is not writing anything and hoping the take works out. Both produce the same result: a clip with no shape.
+
+## Start with a word budget
+
+Length is decided before anything is written, because a short has a hard ceiling and spoken words take time. At a conversational pace, thirty seconds is roughly seventy to eighty words. Forty-five seconds is around a hundred and ten.
+
+Measure your own rate once: record thirty seconds of yourself talking about something familiar, count the words, and use that number. It will be close to the figures above and it will be yours.
+
+Then write to the budget. A script that runs to twice the budget is not a script, it is a draft you will have to cut while recording, which is the worst possible time to make structural decisions.
+
+## Three shapes that fit thirty seconds
+
+**The claim, the proof, the turn.** State something specific, give the one piece of evidence or example that supports it, then close by widening it or reversing it. This is the most reliable shape for commentary and opinion, because it front-loads the thing worth hearing.
+
+**The question, the answer, the consequence.** Open with the question the viewer is actually asking, answer it plainly within a few seconds, then say what follows from the answer. Good for explainers, because the opening question does the work of a hook.
+
+**The list, cut to three.** Three items, each one sentence, each ending with a small turn of phrase. Lists survive short formats because the viewer always knows how much is left. Two feels thin; five does not fit.
+
+What all three have in common: the important thing comes first. A short that builds to its point has already lost the viewer who needed the point.
+
+## Write the opening line five times
+
+The opening line is the only sentence worth rewriting obsessively, because everything else depends on someone staying for it.
+
+Write five versions of the same opening. Then pick the one that is most specific. Specific beats clever: "this clip is four seconds too long" is better than "here is a common mistake". The vague version could introduce anything, which means it introduces nothing.
+
+Then delete any warm-up before it. "So", "okay", "I've been thinking about" — all of it is a runway the viewer did not ask for.
+
+## Write for the ear, not the eye
+
+A pass of edits that reliably improves any script:
+
+- **Split every sentence with a comma-splice.** Two short sentences, not one long one.
+- **Contractions everywhere.** Read aloud with and without; the difference is the sound of a person versus the sound of a document.
+- **One idea per sentence.** If a sentence needs the word "and" twice, it is two sentences.
+- **Cut adjectives.** They cost time and add nothing spoken.
+- **Replace abstractions with instances.** "Tools" becomes the specific tool; "people" becomes who.
+- **Read it out loud.** Every stumble marks a line to rewrite, not a line to practise.
+
+## The patch you will be tempted to keep
+
+Every script has a paragraph that exists because it was interesting to write, not because the clip needs it. It sits in the middle, it is well phrased, and it makes the video drag.
+
+Cut it. Then read the script again: if nothing is missing, it was the patch.
+
+A useful diagnostic is to read only the first sentence of each paragraph. If those sentences make sense on their own, the paragraphs are buildable; if some of them are invisible in that read, they are the ones the viewer would also skip.
+
+## Rehearse by recording audio only
+
+Once the script is written, record it as audio, once, with no camera. Listen back. This catches three things cheaply:
+
+- Sentences that run out of breath.
+- Sections that read better than they speak.
+- The actual runtime, which is almost always longer than the estimate.
+
+Fix the script on the basis of that recording, then shoot. Ten minutes of audio-only rehearsal removes the awkward half of a shooting session.
+
+## Where to allow improvisation
+
+A completely fixed script sounds recited; a completely improvised one rambles. The middle ground is to fix the structure and leave the connective tissue loose:
+
+- **Fix:** the opening line, the order of points, the closing line.
+- **Leave loose:** the transition sentences between points, the examples you reach for in the moment, the exact phrasing of a joke.
+
+This also makes retakes easier. If the opening is fixed, a flubbed take can be re-entered at the top of a section rather than the whole script.
+
+## When not to script at all
+
+Reaction content, live commentary and anything built on a genuine surprise are better unscripted, because the value is the response and a scripted response is not a response. For those, prepare three things and nothing else: the setup, the order you will cover things in, and a closing line. Everything between is reaction.
+
+For a demonstration, script only the narration and let the action be discovered — which is also why screen recordings work better with the voice recorded separately, as described in [recording clean screen footage](/blog/record-clean-screen-footage).
+
+Knowing which of the three cases you are in — scripted, structured-but-loose, or unscripted — is the decision that comes before writing anything.
+
+## What to cut at the end
+
+After the first read-through, cut ten percent. Not because the script is bad, but because everything written feels necessary to the person who wrote it and the viewer has none of that attachment.
+
+Look for, in order:
+
+1. Definitions of things the audience already knows.
+2. Setup that describes what you are about to do.
+3. Qualifiers and hedges that soften a claim you already believe.
+4. A conclusion that repeats the opening.
+
+## A scripting checklist
+
+- Word budget set from your own measured speaking rate.
+- One of the three shapes chosen before writing.
+- Opening line written five ways, most specific one kept.
+- No warm-up before the first line.
+- Read aloud, and every stumble rewritten.
+- Audio-only rehearsal recorded and timed.
+- Ten percent cut.
+- Structure fixed, transitions loose.
+
+A script written this way is mostly invisible in the finished clip, which is the point. The viewer should hear someone talking, not someone reciting — and the delivery habits in [how to sound natural on camera](/blog/sound-natural-on-camera) are what finish the job.
 `,
   },
 ];
