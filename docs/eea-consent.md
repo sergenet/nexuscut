@@ -37,13 +37,18 @@ CMP is not on the page.
 The site side is complete; these three are account settings and cannot be made
 from the codebase.
 
-1. **Privacy & messaging → European regulations → create and publish a message**
-   targeting the EEA, the UK and Switzerland, with `nexuscut.io` selected as the
-   site. Publishing this is what makes the site compliant for European ads.
-2. **Enable Consent Mode for analytics in that message.** Without it,
-   `analyticsStoragePurposeConsentStatus` is reported as `NOT_CONFIGURED`, the
-   site treats that as "no consent" (it is not consent), and Google Analytics
-   collects nothing from European visitors while Google's message owns consent.
+1. ~~Create and publish a European regulations message for the site~~ — done,
+   verified in the account on 2026-11-07: **European regulations message -
+   nexuscut.io**, site `nexuscut.io`, status **Published**, publish toggle on,
+   last modified Oct 10 2026, alongside matching messages for the other four
+   sites. The account reports 20 messages shown at a 92% consent rate, so the
+   message is being served rather than merely existing.
+2. **Consent Mode for analytics** is reported by Google as `NOT_CONFIGURED`,
+   which the site treats as "no consent" (it is not consent), so Google
+   Analytics collects nothing from European visitors while Google's message owns
+   consent. Whether that is toggled inside the message could not be read — the
+   message editor renders in a cross-origin frame — so it still needs a human
+   look in the UI.
 3. ~~Create two display ad units~~ — done. The account now holds **NexusCut -
    In-article** (`7947416899`) and **NexusCut - Footer** (`4344222968`), and both
    ids are baked in as defaults in `src/app/blog/[slug]/page.tsx`, with
