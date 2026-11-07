@@ -91,4 +91,11 @@ def main():
 
 
 if __name__ == "__main__":
+    # Next's build log contains box-drawing characters, and Windows defaults
+    # stdout to cp1252, which raised mid-deploy and skipped the pm2 restart.
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except AttributeError:
+            pass
     sys.exit(main())

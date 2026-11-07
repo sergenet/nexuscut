@@ -44,9 +44,17 @@ from the codebase.
    `analyticsStoragePurposeConsentStatus` is reported as `NOT_CONFIGURED`, the
    site treats that as "no consent" (it is not consent), and Google Analytics
    collects nothing from European visitors while Google's message owns consent.
-3. **Create two display ad units** and put their ids in the build environment as
-   `NEXT_PUBLIC_ADSENSE_SLOT_ARTICLE` and `NEXT_PUBLIC_ADSENSE_SLOT_FOOTER`.
-   The ad units render nothing until those exist, which is deliberate.
+3. ~~Create two display ad units~~ — done. The account now holds **NexusCut -
+   In-article** (`7947416899`) and **NexusCut - Footer** (`4344222968`), and both
+   ids are baked in as defaults in `src/app/blog/[slug]/page.tsx`, with
+   `NEXT_PUBLIC_ADSENSE_SLOT_ARTICLE` / `_FOOTER` as overrides. They are defaults
+   rather than build-only values so a deploy cannot silently ship posts with an
+   empty ad slot.
+
+Verified on the live site: both `<ins>` elements are in the server HTML, the
+AdSense tag loads, and each slot requests an ad at the container's real width.
+Fill itself depends on Google having demand for a new unit on a low-traffic
+page, so an empty frame on the first day is expected rather than a fault.
 
 ## Testing without a VPN
 

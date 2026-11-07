@@ -14,10 +14,12 @@ import ReactMarkdown from 'react-markdown';
 import { socialFor } from '@/lib/social';
 import AdUnit from '@/components/AdUnit';
 
-// Ad unit ids are created in AdSense and passed in at build time. When they are
-// absent the units render nothing, so a build without them is still correct.
-const ARTICLE_AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_SLOT_ARTICLE;
-const FOOTER_AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_SLOT_FOOTER;
+// Ad unit ids created in AdSense (pub-0467059729557007): "NexusCut - In-article"
+// and "NexusCut - Footer". The ids are the defaults rather than build-time
+// secrets so a deploy cannot silently ship posts with no ad in them; an env
+// override still wins if a unit is ever replaced.
+const ARTICLE_AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_SLOT_ARTICLE || '7947416899';
+const FOOTER_AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_SLOT_FOOTER || '4344222968';
 
 export async function generateStaticParams() {
   const slugs = await getAllBlogSlugs();
