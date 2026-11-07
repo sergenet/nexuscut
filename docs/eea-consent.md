@@ -43,12 +43,25 @@ from the codebase.
    last modified Oct 10 2026, alongside matching messages for the other four
    sites. The account reports 20 messages shown at a 92% consent rate, so the
    message is being served rather than merely existing.
-2. **Consent Mode for analytics** is reported by Google as `NOT_CONFIGURED`,
-   which the site treats as "no consent" (it is not consent), so Google
-   Analytics collects nothing from European visitors while Google's message owns
-   consent. Whether that is toggled inside the message could not be read — the
-   message editor renders in a cross-origin frame — so it still needs a human
-   look in the UI.
+2. ~~Enable Consent Mode for analytics~~ — done, 2026-11-07, account-wide in
+   Privacy & messaging → European regulations → Settings. Both switches are now
+   on: "Enable consent mode for advertising purposes" (which the UI requires
+   before it will reveal the second one) and "Enable consent mode for analytics
+   purposes", which makes Google interpret TCF Purpose 1 as the analytics
+   storage signal. Saved and confirmed after a full reload.
+
+   This mattered: with the setting off, Google reported
+   `analyticsStoragePurposeConsentStatus` as `NOT_CONFIGURED`, which this site
+   deliberately treats as a refusal, so every EEA/UK/CH visitor who accepted the
+   message still produced no Analytics data. Verified afterwards on the live
+   site that `getGoogleConsentModeValues()` returns a decision for all four
+   purposes (here `not_applicable`, because this connection is geolocated
+   outside the EEA), and `analyticsAllowed()` turns `granted` and
+   `not_applicable` into a start while `denied` and `not_configured` stay off.
+
+   The dialog also states it is the publisher's responsibility to explain GA's
+   collection in the transparency notice; /privacy already does, naming GA4, the
+   Meta pixel, AdSense and CMP ID 300.
 3. ~~Create two display ad units~~ — done. The account now holds **NexusCut -
    In-article** (`7947416899`) and **NexusCut - Footer** (`4344222968`), and both
    ids are baked in as defaults in `src/app/blog/[slug]/page.tsx`, with
