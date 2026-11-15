@@ -2,12 +2,31 @@ import React from "react";
 import Link from "next/link";
 import { MessageCircle, Globe, Share2, Mail } from "lucide-react";
 import CookieSettingsButton from "@/components/CookieSettingsButton";
+import NewsletterSubscribeForm from "@/components/NewsletterSubscribeForm";
 
 export default function Footer() {
   return (
     <footer className="bg-neutral-950 border-t border-neutral-900 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6">
         
+        {/* Newsletter Signup Strip */}
+        <div className="mb-16 p-8 md:p-10 rounded-3xl bg-gradient-to-r from-indigo-950/60 via-purple-950/40 to-neutral-900/60 border border-indigo-500/20 shadow-2xl shadow-indigo-950/30">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div className="max-w-xl">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-3">
+                ⚡ Creator Weekly
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black text-white mb-2 tracking-tight">
+                Viral hooks, video editing trends &amp; gear picks.
+              </h3>
+              <p className="text-sm text-neutral-400 leading-relaxed">
+                Join video creators receiving practical retention breakdowns, AI editing workflows, and gear suggestions every Monday.
+              </p>
+            </div>
+            <NewsletterSubscribeForm />
+          </div>
+        </div>
+
         {/* Main Footer Links */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-16">
           
