@@ -51,7 +51,9 @@ const AFFILIATE_TAG = 'sergenet05-20';
 const SMTP_HOST = process.env.SMTP_HOST || 'premium303.web-hosting.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465', 10);
 const SMTP_USER = process.env.SMTP_USER || 'noreply@nexuscut.io';
-const SMTP_PASS = process.env.SMTP_PASS || '***REMOVED***';
+// No literal fallback: the password lives only in .env.local (gitignored). A hardcoded
+// default here leaked a live mailbox password when this repo went public.
+const SMTP_PASS = process.env.SMTP_PASS;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 // 8 rotating creator pillars to guarantee each week covers a distinct discipline
@@ -322,6 +324,11 @@ async function main() {
 
   console.log(`[Newsletter] Starting execution at ${new Date().toISOString()}`);
   console.log(`[Newsletter] Options: dryRun=${isDryRun}, testEmail=${testEmail || 'none'}`);
+
+  if (!SMTP_PASS) {
+    console.error('[Newsletter] SMTP_PASS is missing. Add it to .env.local before dispatching.');
+    process.exit(1);
+  }
 
   const prisma = new PrismaClient();
   const transporter = createTransporter();
