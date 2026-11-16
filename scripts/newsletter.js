@@ -4,18 +4,19 @@
  * Runs via cron (every Friday at 10:00 AM UTC):
  *   0 10 * * 5 cd /var/www/nexuscut && /usr/bin/node scripts/newsletter.js >> scripts/newsletter.log 2>&1
  *
- * Features:
- *   - Fetches subscribers from Prisma WaitlistEntry
- *   - Generates unique viral editing tips & workflow insights using OpenAI GPT-4o
- *   - Automatically embeds monetized Amazon affiliate recommendations (tag: sergenet05-20)
- *   - Delivers via authenticated Namecheap cPanel SMTP (noreply@nexuscut.io)
- *   - Supports --dry-run and --test=<email> CLI flags
+ * Anti-Repetition Architecture:
+ *   - Maintains persistent archive of past issues in scripts/newsletter-archive.json
+ *   - Feeds past subjects, summaries, and gear picks into the OpenAI prompt with strict "no-repeat" instructions
+ *   - Rotates through 8 distinct core creator pillars (pacing, audio, color, subtitles, hooks, B-roll, workflow, lighting)
+ *   - Tracks recommended gear to prevent duplicate Amazon recommendations
  */
 
 const fs = require('fs');
 const path = require('path');
 const nodemailer = require('nodemailer');
 const { PrismaClient } = require('@prisma/client');
+
+const ARCHIVE_FILE = path.join(__dirname, 'newsletter-archive.json');
 
 // 1. Load environment variables manually from .env and .env.local (no external dotenv required)
 function loadEnv() {
@@ -53,7 +54,68 @@ const SMTP_USER = process.env.SMTP_USER || 'noreply@nexuscut.io';
 const SMTP_PASS = process.env.SMTP_PASS || '***REMOVED***';
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-// 2. Transporter configuration
+// 8 rotating creator pillars to guarantee each week covers a distinct discipline
+const CREATOR_PILLARS = [
+  {
+    name: 'Micro-Pacing & Visual Velocity',
+    theme: 'cutting techniques, 2-3 second visual resets, pattern interrupts, J-cuts/L-cuts, and eliminating dead air',
+  },
+  {
+    name: 'Audio Engineering & Sound Design',
+    theme: 'audio ducking, sub-bass riser impacts, EQ curves for voice crispness, and SFX layer stacking',
+  },
+  {
+    name: 'Color Grading & Mobile Visual Contrast',
+    theme: 'skin tone protection, LUT application, AMOLED screen contrast curves, and saturation balance for phone feeds',
+  },
+  {
+    name: 'Kinetic Typography & Subtitle Psychology',
+    theme: 'word-by-word animation curves, emphasis coloring, optimal read-rates, and vertical video safe zones',
+  },
+  {
+    name: 'Viral Hook Architecture & Psychology',
+    theme: 'proof-first cold opens, negative curiosity, optical misdirection, and first-frame composition',
+  },
+  {
+    name: 'B-Roll Mastery & Motion Graphics',
+    theme: 'speed ramping, kinetic transitions, parallax depth, 3D text tracking, and contextual overlay timing',
+  },
+  {
+    name: 'High-Speed Editing Workflows',
+    theme: 'ripple edit macros, pancake timelines, nesting strategies, asset organization, and keyboard efficiency',
+  },
+  {
+    name: 'Lighting, Camera Rigs & Studio Setup',
+    theme: 'key-to-fill ratios, rim separation, mobile sensor sweet spots, lens focal choice, and clean background depth',
+  },
+];
+
+// Load past issue history
+function loadArchive() {
+  try {
+    if (fs.existsSync(ARCHIVE_FILE)) {
+      const data = JSON.parse(fs.readFileSync(ARCHIVE_FILE, 'utf-8'));
+      if (Array.isArray(data)) return data;
+    }
+  } catch (err) {
+    console.warn('[Newsletter] Could not read archive, starting fresh:', err.message);
+  }
+  return [];
+}
+
+// Append newly dispatched issue to history
+function saveArchive(entry) {
+  try {
+    const archive = loadArchive();
+    archive.push(entry);
+    fs.writeFileSync(ARCHIVE_FILE, JSON.stringify(archive, null, 2), 'utf-8');
+    console.log(`[Newsletter] Saved issue #${archive.length} to archive (${entry.subject})`);
+  } catch (err) {
+    console.error('[Newsletter] Failed to save archive:', err.message);
+  }
+}
+
+// Transporter configuration
 function createTransporter() {
   return nodemailer.createTransport({
     host: SMTP_HOST,
@@ -69,24 +131,43 @@ function createTransporter() {
   });
 }
 
-// 3. Generate newsletter content via OpenAI
+// Generate newsletter content via OpenAI with anti-repetition memory
 async function generateNewsletterContent() {
   if (!OPENAI_API_KEY) {
     throw new Error('OPENAI_API_KEY is missing from environment.');
   }
 
-  const prompt = `You are a viral video editing strategist writing this week's issue of "Creator Weekly" for NexusCut (an online AI video editor).
-Write a high-impact, actionable newsletter offering fresh video editing workflows, retention tactics, or psychological hooks for short-form creators (TikTok, Shorts, Reels).
-Requirements:
-1. Provide a snappy, curiosity-inducing subject line as the very first line prefixed with "SUBJECT: ".
-2. Write practical, cutting-edge insight (e.g. pattern interrupts, micro-pacing, audio ducking transitions, or viral retention curves). Do NOT repeat generic fluff.
-3. Keep the tone sharp, creator-focused, and inspiring.
-4. At the bottom, naturally introduce a "Creator Gear Pick of the Week" featuring 2 specific physical gear items (e.g., dynamic microphone, compact key light, macro keypad, or wireless lapel mic).
+  const archive = loadArchive();
+  const issueNumber = archive.length + 1;
+  const pillarIndex = (issueNumber - 1) % CREATOR_PILLARS.length;
+  const currentPillar = CREATOR_PILLARS[pillarIndex];
+
+  // Compile past history for the prompt
+  const recentIssues = archive.slice(-12);
+  const pastSubjects = recentIssues.map((i) => `"${i.subject}" (${i.pillar || 'general'})`).join('\n- ');
+  const pastGear = Array.from(new Set(archive.flatMap((i) => i.gear || []))).slice(-20).join(', ');
+
+  const pastContext = recentIssues.length > 0
+    ? `\nPREVIOUSLY COVERED TOPICS & SUBJECTS (STRICT RULE: YOU MUST NOT REPEAT OR DUPLICATE THESE):\n- ${pastSubjects}\n\nPREVIOUSLY RECOMMENDED GEAR (DO NOT REPEAT THESE SPECIFIC PRODUCTS):\n${pastGear || 'None yet'}\n`
+    : '';
+
+  const prompt = `You are a viral video editing strategist writing Issue #${issueNumber} of "Creator Weekly" for NexusCut (an online AI video editor).
+
+TODAY'S CORE PILLAR: "${currentPillar.name}"
+Focus specifically on: ${currentPillar.theme}.
+${pastContext}
+STRICT REQUIREMENTS:
+1. Provide a snappy, curiosity-inducing subject line as the very first line prefixed with "SUBJECT: ". It MUST be completely unique and not resemble past subjects.
+2. Provide a 1-sentence summary of the main insight on the second line prefixed with "SUMMARY: ".
+3. List 2 specific physical gear items recommended at the bottom on the third line prefixed with "GEAR: [Product 1, Product 2]". These MUST NOT have been recommended in past issues.
+4. Write practical, cutting-edge insight with deep technical or psychological clarity (concrete numbers, exact millisecond timings, audio dB targets, or step-by-step workflow actions). Do NOT write vague generic fluff or high-level filler.
+5. Keep the tone sharp, creator-focused, and inspiring.
+6. At the bottom, introduce the "Creator Gear Pick of the Week" featuring the 2 physical gear items you chose.
    Format each gear recommendation link exactly as: [AMAZON_AFFILIATE_LINK:Exact Product Name]
-5. Return the newsletter body formatted in clean, modern HTML with semantic tags (<h2>, <p>, <ul>, <li>, <strong>). Do NOT wrap in markdown code blocks or <html>/<body> tags.`;
+7. Return the newsletter body formatted in clean, modern HTML with semantic tags (<h2>, <p>, <ul>, <li>, <strong>). Do NOT wrap in markdown code blocks or <html>/<body> tags.`;
 
   const model = 'gpt-4o';
-  console.log(`[Newsletter] Requesting AI generation via ${model}...`);
+  console.log(`[Newsletter] Requesting AI generation for Issue #${issueNumber} (Pillar: ${currentPillar.name}) via ${model}...`);
 
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
@@ -97,7 +178,7 @@ Requirements:
     body: JSON.stringify({
       model,
       messages: [{ role: 'user', content: prompt }],
-      temperature: 0.8,
+      temperature: 0.85,
     }),
   });
 
@@ -109,27 +190,50 @@ Requirements:
   const data = await response.json();
   const rawText = data.choices?.[0]?.message?.content || '';
 
-  let subject = '⚡ Creator Weekly: Retention Breakdown & Editing Hacks';
+  let subject = `⚡ Creator Weekly #${issueNumber}: ${currentPillar.name}`;
+  let summary = currentPillar.theme;
+  let gear = [];
   let bodyHtml = rawText;
 
   const subjectMatch = rawText.match(/^SUBJECT:\s*(.+)$/m);
   if (subjectMatch) {
     subject = subjectMatch[1].trim();
-    bodyHtml = rawText.replace(/^SUBJECT:\s*.+$/m, '').trim();
+    bodyHtml = bodyHtml.replace(/^SUBJECT:\s*.+$/m, '').trim();
+  }
+
+  const summaryMatch = rawText.match(/^SUMMARY:\s*(.+)$/m);
+  if (summaryMatch) {
+    summary = summaryMatch[1].trim();
+    bodyHtml = bodyHtml.replace(/^SUMMARY:\s*.+$/m, '').trim();
+  }
+
+  const gearMatch = rawText.match(/^GEAR:\s*\[?([^\]\n]+)\]?$/m);
+  if (gearMatch) {
+    gear = gearMatch[1].split(',').map((g) => g.trim().replace(/^['"]|['"]$/g, ''));
+    bodyHtml = bodyHtml.replace(/^GEAR:\s*.+$/m, '').trim();
   }
 
   // Replace Amazon placeholder links with affiliate tagged URLs
   bodyHtml = bodyHtml.replace(/\[AMAZON_AFFILIATE_LINK:(.*?)\]/g, (match, p1) => {
-    const query = encodeURIComponent(p1.trim());
+    const productName = p1.trim();
+    if (!gear.includes(productName)) gear.push(productName);
+    const query = encodeURIComponent(productName);
     const url = `https://www.amazon.com/s?k=${query}&tag=${AFFILIATE_TAG}`;
-    return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #6366f1; font-weight: 600; text-decoration: underline;">${p1.trim()} ↗</a>`;
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #6366f1; font-weight: 600; text-decoration: underline;">${productName} ↗</a>`;
   });
 
-  return { subject, bodyHtml };
+  return {
+    subject,
+    summary,
+    gear,
+    pillar: currentPillar.name,
+    issueNumber,
+    bodyHtml,
+  };
 }
 
-// 4. Wrap content in a branded, responsive email template
-function wrapEmailTemplate(subject, bodyHtml, recipientEmail) {
+// Wrap content in a branded, responsive email template
+function wrapEmailTemplate(subject, bodyHtml, recipientEmail, issueNumber) {
   const currentYear = new Date().getFullYear();
   const unsubUrl = `https://nexuscut.io/help?action=unsubscribe&email=${encodeURIComponent(recipientEmail)}`;
 
@@ -150,7 +254,7 @@ function wrapEmailTemplate(subject, bodyHtml, recipientEmail) {
           <tr>
             <td style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); padding: 32px 36px; text-align: left;">
               <span style="display: inline-block; padding: 4px 12px; background: rgba(255,255,255,0.15); border-radius: 999px; font-size: 11px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
-                ⚡ Creator Weekly
+                ⚡ Creator Weekly &bull; Issue #${issueNumber || 1}
               </span>
               <h1 style="margin: 0; font-size: 24px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; line-height: 1.3;">
                 NexusCut Creator Dispatch
@@ -209,7 +313,7 @@ function wrapEmailTemplate(subject, bodyHtml, recipientEmail) {
 </html>`;
 }
 
-// 5. Main execution routine
+// Main execution routine
 async function main() {
   const args = process.argv.slice(2);
   const isDryRun = args.includes('--dry-run');
@@ -228,9 +332,11 @@ async function main() {
     await transporter.verify();
     console.log('[Newsletter] SMTP connection verified successfully.');
 
-    // Generate content
-    const { subject, bodyHtml } = await generateNewsletterContent();
-    console.log(`[Newsletter] Subject: "${subject}"`);
+    // Generate unique, non-repeating content
+    const content = await generateNewsletterContent();
+    console.log(`[Newsletter] Generated Issue #${content.issueNumber}: "${content.subject}"`);
+    console.log(`[Newsletter] Pillar: ${content.pillar}`);
+    console.log(`[Newsletter] Gear: ${content.gear.join(', ') || 'N/A'}`);
 
     // Determine recipients
     let recipients = [];
@@ -240,7 +346,6 @@ async function main() {
       const entries = await prisma.waitlistEntry.findMany({
         select: { email: true },
       });
-      // Deduplicate emails
       const uniqueEmails = Array.from(new Set(entries.map((e) => e.email.trim().toLowerCase())));
       recipients = uniqueEmails.map((email) => ({ email }));
     }
@@ -254,7 +359,7 @@ async function main() {
 
     if (isDryRun) {
       console.log('[Newsletter] --dry-run active. Skipping actual email dispatch.');
-      console.log('[Newsletter] Sample output length:', bodyHtml.length, 'characters.');
+      console.log('[Newsletter] Sample output length:', content.bodyHtml.length, 'characters.');
       return;
     }
 
@@ -263,12 +368,12 @@ async function main() {
 
     for (const recipient of recipients) {
       try {
-        const fullHtml = wrapEmailTemplate(subject, bodyHtml, recipient.email);
+        const fullHtml = wrapEmailTemplate(content.subject, content.bodyHtml, recipient.email, content.issueNumber);
 
         await transporter.sendMail({
           from: `"NexusCut Creator Weekly" <${SMTP_USER}>`,
           to: recipient.email,
-          subject,
+          subject: content.subject,
           html: fullHtml,
         });
 
@@ -281,6 +386,19 @@ async function main() {
     }
 
     console.log(`[Newsletter] Dispatch completed: ${sentCount} sent, ${failCount} failed.`);
+
+    // Record into archive only on live full dispatches (or if at least 1 email sent)
+    if (sentCount > 0 && !testEmail) {
+      saveArchive({
+        date: new Date().toISOString(),
+        issueNumber: content.issueNumber,
+        subject: content.subject,
+        summary: content.summary,
+        pillar: content.pillar,
+        gear: content.gear,
+        recipientCount: sentCount,
+      });
+    }
   } catch (err) {
     console.error('[Newsletter] Fatal error during dispatch:', err);
     process.exit(1);
