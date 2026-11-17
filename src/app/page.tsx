@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, Video, Layers, Scissors, Zap, Type, Music } from 'lucide-react';
+import { ArrowRight, Sparkles, Video, Layers, Scissors, Zap, Type, Music, Check, Cpu, HardDrive, ShieldCheck, Clock, FileVideo } from 'lucide-react';
 import { socialFor } from '@/lib/social';
 
 export const metadata = {
@@ -336,6 +336,194 @@ export default function HomePage() {
                   <h4 className="font-bold text-gray-500 mb-2 uppercase text-sm tracking-wider">vs. Desktop Apps (e.g. Premiere)</h4>
                   <p className="text-lg">They require massive downloads. <span className="text-indigo-400 font-semibold">We run instantly in your browser.</span></p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Grid */}
+        <section id="pricing" className="px-6 max-w-7xl mx-auto mb-32 relative scroll-mt-24">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-4">
+              Transparent Pricing
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black mb-4">
+              Simple plans for <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">every creator.</span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Compare NexusCut to Descript ($24/mo) or Opus Clip ($29/mo). Start free with zero watermark, upgrade only when you scale.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            {/* Free Plan */}
+            <div className="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-white/20 transition-all">
+              <div>
+                <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-2">Starter</div>
+                <h3 className="text-2xl font-bold mb-1">Free</h3>
+                <p className="text-gray-400 text-sm mb-6">Perfect for trying out animated captions.</p>
+                <div className="flex items-baseline gap-1 mb-8">
+                  <span className="text-5xl font-black text-white">$0</span>
+                  <span className="text-gray-500 text-sm font-medium">/ month</span>
+                </div>
+                <ul className="space-y-3 text-sm text-gray-300 mb-8">
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span><strong>10 exports</strong> per month</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span><strong>No watermark</strong> on exports</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Up to 1080p Full HD resolution</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Full multitrack timeline editor</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>In-browser local WebAssembly</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/editor" className="w-full py-3.5 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold text-center transition-all block">
+                Start Free
+              </Link>
+            </div>
+
+            {/* Pro Plan (Highlighted) */}
+            <div className="bg-gradient-to-b from-indigo-950/40 via-purple-950/20 to-black border-2 border-indigo-500 rounded-3xl p-8 flex flex-col justify-between shadow-[0_0_50px_rgba(79,70,229,0.25)] relative hover:border-indigo-400 transition-all scale-105 z-10">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full text-xs font-black uppercase tracking-wider text-white shadow-md">
+                Most Popular
+              </div>
+              <div>
+                <div className="text-sm font-black text-indigo-400 uppercase tracking-widest mb-2">Creator Pro</div>
+                <h3 className="text-2xl font-bold mb-1">Pro</h3>
+                <p className="text-gray-400 text-sm mb-6">For YouTubers, TikTokers &amp; agency editors.</p>
+                <div className="flex items-baseline gap-1 mb-8">
+                  <span className="text-5xl font-black text-white">$19</span>
+                  <span className="text-gray-400 text-sm font-medium">/ month</span>
+                </div>
+                <ul className="space-y-3 text-sm text-gray-200 mb-8">
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span><strong>Unlimited exports</strong> with zero caps</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span><strong>4K 60fps</strong> maximum fidelity render</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>All viral word-by-word caption styles</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>1-Click silence cut &amp; filler removal</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Fast WebCodecs GPU acceleration</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/editor" className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-center transition-all block shadow-[0_0_25px_rgba(79,70,229,0.5)]">
+                Upgrade to Pro
+              </Link>
+            </div>
+
+            {/* Studio Plan */}
+            <div className="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-white/20 transition-all">
+              <div>
+                <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-2">Team &amp; Agency</div>
+                <h3 className="text-2xl font-bold mb-1">Studio</h3>
+                <p className="text-gray-400 text-sm mb-6">For multi-brand creators and production teams.</p>
+                <div className="flex items-baseline gap-1 mb-8">
+                  <span className="text-5xl font-black text-white">$49</span>
+                  <span className="text-gray-500 text-sm font-medium">/ month</span>
+                </div>
+                <ul className="space-y-3 text-sm text-gray-300 mb-8">
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span><strong>Everything in Pro</strong> + 5 team seats</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Custom brand kits &amp; font uploads</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Batch caption export pipeline</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Shared asset libraries &amp; presets</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Priority rendering &amp; direct support</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/editor" className="w-full py-3.5 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold text-center transition-all block">
+                Contact Studio
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* System Specs & Device Limits */}
+        <section className="px-6 max-w-6xl mx-auto mb-32">
+          <div className="bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 rounded-3xl p-8 md:p-12">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-8">
+              <div>
+                <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest block mb-1">Architecture &amp; Performance</span>
+                <h3 className="text-2xl md:text-3xl font-bold">System Specs &amp; Processing Limits</h3>
+              </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-bold">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                100% Private · Zero Cloud File Uploads
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                <div className="flex items-center gap-2 font-bold text-white mb-2">
+                  <Clock className="w-4 h-4 text-indigo-400" /> Max Video Length
+                </div>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Optimized for clips up to <strong>45–60 minutes</strong>. Seamless performance for TikToks, Reels, and YouTube Shorts.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                <div className="flex items-center gap-2 font-bold text-white mb-2">
+                  <FileVideo className="w-4 h-4 text-purple-400" /> Supported Codecs
+                </div>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Imports <strong>MP4, MOV, WebM, MP3, WAV, AAC</strong> with native H.264, VP9, and ProRes audio passthrough.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                <div className="flex items-center gap-2 font-bold text-white mb-2">
+                  <Cpu className="w-4 h-4 text-blue-400" /> WebAssembly Engine
+                </div>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Video decoding and timeline compositing execute locally via client-side <strong>WebAssembly &amp; WebCodecs</strong>.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                <div className="flex items-center gap-2 font-bold text-white mb-2">
+                  <HardDrive className="w-4 h-4 text-emerald-400" /> Zero Upload Wait
+                </div>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Your source files stay strictly on your local disk. <strong>Zero wait time</strong> to upload multi-gigabyte video files.
+                </p>
               </div>
             </div>
           </div>
