@@ -74,6 +74,24 @@ export default function ViralHookGeneratorPage() {
               onChange={(e) => setTopic(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && generateHooks()}
             />
+            <div className="flex flex-wrap items-center gap-2 mt-2">
+              <span className="text-xs text-gray-500 font-semibold">Try examples:</span>
+              {[
+                'How to get 10k TikTok followers fast',
+                '3 morning habits that doubled my productivity',
+                'Best tech gadgets you can buy under $50',
+                'Why 99% of creators quit YouTube Shorts'
+              ].map((ex) => (
+                <button
+                  key={ex}
+                  type="button"
+                  onClick={() => setTopic(ex)}
+                  className="text-xs bg-gray-800/80 hover:bg-gray-700 text-gray-300 hover:text-white px-2.5 py-1 rounded-lg border border-gray-700/60 transition-colors"
+                >
+                  {ex}
+                </button>
+              ))}
+            </div>
             <button 
               onClick={generateHooks}
               disabled={loading || !topic}
