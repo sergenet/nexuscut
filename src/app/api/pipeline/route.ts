@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
-import { mkdir, unlink, writeFile } from 'fs/promises';
+import { unlink, writeFile } from 'fs/promises';
 import { join } from 'path';
+import os from 'os';
 import OpenAI from 'openai';
 import fs from 'fs';
 
@@ -9,6 +10,7 @@ const openai = new OpenAI({
 });
 
 export async function POST(req: Request) {
+  let tempFilePath: string | null = null;
   try {
     console.log("Agents Processing Video...");
     const formData = await req.formData();
@@ -21,23 +23,19 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'File must be 250 MB or smaller.' }, { status: 413 });
     }
 
-    // Save the file locally
+    // Save the file to the OS secure temp directory (never publicly web-accessible)
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     
-    // In production, we'd save this to S3 or a temp dir. For this, we'll save to public/uploads
-    const uploadDir = join(process.cwd(), 'public', 'uploads');
-    await mkdir(uploadDir, { recursive: true });
     const extension = file.name.match(/\.[a-z0-9]{1,8}$/i)?.[0].toLowerCase() || '.mp4';
     const safeExtension = ['.mp3', '.mp4', '.mpeg', '.mpga', '.m4a', '.wav', '.webm'].includes(extension) ? extension : '.mp4';
-    const fileName = `pipeline-${crypto.randomUUID()}${safeExtension}`;
-    const filePath = join(uploadDir, fileName);
-    await writeFile(filePath, buffer);
+    const fileName = `nexuscut-pipeline-${crypto.randomUUID()}${safeExtension}`;
+    tempFilePath = join(os.tmpdir(), fileName);
+    await writeFile(tempFilePath, buffer);
 
     // Call OpenAI Whisper API to transcribe the video/audio
-    // Note: Whisper accepts mp3, mp4, mpeg, mpga, m4a, wav, or webm
     const transcription = await openai.audio.transcriptions.create({
-      file: fs.createReadStream(filePath),
+      file: fs.createReadStream(tempFilePath),
       model: 'whisper-1',
     });
 
@@ -61,8 +59,6 @@ export async function POST(req: Request) {
 
     const generatedHooks = hookResponse.choices[0].message.content;
 
-    await unlink(filePath).catch(() => undefined);
-
     return NextResponse.json({
       success: true,
       message: 'Video fully processed by AI pipeline.',
@@ -74,5 +70,9 @@ export async function POST(req: Request) {
   } catch (error: unknown) {
     console.error('AI Pipeline error:', error);
     return NextResponse.json({ error: error instanceof Error ? error.message : 'Pipeline failed' }, { status: 500 });
+  } finally {
+    if (tempFilePath) {
+      await unlink(tempFilePath).catch(() => undefined);
+    }
   }
 }

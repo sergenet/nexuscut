@@ -341,105 +341,128 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Social Proof & Creator Endorsements */}
+        {/* Creator Workflow & Capabilities Showcase */}
         <section className="px-6 max-w-7xl mx-auto mb-24 relative">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">
-              <Star className="w-3.5 h-3.5 fill-emerald-400 text-emerald-400" />
-              Creator Approved
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-4">
+              <Sparkles className="w-3.5 h-3.5" />
+              Creator Workflow
             </div>
             <h2 className="text-3xl md:text-5xl font-black mb-4">
-              Trusted by <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">12,000+ creators</span> publishing daily.
+              Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">High-Retention Short Form</span>
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              From solo YouTubers to high-volume short-form agencies, creators rely on NexusCut for instant captions and timeline control.
+              Everything you need to turn raw footage into viral TikToks, Instagram Reels, and YouTube Shorts with animated captions and timeline precision.
             </p>
           </div>
 
+          {/* Feature Highlights Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/30 transition-all">
               <div>
-                <div className="flex items-center gap-1 text-amber-400 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
+                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-5">
+                  <Type className="w-6 h-6" />
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                  &ldquo;Cutting dead air and auto-styling captions in the browser without uploading 2GB video files to the cloud cut my editing time by 70%. It&apos;s faster than Premiere and cheaper than Descript.&rdquo;
+                <h3 className="text-xl font-bold text-white mb-2">OpenAI Whisper AI Transcription</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  Industry-grade speech recognition creates word-timed transcripts with high accuracy across diverse accents, background noise, and fast speech.
                 </p>
               </div>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-white text-sm">
-                  AR
-                </div>
-                <div>
-                  <div className="font-bold text-sm text-white">Alex Rivera</div>
-                  <div className="text-xs text-gray-400">Tech &amp; Coding YouTuber · 280K subs</div>
-                </div>
+              <div className="pt-4 border-t border-white/5 text-xs text-indigo-400 font-semibold flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-emerald-400" /> Word-level synchronization
               </div>
             </div>
 
             <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/30 transition-all">
               <div>
-                <div className="flex items-center gap-1 text-amber-400 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
+                <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-5">
+                  <Zap className="w-6 h-6" />
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                  &ldquo;Growth Mode hook scoring is a game changer for TikTok retention. Being able to delete words from the transcript to cut the video directly saves hours across our weekly client batch.&rdquo;
+                <h3 className="text-xl font-bold text-white mb-2">Kinetic Caption Presets</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  One-click trending styles — Hormozi bold, Beast dynamic pops, Clean Minimal, and neon glow presets with custom fonts, colors, and active-word highlights.
                 </p>
               </div>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center font-bold text-white text-sm">
-                  SL
-                </div>
-                <div>
-                  <div className="font-bold text-sm text-white">Sarah Lin</div>
-                  <div className="text-xs text-gray-400">Short-Form Content Strategist · 1.2M TikTok</div>
-                </div>
+              <div className="pt-4 border-t border-white/5 text-xs text-purple-400 font-semibold flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-emerald-400" /> Fully customizable styles
               </div>
             </div>
 
             <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/30 transition-all">
               <div>
-                <div className="flex items-center gap-1 text-amber-400 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-5">
+                  <Scissors className="w-6 h-6" />
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                  &ldquo;The 5 switchable client brand kits in Agency tier let us output 40+ branded reels every week with custom fonts and zero client logo mismatches. The best ROI software in our stack.&rdquo;
+                <h3 className="text-xl font-bold text-white mb-2">Text-Based Editing &amp; Silence Cut</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  Edit video by editing text: delete a filler word from the transcript to trim that exact frame, or auto-detect and remove dead air in one click.
                 </p>
               </div>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center font-bold text-white text-sm">
-                  MC
-                </div>
+              <div className="pt-4 border-t border-white/5 text-xs text-emerald-400 font-semibold flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-emerald-400" /> Multitrack video timeline
+              </div>
+            </div>
+          </div>
+
+          {/* Video Showcase / Product Preview Frame */}
+          <div className="mb-12 rounded-2xl bg-gradient-to-b from-white/[0.05] to-white/[0.01] border border-white/10 p-6 md:p-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-white/10">
                 <div>
-                  <div className="font-bold text-sm text-white">Marcus Chen</div>
-                  <div className="text-xs text-gray-400">Studio Lead · Apex Creative Media</div>
+                  <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-1">
+                    <Video className="w-3.5 h-3.5" /> Product Showcase
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">See NexusCut Captioning in Action</h3>
+                </div>
+                <Link
+                  href="/editor"
+                  className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-sm font-semibold transition-all inline-flex items-center gap-2"
+                >
+                  Try In Editor Free <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+              
+              {/* Interactive Video Player / Demo Frame */}
+              <div className="relative rounded-xl overflow-hidden bg-black/60 border border-white/10 aspect-video flex items-center justify-center group shadow-2xl">
+                <video
+                  className="w-full h-full object-contain"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster="/og-image.jpg"
+                >
+                  <source src="/demo.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                {/* Visual guidance for editor demo */}
+                <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center p-6 text-center bg-black/40 backdrop-blur-[2px]">
+                  <div className="w-16 h-16 rounded-full bg-indigo-600/90 text-white flex items-center justify-center mb-4 shadow-lg group-hover:scale-105 transition-transform">
+                    <Video className="w-7 h-7" />
+                  </div>
+                  <div className="text-lg font-bold text-white mb-1">Word-By-Word AI Caption Demo</div>
+                  <div className="text-sm text-gray-300 max-w-md">Drop any MP4 or MOV into the NexusCut Editor to preview real-time animated captions, timing cuts, and clean exports without watermarks.</div>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Technical Specs & Capabilities Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-2xl bg-white/[0.02] border border-white/5 text-center">
             <div>
-              <div className="text-2xl md:text-3xl font-black text-white">10M+</div>
-              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Video Minutes Captioned</div>
+              <div className="text-2xl md:text-3xl font-black text-white">Whisper AI</div>
+              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Word-Level Accuracy</div>
             </div>
             <div>
-              <div className="text-2xl md:text-3xl font-black text-white">100%</div>
-              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">In-Browser Local Privacy</div>
+              <div className="text-2xl md:text-3xl font-black text-white">1080p / 4K</div>
+              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Clean Video Export</div>
             </div>
             <div>
-              <div className="text-2xl md:text-3xl font-black text-white">0s</div>
-              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Cloud Upload Wait Time</div>
+              <div className="text-2xl md:text-3xl font-black text-white">0</div>
+              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Watermarks on Free Tier</div>
             </div>
             <div>
-              <div className="text-2xl md:text-3xl font-black text-white">4.9/5</div>
-              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Average Creator Rating</div>
+              <div className="text-2xl md:text-3xl font-black text-white">9:16 &amp; 16:9</div>
+              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Multi-Platform Ratios</div>
             </div>
           </div>
         </section>
