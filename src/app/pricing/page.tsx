@@ -85,9 +85,57 @@ const plans = [
   },
 ];
 
+const faqs = [
+  {
+    q: 'What does Agency add beyond Pro?',
+    a: 'Agency is for a freelancer or small client studio operating one NexusCut account. It includes five switchable client Brand Kits, client-use rights, and the highest export-queue priority. It does not currently include team seats or a shared workspace.',
+  },
+  {
+    q: 'How does the Pro trial work?',
+    a: 'New Pro subscribers receive full Pro access free for 7 days. Stripe collects a payment method at signup, but billing does not begin until the trial ends. Cancel before the end of the trial to avoid the $29 monthly charge.',
+  },
+  {
+    q: 'What is the difference between Creator and Pro?',
+    a: 'Creator begins at $12/month with no trial and includes unlimited 1080p exports, all standard editor tools, and the standard export queue. Pro includes a 7-day trial, then costs $29/month, and adds Growth Mode for scored hook selection, conservative dead-air tightening, and Retention Focus captions; Nexus ScriptCut for transcript-based editing; filler-word and repeated-phrase suggestions; priority export processing; and Brand Kit styling with an optional logo watermark. Both paid plans export at up to 1080p.',
+  },
+  {
+    q: 'How does the free plan work?',
+    a: 'You can export up to 10 videos each month. Fast exports are 540p; High quality exports are available up to 720p. Free exports do not include a watermark.',
+  },
+  {
+    q: 'Can I cancel anytime?',
+    a: 'Absolutely. There are no contracts or hidden fees. Open My Account and use the billing controls to cancel at any time. Cancel a Pro trial before its seventh day ends to avoid the first monthly charge.',
+  },
+  {
+    q: 'Do you support team accounts?',
+    a: 'Not yet. Agency supports one account holder managing multiple client Brand Kits, but it does not include additional seats or a shared collaborative workspace.',
+  },
+  {
+    q: 'Do you offer discounts?',
+    a: "We occasionally offer promotional discounts. Join our newsletter to stay updated. We also offer a 7-day refund policy if you aren't satisfied.",
+  },
+];
+
 export default function PricingPage() {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-gray-950 text-white flex flex-col font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navigation />
       
       <main className="flex-grow pt-32 pb-24 px-4 max-w-7xl mx-auto w-full">
@@ -160,55 +208,18 @@ export default function PricingPage() {
         <div className="mt-24 text-center">
           <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
           <div className="max-w-3xl mx-auto text-left space-y-4">
-            <details className="group bg-gray-900 border border-gray-800 rounded-lg p-6 open:border-indigo-500 transition-colors cursor-pointer">
-              <summary className="font-bold text-lg marker:content-none flex justify-between items-center outline-none">
-                What does Agency add beyond Pro?
-                <span className="text-indigo-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <p className="text-gray-400 text-sm mt-4">Agency is for a freelancer or small client studio operating one NexusCut account. It includes five switchable client Brand Kits, client-use rights, and the highest export-queue priority. It does not currently include team seats or a shared workspace.</p>
-            </details>
-            <details className="group bg-gray-900 border border-gray-800 rounded-lg p-6 open:border-indigo-500 transition-colors cursor-pointer">
-              <summary className="font-bold text-lg marker:content-none flex justify-between items-center outline-none">
-                How does the Pro trial work?
-                <span className="text-indigo-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <p className="text-gray-400 text-sm mt-4">New Pro subscribers receive full Pro access free for 7 days. Stripe collects a payment method at signup, but billing does not begin until the trial ends. Cancel before the end of the trial to avoid the $29 monthly charge.</p>
-            </details>
-            <details className="group bg-gray-900 border border-gray-800 rounded-lg p-6 open:border-indigo-500 transition-colors cursor-pointer">
-              <summary className="font-bold text-lg marker:content-none flex justify-between items-center outline-none">
-                What is the difference between Creator and Pro?
-                <span className="text-indigo-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <p className="text-gray-400 text-sm mt-4">Creator begins at $12/month with no trial and includes unlimited 1080p exports, all standard editor tools, and the standard export queue. Pro includes a 7-day trial, then costs $29/month, and adds Growth Mode for scored hook selection, conservative dead-air tightening, and Retention Focus captions; Nexus ScriptCut for transcript-based editing; filler-word and repeated-phrase suggestions; priority export processing; and Brand Kit styling with an optional logo watermark. Both paid plans export at up to 1080p.</p>
-            </details>
-            <details className="group bg-gray-900 border border-gray-800 rounded-lg p-6 open:border-indigo-500 transition-colors cursor-pointer">
-              <summary className="font-bold text-lg marker:content-none flex justify-between items-center outline-none">
-                How does the free plan work?
-                <span className="text-indigo-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <p className="text-gray-400 text-sm mt-4">You can export up to 10 videos each month. Fast exports are 540p; High quality exports are available up to 720p. Free exports do not include a watermark.</p>
-            </details>
-            <details className="group bg-gray-900 border border-gray-800 rounded-lg p-6 open:border-indigo-500 transition-colors cursor-pointer">
-              <summary className="font-bold text-lg marker:content-none flex justify-between items-center outline-none">
-                Can I cancel anytime?
-                <span className="text-indigo-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <p className="text-gray-400 text-sm mt-4">Absolutely. There are no contracts or hidden fees. Open My Account and use the billing controls to cancel at any time. Cancel a Pro trial before its seventh day ends to avoid the first monthly charge.</p>
-            </details>
-            <details className="group bg-gray-900 border border-gray-800 rounded-lg p-6 open:border-indigo-500 transition-colors cursor-pointer">
-              <summary className="font-bold text-lg marker:content-none flex justify-between items-center outline-none">
-                Do you support team accounts?
-                <span className="text-indigo-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <p className="text-gray-400 text-sm mt-4">Not yet. Agency supports one account holder managing multiple client Brand Kits, but it does not include additional seats or a shared collaborative workspace.</p>
-            </details>
-            <details className="group bg-gray-900 border border-gray-800 rounded-lg p-6 open:border-indigo-500 transition-colors cursor-pointer">
-              <summary className="font-bold text-lg marker:content-none flex justify-between items-center outline-none">
-                Do you offer discounts?
-                <span className="text-indigo-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <p className="text-gray-400 text-sm mt-4">We occasionally offer promotional discounts. Join our newsletter to stay updated. We also offer a 7-day refund policy if you aren't satisfied.</p>
-            </details>
+            {faqs.map((faq, idx) => (
+              <details
+                key={idx}
+                className="group bg-gray-900 border border-gray-800 rounded-lg p-6 open:border-indigo-500 transition-colors cursor-pointer"
+              >
+                <summary className="font-bold text-lg marker:content-none flex justify-between items-center outline-none">
+                  {faq.q}
+                  <span className="text-indigo-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="text-gray-400 text-sm mt-4">{faq.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </main>
