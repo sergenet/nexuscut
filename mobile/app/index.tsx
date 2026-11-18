@@ -31,7 +31,7 @@ export default function LandingPage() {
         </View>
       </View>
 
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
         {/* Hero Section */}
         <View style={styles.heroSection}>
           <View style={styles.glowOrb1} />
@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
   navText: { color: '#a1a1aa', fontSize: 16, fontWeight: '600' },
   headerBtn: { backgroundColor: '#18181b', paddingHorizontal: 16, paddingVertical: 8, borderRadius: 8, borderWidth: 1, borderColor: '#27272a' },
   headerBtnText: { color: '#fff', fontWeight: '600', fontSize: 14 },
+  scroll: { flex: 1, width: '100%' },
   scrollContent: { flexGrow: 1, alignItems: 'center', paddingBottom: 64 },
   heroSection: { paddingVertical: 120, paddingHorizontal: 24, alignItems: 'center', maxWidth: 900, width: '100%', position: 'relative' },
   glowOrb1: { position: 'absolute', top: 50, left: '10%', width: 300, height: 300, borderRadius: 150, backgroundColor: 'rgba(0,224,255,0.15)', ...Platform.select({ web: { filter: 'blur(80px)' } }) },
@@ -115,10 +116,10 @@ const styles = StyleSheet.create({
   heroTitle: { color: '#fff', fontSize: width > 768 ? 64 : 42, fontWeight: '900', textAlign: 'center', letterSpacing: -1.5, marginBottom: 24 },
   highlight: { color: '#00E0FF' },
   heroSubtitle: { color: '#a1a1aa', fontSize: width > 768 ? 22 : 16, textAlign: 'center', maxWidth: 700, lineHeight: 32, marginBottom: 48 },
-  ctaRow: { flexDirection: 'row', gap: 16, marginBottom: 16 },
-  ctaBtn: { backgroundColor: '#00E0FF', flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 32, paddingVertical: 16, borderRadius: 12, shadowColor: '#00E0FF', shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.3, shadowRadius: 24, elevation: 8 },
+  ctaRow: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 16, marginBottom: 16, paddingHorizontal: 16, maxWidth: '100%' },
+  ctaBtn: { backgroundColor: '#00E0FF', flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 24, paddingVertical: 16, borderRadius: 12, shadowColor: '#00E0FF', shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.3, shadowRadius: 24, elevation: 8 },
   ctaText: { color: '#000', fontSize: 18, fontWeight: 'bold' },
-  secondaryBtn: { backgroundColor: 'transparent', borderWidth: 1, borderColor: '#333', flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 32, paddingVertical: 16, borderRadius: 12 },
+  secondaryBtn: { backgroundColor: 'transparent', borderWidth: 1, borderColor: '#333', flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 24, paddingVertical: 16, borderRadius: 12 },
   secondaryBtnText: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
   microText: { color: '#52525b', fontSize: 14 },
   sectionTitle: { color: '#fff', fontSize: 32, fontWeight: 'bold', textAlign: 'center', marginBottom: 40 },

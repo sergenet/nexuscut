@@ -18,6 +18,10 @@ expo-env.d.ts
 *.key
 *.mobileprovision
 
+# Android upload signing credentials — the password and the key must never be committed
+keystore.properties
+credentials/
+
 # Metro
 .metro-health-check*
 

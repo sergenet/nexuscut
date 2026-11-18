@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { initializeRevenueCat } from '../lib/revenuecat';
 import { supabase } from '../lib/supabase';
 import { View, ActivityIndicator } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function Layout() {
   const [loading, setLoading] = useState(true);
@@ -28,11 +29,13 @@ export default function Layout() {
 
   // Show the main app
   return (
+    <SafeAreaProvider>
     <Stack>
       <Stack.Screen name="index" options={{ title: 'NexusCut', headerShown: false }} />
       <Stack.Screen name="settings" options={{ title: 'Settings', headerShown: false }} />
       <Stack.Screen name="editor" options={{ headerShown: false }} />
       <Stack.Screen name="paywall" options={{ presentation: 'modal', headerShown: false }} />
     </Stack>
+    </SafeAreaProvider>
   );
 }

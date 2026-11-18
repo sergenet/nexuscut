@@ -6,6 +6,7 @@ import { supabase } from '../lib/supabase';
 import { saveMediaToDB, getAllMediaFromDB, deleteMediaFromDB } from '../lib/indexedDB';
 import React, { useState, useRef, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface SegmentationMask { width: number; height: number; getAsUint8Array: () => Uint8Array }
 interface SegmentationResult { categoryMask?: SegmentationMask }
@@ -197,6 +198,9 @@ export default function Editor() {
   const router = useRouter();
   const { width: windowWidth } = useWindowDimensions();
   const isMobile = windowWidth < 768;
+  // Android draws edge-to-edge, so the top bar must offset itself by the
+  // status-bar inset or it renders underneath the clock and icons.
+  const insets = useSafeAreaInsets();
   const { 
     tracks, 
     addSegment, 
@@ -1406,9 +1410,14 @@ export default function Editor() {
       )}
 
       {/* Top Bar */}
-      <View style={styles.topBar}>
+      <View style={[styles.topBar, { paddingTop: insets.top, height: 64 + insets.top }]}>
         <Text style={styles.logoText}>NexusCut Pro</Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.topBarActions}
+          contentContainerStyle={styles.topBarActionsContent}
+        >
           <TouchableOpacity 
             style={[styles.saveBtn, { backgroundColor: '#18181b', borderWidth: 1, borderColor: '#3f3f46' }]} 
             onPress={() => {
@@ -1534,7 +1543,7 @@ export default function Editor() {
           <TouchableOpacity onPress={() => router.push('/settings')} activeOpacity={0.7}>
             <Ionicons name="settings-outline" size={24} color="#a1a1aa" />
           </TouchableOpacity>
-        </View>
+        </ScrollView>
       </View>
 
       {/* Auth Modal */}
@@ -2141,7 +2150,7 @@ export default function Editor() {
         </View>
       </View>
       {/* Bottom Timeline Area */}
-      <View style={styles.timelineArea}>
+      <View style={[styles.timelineArea, { height: 280 + insets.bottom, paddingBottom: insets.bottom }]}>
         {/* Timeline Quick Action Toolbar */}
         <View style={styles.timelineToolbar}>
            <View style={styles.toolbarGroup}>
@@ -2319,7 +2328,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 24,
+    paddingHorizontal: 8,
     height: 64,
     backgroundColor: 'rgba(9, 9, 11, 0.7)', // Translucent Zinc-950
     borderBottomWidth: 1,
@@ -2332,6 +2341,17 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     fontSize: 18,
     letterSpacing: -0.5,
+    flexShrink: 0,
+  },
+  topBarActions: {
+    flex: 1,
+    marginLeft: 12,
+  },
+  topBarActionsContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    paddingRight: 12,
   },
   logoutText: {
     color: '#a1a1aa', // Zinc-400
@@ -2724,7 +2744,7 @@ const styles = StyleSheet.create({
     gap: 6,
     backgroundColor: '#3f3f46',
     paddingVertical: 6,
-    paddingHorizontal: 12,
+    paddingHorizontal: 10,
     borderRadius: 6,
   },
   saveBtnText: {
