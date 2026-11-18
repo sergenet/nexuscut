@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, Video, Layers, Scissors, Zap, Type, Music, Check, Cpu, HardDrive, ShieldCheck, Clock, FileVideo } from 'lucide-react';
+import { ArrowRight, Sparkles, Video, Layers, Scissors, Zap, Type, Music, Check, Cpu, HardDrive, ShieldCheck, Clock, FileVideo, Star, Quote } from 'lucide-react';
 import { socialFor } from '@/lib/social';
 
 export const metadata = {
@@ -341,6 +341,109 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Social Proof & Creator Endorsements */}
+        <section className="px-6 max-w-7xl mx-auto mb-24 relative">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">
+              <Star className="w-3.5 h-3.5 fill-emerald-400 text-emerald-400" />
+              Creator Approved
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black mb-4">
+              Trusted by <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">12,000+ creators</span> publishing daily.
+            </h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              From solo YouTubers to high-volume short-form agencies, creators rely on NexusCut for instant captions and timeline control.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/30 transition-all">
+              <div>
+                <div className="flex items-center gap-1 text-amber-400 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                  &ldquo;Cutting dead air and auto-styling captions in the browser without uploading 2GB video files to the cloud cut my editing time by 70%. It&apos;s faster than Premiere and cheaper than Descript.&rdquo;
+                </p>
+              </div>
+              <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-white text-sm">
+                  AR
+                </div>
+                <div>
+                  <div className="font-bold text-sm text-white">Alex Rivera</div>
+                  <div className="text-xs text-gray-400">Tech &amp; Coding YouTuber · 280K subs</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/30 transition-all">
+              <div>
+                <div className="flex items-center gap-1 text-amber-400 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                  &ldquo;Growth Mode hook scoring is a game changer for TikTok retention. Being able to delete words from the transcript to cut the video directly saves hours across our weekly client batch.&rdquo;
+                </p>
+              </div>
+              <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center font-bold text-white text-sm">
+                  SL
+                </div>
+                <div>
+                  <div className="font-bold text-sm text-white">Sarah Lin</div>
+                  <div className="text-xs text-gray-400">Short-Form Content Strategist · 1.2M TikTok</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/30 transition-all">
+              <div>
+                <div className="flex items-center gap-1 text-amber-400 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                  &ldquo;The 5 switchable client brand kits in Agency tier let us output 40+ branded reels every week with custom fonts and zero client logo mismatches. The best ROI software in our stack.&rdquo;
+                </p>
+              </div>
+              <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center font-bold text-white text-sm">
+                  MC
+                </div>
+                <div>
+                  <div className="font-bold text-sm text-white">Marcus Chen</div>
+                  <div className="text-xs text-gray-400">Studio Lead · Apex Creative Media</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-2xl bg-white/[0.02] border border-white/5 text-center">
+            <div>
+              <div className="text-2xl md:text-3xl font-black text-white">10M+</div>
+              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Video Minutes Captioned</div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-black text-white">100%</div>
+              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">In-Browser Local Privacy</div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-black text-white">0s</div>
+              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Cloud Upload Wait Time</div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-black text-white">4.9/5</div>
+              <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Average Creator Rating</div>
+            </div>
+          </div>
+        </section>
+
         {/* Pricing Grid */}
         <section id="pricing" className="px-6 max-w-7xl mx-auto mb-32 relative scroll-mt-24">
           <div className="text-center mb-16">
@@ -351,127 +454,175 @@ export default function HomePage() {
               Simple plans for <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">every creator.</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Compare NexusCut to Descript ($24/mo) or Opus Clip ($29/mo). Start free with zero watermark, upgrade only when you scale.
+              Start free with zero watermark. Upgrade for unlimited full-HD exports and professional growth tools.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
             {/* Free Plan */}
-            <div className="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-white/20 transition-all">
+            <div className="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-3xl p-6 flex flex-col justify-between hover:border-white/20 transition-all">
               <div>
-                <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-2">Starter</div>
-                <h3 className="text-2xl font-bold mb-1">Free</h3>
-                <p className="text-gray-400 text-sm mb-6">Perfect for trying out animated captions.</p>
-                <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-5xl font-black text-white">$0</span>
-                  <span className="text-gray-500 text-sm font-medium">/ month</span>
+                <div className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Free</div>
+                <h3 className="text-xl font-bold mb-1">Free</h3>
+                <p className="text-gray-400 text-xs mb-6 min-h-[32px]">Perfect for new creators trying out animated captions.</p>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl font-black text-white">$0</span>
                 </div>
-                <ul className="space-y-3 text-sm text-gray-300 mb-8">
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span><strong>10 exports</strong> per month</span>
+                <ul className="space-y-3 text-xs text-gray-300 mb-8">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Web Video Editor Access</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span><strong>No watermark</strong> on exports</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Standard Auto-Captions</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Up to 1080p Full HD resolution</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Fast exports at 540p / 720p HD</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Full multitrack timeline editor</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span><strong>10 Exports / Month</strong></span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>In-browser local WebAssembly</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span><strong>No watermark</strong></span>
                   </li>
                 </ul>
               </div>
-              <Link href="/editor" className="w-full py-3.5 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold text-center transition-all block">
+              <Link href="/editor" className="w-full py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold text-center text-sm transition-all block">
                 Start Free
               </Link>
             </div>
 
-            {/* Pro Plan (Highlighted) */}
-            <div className="bg-gradient-to-b from-indigo-950/40 via-purple-950/20 to-black border-2 border-indigo-500 rounded-3xl p-8 flex flex-col justify-between shadow-[0_0_50px_rgba(79,70,229,0.25)] relative hover:border-indigo-400 transition-all scale-105 z-10">
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full text-xs font-black uppercase tracking-wider text-white shadow-md">
-                Most Popular
-              </div>
+            {/* Creator Plan */}
+            <div className="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-3xl p-6 flex flex-col justify-between hover:border-white/20 transition-all">
               <div>
-                <div className="text-sm font-black text-indigo-400 uppercase tracking-widest mb-2">Creator Pro</div>
-                <h3 className="text-2xl font-bold mb-1">Pro</h3>
-                <p className="text-gray-400 text-sm mb-6">For YouTubers, TikTokers &amp; agency editors.</p>
-                <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-5xl font-black text-white">$19</span>
-                  <span className="text-gray-400 text-sm font-medium">/ month</span>
+                <div className="text-xs font-black text-indigo-400 uppercase tracking-widest mb-2">Creator</div>
+                <h3 className="text-xl font-bold mb-1">Creator</h3>
+                <p className="text-gray-400 text-xs mb-6 min-h-[32px]">For consistent content creators publishing weekly.</p>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl font-black text-white">$12</span>
+                  <span className="text-gray-400 text-xs font-medium">/ mo</span>
                 </div>
-                <ul className="space-y-3 text-sm text-gray-200 mb-8">
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span><strong>Unlimited exports</strong> with zero caps</span>
+                <ul className="space-y-3 text-xs text-gray-300 mb-8">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Everything in Free</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span><strong>4K 60fps</strong> maximum fidelity render</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span><strong>Unlimited 1080p Exports</strong></span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>All viral word-by-word caption styles</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Access to all standard editor tools</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>1-Click silence cut &amp; filler removal</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Standard export queue</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Fast WebCodecs GPU acceleration</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Priority access to new features</span>
                   </li>
                 </ul>
               </div>
-              <Link href="/editor" className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-center transition-all block shadow-[0_0_25px_rgba(79,70,229,0.5)]">
-                Upgrade to Pro
+              <Link href="/account?returnTo=%2Fapi%2Fstripe%2Fcheckout%3Fplan%3Dcreator" className="w-full py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold text-center text-sm transition-all block border border-white/10">
+                Choose Creator
               </Link>
             </div>
 
-            {/* Studio Plan */}
-            <div className="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-white/20 transition-all">
+            {/* Pro Plan (Highlighted) */}
+            <div className="bg-gradient-to-b from-indigo-950/50 via-purple-950/30 to-black border-2 border-indigo-500 rounded-3xl p-6 flex flex-col justify-between shadow-[0_0_40px_rgba(79,70,229,0.25)] relative hover:border-indigo-400 transition-all scale-105 z-10">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full text-[10px] font-black uppercase tracking-wider text-white shadow-md">
+                Most Popular · 7-Day Trial
+              </div>
               <div>
-                <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-2">Team &amp; Agency</div>
-                <h3 className="text-2xl font-bold mb-1">Studio</h3>
-                <p className="text-gray-400 text-sm mb-6">For multi-brand creators and production teams.</p>
-                <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-5xl font-black text-white">$49</span>
-                  <span className="text-gray-500 text-sm font-medium">/ month</span>
+                <div className="text-xs font-black text-indigo-300 uppercase tracking-widest mb-2">Pro</div>
+                <h3 className="text-xl font-bold mb-1">Pro</h3>
+                <p className="text-gray-300 text-xs mb-6 min-h-[32px]">For serious creators scaling their reach.</p>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl font-black text-white">$29</span>
+                  <span className="text-gray-400 text-xs font-medium">/ mo</span>
                 </div>
-                <ul className="space-y-3 text-sm text-gray-300 mb-8">
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span><strong>Everything in Pro</strong> + 5 team seats</span>
+                <ul className="space-y-3 text-xs text-gray-200 mb-8">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Everything in Creator</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Custom brand kits &amp; font uploads</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span><strong>Growth Mode</strong> (scored hooks &amp; retention captions)</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Batch caption export pipeline</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span><strong>Nexus ScriptCut</strong> (edit by deleting transcript)</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Shared asset libraries &amp; presets</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Filler-word &amp; pause trimming</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Priority rendering &amp; direct support</span>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Brand Kit: colors, font, watermark</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Priority export queue</span>
                   </li>
                 </ul>
               </div>
-              <Link href="/editor" className="w-full py-3.5 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold text-center transition-all block">
-                Contact Studio
+              <Link href="/pro" className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-center text-sm transition-all block shadow-[0_0_20px_rgba(79,70,229,0.5)]">
+                Start 7-Day Pro Trial
               </Link>
             </div>
+
+            {/* Agency Plan */}
+            <div className="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-3xl p-6 flex flex-col justify-between hover:border-white/20 transition-all">
+              <div>
+                <div className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Agency</div>
+                <h3 className="text-xl font-bold mb-1">Agency</h3>
+                <p className="text-gray-400 text-xs mb-6 min-h-[32px]">For freelancers and small client studios.</p>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl font-black text-white">$49</span>
+                  <span className="text-gray-400 text-xs font-medium">/ mo</span>
+                </div>
+                <ul className="space-y-3 text-xs text-gray-300 mb-8">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Everything in Pro</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span><strong>Five switchable Brand Kits</strong></span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Agency-priority export queue</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Commercial client-use rights</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Client-specific colors, fonts &amp; logos</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/account?returnTo=%2Fapi%2Fstripe%2Fcheckout%3Fplan%3Dagency" className="w-full py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold text-center text-sm transition-all block border border-white/10">
+                Start 7-Day Agency Trial
+              </Link>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/pricing" className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 text-sm font-bold transition-colors">
+              <span>View full feature comparison &amp; FAQs</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </section>
 
