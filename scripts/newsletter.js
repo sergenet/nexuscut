@@ -8,7 +8,7 @@
  *   - Maintains persistent archive of past issues in scripts/newsletter-archive.json
  *   - Feeds past subjects, summaries, and gear picks into the OpenAI prompt with strict "no-repeat" instructions
  *   - Rotates through 8 distinct core creator pillars (pacing, audio, color, subtitles, hooks, B-roll, workflow, lighting)
- *   - Tracks recommended gear to prevent duplicate Amazon recommendations
+ *   - Tracks recommended gear to prevent duplicate Awin affiliate recommendations
  */
 
 const fs = require('fs');
@@ -47,7 +47,7 @@ function loadEnv() {
 
 loadEnv();
 
-const AFFILIATE_TAG = 'sergenet05-20';
+const AWIN_AFFID = '2913559';
 const SMTP_HOST = process.env.SMTP_HOST || 'premium303.web-hosting.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465', 10);
 const SMTP_USER = process.env.SMTP_USER || 'noreply@nexuscut.io';
@@ -55,6 +55,90 @@ const SMTP_USER = process.env.SMTP_USER || 'noreply@nexuscut.io';
 // default here leaked a live mailbox password when this repo went public.
 const SMTP_PASS = process.env.SMTP_PASS;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+// Verified Creator & Studio Gear from approved Awin affiliate programs (Publisher ID: 2913559)
+const AWIN_CREATOR_GEAR = [
+  {
+    id: 'mic-holder',
+    name: 'Skywin Gooseneck Microphone Desk Holder',
+    category: 'Audio & Voiceover Recording',
+    brand: 'DealGenius',
+    url: `https://www.awin1.com/cread.php?awinmid=122504&awinaffid=${AWIN_AFFID}&clickref=nexuscut-newsletter&ued=https%3A%2F%2Fwww.dealgenius.com%2Fproducts%2Fskywin-gooseneck-microphone-holder-adjustable-desk-podium-mic-stand`,
+    benefit: 'Flexible 360-degree gooseneck mic positioning for creators recording crisp voiceovers and commentary without bulky floor stands.',
+  },
+  {
+    id: 'monitor-shelf',
+    name: 'Foldable Monitor Top Storage Shelf & Camera/Mic Mount',
+    category: 'Studio Desk & Hardware Mounting',
+    brand: 'DealGenius',
+    url: `https://www.awin1.com/cread.php?awinmid=122504&awinaffid=${AWIN_AFFID}&clickref=nexuscut-newsletter&ued=https%3A%2F%2Fwww.dealgenius.com%2Fproducts%2F11-8-x-5-1-foldable-monitor-top-storage-shelf-mount`,
+    benefit: 'Mounts securely on top of your editing monitor to elevate webcams, audio interfaces, and lighting controls off your desk surface.',
+  },
+  {
+    id: 'cable-management-box',
+    name: 'Tidy Studio Cable & Power Strip Organizer Box',
+    category: 'Editing Suite Cable Management',
+    brand: 'DealGenius',
+    url: `https://www.awin1.com/cread.php?awinmid=122504&awinaffid=${AWIN_AFFID}&clickref=nexuscut-newsletter&ued=https%3A%2F%2Fwww.dealgenius.com%2Fproducts%2Ftidy-cable-management-box-organizer-with-gold-legs-power-strip-cord-storage-box`,
+    benefit: 'Modern elevated organizer that hides tangled power bricks, external drive cords, and camera charger wires for a clean studio desk.',
+  },
+  {
+    id: 'ergonomic-seat-cushion',
+    name: 'Ergonomic Orthopedic Memory Foam Seat Cushion',
+    category: 'Editor Ergonomics & Posture',
+    brand: 'DealGenius',
+    url: `https://www.awin1.com/cread.php?awinmid=122504&awinaffid=${AWIN_AFFID}&clickref=nexuscut-newsletter&ued=https%3A%2F%2Fwww.dealgenius.com%2Fproducts%2Fergonomic-memory-foam-seat-cushion-for-office-car-cooling-3d-mesh-cover`,
+    benefit: 'Cooling 3D mesh and contoured orthopedic memory foam to relieve tailbone pressure and back strain during multi-hour timeline editing sessions.',
+  },
+  {
+    id: 'desk-organizer',
+    name: '5-Section Mesh Desk Organizer & Storyboard Sorter',
+    category: 'Production Workflow Organization',
+    brand: 'DealGenius',
+    url: `https://www.awin1.com/cread.php?awinmid=122504&awinaffid=${AWIN_AFFID}&clickref=nexuscut-newsletter&ued=https%3A%2F%2Fwww.dealgenius.com%2Fproducts%2Fdesk-organizer-with-inclined-file-sorter-5-section`,
+    benefit: 'Inclined multi-slot organizer to keep tablets, portable SSD drives, storyboard cards, and script notes within arm’s reach.',
+  },
+  {
+    id: 'studio-rgb-light',
+    name: 'Skilhunt MiX-7 Gen 2 Multi-Color RGB & UV Studio Accent Light',
+    category: 'Backdrop Lighting & Color Contrast',
+    brand: 'SKILHUNT',
+    url: `https://www.awin1.com/cread.php?awinmid=37130&awinaffid=${AWIN_AFFID}&clickref=nexuscut-newsletter&ued=https%3A%2F%2Fwww.skilhunt.com%2Fproduct%2Fmix-7-gen-2-multi-color-18350-magnetic-charging-led-flashlight%2F`,
+    benefit: 'Magnetic multi-color RGB light for practical background rim lighting, backdrop accent glow, and camera color separation.',
+  },
+  {
+    id: 'standing-desk',
+    name: 'Sunaofe Lunar Dual-Motor Electric Standing Workstation',
+    category: 'Creator Studio Workstations',
+    brand: 'Sunaofe',
+    url: `https://www.awin1.com/cread.php?awinmid=122512&awinaffid=${AWIN_AFFID}&clickref=nexuscut-newsletter&ued=https%3A%2F%2Fwww.sunaofe.com%2Fproducts%2Fstanding-desk-lunar`,
+    benefit: 'High-capacity dual-motor motorized sit-stand desk built to effortlessly support heavy multi-monitor video editing stations.',
+  },
+  {
+    id: 'ambient-star-projector',
+    name: 'Rossetta 16-Color Ambient Star Projector & Studio Speaker',
+    category: 'Studio Background & Atmosphere',
+    brand: 'DealGenius',
+    url: `https://www.awin1.com/cread.php?awinmid=122504&awinaffid=${AWIN_AFFID}&clickref=nexuscut-newsletter&ued=https%3A%2F%2Fwww.dealgenius.com%2Fproducts%2Frossetta-star-projector-16-colors-bluetooth-speaker`,
+    benefit: 'Creates vibrant ambient galaxy backdrops and atmospheric background lighting for talking-head videos and creative studio shoots.',
+  },
+  {
+    id: 'studio-wall-art',
+    name: 'Poster Master Studio Wall Art ("Things That Require 0 Talent")',
+    category: 'Creative Suite Decor & Motivation',
+    brand: 'Poster Master',
+    url: `https://www.awin1.com/cread.php?awinmid=121870&awinaffid=${AWIN_AFFID}&clickref=nexuscut-newsletter&ued=https%3A%2F%2Fpostermasterstudio.com%2Fproducts%2Fthings-that-require-0-talent`,
+    benefit: 'Minimalist studio and editing suite typography wall print. Use creator discount code MOTIVATE20 for 20% off.',
+  },
+  {
+    id: 'smart-calendar-display',
+    name: 'Everblog HomeCal™ 21.5" Smart Digital Studio Production Calendar',
+    category: 'Content Scheduling & Production Management',
+    brand: 'Everblog',
+    url: `https://www.awin1.com/cread.php?awinmid=128579&awinaffid=${AWIN_AFFID}&clickref=nexuscut-newsletter&ued=https%3A%2F%2Feverblog.com%2Fproducts%2F21-5-inch-everblog-calendar`,
+    benefit: 'Large touchscreen wall display for video release roadmaps, sponsor delivery schedules, and creator team coordination.',
+  },
+];
 
 // 8 rotating creator pillars to guarantee each week covers a distinct discipline
 const CREATOR_PILLARS = [
@@ -153,19 +237,27 @@ async function generateNewsletterContent() {
     ? `\nPREVIOUSLY COVERED TOPICS & SUBJECTS (STRICT RULE: YOU MUST NOT REPEAT OR DUPLICATE THESE):\n- ${pastSubjects}\n\nPREVIOUSLY RECOMMENDED GEAR (DO NOT REPEAT THESE SPECIFIC PRODUCTS):\n${pastGear || 'None yet'}\n`
     : '';
 
+  const gearCatalog = AWIN_CREATOR_GEAR.map(
+    (g) => `- [GEAR_ID: ${g.id}] ${g.name} (${g.brand} • ${g.category}) — ${g.benefit}`
+  ).join('\n');
+
   const prompt = `You are a viral video editing strategist writing Issue #${issueNumber} of "Creator Weekly" for NexusCut (an online AI video editor).
 
 TODAY'S CORE PILLAR: "${currentPillar.name}"
 Focus specifically on: ${currentPillar.theme}.
+
+APPROVED CREATOR GEAR (Select exactly 2 items from this approved list that best fit this week's pillar):
+${gearCatalog}
 ${pastContext}
 STRICT REQUIREMENTS:
 1. Provide a snappy, curiosity-inducing subject line as the very first line prefixed with "SUBJECT: ". It MUST be completely unique and not resemble past subjects.
 2. Provide a 1-sentence summary of the main insight on the second line prefixed with "SUMMARY: ".
-3. List 2 specific physical gear items recommended at the bottom on the third line prefixed with "GEAR: [Product 1, Product 2]". These MUST NOT have been recommended in past issues.
+3. List the 2 chosen gear items on the third line prefixed with "GEAR: [id_or_name_1, id_or_name_2]".
 4. Write practical, cutting-edge insight with deep technical or psychological clarity (concrete numbers, exact millisecond timings, audio dB targets, or step-by-step workflow actions). Do NOT write vague generic fluff or high-level filler.
 5. Keep the tone sharp, creator-focused, and inspiring.
-6. At the bottom, introduce the "Creator Gear Pick of the Week" featuring the 2 physical gear items you chose.
-   Format each gear recommendation link exactly as: [AMAZON_AFFILIATE_LINK:Exact Product Name]
+6. At the bottom, introduce the "Creator Gear Pick of the Week" featuring the 2 chosen physical gear items from the approved list above.
+   Format each gear recommendation link exactly as: [GEAR_LINK:exact_gear_id]
+   CRITICAL: NEVER mention Amazon, never link to amazon.com, and ONLY use gear items from the approved list above.
 7. Return the newsletter body formatted in clean, modern HTML with semantic tags (<h2>, <p>, <ul>, <li>, <strong>). Do NOT wrap in markdown code blocks or <html>/<body> tags.`;
 
   const model = 'gpt-4o';
@@ -215,13 +307,28 @@ STRICT REQUIREMENTS:
     bodyHtml = bodyHtml.replace(/^GEAR:\s*.+$/m, '').trim();
   }
 
-  // Replace Amazon placeholder links with affiliate tagged URLs
-  bodyHtml = bodyHtml.replace(/\[AMAZON_AFFILIATE_LINK:(.*?)\]/g, (match, p1) => {
-    const productName = p1.trim();
-    if (!gear.includes(productName)) gear.push(productName);
-    const query = encodeURIComponent(productName);
-    const url = `https://www.amazon.com/s?k=${query}&tag=${AFFILIATE_TAG}`;
-    return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #6366f1; font-weight: 600; text-decoration: underline;">${productName} ↗</a>`;
+  // Helper to match Awin gear item by ID or name
+  function findAwinGear(query) {
+    const q = (query || '').trim().toLowerCase();
+    return (
+      AWIN_CREATOR_GEAR.find((g) => g.id.toLowerCase() === q) ||
+      AWIN_CREATOR_GEAR.find((g) => g.name.toLowerCase().includes(q) || q.includes(g.id.toLowerCase())) ||
+      AWIN_CREATOR_GEAR[issueNumber % AWIN_CREATOR_GEAR.length]
+    );
+  }
+
+  // Replace [GEAR_LINK:id] or [AWIN_GEAR_LINK:id] with verified Awin affiliate links
+  bodyHtml = bodyHtml.replace(/\[(?:AWIN_)?GEAR_LINK:(.*?)\]/gi, (match, p1) => {
+    const item = findAwinGear(p1);
+    if (!gear.includes(item.name)) gear.push(item.name);
+    return `<a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color: #6366f1; font-weight: 600; text-decoration: underline;">${item.name} ↗</a>`;
+  });
+
+  // Legacy fallback: replace any [AMAZON_AFFILIATE_LINK:...] if hallucinated
+  bodyHtml = bodyHtml.replace(/\[AMAZON_AFFILIATE_LINK:(.*?)\]/gi, (match, p1) => {
+    const item = findAwinGear(p1);
+    if (!gear.includes(item.name)) gear.push(item.name);
+    return `<a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color: #6366f1; font-weight: 600; text-decoration: underline;">${item.name} ↗</a>`;
   });
 
   return {
